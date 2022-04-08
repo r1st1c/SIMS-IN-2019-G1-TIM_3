@@ -7,9 +7,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Service\" />
-  </ItemGroup>
-
 </Project>
