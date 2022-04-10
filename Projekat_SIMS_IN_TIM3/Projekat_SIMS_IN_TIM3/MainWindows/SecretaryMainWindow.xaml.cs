@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projekat_SIMS_IN_TIM3
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SecretaryMainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SecretaryMainWindow : Window
     {
-        public MainWindow()
+        public SecretaryMainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Manager_Click(object sender, RoutedEventArgs e)
-        {
-            var managerMainWindow = new ManagerMainWindow();
-            managerMainWindow.Show();
         }
     }
 }
