@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="ManagerMainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.23*"></ColumnDefinition>
+            <ColumnDefinition Width="0.23*"></ColumnDefinition>
+            <ColumnDefinition Width="0.23*"></ColumnDefinition>
+            <ColumnDefinition Width="0.23*"></ColumnDefinition>
+            <ColumnDefinition Width="0.08*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Drugs" />
+        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Rooms" Click="Room_Click"/>
+        <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Equipment" />
+        <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Polls" />
+        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Log Out" />
     </Grid>
 </Window>

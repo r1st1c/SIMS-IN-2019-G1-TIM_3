@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +14,75 @@ namespace Projekat_SIMS_IN_TIM3.Model
         storage
     }
 
-    public class Room
+    public class Room : INotifyPropertyChanged
     {
-        private String name;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if(PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(name));}
+        }
+
+        private string name;
         private RoomType roomType;
         private int floor;
-        private String description;
+        private string description;
 
-        public String Name { get; set; }
-        public RoomType RoomType { get; set; }
-        public int Floor { get; set; }
-        public String Description { get; set; }
+        public string Name
+        {
+            get
+            { return name; }
+            set
+            {
+                if(value != name)
+                {
+                    name = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
+        public RoomType RoomType
+        {
+            get
+            { return roomType; }
+            set
+            {
+                if (value != roomType)
+                {
+                    roomType = value;
+                    OnPropertyChanged("RoomType");
+                }
+            }
+
+        }
+        public int Floor
+        {
+            get
+            { return floor; }
+            set
+            {
+                if (value != floor)
+                {
+                    floor = value;
+                    OnPropertyChanged("Floor");
+                }
+            }
+
+        }
+        public string Description
+        {
+            get
+            { return description; }
+            set
+            {
+                if (value != description)
+                {
+                    description = value;
+                    OnPropertyChanged("Description");
+                }
+            }
+
+        }
 
 
 
