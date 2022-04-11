@@ -1,4 +1,5 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,19 +23,15 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class RoomWindow : Window
     {
+        RoomController roomController = new RoomController();
 
         public ObservableCollection<Room> Rooms { get; set; }
         public RoomWindow()
         {
             InitializeComponent();
             this.DataContext = this;
-            Rooms = new ObservableCollection<Room>();
-            string[] csvLines = System.IO.File.ReadAllLines(@"W:\rooms.csv");
-            for(int i = 0; i < csvLines.Length; i++)
-            {
-                string[] data = csvLines[i].Split(',');
-                Rooms.Add(new Room { Name=data[0],RoomType= Enum.Parse<RoomType>(data[1]), Floor = Int32.Parse(data[2]), Description = data[3]});
-            }
+            Rooms = new ObservableCollection<Room>(roomController.GetAll());
+            
         }
     }
 }

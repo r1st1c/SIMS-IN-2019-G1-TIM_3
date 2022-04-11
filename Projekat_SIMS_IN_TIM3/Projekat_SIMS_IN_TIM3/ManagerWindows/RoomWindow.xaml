@@ -25,5 +25,8 @@
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Add Room" HorizontalAlignment="Left" Margin="178,0,0,0" VerticalAlignment="Center" Height="42" Width="118" />
+        <Button Content="Basic Renovation" HorizontalAlignment="Center" VerticalAlignment="Center" Height="42" Width="118"/>
+        <Button Content="Advanced Renovation" HorizontalAlignment="Left" Margin="507,0,0,0" VerticalAlignment="Center" Height="42" Width="118"/>
     </Grid>
 </Window>
