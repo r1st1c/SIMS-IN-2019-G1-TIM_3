@@ -36,6 +36,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             
         }
 
+        private void Add_Room_Click(object sender, RoutedEventArgs e)
+        {
+            var addRoom = new AddRoom();
+            addRoom.Show();
+        }
 
         
     }
