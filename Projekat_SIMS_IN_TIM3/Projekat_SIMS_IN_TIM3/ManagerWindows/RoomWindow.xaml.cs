@@ -3,6 +3,8 @@ using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,7 +27,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         RoomController roomController = new RoomController();
 
-        public ObservableCollection<Room> Rooms { get; set; }
+        public static ObservableCollection<Room> Rooms { get; set; }
         public RoomWindow()
         {
             InitializeComponent();
@@ -33,5 +35,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
             
         }
+
+
+        
     }
 }

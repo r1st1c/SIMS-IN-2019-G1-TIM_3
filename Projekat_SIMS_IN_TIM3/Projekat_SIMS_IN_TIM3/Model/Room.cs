@@ -23,11 +23,37 @@ namespace Projekat_SIMS_IN_TIM3.Model
             if(PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(name));}
         }
 
+        private int id;
         private string name;
         private RoomType roomType;
         private int floor;
         private string description;
 
+        public Room(int id, string name, RoomType roomType, int floor, string description)
+        {
+            this.id = id;
+            this.name = name;
+            this.roomType = roomType;
+            this.floor = floor;
+            this.description = description;
+
+        }
+
+
+
+        public int Id
+        {
+            get
+            { return id; }
+            set
+            {
+                if (value != id)
+                {
+                    id = value;
+                    OnPropertyChanged("Id");
+                }
+            }
+        }
         public string Name
         {
             get
@@ -84,8 +110,6 @@ namespace Projekat_SIMS_IN_TIM3.Model
 
         }
 
-
-
-
+ 
     }
 }

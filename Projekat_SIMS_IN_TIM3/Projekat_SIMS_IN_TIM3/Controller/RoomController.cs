@@ -10,6 +10,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class RoomController
     {
+        public int getMaxId()
+        {
+            return this.roomService.getMaxId();
+        }
+
         public Room GetById(int id)
         {
             return this.roomService.GetById(id);
