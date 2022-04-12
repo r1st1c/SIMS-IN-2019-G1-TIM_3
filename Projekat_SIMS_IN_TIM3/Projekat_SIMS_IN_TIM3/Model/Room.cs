@@ -25,8 +25,5 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public int Floor { get; set; }
         public String Description { get; set; }
 
-
-
-
     }
 }

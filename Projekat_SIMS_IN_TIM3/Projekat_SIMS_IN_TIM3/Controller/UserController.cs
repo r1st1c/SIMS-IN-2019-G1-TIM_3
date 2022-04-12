@@ -12,30 +12,30 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         public List<User> GetAll()
         {
-            throw new NotImplementedException();
+            return this.userService.GetAll();
         }
 
         public User GetById(int id)
         {
-            throw new NotImplementedException();
+            return this.GetById(id);
         }
 
         public bool Create(User user)
         {
-            throw new NotImplementedException();
+            return this.userService.Create(user);
         }
-
+        
         public bool Update(User user)
         {
-            throw new NotImplementedException();
+            return this.userService.Update(user);
         }
 
-        public bool Delete(int parameter1)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            return this.userService.Delete(id);
         }
 
-        public UserService userService;
+        public UserService userService = new UserService();
 
     }
 }

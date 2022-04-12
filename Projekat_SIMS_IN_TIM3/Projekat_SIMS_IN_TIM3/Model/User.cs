@@ -30,5 +30,19 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public String Phone { get; set; }
         public DateTime DateOfBirth { get; set; }
 
+        public User() { }
+        public User(string jmbg, string username, string password, string name, string surname, string email, string address,string phone, DateTime dataOfBirth)
+        {
+            this.Jmbg = jmbg;  
+            this.Username = username;
+            this.Password = password;
+            this.Name = name;
+            this.Surname = surname;
+            this.Email = email;
+            this.Address = address;
+            this.Phone = phone;
+            this.DateOfBirth = dateOfBirth;
+        }
+
     }
 }

@@ -1,0 +1,56 @@
+﻿<Window x:Class="Projekat_SIMS_IN_TIM3.SecretaryXAML.UpdateDelete"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.SecretaryXAML"
+        mc:Ignorable="d"
+        Title="UpdateDelete" Height="450" Width="800">
+    <Grid>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="690,381,0,0" VerticalAlignment="Top" Click="Update" AutomationProperties.Name="Update" Height="30" Width="53"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="42,391,0,0" VerticalAlignment="Top" Click="Delete" AutomationProperties.Name="Delete" Height="33" Width="53"/>
+        <Button Content="Select" HorizontalAlignment="Left" Margin="265,275,0,0" VerticalAlignment="Top" Click="Select" AutomationProperties.Name="Select" Height="37" Width="52"/>
+        <Button Content="Show" HorizontalAlignment="Left" Margin="36,279,0,0" VerticalAlignment="Top" Click="Show" RenderTransformOrigin="0.5,0.5" AutomationProperties.Name="Show"  Height="33" Width="59"/>
+        <TextBox x:Name="tb1" HorizontalAlignment="Left" Margin="473,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tb1"/>
+        <TextBox x:Name="tb2" HorizontalAlignment="Left" Margin="641,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tb2"/>
+        <TextBox x:Name="tb3" HorizontalAlignment="Left" Margin="473,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tb3"/>
+        <TextBox x:Name="tb4" HorizontalAlignment="Left" Margin="641,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tb4"/>
+        <TextBox x:Name="tb5" HorizontalAlignment="Left" Margin="473,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tb5"/>
+        <TextBox x:Name="tb6" HorizontalAlignment="Left" Margin="641,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tb6"/>
+        <TextBox x:Name="tb7" HorizontalAlignment="Left" Margin="473,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tb7"/>
+        <TextBox x:Name="tb8" HorizontalAlignment="Left" Margin="641,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tb8"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="473,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="Surname" HorizontalAlignment="Left" Margin="641,70,0,0" VerticalAlignment="Top"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="473,108,0,0" VerticalAlignment="Top"/>
+        <Label Content="JMBG" HorizontalAlignment="Left" Margin="641,108,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="473,150,0,0" VerticalAlignment="Top"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="641,150,0,0" VerticalAlignment="Top" AutomationProperties.Name=""/>
+        <Label Content="Address" HorizontalAlignment="Left" Margin="473,190,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone" HorizontalAlignment="Left" Margin="641,190,0,0" VerticalAlignment="Top"/>
+        <Label Content="Data of Birth" HorizontalAlignment="Left" Margin="473,238,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dataofbirth1" HorizontalAlignment="Left" Margin="473,270,0,0" VerticalAlignment="Top" AutomationProperties.Name="dataofbirth1"/>
+        <ListView x:Name="DataBinding1" Margin="10,61,441,209">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="Id: "/>
+                        <TextBlock Text="{Binding User.Id}" FontWeight="Bold"/>
+                        <TextBlock Text="   "/>
+                        <TextBlock Text="Name: "/>
+                        <TextBlock Text="{Binding User.Name}" FontWeight="Bold"/>
+                        <TextBlock Text="   "/>
+                        <TextBlock Text="Surname: "/>
+                        <TextBlock Text="{Binding User.Surname}" FontWeight="Bold"/>
+                        <TextBlock Text="   "/>
+                        <TextBlock Text="Username: "/>
+                        <TextBlock Text="{Binding User.Username}" FontWeight="Bold"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+
+    </Grid>
+</Window>

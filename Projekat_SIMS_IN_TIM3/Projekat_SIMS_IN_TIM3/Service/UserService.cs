@@ -12,30 +12,30 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         public List<User> GetAll()
         {
-            throw new NotImplementedException();
+            return this.userRepository.GetAll();
         }
 
         public User GetById(int id)
         {
-            throw new NotImplementedException();
+            return this.userRepository.GetById(id);
         }
 
         public bool Create(User user)
         {
-            throw new NotImplementedException();
+            return this.userRepository.Create(user);
         }
-
+        
         public bool Update(User user)
         {
-            throw new NotImplementedException();
+            return this.userRepository.Update(user);   
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            return this.userRepository.Delete(id);
         }
 
-        public UserRepository userRepository;
+        public UserRepository userRepository = new UserRepository();
 
     }
 }
