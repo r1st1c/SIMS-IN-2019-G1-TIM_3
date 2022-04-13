@@ -30,5 +30,11 @@ namespace Projekat_SIMS_IN_TIM3
             var managerMainWindow = new ManagerMainWindow();
             managerMainWindow.Show();
         }
+
+        private void Secretary_Click(object sender, RoutedEventArgs e)
+        {
+            var secretaryMainWindow = new SecretaryMainWindow();
+            secretaryMainWindow.Show();
+        }
     }
 }
