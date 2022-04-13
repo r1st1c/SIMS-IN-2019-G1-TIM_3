@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="CreateGuest" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="Name" HorizontalAlignment="Left" Margin="45,40,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Margin="45,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="name"/>
+        <Label Content="Surname" HorizontalAlignment="Left" Margin="45,94,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="surname" HorizontalAlignment="Left" Margin="45,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="surname"/>
+        <Label Content="Jmbg" HorizontalAlignment="Left" Margin="45,152,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="jmbg" HorizontalAlignment="Left" Margin="45,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="jmbg"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="45,209,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="username" HorizontalAlignment="Left" Margin="45,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="username"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="45,268,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="45,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="password"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="467,268,0,0" VerticalAlignment="Top" Height="49" Width="69" Click="Button_Click_1"/>
+
+
     </Grid>
 </Window>
