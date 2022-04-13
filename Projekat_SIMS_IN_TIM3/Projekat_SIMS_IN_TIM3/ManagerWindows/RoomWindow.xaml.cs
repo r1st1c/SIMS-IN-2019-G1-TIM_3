@@ -52,6 +52,14 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             change.Show();
         }
 
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)((Button)e.Source).DataContext;
+            Debug.Write(room.Name);
+            Rooms.Remove(room);
+            this.roomController.DeleteById(room.Id);
+        }
+
         void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //Get the sender observable collection
