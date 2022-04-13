@@ -29,17 +29,30 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
             application = Application.Current as App;
             patients = application.patientController.GetAll();
             DataBinding1.ItemsSource = patients;
+
+            var usersNew = application.patientController.GetAll();
+            DataBinding1.ItemsSource = usersNew;
         }
 
         private void Update(object sender, RoutedEventArgs e)
         {
 
-            string patientId = selectedPatient.User.Id;
+            int patientId = selectedPatient.User.Id;
             application.patientController.Delete(patientId);
             var newPatient = new Patient(tb4.Text, tb3.Text, tb5.Text, tb1.Text, tb2.Text, tb6.Text, tb7.Text, tb8.Text, (DateTime)dataofbirth1.SelectedDate);
             newPatient.User.Id = patientId;
             application.patientController.Save(newPatient);
             MessageBox.Show("SuSuccessfully updated user");
+
+            tb1.Text = "";
+            tb2.Text = "";
+            tb3.Text = "";
+            tb4.Text = "";
+            tb5.Text = "";
+            tb6.Text = "";
+            tb7.Text = "";
+            tb8.Text = "";
+            dataofbirth1.SelectedDate = default(DateTime);
         }
 
         private void Show(object sender, RoutedEventArgs e)
@@ -65,6 +78,17 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
         private void Delete(object sender, RoutedEventArgs e)
         {
             application.patientController.Delete(selectedPatient.User.Id);
+            MessageBox.Show("SuSuccessfully delete user");
+
+            tb1.Text = "";
+            tb2.Text = "";
+            tb3.Text = "";
+            tb4.Text = "";
+            tb5.Text = "";
+            tb6.Text = "";
+            tb7.Text = "";
+            tb8.Text = "";
+            dataofbirth1.SelectedDate = default(DateTime);
         }
     }
 }

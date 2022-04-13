@@ -16,19 +16,19 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return patientRepository.GetAll();
         }
 
-        public Patient GetById(String id)
+        public Patient GetById(int id)
         {
             return patientRepository.GetById(id);
         }
 
-        public void Save(Patient patient)
+        public bool Save(Patient patient)
         {
-            patientRepository.Save(patient);
+            return patientRepository.Save(patient);
         }
 
-        public void Delete(String patient)
+        public bool Delete(int patient)
         {
-            patientRepository.Delete(patient);
+            return patientRepository.Delete(patient);
         }
 
 

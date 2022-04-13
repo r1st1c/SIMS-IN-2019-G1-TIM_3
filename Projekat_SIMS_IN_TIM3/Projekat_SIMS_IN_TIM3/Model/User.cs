@@ -8,9 +8,8 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class User
     {
-        private DateTime dataOfBirth;
-
-        public string Id { get; set; }
+        
+        public int Id { get; set; }
         public String Jmbg { get; set; }
         public String Username { get; set; }   
         public String Password { get; set; }   
@@ -22,7 +21,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public DateTime DateOfBirth { get; set; }
 
         public User() { }
-        public User(string id, string jmbg, string username, string password, string name, string surname, string email, string address,string phone, DateTime dataOfBirth)
+        public User(int id, string jmbg, string username, string password, string name, string surname, string email, string address,string phone, DateTime dataOfBirth)
         {
             this.Id = id;
             this.Jmbg = jmbg;  
@@ -46,7 +45,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
             this.Email = email;
             this.Address = address;
             this.Phone = phone;
-            this.dataOfBirth = dataOfBirth;
+            this.DateOfBirth = dataOfBirth;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return patientService.GetAll();
         }
 
-        public Patient GetById(String id)
+        public Patient GetById(int id)
         {
             return patientService.GetById(id);
         }
@@ -27,9 +27,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             patientService.Save(doctor);
         }
 
-        public void Delete(String jmbg)
+        public void Delete(int jmbg)
         {
             patientService.Delete(jmbg);
         }
+
     }
 }

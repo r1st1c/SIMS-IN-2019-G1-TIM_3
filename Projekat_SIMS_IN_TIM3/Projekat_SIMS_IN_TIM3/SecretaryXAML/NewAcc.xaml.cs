@@ -37,7 +37,7 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
         {
             var newPatient = new Patient(tb4.Text, tb3.Text, tb5.Text, tb1.Text, tb2.Text, tb6.Text, tb7.Text, tb8.Text, (DateTime)dataofbirth1.SelectedDate);
             int id = patients.Count + 1;
-            string patientId = "p" + Convert.ToString(id);
+            int patientId = id;
             newPatient.User.Id = patientId;
             application.patientController.Save(newPatient);
             MessageBox.Show("Successfully created user.");
@@ -50,6 +50,7 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
             tb6.Text = "";
             tb7.Text = "";
             tb8.Text = "";
+            dataofbirth1.SelectedDate = default(DateTime);
 
         }
 

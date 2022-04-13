@@ -47,24 +47,26 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return patients;
         }
 
-        public Patient GetById(String id)
+        public Patient GetById(int id)
         {
             ReadJson();
             return patients.Find(obj => obj.User.Id == id);
         }
-        public void Save(Patient patient)
+        public bool Save(Patient patient)
         {
 
             patients.Add(patient);
             WriteToJson();
+            return true;
         }
 
-        public void Delete(String id)
+        public bool Delete(int id)
         {
             ReadJson();
             int index = patients.FindIndex(obj => obj.User.Id == id);
             patients.RemoveAt(index);
             WriteToJson();
+            return true;
         }
     }
 }
