@@ -8,5 +8,10 @@
         Title="DoctorMainWindow" Height="450" Width="800">
     <Grid>
         
+            <StackPanel>
+                <Button Margin="20" Click="CreateNewAppointment">Create new appointment</Button>
+            <Button Margin="20" Click="ListOfAllAppointments">List of appointments</Button>
+            </StackPanel>
+        <Grid />
     </Grid>
 </Window>
