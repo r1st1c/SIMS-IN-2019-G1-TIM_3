@@ -18,7 +18,7 @@
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <Button Content="Manager" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="0" Click="Manager_Click"/>
-        <Button Content="Secretary" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="0"/>
+        <Button Content="Secretary" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="0" Click="Secretary_Click"/>
         <Button Content="Doctor" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="0"/>
         <Button Content="Patient" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="0"/>
     </Grid>

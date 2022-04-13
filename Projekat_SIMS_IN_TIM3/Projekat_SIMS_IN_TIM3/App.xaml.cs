@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekat_SIMS_IN_TIM3.Controller;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,10 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class App : Application
     {
+        public readonly UserController userController = new UserController();
+        public readonly PatientController patientController = new PatientController();
+
+
+        public string id;
     }
 }

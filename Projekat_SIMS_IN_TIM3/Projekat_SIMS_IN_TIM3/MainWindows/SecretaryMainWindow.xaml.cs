@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.SecretaryXAML;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,23 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class SecretaryMainWindow : Window
     {
+        
         public SecretaryMainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NewAcc acc = new NewAcc();
+            acc.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            UpdateDelete ud = new UpdateDelete();
+            ud.Show();
         }
     }
 }
