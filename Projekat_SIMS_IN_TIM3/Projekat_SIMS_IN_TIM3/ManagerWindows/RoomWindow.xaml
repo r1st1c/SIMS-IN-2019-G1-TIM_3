@@ -9,13 +9,15 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.2*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="dataGridStudenti" Grid.Row="1" ItemsSource="{Binding Rooms,Mode=TwoWay}" IsReadOnly="True" 
+        <DataGrid Grid.ColumnSpan="3" x:Name="dataGridStudenti" Grid.Row="1" ItemsSource="{Binding Rooms,Mode=TwoWay}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" 
                   Height="352" VerticalAlignment="Center">
             <DataGrid.Columns>
@@ -40,8 +42,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add Room" HorizontalAlignment="Left" Margin="178,0,0,0" VerticalAlignment="Center" Height="42" Width="118" Click="Add_Room_Click" />
-        <Button Content="Basic Renovation" HorizontalAlignment="Center" VerticalAlignment="Center" Height="42" Width="118"/>
-        <Button Content="Advanced Renovation" HorizontalAlignment="Left" Margin="507,0,0,0" VerticalAlignment="Center" Height="42" Width="118"/>
+        <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Add Room"  Click="Add_Room_Click" />
+        <Button Grid.Row="0" Grid.Column="1" Content="Basic Renovation" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Grid.Row="0" Grid.Column="2" Content="Advanced Renovation" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>
