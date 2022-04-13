@@ -10,42 +10,47 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class RoomService
     {
+
+        public int getMaxId()
+        {
+            return this.roomRepository.next_id();
+        }
         public Room GetById(int id)
         {
-            throw new NotImplementedException();
+            return this.roomRepository.GetById(id);
         }
 
         public List<Room> GetAll()
         {
-            throw new NotImplementedException();
+            return this.roomRepository.GetAll();
         }
 
         public bool Create(Room room)
         {
-            throw new NotImplementedException();
+            return this.roomRepository.Create(room);
         }
 
         public bool Update(Room room)
         {
-            throw new NotImplementedException();
+            return this.roomRepository.Update(room);    
         }
 
         public bool DeleteById(int id)
         {
-            throw new NotImplementedException();
+            return this.roomRepository.DeleteById(id);
         }
 
         public bool Split(int id)
         {
-            throw new NotImplementedException();
+            return this.roomRepository.Split(id);
         }
 
         public bool Merge(int firstId, int secondId)
         {
-            throw new NotImplementedException();
+            return this.roomRepository.Merge(firstId, secondId);
         }
 
-        public RoomRepository roomRepository;
+        public RoomRepository roomRepository = new RoomRepository();
 
     }
 }

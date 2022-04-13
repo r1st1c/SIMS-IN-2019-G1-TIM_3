@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekat_SIMS_IN_TIM3.ManagerWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,12 @@ namespace Projekat_SIMS_IN_TIM3
         public ManagerMainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Room_Click(object sender, RoutedEventArgs e)
+        {
+            var roomWindow = new RoomWindow();
+            roomWindow.Show();
         }
     }
 }
