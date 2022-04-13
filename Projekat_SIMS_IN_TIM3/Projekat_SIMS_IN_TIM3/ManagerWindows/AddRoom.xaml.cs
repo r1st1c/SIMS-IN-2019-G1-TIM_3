@@ -29,7 +29,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private string name;
         private int floor;
         private string description;
-        RoomType RooomType { get; set; }
+        private RoomType roomTypeSelected;
         private readonly DataView _dataView;
         public event PropertyChangedEventHandler PropertyChanged;
         RoomController roomController = new RoomController();
@@ -80,6 +80,19 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
         }
 
+        public RoomType RoomTypeSelected
+        {
+            get => roomTypeSelected;
+            set
+            {
+                if (roomTypeSelected != value)
+                {
+                    roomTypeSelected = value;
+                    OnPropertyChanged("Floor");
+                }
+            }
+        }
+
 
         public AddRoom()
         {
@@ -112,7 +125,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private Room CreateRoom()
         {
-            var room = new Room(this.roomController.getMaxId(), name, RooomType, floor, description);
+            var room = new Room(this.roomController.getMaxId(), name, roomTypeSelected, floor, description);
             
             return room;
         }

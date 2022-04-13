@@ -27,7 +27,7 @@
                 <DataGridTemplateColumn Header="Change Type" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="changeType" Content="Change Type"></Button>
+                            <Button Name="changeType" Content="Change Type" Click="Change_Type_Click"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
