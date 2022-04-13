@@ -24,14 +24,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// <summary>
     /// Interaction logic for AddRoom.xaml
     /// </summary>
-    public partial class AddRoom : Window,INotifyPropertyChanged
+    public partial class AddRoom : Window
     {
         private string name;
         private int floor;
         private string description;
         private RoomType roomTypeSelected;
-        private readonly DataView _dataView;
-        public event PropertyChangedEventHandler PropertyChanged;
         RoomController roomController = new RoomController();
 
         public ObservableCollection<RoomType> RoomTypes
@@ -47,7 +45,6 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 if (name != value)
                 {
                     name = value;
-                    OnPropertyChanged("Name");
                 }
             }
         }
@@ -62,7 +59,6 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 if (description != value)
                 {
                     description = value;
-                    OnPropertyChanged("Description");
                 }
             }
         }
@@ -75,7 +71,6 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 if (floor != value)
                 {
                     floor = value;
-                    OnPropertyChanged("Floor");
                 }
             }
         }
@@ -88,7 +83,6 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 if (roomTypeSelected != value)
                 {
                     roomTypeSelected = value;
-                    OnPropertyChanged("Floor");
                 }
             }
         }
@@ -107,10 +101,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         }
 
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(name)); }
-        }
+        
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {

@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="ChangeRoomType" Height="300" Width="300">
     <Grid>
-        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" ItemsSource="{Binding Path=RoomTypes}"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Margin="150,100,0,0"/>
+        <Label Content="New Room Type:&#xD;&#xA;" HorizontalAlignment="Left" Margin="29,98,0,0" VerticalAlignment="Top" Height="24"/>
+        <Label Content="{Binding SelectedRoomId}" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Height="23" Width="20"/>
+        <Button Content="Confirm" HorizontalAlignment="Left" Margin="39,201,0,0" VerticalAlignment="Top" Height="32" Width="84" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="163,201,0,0" VerticalAlignment="Top" Height="32" Width="84" Background="Red" FontWeight="Bold"/>
+        <Label Content="Room id:" HorizontalAlignment="Left" Margin="83,38,0,0" VerticalAlignment="Top"/>
+
 
     </Grid>
 </Window>

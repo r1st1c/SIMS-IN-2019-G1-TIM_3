@@ -20,9 +20,18 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\rooms.csv");
             return csvLines.Length;
         }
+
         public Room GetById(int id)
       {
-         throw new NotImplementedException();
+            List<Room> allRooms = this.GetAll();
+            foreach(Room room in allRooms)
+            {
+                if(room.Id == id)
+                {
+                    return room;
+                }
+            }
+            return null;
       }
       
       public List<Room> GetAll()
@@ -31,6 +40,10 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             List<Room> list = new List<Room>();
             for (int i = 0; i < csvLines.Length; i++)
             {
+                if(csvLines[i] == "")
+                {
+                    continue;
+                }
                 string[] data = csvLines[i].Split(',');
                 list.Add(new Room(
                     Int32.Parse(data[0]),
@@ -49,8 +62,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             string fileName = @"C:\Users\Ristic\Documents\rooms.csv";
             if (File.Exists(fileName))
             {
-                RoomWindow.Rooms.Add(room);
-                string data = "\n" + next_id() + "," + room.Name + "," + room.RoomType + "," + room.Floor + "," + room.Description;
+                //RoomWindow.Rooms.Add(room);
+                string data = next_id() + "," + room.Name + "," + room.RoomType + "," + room.Floor + "," + room.Description + "\n";
                 File.AppendAllText(fileName, data);
                 return true;
             }
@@ -60,8 +73,11 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       
       public bool Update(Room room)
       {
-         throw new NotImplementedException();
-      }
+            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\rooms.csv");
+            csvLines[room.Id] = room.Id + "," + room.Name + "," + room.RoomType + "," + room.Floor + "," + room.Description;
+            File.WriteAllLines(@"C:\Users\Ristic\Documents\rooms.csv", csvLines);
+            return true;
+        }
       
       public bool DeleteById(int id)
       {
