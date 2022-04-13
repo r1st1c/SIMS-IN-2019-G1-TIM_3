@@ -26,7 +26,15 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         RoomController roomController = new RoomController();
         private RoomType roomTypeSelected;
+        public string NewRoomName
+        {
+            get; set;
+        }
 
+        public string NewDescription
+        {
+            get;set;
+        }
 
         public int SelectedRoomId
         {
@@ -67,7 +75,17 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             Room toUpdate = this.roomController.GetById(SelectedRoomId);
             toUpdate.RoomType = RoomTypeSelected;
+            toUpdate.Name = NewRoomName;
+            toUpdate.Description = NewDescription;
             this.roomController.Update(toUpdate);
+            List<Room> roomList = RoomWindow.Rooms.ToList();
+            foreach (var room in roomList.Where(x => x.Id == toUpdate.Id))
+            {
+                room.Name = NewRoomName;
+                room.Description = NewDescription;
+                room.RoomType = RoomTypeSelected;
+            }
+                 
             Close();
 
         }

@@ -93,7 +93,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             InitializeComponent();
             this.DataContext = this;
             RoomTypes = new ObservableCollection<RoomType>(Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList());
-
+            
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -108,6 +108,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             var room = CreateRoom();
             if (this.roomController.Create(room)){
                 Debug.Write("Room successfully written in csv");
+                RoomWindow.Rooms.Add(room);
             }
             Close();
         }
