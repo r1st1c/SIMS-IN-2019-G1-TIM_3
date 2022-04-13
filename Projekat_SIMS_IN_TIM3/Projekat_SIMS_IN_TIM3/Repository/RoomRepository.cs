@@ -81,8 +81,11 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       
       public bool DeleteById(int id)
       {
-         throw new NotImplementedException();
-      }
+            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\rooms.csv");
+            csvLines[id] = "";
+            File.WriteAllLines(@"C:\Users\Ristic\Documents\rooms.csv", csvLines);
+            return true;
+        }
       
       public bool Split(int id)
       {
