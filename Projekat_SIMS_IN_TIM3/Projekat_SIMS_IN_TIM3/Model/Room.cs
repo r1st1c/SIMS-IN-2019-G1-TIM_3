@@ -20,7 +20,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
 
         protected virtual void OnPropertyChanged(string name)
         {
-            if(PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(name));}
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         private int id;
