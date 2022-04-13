@@ -22,24 +22,35 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
     public partial class NewAcc : Window
     {
         App application;
-        List<User> users = new List<User>();
-        User selectedUser;
-        private readonly UserController userController = new UserController();
+        List<Patient> patients = new List<Patient>();
+        Patient selectedPatient;
+       
         public NewAcc()
         {
             InitializeComponent();
             application = Application.Current as App;
-            
+            patients = application.patientController.GetAll();
             
         }
 
         private void Create(object sender, RoutedEventArgs e)
         {
-            var newUser = new User(tb4.Text,tb3.Text,tb5.Text,tb1.Text,tb2.Text,tb6.Text,tb7.Text,tb8.Text,(DateTime)dataofbirth1.SelectedDate);
-            int id = users.Count + 1;
-            int userId = id;
-            newUser.Id = userId;
-            application.userController.Create(newUser);
+            var newPatient = new Patient(tb4.Text, tb3.Text, tb5.Text, tb1.Text, tb2.Text, tb6.Text, tb7.Text, tb8.Text, (DateTime)dataofbirth1.SelectedDate);
+            int id = patients.Count + 1;
+            string patientId = "p" + Convert.ToString(id);
+            newPatient.User.Id = patientId;
+            application.patientController.Save(newPatient);
+            MessageBox.Show("Successfully created user.");
+
+            tb1.Text = "";
+            tb2.Text = "";
+            tb3.Text = "";
+            tb4.Text = "";
+            tb5.Text = "";
+            tb6.Text = "";
+            tb7.Text = "";
+            tb8.Text = "";
+
         }
 
     }

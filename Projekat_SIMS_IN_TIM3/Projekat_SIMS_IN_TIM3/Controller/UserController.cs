@@ -12,30 +12,35 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         public List<User> GetAll()
         {
-            return this.userService.GetAll();
+            // TODO: implement
+            return null;
         }
 
-        public User GetById(int id)
+        public User GetById(String id)
         {
-            return this.GetById(id);
+            // TODO: implement
+            return null;
         }
 
         public bool Create(User user)
         {
-            return this.userService.Create(user);
+            // TODO: implement
+            return false;
         }
-        
-        public bool Update(User user)
+
+        public bool Update(String newEmail, String newPhoneNumber, String newAddress)
         {
-            return this.userService.Update(user);
+            // TODO: implement
+            return false;
         }
 
         public bool Delete(int id)
         {
-            return this.userService.Delete(id);
+            // TODO: implement
+            return false;
         }
 
-        public UserService userService = new UserService();
+        public UserService userService;
 
     }
 }

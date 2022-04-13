@@ -15,6 +15,7 @@ namespace Projekat_SIMS_IN_TIM3
     public partial class App : Application
     {
         public readonly UserController userController = new UserController();
+        public readonly PatientController patientController = new PatientController();
 
 
         public string id;

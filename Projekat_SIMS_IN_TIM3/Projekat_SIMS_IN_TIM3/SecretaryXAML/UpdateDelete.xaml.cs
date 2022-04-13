@@ -21,50 +21,50 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
     public partial class UpdateDelete : Window
     {
         App application;
-        List<User> users = new List<User>();
-        User selectedUser;
+        List<Patient> patients = new List<Patient>();
+        Patient selectedPatient;
         public UpdateDelete()
         {
             InitializeComponent();
             application = Application.Current as App;
-            users = application.userController.GetAll();
-            DataBinding1.ItemsSource = users;
+            patients = application.patientController.GetAll();
+            DataBinding1.ItemsSource = patients;
         }
 
         private void Update(object sender, RoutedEventArgs e)
         {
 
-            int userId = selectedUser.Id;
-            application.userController.Delete(userId);
-            var newUser = new User(tb4.Text, tb3.Text, tb5.Text, tb1.Text, tb2.Text, tb6.Text, tb7.Text, tb8.Text, (DateTime)dataofbirth1.SelectedDate);
-            newUser.Id = userId;
-            application.userController.Update(newUser);
-            MessageBox.Show("Uspesno edtovan korisnik");
+            string patientId = selectedPatient.User.Id;
+            application.patientController.Delete(patientId);
+            var newPatient = new Patient(tb4.Text, tb3.Text, tb5.Text, tb1.Text, tb2.Text, tb6.Text, tb7.Text, tb8.Text, (DateTime)dataofbirth1.SelectedDate);
+            newPatient.User.Id = patientId;
+            application.patientController.Save(newPatient);
+            MessageBox.Show("SuSuccessfully updated user");
         }
 
         private void Show(object sender, RoutedEventArgs e)
         {
-            var usersNew = application.userController.GetAll();
+            var usersNew = application.patientController.GetAll();
             DataBinding1.ItemsSource = usersNew;
         }
 
         private void Select(object sender, RoutedEventArgs e)
         {
-            selectedUser = (User)DataBinding1.SelectedItem;
-            tb1.Text = selectedUser.Name;
-            tb2.Text = selectedUser.Surname;
-            tb3.Text = selectedUser.Username;
-            tb4.Text = selectedUser.Jmbg;
-            tb5.Text = selectedUser.Password;
-            tb6.Text = selectedUser.Email;
-            tb7.Text = selectedUser.Address;
-            tb8.Text = selectedUser.Phone;
-            dataofbirth1.SelectedDate = selectedUser.DateOfBirth;
+            selectedPatient = (Patient)DataBinding1.SelectedItem;
+            tb1.Text = selectedPatient.User.Name;
+            tb2.Text = selectedPatient.User.Surname;
+            tb3.Text = selectedPatient.User.Username;
+            tb4.Text = selectedPatient.User.Jmbg;
+            tb5.Text = selectedPatient.User.Password;
+            tb6.Text = selectedPatient.User.Email;
+            tb7.Text = selectedPatient.User.Address;
+            tb8.Text = selectedPatient.User.Phone;
+            dataofbirth1.SelectedDate = selectedPatient.User.DateOfBirth;
         }
 
         private void Delete(object sender, RoutedEventArgs e)
         {
-            application.userController.Delete(selectedUser.Id);
+            application.patientController.Delete(selectedPatient.User.Id);
         }
     }
 }

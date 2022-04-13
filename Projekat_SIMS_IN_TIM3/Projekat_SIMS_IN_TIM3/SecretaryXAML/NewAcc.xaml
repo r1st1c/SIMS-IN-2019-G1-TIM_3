@@ -29,7 +29,6 @@
         <Button Content="Reset" HorizontalAlignment="Left" Margin="189,331,0,0" VerticalAlignment="Top"/>
         <Button Content="Tutorial" HorizontalAlignment="Left" Margin="21,331,0,0" VerticalAlignment="Top"/>
         <Button Content="Home" HorizontalAlignment="Left" Margin="739,31,0,0" VerticalAlignment="Top"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="337,56,25,202"/>
 
     </Grid>
 </Window>
