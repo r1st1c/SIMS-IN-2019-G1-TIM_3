@@ -106,7 +106,14 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
             var room = CreateRoom();
-            if (this.roomController.Create(room)){
+            if (room.Name == null || room.Description==null || room.Floor == null || room.Name == "" || room.Description == "")
+            {
+                MessageBox.Show("All fields are necessary");
+                return;
+            }
+            else
+            {
+                this.roomController.Create(room);
                 Debug.Write("Room successfully written in csv");
                 RoomWindow.Rooms.Add(room);
             }
@@ -120,6 +127,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             var room = new Room(this.roomController.getMaxId(), name, roomTypeSelected, floor, description);
             
             return room;
+        }
+
+        private void Cancel_Button(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

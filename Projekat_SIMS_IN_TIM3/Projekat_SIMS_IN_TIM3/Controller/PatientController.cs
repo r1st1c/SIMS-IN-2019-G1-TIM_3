@@ -22,9 +22,9 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return patientService.GetById(id);
         }
 
-        public void Save(Patient doctor)
+        public void Save(Patient patient)
         {
-            patientService.Save(doctor);
+            patientService.Save(patient);
         }
 
         public void Delete(int jmbg)

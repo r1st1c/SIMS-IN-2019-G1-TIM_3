@@ -40,5 +40,12 @@ namespace Projekat_SIMS_IN_TIM3
             UpdateDelete ud = new UpdateDelete();
             ud.Show();
         }
+
+        private void create_guest(object sender, RoutedEventArgs e)
+        {
+            CreateGuest createGuest = new CreateGuest();
+
+            createGuest.Show(); 
+        }
     }
 }

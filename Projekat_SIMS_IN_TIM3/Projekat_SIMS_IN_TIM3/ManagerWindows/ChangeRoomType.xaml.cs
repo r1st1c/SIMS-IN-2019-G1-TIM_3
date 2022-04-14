@@ -73,6 +73,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
+            if (NewRoomName == null || roomTypeSelected == null || NewDescription == null || NewDescription == "" || NewRoomName == "")
+            {
+                MessageBox.Show("All fields are necessary");
+                return;
+            }
             Room toUpdate = this.roomController.GetById(SelectedRoomId);
             toUpdate.RoomType = RoomTypeSelected;
             toUpdate.Name = NewRoomName;
@@ -88,6 +93,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                  
             Close();
 
+        }
+
+        private void Cancel_Button(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
