@@ -23,6 +23,6 @@
         <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Rooms" Click="Room_Click"/>
         <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Equipment" />
         <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Polls" />
-        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Log Out" />
+        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Log Out" Click="Button_Click" />
     </Grid>
 </Window>

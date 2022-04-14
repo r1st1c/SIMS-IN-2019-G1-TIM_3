@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.PatientXAML;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +25,19 @@ namespace Projekat_SIMS_IN_TIM3
         public PatientMainWindow()
         {
             InitializeComponent();
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAppointment acc = new CreateAppointment();
+            acc.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            UpdateAndDeleteAppointment ud = new UpdateAndDeleteAppointment();
+            ud.Show();
         }
     }
 }
