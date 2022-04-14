@@ -6,28 +6,47 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Model
 {
+    public enum AppointmentType
+    {
+        basic,
+        urgent
+    }
+
     public class Appointment
     {
-        public int Id;
-        public DateTime date;
-        public string time;
-        public int durationInMinutes;
-        public int doctorsId;
-        public int patientsId;
-
         public Appointment()
         {
+            // TODO: implement
         }
 
-        public Appointment(int id, DateTime date, string time, int durationInMinutes, int doctorsId, int patientsId)
+        ~Appointment()
         {
-            Id = id;
-            this.date = date;
-            this.time = time;
-            this.durationInMinutes = durationInMinutes;
-            this.doctorsId = doctorsId;
-            this.patientsId = patientsId;
+            // TODO: implement
         }
+
+        public Appointment(int id, DateTime startTime, int durationInMinutes, AppointmentType type, int doctorId, int patientId)
+        {
+            this.Id = id;
+            this.StartTime = startTime;
+            this.DurationInMinutes = durationInMinutes;
+            this.Type = type;
+            this.DoctorId = doctorId;
+            this.PatientId = patientId;
+
+        }
+        //geteri i seteri
+
+
+        
+        public int Id { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime FinishTime { get; set; }
+        public int DurationInMinutes { get; set; }
+        public AppointmentType Type { get; set; }
+
+        public int DoctorId { get; set; }
+
+        public int PatientId { get; set; }
 
 
     }

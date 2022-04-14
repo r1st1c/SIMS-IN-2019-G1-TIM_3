@@ -36,5 +36,11 @@ namespace Projekat_SIMS_IN_TIM3
             var secretaryMainWindow = new SecretaryMainWindow();
             secretaryMainWindow.Show();
         }
+
+        private void Patient_Click(object sender, RoutedEventArgs e)
+        {
+            var patientMainWindow = new PatientMainWindow();
+            patientMainWindow.Show();
+        }
     }
 }

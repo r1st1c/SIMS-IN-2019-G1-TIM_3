@@ -17,7 +17,7 @@ namespace Projekat_SIMS_IN_TIM3
         public readonly UserController userController = new UserController();
         public readonly PatientController patientController = new PatientController();
         public readonly GuestController guestController = new GuestController();
-
+        public readonly AppointmentController appointmentController = new AppointmentController();
 
         public string id;
     }
