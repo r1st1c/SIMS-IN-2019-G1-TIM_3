@@ -106,12 +106,14 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
             var room = CreateRoom();
-            if (room.Name == null || room.RoomType == null || room.Description == null || room.Floor == null)
+            if (room.Name == null || room.Description==null || room.Floor == null || room.Name == "" || room.Description == "")
             {
                 MessageBox.Show("All fields are necessary");
                 return;
             }
-            if (this.roomController.Create(room)){
+            else
+            {
+                this.roomController.Create(room);
                 Debug.Write("Room successfully written in csv");
                 RoomWindow.Rooms.Add(room);
             }
