@@ -30,5 +30,10 @@ namespace Projekat_SIMS_IN_TIM3
             var roomWindow = new RoomWindow();
             roomWindow.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
