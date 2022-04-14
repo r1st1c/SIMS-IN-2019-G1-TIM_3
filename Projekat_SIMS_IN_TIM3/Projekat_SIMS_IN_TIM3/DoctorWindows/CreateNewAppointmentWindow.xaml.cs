@@ -15,15 +15,13 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for AppointmentWindow.xaml
+    /// Interaction logic for CreateNewAppointmentWindow.xaml
     /// </summary>
-    public partial class AppointmentWindow : Window
+    public partial class CreateNewAppointmentWindow : Window
     {
-        public AppointmentWindow()
+        public CreateNewAppointmentWindow()
         {
             InitializeComponent();
         }
-
-       
     }
 }

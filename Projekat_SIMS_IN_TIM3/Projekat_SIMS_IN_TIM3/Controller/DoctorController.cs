@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,21 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class DoctorController
     {
+        private DoctorService doctorService = new DoctorService();
+
+        public List<Doctor> getAll()
+        {
+            return doctorService.getAll();
+        }
+
+        public void saveAndUpdate(Doctor doctor)
+        {
+            doctorService.saveAndUpdate(doctor);
+        }
+
+        public void delete(int jmbg)
+        {
+            doctorService.delete(jmbg);
+        }
     }
 }

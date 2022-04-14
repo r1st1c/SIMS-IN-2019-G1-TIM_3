@@ -25,10 +25,16 @@ namespace Projekat_SIMS_IN_TIM3
             InitializeComponent();
         }
 
-        private void ListOfAllAppointments(object sender, RoutedEventArgs e)
+        private void AppointmentListButton(object sender, RoutedEventArgs e)
         {
-            var appointmentWindow = new AppointmentWindow();
+            AppointmentWindow appointmentWindow = new AppointmentWindow();
             appointmentWindow.Show();
+        }
+
+        private void CreateAppButton(object sender, RoutedEventArgs e)
+        {
+            CreateNewAppointmentWindow create = new CreateNewAppointmentWindow();
+            create.Show();
         }
     }
 }
