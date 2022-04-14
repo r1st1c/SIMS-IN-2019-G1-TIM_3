@@ -13,7 +13,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         public List<Appointment> getAll()
         {
             List<Appointment> appointments = new List<Appointment>();
-            string[] csv = File.ReadAllLines(@"C:\Users\Elena\Desktop\appointments.csv");
+            string[] csv = File.ReadAllLines(@"C:\Users\Elena\Desktop\appointmentsData.csv");
 
             for (int i = 0; i < csv.Length; ++i)
             {
@@ -24,12 +24,12 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
                 string[] csv_data = csv[i].Split(';');
                 appointments.Add(new Appointment(
-                    Int32.Parse(csv_data[0]),
+                    int.Parse(csv_data[0]),
                     DateTime.Parse(csv_data[1]),
-                    csv_data[2],
-                    Int32.Parse(csv_data[3]),
-                    Int32.Parse(csv_data[4]),
-                    Int32.Parse(csv_data[5])
+                    int.Parse(csv_data[2]),
+                    Enum.Parse<AppointmentType>(csv_data[3]),
+                    int.Parse(csv_data[4]),
+                    int.Parse(csv_data[5])
                     ));
             }
 

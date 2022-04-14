@@ -9,9 +9,9 @@
     <Grid>
         
             <StackPanel>
-                <Button Margin="20" Click="CreateNewAppointment">Create new appointment</Button>
-            <Button Margin="20" Click="ListOfAllAppointments">List of appointments</Button>
-            </StackPanel>
+            <Button Margin="20" Content="Create new appointment" Click="CreateAppt"/>
+            <Button Margin="20" Content="List of appointments" Click="ListApp_Click"/>
+        </StackPanel>
         <Grid />
     </Grid>
 </Window>
