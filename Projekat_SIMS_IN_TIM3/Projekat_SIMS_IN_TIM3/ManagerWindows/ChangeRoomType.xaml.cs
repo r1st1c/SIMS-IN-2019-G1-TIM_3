@@ -94,5 +94,10 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             Close();
 
         }
+
+        private void Cancel_Button(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
