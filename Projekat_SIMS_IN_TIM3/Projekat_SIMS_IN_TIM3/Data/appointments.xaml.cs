@@ -12,18 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Projekat_SIMS_IN_TIM3.DoctorWindows
+namespace Projekat_SIMS_IN_TIM3.Data
 {
     /// <summary>
-    /// Interaction logic for AppointmentWindow.xaml
+    /// Interaction logic for appointments.xaml
     /// </summary>
-    public partial class AppointmentWindow : Window
+    public partial class appointments : Window
     {
-        public AppointmentWindow()
+        public appointments()
         {
             InitializeComponent();
         }
-
-       
     }
 }

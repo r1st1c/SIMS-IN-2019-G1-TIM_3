@@ -1,0 +1,24 @@
+﻿[
+  {
+    "User": {
+      "Id": 0,
+      "Jmbg": "1234567891234",
+      "Username": "username1",
+      "Password": "passwd234",
+      "Name": "nameNew12",
+      "Surname": "surnameNew123",
+      "Email": "newemail@gmail.com",
+      "Address": "newAddress23",
+      "Phone": "0654567890",
+      "DateOfBirth": "0002-04-04T00:00:30"
+    },
+    "Room": {
+      "Id": 0,
+      "Name": "room1",
+      "RoomType": "basic",
+      "Floor": 3,
+      "Description": "description1"
+    },
+    "SpecializationType":  "SpecType1"
+  }
+]

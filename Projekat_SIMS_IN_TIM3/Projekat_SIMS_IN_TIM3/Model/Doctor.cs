@@ -8,24 +8,52 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class Doctor
     {
-        public User User { get; set; }
-        private Room room;
-        private String specializationType;
-        public Doctor(string jmbg, string username, string password, string name, string surname, string email, string address, string phoneNumber, DateTime dateOfBirth,
-            int id, string roomName, RoomType roomType, int floor, string description)
-        {
-            User newUser = new User(jmbg, username, password, name, surname, email, address, phoneNumber, dateOfBirth);
-            this.User = newUser;
+        public int Id { get; set; }
+        public String Jmbg { get; set; }
+        public String Username { get; set; }
+        public String Password { get; set; }
+        public String Name { get; set; }
+        public String Surname { get; set; }
+        public String Email { get; set; }
+        public String Address { get; set; }
+        public String Phone { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        private Room room { get; set; }
+        private String specializationType { get; set; }
 
-            Room newRoom = new Room(id, roomName, roomType, floor, description);
-            this.room = newRoom;
+        public Doctor()
+        {
         }
 
-        public Doctor(User user)
+        public Doctor(int id, string jmbg, string username, string password, string name, string surname, string email, string address, string phone, DateTime dateOfBirth, Room room, string specializationType)
         {
-            this.User = user;
+            Id = id;
+            Jmbg = jmbg;
+            Username = username;
+            Password = password;
+            Name = name;
+            Surname = surname;
+            Email = email;
+            Address = address;
+            Phone = phone;
+            DateOfBirth = dateOfBirth;
+            this.room = room;
+            this.specializationType = specializationType;
         }
 
-        
+        public Doctor(string jmbg, string username, string password, string name, string surname, string email, string address, string phone, DateTime dateOfBirth, Room room, string specializationType)
+        {
+            Jmbg = jmbg;
+            Username = username;
+            Password = password;
+            Name = name;
+            Surname = surname;
+            Email = email;
+            Address = address;
+            Phone = phone;
+            DateOfBirth = dateOfBirth;
+            this.room = room;
+            this.specializationType = specializationType;
+        }
     }
 }
