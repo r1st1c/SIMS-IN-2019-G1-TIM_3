@@ -128,5 +128,10 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             
             return room;
         }
+
+        private void Cancel_Button(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

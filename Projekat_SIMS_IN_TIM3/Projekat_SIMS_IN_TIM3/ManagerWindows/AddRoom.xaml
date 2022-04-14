@@ -16,7 +16,7 @@
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Margin="175,142,0,0"/>
         <TextBox HorizontalAlignment="Left" Margin="175,172,0,0" TextWrapping="Wrap" Text="{Binding Description}" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <Button Content="Confirm" HorizontalAlignment="Left" Margin="71,251,0,0" VerticalAlignment="Top" Height="32" Width="84" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="195,251,0,0" VerticalAlignment="Top" Height="32" Width="84" Background="Red" FontWeight="Bold"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="195,251,0,0" VerticalAlignment="Top" Height="32" Width="84" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
         <Label Content="Floor:" HorizontalAlignment="Left" Margin="53,196,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox HorizontalAlignment="Left" Margin="175,200,0,0" TextWrapping="Wrap" Text="{Binding Floor}" VerticalAlignment="Top" Width="120" FontSize="16"/>
 
