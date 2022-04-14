@@ -26,10 +26,10 @@
                 <DataGridTextColumn Header="Type" Binding="{Binding RoomType}" Width="*"/>
                 <DataGridTextColumn Header="Floor" Binding="{Binding Floor}" Width="*"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
-                <DataGridTemplateColumn Header="Change Type" Width="*">
+                <DataGridTemplateColumn Header="Edit" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="changeType" Content="Change" Click="Change_Type_Click"></Button>
+                            <Button Name="changeType" Content="Edit" Click="Change_Type_Click"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

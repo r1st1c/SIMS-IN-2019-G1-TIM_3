@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Margin="150,60,0,0" Grid.Row="1"/>
         <Label Content="New Room Type:&#xD;&#xA;" HorizontalAlignment="Left" Margin="29,58,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1"/>
-        <Label Content="{Binding SelectedRoomId}" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Height="23" Width="20" Grid.RowSpan="2"/>
+        <Label Content="{Binding SelectedRoomId}" HorizontalAlignment="Left" Margin="140,38,0,0" VerticalAlignment="Top" Height="25" Width="28" Grid.RowSpan="2" RenderTransformOrigin="0.495,0.527"/>
         <Button Content="Confirm" HorizontalAlignment="Left" Margin="39,161,0,0" VerticalAlignment="Top" Height="32" Width="84" Background="Lime" FontWeight="Bold" Click="Confirm_Button" Grid.Row="1"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="163,161,0,0" VerticalAlignment="Top" Height="32" Width="84" Background="Red" FontWeight="Bold" Grid.Row="1"/>
         <Label Content="Room id:" HorizontalAlignment="Left" Margin="83,38,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
