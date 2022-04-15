@@ -3,10 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
-        Title="CreateNewAppointmentWindow" Height="450" Width="800">
+        Title="Create New Appointment" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="tb1" HorizontalAlignment="Left" Margin="21,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb1"/>
+        <TextBox x:Name="tb2" HorizontalAlignment="Left" Margin="21,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb2"/>
+        <TextBox x:Name="tb3" HorizontalAlignment="Center" Margin="2,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb3"/>
+        <TextBox x:Name="tb4" HorizontalAlignment="Center" Margin="2,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb4"/>
+
+        <Label Content="StartTime" HorizontalAlignment="Left" Margin="21,15,0,0" VerticalAlignment="Top"/>
+        <xctk:DateTimePicker x:Name="startTime1" HorizontalAlignment="Left" Margin="21,40,0,0" VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="745"/>
+
+        <Label Content="DurationInMinutes" HorizontalAlignment="Left" Margin="21,75,0,0" VerticalAlignment="Top"/>
+        <Label Content="AppointmentType" HorizontalAlignment="Left" Margin="21,130,0,0" VerticalAlignment="Top"/>
+        <Label Content="DoctorId" HorizontalAlignment="Left" Margin="21,190,0,0" VerticalAlignment="Top"/>
+        <Label Content="PatientId" HorizontalAlignment="Left" Margin="21,250,0,0" VerticalAlignment="Top" AutomationProperties.Name=""/>
+
+
+        <Button Content="Create" Background="#FF89E461" Margin="340,343,340,0" VerticalAlignment="Top" AutomationProperties.Name="create1" Click="Create" RenderTransformOrigin="-8.087,0.481" FontWeight="Bold" FontSize="14"/>
+
     </Grid>
 </Window>

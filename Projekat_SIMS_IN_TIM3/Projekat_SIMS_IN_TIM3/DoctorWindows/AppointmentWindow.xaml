@@ -4,9 +4,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="AppointmentWindow" Height="450" Width="800">
+        Title="Update And Delete Appointment" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Update" HorizontalAlignment="Left" Margin="646,275,0,0" VerticalAlignment="Top" Click="Update" AutomationProperties.Name="Update" Height="35" Width="59" Background="#FF97EA90"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="34,275,0,0" VerticalAlignment="Top" Click="Delete" AutomationProperties.Name="Delete" Height="35" Width="59" RenderTransformOrigin="1.594,0.511" FontWeight="Bold" FontSize="14" Background="#FFF31717"/>
+        <Button Content="Select" HorizontalAlignment="Left" Margin="265,275,0,0" VerticalAlignment="Top" Click="Select" AutomationProperties.Name="Select" Height="35" Width="59" Background="#FFE6CF3A"/>
+        <Button Content="Show" HorizontalAlignment="Left" Margin="155,275,0,0" VerticalAlignment="Top" Click="Show" RenderTransformOrigin="0.5,0.5" AutomationProperties.Name="Show"  Height="35" Width="59" Background="#FF2CA9DE"/>
+
+
+        <Label Content="New StartTime" HorizontalAlignment="Left" Margin="567,43,0,0" VerticalAlignment="Top"/>
+        <xctk:DateTimePicker x:Name="startTime1" HorizontalAlignment="Left" Margin="572,74,0,0" VerticalAlignment="Top" AutomationProperties.Name="startTime1" Width="207"/>
+
+        <ListView x:Name="DataBinding1" Margin="10,61,441,209">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="Id: "/>
+                        <TextBlock Text="{Binding Id}" FontWeight="Bold"/>
+                        <TextBlock Text="   "/>
+                        <TextBlock Text="StartTime: "/>
+                        <TextBlock Text="{Binding StartTime}" FontWeight="Bold"/>
+                        <TextBlock Text="   "/>
+                        <TextBlock Text="Duration: "/>
+                        <TextBlock Text="{Binding DurationInMinutes}" FontWeight="Bold"/>
+                        <TextBlock Text="   "/>
+                        <TextBlock Text="PatientId: "/>
+                        <TextBlock Text="{Binding PatientId}" FontWeight="Bold"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Content="List of appointments" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" Foreground="Black"/>
+
+
+
+
     </Grid>
 </Window>

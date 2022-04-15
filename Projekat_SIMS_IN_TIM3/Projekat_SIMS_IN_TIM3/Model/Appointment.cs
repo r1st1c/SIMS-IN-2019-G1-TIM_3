@@ -14,6 +14,9 @@ namespace Projekat_SIMS_IN_TIM3.Model
 
     public class Appointment
     {
+        private int appId;
+        private DateTime value;
+
         public Appointment()
         {
             // TODO: implement
@@ -34,10 +37,20 @@ namespace Projekat_SIMS_IN_TIM3.Model
             this.PatientId = patientId;
 
         }
+
+        public Appointment(int appId, DateTime value, int durationInMinutes, AppointmentType type, int patientId)
+        {
+            this.appId = appId;
+            this.value = value;
+            DurationInMinutes = durationInMinutes;
+            Type = type;
+            PatientId = patientId;
+        }
+
         //geteri i seteri
 
 
-        
+
         public int Id { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime FinishTime { get; set; }

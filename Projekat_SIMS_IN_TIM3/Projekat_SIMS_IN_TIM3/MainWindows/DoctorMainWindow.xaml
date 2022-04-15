@@ -8,8 +8,8 @@
         Title="DoctorMainWindow" Height="450" Width="800">
     <Grid>
         
-            <Button Content="Appointments list" Click="AppointmentListButton" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Top" Width="271" Height="49"/>
-            <Button Content="Create new appointment" Click="CreateAppButton" HorizontalAlignment="Center" Margin="100" VerticalAlignment="Top" Width="271" Height="49"/>
+            <Button Content="Edit/Delete appointment" Click="AppointmentListButtonEditDelete" HorizontalAlignment="Center" Margin="80" VerticalAlignment="Top" Width="271" Height="49" FontWeight="Bold" FontSize="14"/>
+            <Button Content="Create new appointment" Click="CreateAppButton" HorizontalAlignment="Center" Margin="180" VerticalAlignment="Top" Width="271" Height="49" FontWeight="Bold" FontSize="14"/>
         
         <Grid />
     </Grid>
