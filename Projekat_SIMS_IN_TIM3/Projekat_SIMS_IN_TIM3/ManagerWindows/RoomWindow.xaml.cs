@@ -25,10 +25,9 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// <summary>
     /// Interaction logic for RoomWindow.xaml
     /// </summary>
-    public partial class RoomWindow : Window, INotifyPropertyChanged
+    public partial class RoomWindow : Window
     {
         RoomController roomController = new RoomController();
-        public event PropertyChangedEventHandler PropertyChanged;
         public static ObservableCollection<Room> Rooms { get; set; }
         public RoomWindow()
         {
@@ -57,13 +56,6 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             Room room = (Room)((Button)e.Source).DataContext;
             Rooms.Remove(room);
             this.roomController.DeleteById(room.Id);
-        }
-
-        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            //Get the sender observable collection
-            ObservableCollection<Room> obsSender = sender as ObservableCollection<Room>;
-            NotifyCollectionChangedAction action = e.Action;
         }
     }
 }
