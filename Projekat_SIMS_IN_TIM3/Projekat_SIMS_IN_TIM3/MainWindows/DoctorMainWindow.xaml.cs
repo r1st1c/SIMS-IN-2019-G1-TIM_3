@@ -25,7 +25,7 @@ namespace Projekat_SIMS_IN_TIM3
             InitializeComponent();
         }
 
-        private void AppointmentListButton(object sender, RoutedEventArgs e)
+        private void AppointmentListButtonEditDelete(object sender, RoutedEventArgs e)
         {
             AppointmentWindow appointmentWindow = new AppointmentWindow();
             appointmentWindow.Show();

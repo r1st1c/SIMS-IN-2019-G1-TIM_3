@@ -28,7 +28,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
             using (StreamReader r = new StreamReader(fileLocation))
             {
-                string json = r.ReadToEnd();
+                string json = r.ReadToEnd();    
                 if (json != "")
                 {
                     appointments = JsonConvert.DeserializeObject<List<Appointment>>(json);
