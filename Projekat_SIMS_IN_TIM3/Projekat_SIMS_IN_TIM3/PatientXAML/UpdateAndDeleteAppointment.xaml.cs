@@ -84,7 +84,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
             
             application.appointmentController.CreateAppointment(newAppointment);
-            MessageBox.Show("SuSuccessfully updated appointment ");
+            MessageBox.Show("Successfully updated appointment ");
 
 
             /* 
