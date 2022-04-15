@@ -49,7 +49,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     Int32.Parse(data[0]),
                     data[1],
                     Enum.Parse<RoomType>(data[2]),
-                    Int32.Parse(data[3]),
+                    UInt32.Parse(data[3]),
                     data[4]
                 ));
                 

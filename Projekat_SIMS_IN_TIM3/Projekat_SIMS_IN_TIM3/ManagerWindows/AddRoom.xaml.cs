@@ -49,8 +49,6 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
         }
 
-        
-
         public string Description
         {
             get => description;
@@ -87,7 +85,6 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
         }
 
-
         public AddRoom()
         {
             InitializeComponent();
@@ -96,17 +93,15 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        
-
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
+            if (floor < 0)
+            {
+                MessageBox.Show("Room cannot be negative number!");
+                return;
+            }
             var room = CreateRoom();
-            if (room.Name == null || room.Description==null || room.Floor == null || room.Name == "" || room.Description == "")
+            if (room.Name == null || room.Description==null || room.Name == "" || room.Description == "")
             {
                 MessageBox.Show("All fields are necessary");
                 return;
@@ -120,13 +115,9 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             Close();
         }
 
-        
-
         private Room CreateRoom()
         {
-            var room = new Room(this.roomController.getMaxId(), name, roomTypeSelected, floor, description);
-            
-            return room;
+            return new Room(this.roomController.getMaxId(), name, roomTypeSelected, (uint) floor, description);
         }
 
         private void Cancel_Button(object sender, RoutedEventArgs e)

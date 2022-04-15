@@ -26,10 +26,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private int id;
         private string name;
         private RoomType roomType;
-        private int floor;
+        private uint floor;
         private string description;
 
-        public Room(int id, string name, RoomType roomType, int floor, string description)
+        public Room(int id, string name, RoomType roomType, uint floor, string description)
         {
             this.id = id;
             this.name = name;
@@ -82,7 +82,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
             }
 
         }
-        public int Floor
+        public uint Floor
         {
             get
             { return floor; }

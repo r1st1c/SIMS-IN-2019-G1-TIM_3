@@ -59,16 +59,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
         }
 
-
         public ChangeRoomType(int roomId)
         {
-
             InitializeComponent();
             this.DataContext = this;
             RoomTypes = new ObservableCollection<RoomType>(Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList());
             SelectedRoomId = roomId;
-            Debug.Write("ID:" + SelectedRoomId);
-
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
