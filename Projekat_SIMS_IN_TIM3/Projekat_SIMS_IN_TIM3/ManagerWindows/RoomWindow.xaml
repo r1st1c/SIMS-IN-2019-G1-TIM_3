@@ -17,7 +17,7 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid  Grid.ColumnSpan="3" x:Name="dataGridStudenti" Grid.Row="1" ItemsSource="{Binding Rooms,Mode=TwoWay}" IsReadOnly="True" 
+        <DataGrid  Grid.ColumnSpan="3" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding Rooms,Mode=TwoWay}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" 
                   Height="800" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <DataGrid.Columns>
