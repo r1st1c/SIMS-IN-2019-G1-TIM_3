@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Model
 {
-    internal class Equipment
+    public class Equipment
     {
         public enum EquipmentType
         {
             static_equipment,
             dynamic_equipment
         }
-
+        public int Id { get; set; }
         public string Equipmentname { get; set; }
         public string Manufacturer { get; set; }
         public EquipmentType Equipmenttype { get; set; }
-        public int Id { get; set; }
+        public int RoomId { get; set; }
 
-
+        Equipment(int id,string equipmentname,string manufacturer, EquipmentType equipmentType, int roomId)
+        {
+            Id = id;
+            Equipmentname = equipmentname;
+            Manufacturer = manufacturer;
+            Equipmenttype = equipmentType;
+            RoomId = roomId;
+        }
 
 
     }

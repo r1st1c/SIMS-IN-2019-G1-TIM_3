@@ -35,5 +35,11 @@ namespace Projekat_SIMS_IN_TIM3
         {
             Close();
         }
+
+        private void Equipment_Click(object sender, RoutedEventArgs e)
+        {
+            var eqWIndow = new EquipmentWindow();
+            eqWIndow.Show();
+        }
     }
 }
