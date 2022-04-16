@@ -28,11 +28,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class EquipmentWindow : Window
     {
         public static ObservableCollection<Equipment> Equipment_All { get; set; }
+        public static EquipmentController equipmentController = new EquipmentController();
         public EquipmentWindow()
         {
             InitializeComponent();
             this.DataContext = this;
-            
+            Equipment_All = new ObservableCollection<Equipment>(equipmentController.GetAll());
         }
     }
 }
