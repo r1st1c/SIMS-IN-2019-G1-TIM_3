@@ -29,7 +29,7 @@
                 <DataGridTemplateColumn Header="Move Equipment" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="moveTo" Content="Move to">
+                            <Button Name="moveTo" Content="Move to" Click="Move_Button">
                                 <Button.Style>
                                     <Style TargetType="Button">
                                         <Setter Property="Visibility" Value="Visible"/>

@@ -35,5 +35,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             this.DataContext = this;
             Equipment_All = new ObservableCollection<Equipment>(equipmentController.GetAll());
         }
+
+        private void Move_Button(object sender, RoutedEventArgs e)
+        {
+            Equipment equipment = (Equipment)((Button)e.Source).DataContext;
+            int id = equipment.Id;
+            var move = new MoveEquipment(id);
+            move.Show();
+        }
     }
 }
