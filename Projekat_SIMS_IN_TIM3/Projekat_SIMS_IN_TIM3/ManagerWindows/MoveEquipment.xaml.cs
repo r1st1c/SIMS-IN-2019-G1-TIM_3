@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,24 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class MoveEquipment : Window
     {
+        public RoomController roomController = new RoomController();
+        public EquipmentController equipmentController = new EquipmentController();
+        public int equipmentId { get; set; }
+        public int targetRoomId { get; set; }
         public MoveEquipment(int id)
         {
             InitializeComponent();
+            this.DataContext = this;
+            this.equipmentId = id;
+        }
+        private void Confirm_Button(object sender, RoutedEventArgs e)
+        {
+            this.equipmentController.Move(equipmentId, targetRoomId, DateTime.Parse(PickedDate.Text));
+            Close();
+        }
+        private void Cancel_Button(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="MoveEquipment" Height="450" Width="450">
+        Title="MoveEquipment" Height="300" Width="300">
     <Grid>
-        
+        <Label Content="Move Equipment" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <TextBox HorizontalAlignment="Left" Margin="161,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Text="{Binding targetRoomId}"/>
+        <Button Content="Confirm" Margin="51,201,168,0" VerticalAlignment="Top" Height="32" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
+        <Button Content="Cancel" Margin="168,201,51,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
+        <DatePicker Name="PickedDate" HorizontalAlignment="Left" Margin="145,117,0,0" VerticalAlignment="Top" Height="24"/>
+        <Label Content=" New Room ID:" HorizontalAlignment="Left" Margin="72,82,0,0" VerticalAlignment="Top" Height="27" Width="89"/>
+        <Label Content="Date of moving:" HorizontalAlignment="Left" Margin="51,116,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

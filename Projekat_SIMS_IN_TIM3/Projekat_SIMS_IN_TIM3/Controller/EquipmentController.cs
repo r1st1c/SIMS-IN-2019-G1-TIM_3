@@ -20,6 +20,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.equipmentService.GetAll();
         }
 
+        public bool Move(int equipmentId, int targetRoomId, DateTime date)
+        {
+            return this.equipmentService.Move(equipmentId, targetRoomId, date);
+        }
         public EquipmentService equipmentService = new EquipmentService();
 
     }

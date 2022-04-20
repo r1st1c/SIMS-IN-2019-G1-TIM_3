@@ -47,7 +47,14 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             }
             return list;
         }
-      
-   
-   }
+        public bool Move(int equipmentId, int targetRoomId)
+        {
+            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\equipment.csv");
+            Equipment equipment = GetById(equipmentId);
+            csvLines[equipmentId] = equipment.Id + "," + equipment.Equipmentname + "," + equipment.Manufacturer + "," + equipment.Equipmenttype + "," + targetRoomId;
+            File.WriteAllLines(@"C:\Users\Ristic\Documents\equipment.csv", csvLines);
+            return true;
+        }
+
+    }
 }
