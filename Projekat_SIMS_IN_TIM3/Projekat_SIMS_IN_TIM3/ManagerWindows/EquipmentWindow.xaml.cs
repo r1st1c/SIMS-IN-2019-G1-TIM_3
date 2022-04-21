@@ -39,8 +39,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Move_Button(object sender, RoutedEventArgs e)
         {
             Equipment equipment = (Equipment)((Button)e.Source).DataContext;
-            int id = equipment.Id;
-            var move = new MoveEquipment(id);
+            var move = new MoveEquipment(equipment);
             move.Show();
         }
     }

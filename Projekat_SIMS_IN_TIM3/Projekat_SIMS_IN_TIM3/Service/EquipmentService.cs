@@ -23,31 +23,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public bool Move(int equipmentId, int targetRoomId, DateTime date)
         {
-            if(this.roomRepository.GetById(targetRoomId) == null)
+            if(this.equipmentRepository.Move(equipmentId, targetRoomId))
             {
-                Debug.Write("ROOM NOT FOUND!");
-                return false;
-            }
-            if(DateTime.Compare(date.Date,DateTime.Now.Date) < 0)
-            {
-                Debug.Write("DATE BEFORE TODAY!!");
-                return false;
-            }
-            if (DateTime.Compare(date.Date, DateTime.Now.Date) == 0)
-            {
-                Debug.Write("MOVED!!");
-                this.equipmentRepository.Move(equipmentId, targetRoomId);
-                return true;
-            }
-            if (DateTime.Compare(date.Date, DateTime.Now.Date) > 0)
-            {
-                Debug.Write("IN FUTURE!!");
-                //buducnosti se izmeni
                 return true;
             }
             return false;
-
-
         }
         public RoomRepository roomRepository = new RoomRepository();
         public EquipmentRepository equipmentRepository = new EquipmentRepository();

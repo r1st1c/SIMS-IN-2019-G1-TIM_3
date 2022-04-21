@@ -21,18 +21,22 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class MoveEquipment : Window
     {
-        public RoomController roomController = new RoomController();
         public EquipmentController equipmentController = new EquipmentController();
         public int equipmentId { get; set; }
         public int targetRoomId { get; set; }
-        public MoveEquipment(int id)
+        public MoveEquipment(Equipment equipment)
         {
             InitializeComponent();
             this.DataContext = this;
-            this.equipmentId = id;
+            this.equipmentId = equipment.Id;
         }
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
+            if(PickedDate.Text=="" || PickedDate.Text == null)
+            {
+                MessageBox.Show("Date must be picked!");
+                return;
+            }
             if(this.equipmentController.Move(equipmentId, targetRoomId, DateTime.Parse(PickedDate.Text)))
             {
                 var toUpdate = this.equipmentController.GetById(equipmentId);
@@ -41,8 +45,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 {
                     eq.RoomId = targetRoomId;
                 }
+                Close();
             }
-            Close();
         }
         private void Cancel_Button(object sender, RoutedEventArgs e)
         {
