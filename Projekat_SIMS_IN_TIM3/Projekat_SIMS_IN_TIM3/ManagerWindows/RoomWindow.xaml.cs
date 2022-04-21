@@ -63,7 +63,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Basic_Click(object sender, RoutedEventArgs e)
         {
             Room room = (Room)((Button)e.Source).DataContext;
-            this.roomController.DeleteById(room.Id);
+            var basic = new BasicRenovationWindow(room);
+            basic.Show();
         }
     }
 }

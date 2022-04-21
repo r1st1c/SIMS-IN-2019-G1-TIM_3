@@ -1,0 +1,20 @@
+﻿<Window x:Class="Projekat_SIMS_IN_TIM3.ManagerWindows.BasicRenovationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
+        mc:Ignorable="d"
+        Title="Basic Renovation" Height="300" Width="300">
+    <Grid>
+        <Button Content="Confirm" Margin="58,209,167,0" VerticalAlignment="Top" Height="32" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
+        <Button Content="Cancel" Margin="169,209,50,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
+        <DatePicker x:Name="StartDate" HorizontalAlignment="Left" Margin="150,100,0,0" VerticalAlignment="Top" Height="24"/>
+        <Label Content="Starting date:&#xD;&#xA;" HorizontalAlignment="Left" Margin="58,99,0,0" VerticalAlignment="Top" Height="30" Width="79"/>
+        <DatePicker x:Name="EndDate" HorizontalAlignment="Left" Margin="149,135,0,0" VerticalAlignment="Top" Height="24"/>
+        <Label Content="Date of moving:" HorizontalAlignment="Left" Margin="58,134,0,0" VerticalAlignment="Top" Width="92"/>
+        <Label Content="Basic renovation&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" FontSize="24" Height="37" Width="184"/>
+        <Label Content="Duration:&#xD;&#xA;" HorizontalAlignment="Left" Margin="58,170,0,0" VerticalAlignment="Top" Height="23" Width="87"/>
+        <TextBox HorizontalAlignment="Left" Margin="150,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Text="{Binding Duration}" RenderTransformOrigin="0.5,0.503" Height="21"/>
+    </Grid>
+</Window>
