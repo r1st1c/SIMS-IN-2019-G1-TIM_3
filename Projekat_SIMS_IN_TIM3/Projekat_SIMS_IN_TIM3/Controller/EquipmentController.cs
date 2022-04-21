@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Projekat_SIMS_IN_TIM3.Controller
 {
@@ -20,7 +21,24 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.equipmentService.GetAll();
         }
 
+        public bool Move(int equipmentId, int targetRoomId, DateTime date)
+        {
+
+            if (DateTime.Compare(date.Date, DateTime.Now.Date) < 0)
+            {
+                MessageBox.Show("Date is before today!");
+                return false;
+            }
+            if (this.roomService.GetById(targetRoomId) == null)
+            {
+                MessageBox.Show("Room does not exist!");
+                return false;
+            } 
+
+            return this.equipmentService.Move(equipmentId, targetRoomId, date);
+        }
         public EquipmentService equipmentService = new EquipmentService();
+        public RoomService roomService = new RoomService();
 
     }
 }

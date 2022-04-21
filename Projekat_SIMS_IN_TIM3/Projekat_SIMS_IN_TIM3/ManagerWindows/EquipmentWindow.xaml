@@ -17,7 +17,7 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid  Grid.ColumnSpan="3" x:Name="dataGridEquipment" Grid.Row="1" ItemsSource="{Binding Equipment_All,Mode=TwoWay}" IsReadOnly="True" 
+        <DataGrid Grid.ColumnSpan="3" x:Name="dataGridEquipment" Grid.Row="1" ItemsSource="{Binding Equipment_All,Mode=TwoWay}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" 
                   Height="800" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <DataGrid.Columns>
@@ -29,7 +29,18 @@
                 <DataGridTemplateColumn Header="Move Equipment" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="moveTo" Content="Move to"></Button>
+                            <Button Name="moveTo" Content="Move to" Click="Move_Button">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Equipmenttype}" Value="dynamic_equipment">
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
