@@ -33,7 +33,15 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         }
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            this.equipmentController.Move(equipmentId, targetRoomId, DateTime.Parse(PickedDate.Text));
+            if(this.equipmentController.Move(equipmentId, targetRoomId, DateTime.Parse(PickedDate.Text)))
+            {
+                var toUpdate = this.equipmentController.GetById(equipmentId);
+                List<Equipment> list = EquipmentWindow.Equipment_All.ToList();
+                foreach (var eq in list.Where(x => x.Id == toUpdate.Id))
+                {
+                    eq.RoomId = targetRoomId;
+                }
+            }
             Close();
         }
         private void Cancel_Button(object sender, RoutedEventArgs e)
