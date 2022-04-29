@@ -1,3 +1,2 @@
-feat/sec_appointment_managment
 [{"Id":0,"StartTime":"0001-01-01T00:00:00","FinishTime":"0001-01-01T00:00:00","DurationInMinutes":34,"Type":1,"DoctorId":0,"PatientId":12}]
-dev
+
