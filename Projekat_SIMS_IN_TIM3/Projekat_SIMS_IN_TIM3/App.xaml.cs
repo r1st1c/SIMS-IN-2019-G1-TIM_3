@@ -20,5 +20,6 @@ namespace Projekat_SIMS_IN_TIM3
         public readonly AppointmentController appointmentController = new AppointmentController();
 
         public string id;
+        internal object doctorController;
     }
 }
