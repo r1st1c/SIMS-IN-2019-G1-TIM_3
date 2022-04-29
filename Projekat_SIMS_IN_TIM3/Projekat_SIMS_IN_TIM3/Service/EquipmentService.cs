@@ -23,11 +23,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public bool Move(int equipmentId, int targetRoomId, DateTime date)
         {
-            if(this.equipmentRepository.Move(equipmentId, targetRoomId))
-            {
+            if (DateTime.Compare(date.Date, DateTime.Now.Date) > 0){
+                this.equipmentRepository.scheduleFutureMove(equipmentId, targetRoomId, date);
+                return false;
+            }
+            else{
+                this.equipmentRepository.Move(equipmentId, targetRoomId);
                 return true;
             }
-            return false;
         }
         public RoomRepository roomRepository = new RoomRepository();
         public EquipmentRepository equipmentRepository = new EquipmentRepository();

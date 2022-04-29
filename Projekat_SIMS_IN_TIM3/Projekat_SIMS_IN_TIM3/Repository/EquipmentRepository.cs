@@ -56,5 +56,19 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return true;
         }
 
+        public bool scheduleFutureMove(int equipmentId, int targetRoomId, DateTime date)
+        {
+
+            string fileName = @"C:\Users\Ristic\Documents\equipment_future_move.csv";
+            if (File.Exists(fileName))
+            {
+                //RoomWindow.Rooms.Add(room);
+                string data = equipmentId + "," + targetRoomId + "," + date.ToString() + "\n";
+                File.AppendAllText(fileName, data);
+                return true;
+            }
+            Debug.Write("Csv file doesnt exist");
+            return false;
+        }
     }
 }
