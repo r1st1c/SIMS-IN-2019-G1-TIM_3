@@ -76,51 +76,36 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
         public void Update(object sender, RoutedEventArgs e)
         {
-            DateTime startTime = (DateTime)startTime1.Value;
-
-            TimeSpan diff = startTime.Subtract(DateTime.Now);
 
             int appointmentId = selectedAppointment.Id;
-            Appointment currApp = application.appointmentController.GetById(appointmentId);
+            application.appointmentController.DeleteAppointment(appointmentId);
+            var newAppointment = new Appointment(appointmentId, (DateTime)startTime1.Value, selectedAppointment.DurationInMinutes,
+                selectedAppointment.Type, selectedAppointment.DoctorId, selectedAppointment.PatientId);
 
-            DateTime initialDate = currApp.StartTime;
-
-            TimeSpan initialDiff = startTime.Subtract(initialDate);
-
-            if (diff.TotalDays<1 || initialDiff.TotalDays>4 || initialDiff.TotalMilliseconds<0 || diff.TotalMilliseconds<0)
-            {
-                if (initialDiff.TotalMilliseconds < 0 || diff.TotalMilliseconds < 0)
-                {
-                    MessageBox.Show("Cannot update backwards");
-
-                }
-                else
-                {
-                    if (diff.TotalDays < 1 && initialDiff.TotalDays <= 4)
-                    {
-                        MessageBox.Show("Too late to update appointment");
-                    }
-                    else if (initialDiff.TotalDays > 4 && diff.TotalDays >= 1)
-                    {
-                        MessageBox.Show("New date too far from initial date");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Too late to update and new date too far from initial date");
-                    }
-                }
-            }
-            else
-            {
-                
-                application.appointmentController.DeleteAppointment(appointmentId);
-                var newAppointment = new Appointment(appointmentId, (DateTime)startTime1.Value, selectedAppointment.DurationInMinutes,
-                    selectedAppointment.Type, selectedAppointment.DoctorId, selectedAppointment.PatientId);
+            
+            application.appointmentController.CreateAppointment(newAppointment);
+            MessageBox.Show("Successfully updated appointment ");
 
 
-                application.appointmentController.CreateAppointment(newAppointment);
-                MessageBox.Show("Successfully updated appointment ");
-            }
+            /* 
+                this.Id = id;
+             this.StartTime = startTime;
+             this.FinishTime = finishTime;
+             this.DurationInMinutes = durationInMinutes;
+             this.Type = type;
+             this.DoctorId = doctorId;
+             this.PatientId = patientId;
+
+
+              tb1.Text = "";
+             tb2.Text = "";
+             tb3.Text = "";
+             tb4.Text = "";
+             tb5.Text = "";
+             tb6.Text = "";
+             tb7.Text = "";
+             tb8.Text = "";
+             dataofbirth1.SelectedDate = default(DateTime);*/
         }
 
     }
