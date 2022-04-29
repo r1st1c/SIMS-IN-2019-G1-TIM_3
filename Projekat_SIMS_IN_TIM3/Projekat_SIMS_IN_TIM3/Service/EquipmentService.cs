@@ -32,6 +32,17 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 return true;
             }
         }
+
+        public void MoveFromMoveOrderList()
+        {
+            List<EquipmentMoveOrder> equipmentMoveOrders = this.equipmentRepository.GetAvailableForMoving();
+            foreach(EquipmentMoveOrder equipmentMoveOrder in equipmentMoveOrders)
+            {
+                this.equipmentRepository.Move(equipmentMoveOrder.EquipmentId, equipmentMoveOrder.RoomId);
+            }
+        }
+
+
         public RoomRepository roomRepository = new RoomRepository();
         public EquipmentRepository equipmentRepository = new EquipmentRepository();
 

@@ -37,6 +37,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 
             return (this.equipmentService.Move(equipmentId, targetRoomId, date),true);
         }
+
+        public void MoveFromMoveOrderList()
+        {
+            this.equipmentService.MoveFromMoveOrderList();
+        }
         public EquipmentService equipmentService = new EquipmentService();
         public RoomService roomService = new RoomService();
 

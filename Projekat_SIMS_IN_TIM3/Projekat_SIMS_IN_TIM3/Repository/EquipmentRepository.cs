@@ -70,5 +70,27 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             Debug.Write("Csv file doesnt exist");
             return false;
         }
+
+        public List<EquipmentMoveOrder> GetAvailableForMoving() {
+            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\equipment_future_move.csv");
+            List<EquipmentMoveOrder> list = new List<EquipmentMoveOrder>();
+            for (int i = 0; i < csvLines.Length; i++)
+            {
+                if (csvLines[i] == "")
+                {
+                    continue;
+                }
+                string[] data = csvLines[i].Split(',');
+                var date = Convert.ToDateTime(data[2]).Date;
+                if (DateTime.Compare(date.Date, DateTime.Now.Date) <= 0) 
+                {
+                    list.Add(new EquipmentMoveOrder(
+                    Int32.Parse(data[0]),
+                    Int32.Parse(data[1])));
+                }
+
+            }
+            return list;
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             InitializeComponent();
             this.DataContext = this;
+            equipmentController.MoveFromMoveOrderList();
             Equipment_All = new ObservableCollection<Equipment>(equipmentController.GetAll());
         }
 
