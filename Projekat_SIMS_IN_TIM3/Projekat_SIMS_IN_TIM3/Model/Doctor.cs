@@ -5,6 +5,9 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class Doctor
     {
+        private string username;
+        private string password;
+
         public User User { get; set; }
         private Room room { get; set; }
         private String specializationType { get; set; }
@@ -35,5 +38,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
             this.specializationType = specializationType;
         }
 
+        public Doctor(string username, string password)
+        {
+            this.username = username;
+            this.password = password;
+        }
     }
 }

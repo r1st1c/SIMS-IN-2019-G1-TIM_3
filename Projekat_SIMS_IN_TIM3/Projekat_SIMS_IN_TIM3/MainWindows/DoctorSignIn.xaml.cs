@@ -22,33 +22,37 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
     /// </summary>
     public partial class DoctorSignIn : Window
     {
-        App application;
-        List<Doctor> doctors = new List<Doctor>();
-
-        UserController UserController = new UserController();
+        public static string initUsname = "";
+        UserLoginController controller = new UserLoginController();
 
         public DoctorSignIn()
         {
             InitializeComponent();
-            application = Application.Current as App;
-            //doctors = application.doctorController.GetAll();
-            
+          
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            
-            foreach(Doctor doctor in doctors)
+          
+            string Username = username.Text.ToString();
+            initUsname = Username;
+            string Password = password.Text.ToString();
+
+            UserLogin userLogin = new UserLogin(Username, Password);
+            Boolean isValid = controller.ValidLogin(userLogin);
+
+                if (!isValid)
             {
-               // application.id = doctor.User.Id;
+                MessageBox.Show("Wrong username or password");
+                username.Text = "";
+                password.Text = "";
+            } else
+            {
                 MainPage mainPage = new MainPage();
-                mainPage.Show();
                 this.Close();
-                return;
+                mainPage.Show();
             }
-            
-            MessageBox.Show("Wrong username or password");
-            
+  
         }
     }
 }

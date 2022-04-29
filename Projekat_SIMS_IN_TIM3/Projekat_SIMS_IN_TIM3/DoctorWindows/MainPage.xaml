@@ -31,7 +31,7 @@
                 </MenuItem>
                 <MenuItem Header="Sign out">
                     <Button Content="Sign out">
-                        
+
                     </Button>
                 </MenuItem>
 
@@ -44,22 +44,18 @@
             <Rectangle HorizontalAlignment="Center" Height="59" Margin="0,148,0,0" Stroke="#FFE5D9C3" VerticalAlignment="Top" Width="1022" Fill="#e5d9c3" />
             <TextBlock HorizontalAlignment="Center" Margin="0,160,0,889" Text="Welcome back, Elena!" FontWeight="Bold" FontStyle="Italic" FontSize="22" />
         </Grid>
+        <Grid/>
+
         <Grid>
-            <Rectangle HorizontalAlignment="Left" Height="313" Margin="39,207,0,0" Stroke="Black" VerticalAlignment="Top" Width="341" Fill="#c3e0e5"/>
-            <TextBlock HorizontalAlignment="Left"  Margin="170,411,0,0" VerticalAlignment="Top"  Text="Home" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" ></TextBlock>
-            <Image Source="/Icons/home_icon-icons.com_73532.ico" Margin="155,294,835,666" RenderTransformOrigin="7.72,0.291"/>
+            <Rectangle HorizontalAlignment="Left" Height="314" Margin="39,207,0,0" Stroke="Black" VerticalAlignment="Top" Width="511" Fill="#c3e0e5"/>
+            <TextBlock HorizontalAlignment="Left"  Margin="241,421,0,0" VerticalAlignment="Top"  Text="Calendar" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
+            <Image Source="/Icons/calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico" Margin="222,311,734,667" RenderTransformOrigin="7.72,0.291"/>
         </Grid>
 
         <Grid>
-            <Rectangle HorizontalAlignment="Center" Height="314" Margin="0,207,0,0" Stroke="Black" VerticalAlignment="Top" Width="342" Fill="#c3e0e5"/>
-            <TextBlock HorizontalAlignment="Center"  Margin="0,411,0,0" VerticalAlignment="Top"  Text="Calendar" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
-            <Image Source="/Icons/calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico" Margin="478,303,478,675" RenderTransformOrigin="7.72,0.291"/>
-        </Grid>
-
-        <Grid>
-            <Rectangle HorizontalAlignment="Right" Height="314" Margin="0,207,38,0" Stroke="Black" VerticalAlignment="Top" Width="341" Fill="#c3e0e5"/>
-            <TextBlock HorizontalAlignment="Left"  Margin="807,412,0,0" VerticalAlignment="Top"  Text="Notifications" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
-            <Image Source="/Icons/musical-bell-outline_icon-icons.com_73481.ico" Margin="832,306,148,670" RenderTransformOrigin="7.72,0.291"/>
+            <Rectangle HorizontalAlignment="Right" Height="314" Margin="0,207,38,0" Stroke="Black" VerticalAlignment="Top" Width="512" Fill="#c3e0e5"/>
+            <TextBlock HorizontalAlignment="Left"  Margin="721,418,0,0" VerticalAlignment="Top"  Text="Notifications" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
+            <Image Source="/Icons/musical-bell-outline_icon-icons.com_73481.ico" Margin="746,308,234,668" RenderTransformOrigin="7.72,0.291"/>
         </Grid>
 
         <Grid>
