@@ -16,7 +16,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public DoctorRepository()
         {
-
+            readJson();
         }
 
         public void readJson()
@@ -40,7 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, jsonData);
         }
 
-        public List<Doctor> getAll()
+        public List<Doctor> GetAll()
         {
             readJson();
             return doctors;
@@ -49,7 +49,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         public Doctor getById(int id)
         {
             readJson();
-            return doctors.Find(x => x.Id == id);
+            return doctors.Find(x => x.User.Id == id);
         }
 
         public bool saveAndUpdate(Doctor doctor)
@@ -62,7 +62,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         public bool delete(int id)
         {
             readJson();
-            int idx = doctors.FindIndex(x => x.Id == id);
+            int idx = doctors.FindIndex(x => x.User.Id == id);
             doctors.RemoveAt(idx);
             writeToJson();
 

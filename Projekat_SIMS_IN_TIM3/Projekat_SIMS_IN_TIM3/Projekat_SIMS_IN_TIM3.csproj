@@ -8,6 +8,60 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico" />
+    <None Remove="Icons\chemistry_icon_188058.ico" />
+    <None Remove="Icons\gui_sign_out_icon_157587.ico" />
+    <None Remove="Icons\home_icon-icons.com_73532.ico" />
+    <None Remove="Icons\hospital_building_icon_135495.ico" />
+    <None Remove="Icons\lines_menu_burger_icon_123889.ico" />
+    <None Remove="Icons\musical-bell-outline_icon-icons.com_73481.ico" />
+    <None Remove="Icons\note_pen_icon_174377.ico" />
+    <None Remove="Icons\rocketDemo.ico" />
+    <None Remove="Icons\searcher_magnifyng_glass_search_locate_find_icon_123813.ico" />
+    <None Remove="Icons\sign-in_icon-icons.com_73414 %281%29.ico" />
+    <None Remove="Icons\user_icon_195366.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Icons\calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\chemistry_icon_188058.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\gui_sign_out_icon_157587.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\home_icon-icons.com_73532.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\hospital_building_icon_135495.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\lines_menu_burger_icon_123889.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\musical-bell-outline_icon-icons.com_73481.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\note_pen_icon_174377.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\rocketDemo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\searcher_magnifyng_glass_search_locate_find_icon_123813.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\sign-in_icon-icons.com_73414 (1).ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\user_icon_195366.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>

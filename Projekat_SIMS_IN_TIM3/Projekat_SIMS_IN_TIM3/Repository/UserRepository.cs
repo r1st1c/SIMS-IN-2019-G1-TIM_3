@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
+    
     public class UserRepository
     {
         public List<User> GetAll()
