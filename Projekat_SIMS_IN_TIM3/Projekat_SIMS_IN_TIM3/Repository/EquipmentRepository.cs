@@ -87,8 +87,9 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     list.Add(new EquipmentMoveOrder(
                     Int32.Parse(data[0]),
                     Int32.Parse(data[1])));
+                    csvLines[i] = "";
                 }
-
+                File.WriteAllLines(@"C:\Users\Ristic\Documents\equipment_future_move.csv", csvLines);
             }
             return list;
         }
