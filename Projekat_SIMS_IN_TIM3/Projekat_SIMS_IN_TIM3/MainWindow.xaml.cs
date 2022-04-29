@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekat_SIMS_IN_TIM3.MainWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,7 @@ namespace Projekat_SIMS_IN_TIM3
         {
             var managerMainWindow = new ManagerMainWindow();
             managerMainWindow.Show();
+            Close();
         }
 
         private void Secretary_Click(object sender, RoutedEventArgs e)
@@ -40,9 +42,10 @@ namespace Projekat_SIMS_IN_TIM3
 
         private void Doctor_Click(object sender, RoutedEventArgs e)
         {
-            var DoctorMainWindow = new DoctorMainWindow();
-            DoctorMainWindow.Show();
+            var doctorSignIn = new DoctorSignIn();
+            doctorSignIn.Show();
 
+         
         }
         private void Patient_Click(object sender, RoutedEventArgs e)
         {

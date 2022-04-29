@@ -37,7 +37,10 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Date must be picked!");
                 return;
             }
-            if(this.equipmentController.Move(equipmentId, targetRoomId, DateTime.Parse(PickedDate.Text)))
+
+            var (toRefresh, toClose) = this.equipmentController.Move(equipmentId, targetRoomId, DateTime.Parse(PickedDate.Text));
+
+            if (toRefresh)
             {
                 var toUpdate = this.equipmentController.GetById(equipmentId);
                 List<Equipment> list = EquipmentWindow.Equipment_All.ToList();
@@ -45,8 +48,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 {
                     eq.RoomId = targetRoomId;
                 }
-                Close();
             }
+            if(toClose) Close();
         }
         private void Cancel_Button(object sender, RoutedEventArgs e)
         {

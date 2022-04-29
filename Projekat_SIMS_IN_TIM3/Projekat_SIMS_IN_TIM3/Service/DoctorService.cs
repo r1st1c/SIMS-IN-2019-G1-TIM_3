@@ -11,9 +11,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
     public class DoctorService
     {
         private DoctorRepository doctorRepository = new DoctorRepository();
-        public List<Doctor> getAll()
+        public List<Doctor> GetAll()
         {
-            return doctorRepository.getAll();
+            return doctorRepository.GetAll();
         }
 
         public bool saveAndUpdate(Doctor doctor)

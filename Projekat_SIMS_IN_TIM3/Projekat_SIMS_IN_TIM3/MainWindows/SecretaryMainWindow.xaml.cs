@@ -47,5 +47,11 @@ namespace Projekat_SIMS_IN_TIM3
 
             createGuest.Show(); 
         }
+
+        private void crud_appoitnemnt(object sender, RoutedEventArgs e)
+        {
+            CrudAppoitnemnt appointment = new CrudAppoitnemnt();
+            appointment.Show(); 
+        }
     }
 }
