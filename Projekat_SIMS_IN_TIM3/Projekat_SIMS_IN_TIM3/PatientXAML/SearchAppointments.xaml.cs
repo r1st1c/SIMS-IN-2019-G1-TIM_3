@@ -41,13 +41,20 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             DateTime wantedStartTIme = (DateTime)StartTime1.SelectedDate; //unesen pocetak
             DateTime wantedEndTIme = (DateTime)EndTime1.SelectedDate; //unesen kraj
 
-            appointments = application.appointmentController.GetByDoctorsId(1);
-
-            foreach (Appointment app in appointments)
+            appointments = application.appointmentController.GetByDoctorsId(doctorId);
+            if (appointments.Count > 0)
             {
-                if(app.StartTime<wantedStartTIme || app.StartTime>wantedEndTIme || app.PatientId!=-1)
+                foreach (Appointment app in appointments)//Ne radi za vreme - ne radi iterator zbog remove
                 {
-                    appointments.Remove(app);
+                    if (app.StartTime < wantedStartTIme || app.StartTime > wantedEndTIme || app.PatientId != -1)
+                    {
+                        appointments.Remove(app);
+                        
+                    }
+                    if (appointments.Count == 0)
+                    {
+                        break;
+                    }
                 }
             }
 
@@ -60,13 +67,13 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             {
                 if (priority == "Doctor")
                 {
-                    appointments = application.appointmentController.GetByDoctorsId(1);
+                    appointments = application.appointmentController.GetByDoctorsId(doctorId);
                     DataBinding1.ItemsSource = appointments;
                     return;
                 }
                 else
                 {
-                    Doctor doctor = application.docController.GetById(1);
+                    Doctor doctor = application.docController.GetById(doctorId);
 
                     string specialization = doctor.specializationType;
 
