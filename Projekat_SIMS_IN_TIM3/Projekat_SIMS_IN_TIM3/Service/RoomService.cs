@@ -2,6 +2,7 @@
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,36 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.DeleteById(id);
         }
 
+        public void BasicRenovation(int roomId, DateTime start, DateTime end,int duration)
+        {
+            var dates = new List<DateTime>();
+
+            for (var dt = start; dt <= end; dt = dt.AddDays(1))
+            {
+                dates.Add(dt);
+            }
+            var appointments = this.appointmentRepository.GetAll();
+            for (int i = 0; i < dates.Count;i++)
+            {
+                foreach(var appointment in appointments)
+                {
+                    if(dates[i] == appointment.StartTime)
+                    {
+                        dates.RemoveAt(i);
+                    }
+                }
+            }
+            duration--;
+            for (int i = 0; i < dates.Count-duration; i++)
+            {
+                if (dates[i].AddDays(duration) == dates[i + duration])
+                {
+                    Debug.Write(dates[i] + " " + dates[i + duration]);
+                    return;
+                }
+            }
+        }
+
         public bool Split(int id)
         {
             return this.roomRepository.Split(id);
@@ -51,6 +82,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
         }
 
         public RoomRepository roomRepository = new RoomRepository();
-
+        public AppointmentRepository appointmentRepository = new AppointmentRepository();
     }
 }

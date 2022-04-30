@@ -1,4 +1,6 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,16 +22,25 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class BasicRenovationWindow : Window
     {
-
+        public Room Room { get; set; }
+        public RoomController roomController= new RoomController();
         public int Duration { set; get; }
         public BasicRenovationWindow(Room room)
         {
+            Room = room;
+            this.DataContext = this;
             InitializeComponent();
         }
 
         public void Confirm_Button(object sender, RoutedEventArgs e)
         {
+            if(StartDate.Text=="" || EndDate.Text == "")
+            {
+                MessageBox.Show("You must pick both start and end date!");
+                return;
+            }
 
+            this.roomController.BasicRenovation(Room.Id, DateTime.Parse(StartDate.Text), DateTime.Parse(EndDate.Text),Duration);
         }
 
         public void Cancel_Button(object sender, RoutedEventArgs e)
