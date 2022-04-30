@@ -17,6 +17,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return doctorService.GetAll();
         }
 
+        public Doctor GetById(int id)
+        {
+            return doctorService.GetById(id);
+        }
+
         public void saveAndUpdate(Doctor doctor)
         {
             doctorService.saveAndUpdate(doctor);

@@ -10,7 +10,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
 
         public User User { get; set; }
         private Room room { get; set; }
-        private String specializationType { get; set; }
+        public String specializationType { get; set; }
         private List<Appointment> appointments { get; set; }    
         
 
