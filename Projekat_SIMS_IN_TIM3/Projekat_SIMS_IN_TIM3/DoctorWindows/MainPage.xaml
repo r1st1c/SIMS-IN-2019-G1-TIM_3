@@ -5,81 +5,101 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
-        Title="MAIN PAGE" Height="1100" Width="1100">
+        Title="MAIN PAGE" Height="900" Width="1100"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        <Rectangle HorizontalAlignment="Center" Height="768" Margin="0,65,0,0" Stroke="Black" VerticalAlignment="Top" Width="1024"/>
-        <Image Source="/Icons/hospital_building_icon_135495.ico" Margin="46,76,1002,948" Width="52" Height="60"/>
-        <TextBlock FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Height="50" Margin="105,75,0,959"><Run Text="Hospital ZDRAVO"/></TextBlock>
-        <TextBlock FontStyle="Italic" FontSize="18" Margin="107,106,0,942" HorizontalAlignment="Left"><Run Text="A leader in innovation, at the service of the patient"/></TextBlock>
+        <Rectangle HorizontalAlignment="Center" Margin="0,0,0,0" Stroke="Black" Width="1024" Height="768"  />
 
-        <TextBlock FontStyle="Italic" FontSize="18" Margin="826,78,0,970" HorizontalAlignment="Left"><Run Text="You are signed in as:" Foreground="#555555"/></TextBlock>
-        <TextBlock FontStyle="Normal" FontSize="20" Margin="0,101,114,947" HorizontalAlignment="Right" Width="160" FontWeight="Bold"><Run Text="Elena Akik"/></TextBlock>
+        <Image Source="/Icons/hospital_building_icon_135495.ico" Margin="42,77,978,744" Width="80"/>
+        <TextBlock  Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362"  Margin="134,70,0,755"/>
+        <TextBlock FontStyle="Italic" FontSize="18" Height="40" HorizontalAlignment="Left"  Text="A leader in innovation, at the service of the patient" Margin="134,112,0,732" />
+
+
+
+
+
+        <TextBlock FontStyle="Italic" FontSize="18" Margin="806,73,0,771"  Height="40" HorizontalAlignment="Left"><Run Text="You are signed in as:" Foreground="#555555"/></TextBlock>
+        <TextBlock FontStyle="Normal" FontSize="20" Margin="0,108,128,732" HorizontalAlignment="Right" Width="160" FontWeight="Bold"><Run Text="Elena Akik"/></TextBlock>
         <DockPanel>
 
         </DockPanel>
-        <!--    <Image Source="Icons/menuLines.ico" Width="50" Margin="1000,75,50,952" RenderTransformOrigin="7.72,0.291"  MenuItem.Click="MainPageMenu" TouchDown="ListMenu"/> -->
-        <Image Source="/Icons/user_icon_195366.ico" Width="50" Margin="764,75,286,952" RenderTransformOrigin="7.72,0.291"/>
 
-        <Menu Width="50" Height="50" Margin="1000,75,50,952" RenderTransformOrigin="7.72,0.291" >
-            <MenuItem Width="50" Height="50">
+        <Image Source="/Icons/user_icon_195366.ico" Margin="719,75,310,743" />
+        <!-- <Button x:Name="menuBtn" Margin="987,79,38,751" Width="50" Height="50" >-->
+
+        <Menu Margin="980,77,50,753" x:Name="menuProfileSignOut" Background="White" >
+            <MenuItem Width="60" Height="54">
                 <MenuItem.Header>
-                    <Image Source="/Icons/lines_menu_burger_icon_123889.ico"/>
-                </MenuItem.Header>
-                <MenuItem Header="My profile">
-                    <Button Content="My profile">
-                    </Button>
-                </MenuItem>
-                <MenuItem Header="Sign out">
-                    <Button Content="Sign out">
 
+                    <Image Source="/Icons/lines_menu_burger_icon_123889.ico"  ></Image>
+                </MenuItem.Header>
+
+                <MenuItem>
+                    <Button Background="#c3e0e5" >
+                        <StackPanel>
+                            <Image Source="/Icons/user_icon_195366.ico"  Margin="0,0,0,0" ></Image>
+                            <TextBlock  Text="My profile" />
+                        </StackPanel>
                     </Button>
                 </MenuItem>
+                <MenuItem>
+                    <Button>
+                        <StackPanel>
+                            <Image Source="/Icons/gui_sign_out_icon_157587.ico" Margin="0,0,0,0"></Image>
+                            <TextBlock  Text="Sign out" Margin="25,0,0,0" />
+                        </StackPanel>
+                    </Button>
+
+
+                </MenuItem>
+
 
             </MenuItem>
         </Menu>
-
-
-
+        <Grid Margin="38,202,38,58">
+            
+        </Grid>
         <Grid>
             <Rectangle HorizontalAlignment="Center" Height="59" Margin="0,148,0,0" Stroke="#FFE5D9C3" VerticalAlignment="Top" Width="1022" Fill="#e5d9c3" />
-            <TextBlock HorizontalAlignment="Center" Margin="0,160,0,889" Text="Welcome back, Elena!" FontWeight="Bold" FontStyle="Italic" FontSize="22" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,165,0,666" Text="Welcome back, Elena!" FontWeight="Bold" FontStyle="Italic" FontSize="22"/>
         </Grid>
         <Grid/>
 
         <Grid>
-            <Rectangle HorizontalAlignment="Left" Height="314" Margin="39,207,0,0" Stroke="Black" VerticalAlignment="Top" Width="511" Fill="#c3e0e5"/>
-            <TextBlock HorizontalAlignment="Left"  Margin="241,421,0,0" VerticalAlignment="Top"  Text="Calendar" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
-            <Image Source="/Icons/calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico" Margin="222,311,734,667" RenderTransformOrigin="7.72,0.291"/>
+            <Rectangle HorizontalAlignment="Left" Height="314" Margin="32,207,0,0"  VerticalAlignment="Top" Width="520" Fill="#c3e0e5" Stroke="#c3e0e5" />
+            <TextBlock HorizontalAlignment="Left"  Margin="236,0,0,0" VerticalAlignment="Center"  Text="Calendar" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
+            <Image Source="/Icons/calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico" Margin="222,316,734,463" RenderTransformOrigin="7.72,0.291"/>
         </Grid>
 
         <Grid>
-            <Rectangle HorizontalAlignment="Right" Height="314" Margin="0,207,38,0" Stroke="Black" VerticalAlignment="Top" Width="512" Fill="#c3e0e5"/>
+            <Rectangle HorizontalAlignment="Right" Height="314" Margin="0,207,36,0" Stroke="#c3e0e5" VerticalAlignment="Top" Width="513" Fill="#c3e0e5"/>
             <TextBlock HorizontalAlignment="Left"  Margin="721,418,0,0" VerticalAlignment="Top"  Text="Notifications" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
-            <Image Source="/Icons/musical-bell-outline_icon-icons.com_73481.ico" Margin="746,308,234,668" RenderTransformOrigin="7.72,0.291"/>
+            <Image Source="/Icons/musical-bell-outline_icon-icons.com_73481.ico" Margin="746,308,234,471" RenderTransformOrigin="7.72,0.291"/>
         </Grid>
 
         <Grid>
-            <Rectangle HorizontalAlignment="Right" Height="312" Margin="0,520,38,0" Stroke="Black" VerticalAlignment="Top" Width="342"  Fill="#c3e0e5"/>
+            <Rectangle HorizontalAlignment="Right" Height="306" Margin="0,521,34,0" Stroke="#c3e0e5" VerticalAlignment="Top" Width="348"  Fill="#c3e0e5"/>
 
             <TextBlock HorizontalAlignment="Left"  Margin="850,712,0,0" VerticalAlignment="Top"  Text="Create" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
             <TextBlock HorizontalAlignment="Left"  Margin="841,739,0,0" VerticalAlignment="Top"  Text="absence" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" Width="122" />
             <TextBlock HorizontalAlignment="Left"  Margin="845,768,0,0" VerticalAlignment="Top"  Text="request" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
-            <Image Source="/Icons/note_pen_icon_174377.ico" Margin="841,603,154,379" RenderTransformOrigin="7.72,0.291"/>
+            <Image Source="/Icons/note_pen_icon_174377.ico" Margin="838,603,156,177" RenderTransformOrigin="7.72,0.291"/>
         </Grid>
 
         <Grid>
-            <Rectangle HorizontalAlignment="Center" Height="312" Margin="0,520,0,0" Stroke="Black" VerticalAlignment="Top" Width="342"
+            <Rectangle HorizontalAlignment="Left" Height="305" Margin="377,519,0,0" Stroke="#c3e0e5" VerticalAlignment="Top" Width="342"
                        Fill="#c3e0e5"/>
             <TextBlock HorizontalAlignment="Center"  Margin="0,721,0,0" VerticalAlignment="Top"  Text="Medicine" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
             <TextBlock HorizontalAlignment="Center"  Margin="0,752,0,0" VerticalAlignment="Top"  Text="verification" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" />
-            <Image Source="/Icons/searcher_magnifyng_glass_search_locate_find_icon_123813.ico" Margin="508,610,508,377" RenderTransformOrigin="7.72,0.291"/>
+            <Image Source="/Icons/searcher_magnifyng_glass_search_locate_find_icon_123813.ico" Margin="508,621,508,157" RenderTransformOrigin="7.72,0.291"/>
         </Grid>
 
         <Grid>
-            <Rectangle HorizontalAlignment="Left" Height="313" Margin="39,519,0,0" Stroke="Black" VerticalAlignment="Top" Width="341"  Fill="#c3e0e5"/>
+            <Rectangle HorizontalAlignment="Left" Height="306" Margin="32,520,0,0" Stroke="#c3e0e5" VerticalAlignment="Top" Width="348"  Fill="#c3e0e5"/>
             <TextBlock HorizontalAlignment="Left"  Margin="168,718,0,0" VerticalAlignment="Top"  Text="List of" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" Width="84" />
             <TextBlock HorizontalAlignment="Left"  Margin="144,754,0,0" VerticalAlignment="Top"  Text="medicines" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" Width="135" />
-            <Image Source="/Icons/chemistry_icon_188058.ico" Margin="162,608,843,361" RenderTransformOrigin="7.72,0.291"/>
+            <Image Source="/Icons/chemistry_icon_188058.ico" Margin="162,608,843,166" RenderTransformOrigin="7.72,0.291"/>
+            <CheckBox Content="CheckBox" HorizontalAlignment="Center" Height="4" Margin="0,2,0,0" VerticalAlignment="Top" Width="0"/>
         </Grid>
 
 

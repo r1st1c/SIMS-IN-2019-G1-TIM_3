@@ -5,25 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.MainWindows"
         mc:Ignorable="d"
-        Title="DoctorSignIn" Height="900" Width="1100">
+        Title="DoctorSignIn" Height="900" Width="1100"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Rectangle HorizontalAlignment="Center" Height="768" Margin="0,65,0,0" Stroke="Black" VerticalAlignment="Top" Width="1024" Fill="#c3e0e5"/>
-        <TextBlock FontWeight="Bold" FontSize="36" HorizontalAlignment="Center" Height="50" Margin="0,110,0,724" > Hospital ZDRAVO</TextBlock>
-        <TextBlock FontStyle="Italic" FontSize="28" Margin="0,167,0,659" HorizontalAlignment="Center"> A leader in innovation, at the service of the patient</TextBlock>
+        <TextBlock FontWeight="Bold" FontSize="36" HorizontalAlignment="Center" Margin="0,131,0,678" > Hospital ZDRAVO</TextBlock>
+        <TextBlock FontStyle="Italic" FontSize="28" Margin="0,187,0,639" HorizontalAlignment="Center"> A leader in innovation, at the service of the patient</TextBlock>
 
         <TextBlock FontStyle="Normal" FontSize="34" Margin="0,272,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"> SIGN IN</TextBlock>
 
         <Button x:Name="Sign_in" Click="SignIn_Click" HorizontalAlignment="Center" Margin="0,630,0,0" VerticalAlignment="Top" Height="77" Width="264" Background="#009e0f">
             <StackPanel Orientation="Horizontal">
-                <Image Source="/Icons/sign-in_icon-icons.com_73414 (1).ico" Stretch="Uniform"  Height="48" Width="96" RenderTransformOrigin="-0.228,0.452" OpacityMask="#FFFDFFF5"  />
-                <TextBlock Text="Sign in" FontSize="28"  FontWeight="Bold" Height="38" Width="115" Foreground="#FFFDFFF5" />
+                <Image Source="/Icons/sign-in_icon-icons.com_73414 (1).ico" Stretch="Uniform"  Height="48" Width="96" RenderTransformOrigin="-0.228,0.452" OpacityMask="#FFFDFFF5" Margin="0,0,0,0" />
+                <TextBlock Text="Sign in" FontSize="28"  FontWeight="Bold" Height="38" Width="115" Foreground="#FFFDFFF5" Margin="25,0,0,0" />
             </StackPanel>
         </Button>
 
 
-        <TextBox x:Name="username" HorizontalAlignment="Left" Margin="339,423,0,0" TextWrapping="Wrap"  Text="Enter username" IsReadOnlyCaretVisible="True" VerticalAlignment="Top" Width="451" FontSize="24" Height="47"/>
+        <TextBox x:Name="username" HorizontalAlignment="Left" Margin="339,423,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="451" FontSize="24" Height="47"/>
 
-        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="339,535,0,0" TextWrapping="Wrap" Text="Enter password" VerticalAlignment="Top" IsReadOnlyCaretVisible="True" Width="451" FontSize="24" Height="47"/>
+        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="339,535,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"  Width="451" FontSize="24" Height="47"/>
 
 
 
