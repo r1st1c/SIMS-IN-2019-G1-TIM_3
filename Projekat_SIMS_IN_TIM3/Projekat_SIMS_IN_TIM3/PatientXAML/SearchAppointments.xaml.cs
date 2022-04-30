@@ -23,6 +23,8 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
         public App application { get; set; }
         public List<Appointment> appointments { get; set; }
 
+        public Appointment selectedAppointment { get; set; }
+
         public SearchAppointments()
         {
             InitializeComponent();
@@ -31,13 +33,13 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             application = Application.Current as App;
         }
 
-        public void Show(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int doctorId = 1; //uvezati sa wpfom
-            string priority = "doctor";
+            int doctorId = Convert.ToInt32(txtDocotrId.Text); //uvezati sa wpfom
+            string priority = combobox.Text;
 
-            DateTime wantedStartTIme = DateTime.Now; //unesen pocetak
-            DateTime wantedEndTIme = DateTime.Now; //unesen kraj
+            DateTime wantedStartTIme = (DateTime)StartTime1.SelectedDate; //unesen pocetak
+            DateTime wantedEndTIme = (DateTime)EndTime1.SelectedDate; //unesen kraj
 
             appointments = application.appointmentController.GetByDoctorsId(1);
 
@@ -51,15 +53,15 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
             if(appointments.Count > 0)
             {
-                //DataBinding1.ItemsSource = appointments;
+                DataBinding1.ItemsSource = appointments;
                 return;
             }
             else
             {
-                if (priority == "doctor")
+                if (priority == "Doctor")
                 {
                     appointments = application.appointmentController.GetByDoctorsId(1);
-                    //DataBinding1.ItemsSource = appointments;
+                    DataBinding1.ItemsSource = appointments;
                     return;
                 }
                 else
@@ -78,12 +80,23 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
                             appointments.Remove(app);
                         }
                     }
-                    //DataBinding1.ItemsSource = appointments;
+                    DataBinding1.ItemsSource = appointments;
                     return;
                 }
             }
             
         }
+
+        private void Select(object sender, RoutedEventArgs e)
+        {
+            selectedAppointment = (Appointment)DataBinding1.SelectedItem;
+        }
+
+        private void SignUp(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
         //dobavi sve slobodne preglede kod lekara u datom intervalu
         // ako je dobavljena lista prazna -> gledamo prioritet
