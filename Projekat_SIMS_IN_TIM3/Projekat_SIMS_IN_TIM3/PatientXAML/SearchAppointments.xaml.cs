@@ -94,7 +94,16 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
         private void SignUp(object sender, RoutedEventArgs e)
         {
+            int appointmentId = selectedAppointment.Id;
+            int patientId = 1; //uvezati sa frontom
 
+            application.appointmentController.DeleteAppointment(appointmentId);
+            var newAppointment = new Appointment(appointmentId, selectedAppointment.StartTime, selectedAppointment.DurationInMinutes,
+                selectedAppointment.Type, selectedAppointment.DoctorId, 1);
+
+
+            application.appointmentController.CreateAppointment(newAppointment);
+            MessageBox.Show("Successfully signed up for appointment ");
         }
 
 
