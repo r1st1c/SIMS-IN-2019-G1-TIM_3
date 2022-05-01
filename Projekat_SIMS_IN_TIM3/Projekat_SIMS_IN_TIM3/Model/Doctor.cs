@@ -9,7 +9,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private string password;
 
         public User User { get; set; }
-        private Room room { get; set; }
+        public Room room { get; set; }
         private String specializationType { get; set; }
         private List<Appointment> appointments { get; set; }    
         

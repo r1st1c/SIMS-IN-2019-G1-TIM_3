@@ -41,7 +41,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.DeleteById(id);
         }
 
-        public void BasicRenovation(int roomId, DateTime start, DateTime end,int duration)
+        public List<RenovationTerm> BasicRenovation(int roomId, DateTime start, DateTime end,int duration)
         {
             var dates = new List<DateTime>();
 
@@ -54,21 +54,28 @@ namespace Projekat_SIMS_IN_TIM3.Service
             {
                 foreach(var appointment in appointments)
                 {
-                    if(dates[i] == appointment.StartTime)
+                    if(dates[i] == appointment.StartTime && roomId == this.doctorRepository.getById(appointment.DoctorId).room.Id)
                     {
                         dates.RemoveAt(i);
                     }
                 }
             }
-            duration--;
+            List<RenovationTerm> retVal = new List<RenovationTerm>();
+            duration--;//first day is already included so we subrtact that day from total amount of days
+            int number_of_possible=0;
             for (int i = 0; i < dates.Count-duration; i++)
             {
                 if (dates[i].AddDays(duration) == dates[i + duration])
                 {
-                    Debug.Write(dates[i] + " " + dates[i + duration]);
-                    return;
+                    retVal.Add(new RenovationTerm(number_of_possible++,dates[i].ToShortDateString(),dates[i+duration].ToShortDateString()));
                 }
             }
+            return retVal;
+        }
+
+        public bool ScheduleRenovation(int roomId, string start, string end)
+        {
+            return this.roomRepository.ScheduleRenovation(roomId, start, end);
         }
 
         public bool Split(int id)
@@ -83,5 +90,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public RoomRepository roomRepository = new RoomRepository();
         public AppointmentRepository appointmentRepository = new AppointmentRepository();
+        public DoctorRepository doctorRepository = new DoctorRepository();
     }
 }

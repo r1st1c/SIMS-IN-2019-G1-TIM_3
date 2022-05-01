@@ -3,6 +3,8 @@ using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,12 +41,25 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("You must pick both start and end date!");
                 return;
             }
+            if(Duration <= 0)
+            {
+                MessageBox.Show("Invalid duration!");
+                return;
+            }
 
-            this.roomController.BasicRenovation(Room.Id, DateTime.Parse(StartDate.Text), DateTime.Parse(EndDate.Text),Duration);
+            renovationsGrid.ItemsSource = new ObservableCollection<RenovationTerm>(this.roomController.BasicRenovation(Room.Id, DateTime.Parse(StartDate.Text), DateTime.Parse(EndDate.Text), Duration));
+            
         }
 
         public void Cancel_Button(object sender, RoutedEventArgs e)
         {
+            Close();
+        }
+
+        public void Schedule_Click(object sender, RoutedEventArgs e)
+        {
+            RenovationTerm rt = (RenovationTerm)((Button)e.Source).DataContext;
+            this.roomController.ScheduleRenovation(Room.Id, rt.StartDate, rt.EndDate);
             Close();
         }
     }

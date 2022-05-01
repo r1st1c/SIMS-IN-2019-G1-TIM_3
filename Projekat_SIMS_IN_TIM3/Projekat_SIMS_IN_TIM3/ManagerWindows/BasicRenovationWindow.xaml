@@ -5,16 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="Basic Renovation" Height="300" Width="300">
+        Title="Basic Renovation" Height="540" Width="960">
     <Grid>
-        <Button Content="Confirm" Margin="58,209,167,0" VerticalAlignment="Top" Height="32" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
-        <Button Content="Cancel" Margin="169,209,50,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
+        <Button Content="Confirm" Margin="62,214,814,0" VerticalAlignment="Top" Height="30" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
+        <Button Content="Cancel" Margin="169,213,708,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
         <DatePicker x:Name="StartDate" HorizontalAlignment="Left" Margin="150,100,0,0" VerticalAlignment="Top" Height="24"/>
         <Label Content="Starting date:&#xD;&#xA;" HorizontalAlignment="Left" Margin="58,99,0,0" VerticalAlignment="Top" Height="30" Width="79"/>
         <DatePicker x:Name="EndDate" HorizontalAlignment="Left" Margin="149,135,0,0" VerticalAlignment="Top" Height="24"/>
         <Label Content="End date:" HorizontalAlignment="Left" Margin="58,134,0,0" VerticalAlignment="Top" Width="92"/>
-        <Label Content="Basic renovation&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" FontSize="24" Height="37" Width="184"/>
+        <Label Content="Basic renovation&#xD;&#xA;" HorizontalAlignment="Left" Margin="359,20,0,0" VerticalAlignment="Top" FontSize="24" Height="37" Width="184"/>
         <Label Content="Duration:&#xD;&#xA;" HorizontalAlignment="Left" Margin="58,170,0,0" VerticalAlignment="Top" Height="23" Width="87"/>
         <TextBox HorizontalAlignment="Left" Margin="150,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Text="{Binding Duration}" RenderTransformOrigin="0.5,0.503" Height="21"/>
+
+
+        <DataGrid  x:Name="renovationsGrid" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="296,100,44,52">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}" Width="*"/>
+                <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}" Width="*"/>
+                <DataGridTemplateColumn Header="Schedule" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="schedule" Content="Schedule" Click="Schedule_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
     </Grid>
 </Window>
