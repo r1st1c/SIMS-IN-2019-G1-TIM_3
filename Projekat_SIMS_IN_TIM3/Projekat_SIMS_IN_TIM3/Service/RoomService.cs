@@ -62,12 +62,12 @@ namespace Projekat_SIMS_IN_TIM3.Service
             }
             List<RenovationTerm> retVal = new List<RenovationTerm>();
             duration--;//first day is already included so we subrtact that day from total amount of days
-            int number_of_possible=0;
+            int renovationId=0;
             for (int i = 0; i < dates.Count-duration; i++)
             {
                 if (dates[i].AddDays(duration) == dates[i + duration])
                 {
-                    retVal.Add(new RenovationTerm(number_of_possible++,dates[i].ToShortDateString(),dates[i+duration].ToShortDateString()));
+                    retVal.Add(new RenovationTerm(renovationId++,dates[i].ToShortDateString(),dates[i+duration].ToShortDateString()));
                 }
             }
             return retVal;
