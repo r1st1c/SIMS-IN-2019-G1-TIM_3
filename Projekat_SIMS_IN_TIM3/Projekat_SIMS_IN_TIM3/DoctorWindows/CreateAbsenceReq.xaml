@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
-        Title="CreateAbsenceReq" Height="450" Width="800">
+        Title="CreateAbsenceReq" Height="900" Width="1100"
+         WindowStartupLocation="CenterScreen">
     <Grid>
         
     </Grid>
