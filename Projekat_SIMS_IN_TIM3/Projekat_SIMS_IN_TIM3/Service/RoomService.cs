@@ -54,7 +54,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             {
                 foreach(var appointment in appointments)
                 {
-                    if(dates[i] == appointment.StartTime && roomId == this.doctorRepository.getById(appointment.DoctorId).room.Id)
+                    if(dates[i] == appointment.StartTime && roomId == appointment.RoomNumber)
                     {
                         dates.RemoveAt(i);
                     }
