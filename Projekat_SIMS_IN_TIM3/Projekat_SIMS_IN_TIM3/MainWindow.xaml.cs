@@ -37,6 +37,7 @@ namespace Projekat_SIMS_IN_TIM3
         {
             var secretaryMainWindow = new SecretaryMainWindow();
             secretaryMainWindow.Show();
+            Close();
         }
 
 
@@ -44,13 +45,15 @@ namespace Projekat_SIMS_IN_TIM3
         {
             var doctorSignIn = new DoctorSignIn();
             doctorSignIn.Show();
+            Close();
 
-         
+
         }
         private void Patient_Click(object sender, RoutedEventArgs e)
         {
             var patientMainWindow = new PatientMainWindow();
             patientMainWindow.Show();
+            Close();
 
         }
     }
