@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="MoveEquipment" Height="300" Width="300">
+        Title="Move Equipment" Height="300" Width="300">
     <Grid>
         <Label Content="Move Equipment" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="24"/>
         <TextBox HorizontalAlignment="Left" Margin="161,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Text="{Binding targetRoomId}"/>

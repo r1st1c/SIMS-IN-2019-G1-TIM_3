@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="AddRoom" Height="350" Width="350">
+        Title="Adding New Room" Height="350" Width="350">
     <Grid>
         <Label Content="Adding New Room" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" Foreground="Black"/>
         <Label Content="*Note ALL fields are necessary" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Foreground="Red"/>
