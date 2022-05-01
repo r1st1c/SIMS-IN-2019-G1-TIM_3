@@ -9,5 +9,6 @@
     <Grid RenderTransformOrigin="1.069,0.547">
         <Button Content="Create" HorizontalAlignment="Left" Margin="93,79,0,0" VerticalAlignment="Top" Click="Button_Click" Height="87" Width="89"/>
         <Button Content="Edit/Delete" HorizontalAlignment="Left" Margin="366,132,0,0" VerticalAlignment="Top" Height="85" Width="102" Click="Button_Click_1"/>
+        <Button Content="PriorityAppointment" HorizontalAlignment="Left" Height="89" Margin="138,259,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click_2"/>
     </Grid>
 </Window>

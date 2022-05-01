@@ -16,6 +16,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return doctorRepository.GetAll();
         }
 
+        public Doctor GetById(int id)
+        {
+            return doctorRepository.getById(id);
+        }
+
         public bool saveAndUpdate(Doctor doctor)
         {
             return doctorRepository.saveAndUpdate(doctor);

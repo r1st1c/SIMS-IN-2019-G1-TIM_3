@@ -16,9 +16,11 @@
     <None Remove="Icons\lines_menu_burger_icon_123889.ico" />
     <None Remove="Icons\musical-bell-outline_icon-icons.com_73481.ico" />
     <None Remove="Icons\note_pen_icon_174377.ico" />
+    <None Remove="Icons\plus-32.ico" />
     <None Remove="Icons\rocketDemo.ico" />
     <None Remove="Icons\searcher_magnifyng_glass_search_locate_find_icon_123813.ico" />
     <None Remove="Icons\sign-in_icon-icons.com_73414 %281%29.ico" />
+    <None Remove="Icons\user_circle_icon_173498.ico" />
     <None Remove="Icons\user_icon_195366.ico" />
   </ItemGroup>
 
@@ -47,6 +49,9 @@
     <Content Include="Icons\note_pen_icon_174377.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\plus-32.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icons\rocketDemo.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -54,6 +59,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\sign-in_icon-icons.com_73414 (1).ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\user_circle_icon_173498.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\user_icon_195366.ico">

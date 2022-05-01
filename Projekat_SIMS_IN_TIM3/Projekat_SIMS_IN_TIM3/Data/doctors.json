@@ -2,7 +2,7 @@
   {
     "appointments": null,
     "User": {
-      "Id": 0,
+      "Id": 1,
       "Jmbg": "1234567891234",
       "Username": "akikelena",
       "Password": "elena123",
@@ -13,12 +13,21 @@
       "Phone": "0654567890",
       "DateOfBirth": "2000-08-22T12:10:00"
     },
-    "Room": {
-      "Id": 101,
-      "Name": "Ordination",
-      "RoomType": "ordination",
-      "Floor": 3,
-      "Description": "description1"
+    "SpecializationType": "Dermatovenerologist"
+  },
+  {
+    "appointments": null,
+    "User": {
+      "Id": 2,
+      "Jmbg": "1234567891234",
+      "Username": "akikelena",
+      "Password": "elena123",
+      "Name": "nameNew12",
+      "Surname": "surnameNew123",
+      "Email": "newemail@gmail.com",
+      "Address": "newAddress23",
+      "Phone": "0654567890",
+      "DateOfBirth": "2000-08-22T12:10:00"
     },
     "SpecializationType": "Dermatovenerologist"
   }

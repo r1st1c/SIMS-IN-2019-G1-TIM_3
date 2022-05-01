@@ -10,7 +10,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 {
     public class UserLoginRepository
     {
-        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\patients.json";//Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\usersLogin.txt";
+        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\usersLogin.json";//Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\usersLogin.json";
         public Boolean ValidLogin(UserLogin userLogin)
         {
             string[] cred = System.IO.File.ReadAllLines(fileLocation);

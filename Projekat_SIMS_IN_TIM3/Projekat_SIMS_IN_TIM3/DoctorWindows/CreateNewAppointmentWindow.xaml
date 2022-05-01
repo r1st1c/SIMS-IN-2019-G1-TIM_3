@@ -6,7 +6,8 @@
          xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
-        Title="Create New Appointment" Height="450" Width="800">
+         WindowStartupLocation="CenterScreen"
+        Title="Create New Appointment" Height="900" Width="1100">
     <Grid>
         <TextBox x:Name="tb1" HorizontalAlignment="Left" Margin="21,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb1"/>
         <TextBox x:Name="tb2" HorizontalAlignment="Left" Margin="21,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb2"/>
