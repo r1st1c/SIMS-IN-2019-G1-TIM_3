@@ -39,7 +39,7 @@
                 <MenuItem>
                     <Button Background="#c3e0e5" >
                         <StackPanel>
-                            <Image Source="/Icons/user.ico"  Margin="0,0,0,0" ></Image>
+                            <Image Source="/Icons/user_icon_195366.ico"  Margin="0,0,0,0" ></Image>
                             <TextBlock  Text="My profile" />
                         </StackPanel>
                     </Button>
