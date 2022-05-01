@@ -28,6 +28,7 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
         public DoctorSignIn()
         {
             InitializeComponent();
+            password.PasswordChar = '*';
           
         }
 
@@ -36,7 +37,7 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
           
             string Username = username.Text.ToString();
             initUsname = Username;
-            string Password = password.Text.ToString();
+            string Password = password.Password.ToString();
 
             UserLogin userLogin = new UserLogin(Username, Password);
             Boolean isValid = controller.ValidLogin(userLogin);
@@ -45,7 +46,7 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
             {
                 MessageBox.Show("Wrong username or password");
                 username.Text = "";
-                password.Text = "";
+                password.Password = "";
             } else
             {
                 MainPage mainPage = new MainPage();

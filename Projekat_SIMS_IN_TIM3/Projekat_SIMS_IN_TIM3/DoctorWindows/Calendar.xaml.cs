@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    /// Interaction logic for Calendar.xaml
     /// </summary>
-    public partial class MainPage : Window
+    public partial class Calendar : Window
     {
-        public MainPage()
+        public Calendar()
         {
             InitializeComponent();
         }

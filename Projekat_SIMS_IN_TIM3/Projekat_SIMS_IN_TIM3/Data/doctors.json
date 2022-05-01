@@ -13,13 +13,6 @@
       "Phone": "0654567890",
       "DateOfBirth": "2000-08-22T12:10:00"
     },
-    "Room": {
-      "Id": 101,
-      "Name": "Ordination",
-      "RoomType": "ordination",
-      "Floor": 3,
-      "Description": "description1"
-    },
     "SpecializationType": "Dermatovenerologist"
   },
   {
@@ -35,13 +28,6 @@
       "Address": "newAddress23",
       "Phone": "0654567890",
       "DateOfBirth": "2000-08-22T12:10:00"
-    },
-    "Room": {
-      "Id": 101,
-      "Name": "Ordination",
-      "RoomType": "ordination",
-      "Floor": 3,
-      "Description": "description1"
     },
     "SpecializationType": "Dermatovenerologist"
   }

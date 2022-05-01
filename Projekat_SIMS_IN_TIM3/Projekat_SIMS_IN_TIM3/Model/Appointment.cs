@@ -16,6 +16,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
     {
         private int appId;
         private DateTime value;
+        public int RoomNumber { get; set; }
 
         public Appointment()
         {
@@ -47,9 +48,17 @@ namespace Projekat_SIMS_IN_TIM3.Model
             PatientId = patientId;
         }
 
-        //geteri i seteri
-
-
+        public Appointment(int roomNumber, int id, DateTime startTime, DateTime finishTime, int durationInMinutes, AppointmentType type, int doctorId, int patientId)
+        {
+            RoomNumber = roomNumber;
+            Id = id;
+            StartTime = startTime;
+            FinishTime = finishTime;
+            DurationInMinutes = durationInMinutes;
+            Type = type;
+            DoctorId = doctorId;
+            PatientId = patientId;
+        }
 
         public int Id { get; set; }
         public DateTime StartTime { get; set; }

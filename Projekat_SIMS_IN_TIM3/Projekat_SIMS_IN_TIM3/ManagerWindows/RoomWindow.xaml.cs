@@ -28,6 +28,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class RoomWindow : Window
     {
         RoomController roomController = new RoomController();
+
+        AppointmentController appointmentController = new AppointmentController();
         public static ObservableCollection<Room> Rooms { get; set; }
         public RoomWindow()
         {
@@ -56,6 +58,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             Room room = (Room)((Button)e.Source).DataContext;
             Rooms.Remove(room);
             this.roomController.DeleteById(room.Id);
+        }
+
+        private void Basic_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)((Button)e.Source).DataContext;
+            var basic = new BasicRenovationWindow(room);
+            basic.Show();
         }
     }
 }
