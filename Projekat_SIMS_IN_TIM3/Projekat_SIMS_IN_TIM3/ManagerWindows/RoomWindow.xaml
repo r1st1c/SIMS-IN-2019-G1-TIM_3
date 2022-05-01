@@ -11,13 +11,15 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.2*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid  Grid.ColumnSpan="3" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding Rooms,Mode=TwoWay}" IsReadOnly="True" 
+        <DataGrid  Grid.ColumnSpan="5" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding Rooms,Mode=TwoWay}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" 
                   Height="800" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <DataGrid.Columns>
@@ -40,10 +42,16 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Basic" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="basic" Content="Renovation" Click="Basic_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Add Room"  Click="Add_Room_Click" />
-        <Button Grid.Row="0" Grid.Column="1" Content="Basic Renovation" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <Button Grid.Row="0" Grid.Column="2" Content="Advanced Renovation" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button Grid.Row="0" Grid.Column="0" Content="Add Room"  Click="Add_Room_Click" Grid.ColumnSpan="3" Margin="0,0,80,0" />
+        <Button Grid.Row="0" Grid.Column="2" Content="Advanced Renovation" Grid.ColumnSpan="3" Margin="80,0,0,0"/>
     </Grid>
 </Window>

@@ -69,7 +69,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            if (NewRoomName == null || roomTypeSelected == null || NewDescription == null || NewDescription == "" || NewRoomName == "")
+            if (NewRoomName == null || NewDescription == null || NewDescription == "" || NewRoomName == "")
             {
                 MessageBox.Show("All fields are necessary");
                 return;
