@@ -32,5 +32,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             patientService.Delete(jmbg);
         }
 
+        public List<string> nameSurname()
+        {
+            return patientService.nameSurname();
+        }
+
     }
 }

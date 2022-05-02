@@ -68,5 +68,19 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             WriteToJson();
             return true;
         }
+
+        public List<string> nameSurname()
+        {
+            ReadJson();
+            List<string> ls = new List<string>();
+
+                foreach(Patient pat in patients)
+            {
+                string retVal = pat.User.Name + "" + pat.User.Surname;
+                ls.Add(retVal);
+            }
+
+                return ls;
+        }
     }
 }

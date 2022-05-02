@@ -31,6 +31,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return patientRepository.Delete(patient);
         }
 
+        public List<string> nameSurname()
+        {
+            return patientRepository.nameSurname();
+        }
+
 
     }
 }

@@ -69,6 +69,21 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return true;
         }
 
+        public List<string> nameSurnameSpec()
+        {
+            readJson();
+            List<string> spec = new List<string>();
+
+           foreach (Doctor doctor in doctors)
+            {
+                string retVal = doctor.User.Name + " " + doctor.User.Surname + ", " + doctor.specializationType;
+                spec.Add(retVal);
+            }
+               return spec;
+                
+        }
+
+        
         
    }
 }

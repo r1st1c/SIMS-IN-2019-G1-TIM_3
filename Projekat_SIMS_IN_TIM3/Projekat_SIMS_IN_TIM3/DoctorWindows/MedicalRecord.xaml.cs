@@ -1,8 +1,6 @@
 ﻿using Projekat_SIMS_IN_TIM3.Controller;
-using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,30 +16,23 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for Calendar.xaml
+    /// Interaction logic for MedicalRecord.xaml
     /// </summary>
-    public partial class Calendar : Window
+    public partial class MedicalRecord : Window
     {
-
-        AppointmentController c = new AppointmentController();
-        public static ObservableCollection<Appointment> Appointments { get; set; }
-        public Calendar()
+        MedicalRecordController mcnt = new MedicalRecordController();
+        
+        public MedicalRecord(int id)
         {
             InitializeComponent();
             this.DataContext = this;
-            Appointments = new ObservableCollection<Appointment>(c.GetAll());
+
         }
 
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             mainPage.Show();
-        }
-
-        private void createNewApp(object sender, RoutedEventArgs e)
-        {
-            CreateNewAppointmentWindow c = new CreateNewAppointmentWindow();
-            c.Show();
         }
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
@@ -67,22 +58,10 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             medVerif.Show();
         }
 
-        private void medRecordBtn(object sender, RoutedEventArgs e)
-        {
-            Appointment appointment = (Appointment)((Button)e.Source).DataContext;
-            int id = appointment.PatientId;
-            var m = new MedicalRecord(id);
-            m.Show();
-        }
-
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
             CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq();
             createAbsenceReq.Show();
         }
-
-       
-
-        
     }
 }
