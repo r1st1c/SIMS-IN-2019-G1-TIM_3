@@ -13,7 +13,7 @@
                " HorizontalAlignment="Left" Margin="90,191,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="EndTime1" HorizontalAlignment="Left" Margin="169,193,0,0" VerticalAlignment="Top"/>
         <Label Content="DoctorID" HorizontalAlignment="Left" Margin="81,38,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDocotrId" HorizontalAlignment="Left" Margin="160,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtDoctorId" HorizontalAlignment="Left" Margin="160,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Priority" HorizontalAlignment="Left" Margin="81,86,0,0" VerticalAlignment="Top"/>
 
 
