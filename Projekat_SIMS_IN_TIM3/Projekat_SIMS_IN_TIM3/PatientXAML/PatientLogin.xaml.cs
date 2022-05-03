@@ -34,7 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
 
-            string Username = username.Text.ToString();
+            /*string Username = username.Text.ToString();
             initUsname = Username;
             string Password = password.Password.ToString();
 
@@ -52,7 +52,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
                 UpdateAndDeleteAppointment ud = new UpdateAndDeleteAppointment();
                 this.Close();
                 ud.Show();
-            }
+            }*/
 
         }
     }
