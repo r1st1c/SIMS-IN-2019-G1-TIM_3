@@ -35,30 +35,37 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int doctorId = Convert.ToInt32(txtDocotrId.Text); //uvezati sa wpfom
+            int doctorId = Convert.ToInt32(txtDoctorId.Text); //uvezati sa wpfom
             string priority = combobox.Text;
 
             DateTime wantedStartTIme = (DateTime)StartTime1.SelectedDate; //unesen pocetak
             DateTime wantedEndTIme = (DateTime)EndTime1.SelectedDate; //unesen kraj
 
             appointments = application.appointmentController.GetByDoctorsId(doctorId);
-            if (appointments.Count > 0)
+
+
+            List<int> toRemove = new List<int>();
+            foreach (Appointment app in appointments)//Ne radi za vreme - ne radi iterator zbog remove
             {
-                foreach (Appointment app in appointments)//Ne radi za vreme - ne radi iterator zbog remove
+                if (app.StartTime < wantedStartTIme || app.StartTime > wantedEndTIme || app.PatientId != -1)
                 {
-                    if (app.StartTime < wantedStartTIme || app.StartTime > wantedEndTIme || app.PatientId != -1)
+                    toRemove.Add(app.Id);
+                }
+
+            }
+            foreach (int id in toRemove)
+            {
+                for (int i = 0; i < appointments.Count; i++)
+                {
+                    if (appointments[i].Id == id)
                     {
-                        appointments.Remove(app);
-                        
-                    }
-                    if (appointments.Count == 0)
-                    {
-                        break;
+                        appointments.Remove(appointments[i]);
                     }
                 }
             }
 
-            if(appointments.Count > 0)
+
+            if (appointments.Count > 0)
             {
                 DataBinding1.ItemsSource = appointments;
                 return;
@@ -82,16 +89,27 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
                     {
                         Doctor currDoc = application.docController.GetById(app.DoctorId);
                         string currSpec = currDoc.specializationType;
-                        if (currSpec != specialization || app.PatientId != -1 || app.StartTime < wantedStartTIme || app.StartTime>wantedEndTIme)
+                        if (currSpec != specialization || app.PatientId != -1 || app.StartTime < wantedStartTIme || app.StartTime > wantedEndTIme)
                         {
-                            appointments.Remove(app);
+                            toRemove.Add(app.Id);
+                        }
+                    }
+
+                    foreach (int id in toRemove)
+                    {
+                        for (int i = 0; i < appointments.Count; i++)
+                        {
+                            if (appointments[i].Id == id)
+                            {
+                                appointments.Remove(appointments[i]);
+                            }
                         }
                     }
                     DataBinding1.ItemsSource = appointments;
                     return;
                 }
             }
-            
+
         }
 
         private void Select(object sender, RoutedEventArgs e)
