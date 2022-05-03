@@ -55,6 +55,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public bool DeleteById(int id)
         {
+            this.equipmentRepository.MoveEquipmentToDefaultRoomAfterDeletingRoom(id);
             return this.roomRepository.DeleteById(id);
         }
 
@@ -121,6 +122,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public RoomRepository roomRepository = new RoomRepository();
         public AppointmentRepository appointmentRepository = new AppointmentRepository();
-        public DoctorRepository doctorRepository = new DoctorRepository();
+        public EquipmentRepository equipmentRepository = new EquipmentRepository();
     }
 }
