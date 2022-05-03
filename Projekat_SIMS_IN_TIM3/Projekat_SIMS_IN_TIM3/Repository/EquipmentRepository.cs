@@ -41,7 +41,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                 string roomName;
                 if (roomId == -1)
                 {
-                    roomName = "NEMA";
+                    roomName = "No room (static)";
                 }
                 else
                 {

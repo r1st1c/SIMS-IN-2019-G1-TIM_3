@@ -45,6 +45,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Date must be picked!");
                 return;
             }
+            if (RoomNameSelected==this.equipmentController.GetById(equipmentId).RoomName)
+            {
+                MessageBox.Show("Equipment already at selected room!");
+                return;
+            }
             int targetRoomId = this.roomController.GetByName(RoomNameSelected).Id;
             var (toRefresh, toClose) = this.equipmentController.Move(equipmentId, targetRoomId, DateTime.Parse(PickedDate.Text));
 
