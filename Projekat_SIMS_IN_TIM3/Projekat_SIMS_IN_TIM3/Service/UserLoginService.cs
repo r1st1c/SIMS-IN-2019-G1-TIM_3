@@ -12,7 +12,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         private UserLoginRepository user1 = new UserLoginRepository();
 
-        public Boolean ValidLogin(UserLogin user)
+        public (Boolean,int) ValidLogin(UserLogin user)
         {
             return user1.ValidLogin(user);
         }

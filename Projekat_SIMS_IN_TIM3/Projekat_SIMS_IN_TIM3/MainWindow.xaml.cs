@@ -1,5 +1,7 @@
-﻿using Projekat_SIMS_IN_TIM3.MainWindows;
-using Projekat_SIMS_IN_TIM3.PatientXAML;
+
+﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.MainWindows;
+using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,39 +24,58 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public static string initUsname = "";
+        UserLoginController controller = new UserLoginController();
+
         public MainWindow()
         {
             InitializeComponent();
+            password.PasswordChar = '*';
         }
 
-        private void Manager_Click(object sender, RoutedEventArgs e)
+        private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            var managerMainWindow = new ManagerMainWindow();
-            managerMainWindow.Show();
-            Close();
-        }
 
-        private void Secretary_Click(object sender, RoutedEventArgs e)
-        {
-            var secretaryMainWindow = new SecretaryMainWindow();
-            secretaryMainWindow.Show();
-            Close();
-        }
+            string Username = username.Text.ToString();
+            initUsname = Username;
+            string Password = password.Password.ToString();
+
+            UserLogin userLogin = new UserLogin(Username, Password);
+            var (isValid,type) = controller.ValidLogin(userLogin);
 
 
-        private void Doctor_Click(object sender, RoutedEventArgs e)
-        {
-            var doctorSignIn = new DoctorSignIn();
-            doctorSignIn.Show();
-            Close();
+            if (!isValid)
+            {
+                MessageBox.Show("Wrong username or password");
+                username.Text = "";
+                password.Password = "";
+            }
+            else
+            {
+                if (type == 0)
+                {
+                    ManagerMainWindow managerMainWindow = new ManagerMainWindow();
+                    managerMainWindow.Show();
+                }
+                if (type == 1)
+                {
+                    DoctorMainWindow doctorMainWindow = new DoctorMainWindow();
+                    doctorMainWindow.Show();
+                }
+                if (type == 2)
+                {
+                    SecretaryMainWindow secretaryMainWindow = new SecretaryMainWindow();
+                    secretaryMainWindow.Show();
+                }
+                if (type == 3)
+                {
+                    PatientMainWindow patientMainWindow = new PatientMainWindow();
+                    patientMainWindow.Show();
+                }
+                this.Close();
+            }
 
-
-        }
-        private void Patient_Click(object sender, RoutedEventArgs e)
-        {
-            var patientLogin = new PatientLogin();
-            patientLogin.Show();
-            Close();
 
         }
     }
