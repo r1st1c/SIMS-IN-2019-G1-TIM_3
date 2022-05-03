@@ -28,6 +28,8 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private string manufacturer;
         private EquipmentType equipmenttype;
         private int roomId;
+        private string roomName;
+
         public int Id
         {
             get
@@ -93,14 +95,29 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
+        public string RoomName
+        {
+            get
+            { return roomName; }
+            set
+            {
+                if (value != roomName)
+                {
+                    roomName = value;
+                    OnPropertyChanged("RoomName");
+                }
+            }
+        }
 
-        public Equipment(int id,string equipmentname,string manufacturer, EquipmentType equipmentType, int roomId)
+
+        public Equipment(int id,string equipmentname,string manufacturer, EquipmentType equipmentType, int roomId,string roomName)
         {
             Id = id;
             Equipmentname = equipmentname;
             Manufacturer = manufacturer;
             Equipmenttype = equipmentType;
             RoomId = roomId;
+            RoomName = roomName;
         }
 
 

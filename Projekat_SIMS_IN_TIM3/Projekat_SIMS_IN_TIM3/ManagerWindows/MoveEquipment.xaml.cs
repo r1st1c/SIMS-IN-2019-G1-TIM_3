@@ -55,6 +55,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 foreach (var eq in list.Where(x => x.Id == toUpdate.Id))
                 {
                     eq.RoomId = targetRoomId;
+                    eq.RoomName = this.roomController.GetById(targetRoomId).Name;
                 }
             }
             if(toClose) Close();
