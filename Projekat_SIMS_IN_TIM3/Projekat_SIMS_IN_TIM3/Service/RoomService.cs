@@ -42,6 +42,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public bool Update(Room room)
         {
+            var list = this.roomRepository.GetAll();
+            foreach (var existingRoom in list)
+            {
+                if (existingRoom.Name == room.Name)
+                {
+                    return false;
+                }
+            }
             return this.roomRepository.Update(room);    
         }
 
