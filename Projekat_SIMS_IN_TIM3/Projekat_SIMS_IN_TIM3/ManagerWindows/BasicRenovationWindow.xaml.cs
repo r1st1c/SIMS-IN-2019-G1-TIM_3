@@ -60,6 +60,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             RenovationTerm rt = (RenovationTerm)((Button)e.Source).DataContext;
             this.roomController.ScheduleRenovation(Room.Id, rt.StartDate, rt.EndDate);
+            foreach(var room in RoomWindow.Rooms)
+            {
+                if (room.Id == Room.Id)
+                {
+                    room.DisabledTxt = "Yes";
+                }
+            }
             Close();
         }
     }

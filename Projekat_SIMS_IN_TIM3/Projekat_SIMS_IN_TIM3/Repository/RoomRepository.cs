@@ -101,6 +101,9 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public bool ScheduleRenovation(int roomId, string start, string end)
         {
+            var room = this.GetById(roomId);
+            room.Disabled = 1;
+            this.Update(room);
             string fileName = @"C:\Users\Ristic\Documents\room_basic_renovation.csv";
             if (File.Exists(fileName))
             {

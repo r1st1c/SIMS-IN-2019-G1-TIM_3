@@ -28,9 +28,8 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private RoomType roomType;
         private uint floor;
         private string description;
-
-        private bool disabled;
-        public string DisabledTxt { get; set; }
+        private int disabled;
+        private string disabledTxt;
 
         public Room(int id, string name, RoomType roomType, uint floor, string description, string txt)
         {
@@ -117,7 +116,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
 
         }
 
-        public bool Disabled
+        public int Disabled
         {
             get
             { return disabled; }
@@ -132,6 +131,19 @@ namespace Projekat_SIMS_IN_TIM3.Model
         }
 
 
+        public string DisabledTxt
+        {
+            get
+            { return disabledTxt; }
+            set
+            {
+                if (value != disabledTxt)
+                {
+                    disabledTxt = value;
+                    OnPropertyChanged("DisabledTxt");
+                }
+            }
 
+        }
     }
 }
