@@ -43,6 +43,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
       
         }
 
+        private void addMedPrescription(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
