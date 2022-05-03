@@ -63,7 +63,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             if (File.Exists(fileName))
             {
                 //RoomWindow.Rooms.Add(room);
-                string data = equipmentId + "," + targetRoomId + "," + date.ToString() + "\n";
+                string data = equipmentId + "," + targetRoomId + "," + date.ToShortDateString() + "\n";
                 File.AppendAllText(fileName, data);
                 return true;
             }
@@ -81,7 +81,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     continue;
                 }
                 string[] data = csvLines[i].Split(',');
-                var date = Convert.ToDateTime(data[2]).Date;
+                var date = DateTime.ParseExact(data[2],"dd-MMM-yy",null);
                 if (DateTime.Compare(date.Date, DateTime.Now.Date) <= 0) 
                 {
                     list.Add(new EquipmentMoveOrder(

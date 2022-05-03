@@ -16,7 +16,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
     {
         private int appId;
         private DateTime value;
-        private int RoomNumber { get; set; }
+        public int RoomNumber { get; set; }
 
         public Appointment()
         {

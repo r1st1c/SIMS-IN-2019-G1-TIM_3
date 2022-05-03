@@ -40,6 +40,16 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.DeleteById(id);
         }
 
+        public List<RenovationTerm> BasicRenovation(int roomId, DateTime start, DateTime end, int duration)
+        {
+            return this.roomService.BasicRenovation(roomId, start, end, duration);
+        }
+
+        public bool ScheduleRenovation(int roomId, string start, string end)
+        {
+            return this.roomService.ScheduleRenovation(roomId, start, end);
+        }
+
         public bool Split(int id)
         {
             return this.roomService.Split(id);

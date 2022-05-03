@@ -86,8 +86,21 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllLines(@"C:\Users\Ristic\Documents\rooms.csv", csvLines);
             return true;
         }
-      
-      public bool Split(int id)
+
+        public bool ScheduleRenovation(int roomId, string start, string end)
+        {
+            string fileName = @"C:\Users\Ristic\Documents\room_basic_renovation.csv";
+            if (File.Exists(fileName))
+            {
+                string data = roomId + "," + start + "," + end + "\n";
+                File.AppendAllText(fileName, data);
+                return true;
+            }
+            Debug.Write("Csv file doesnt exist");
+            return false;
+        }
+
+        public bool Split(int id)
       {
          throw new NotImplementedException();
       }
