@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3"
         mc:Ignorable="d"
-        Title="ManagerMainWindow" Height="450" Width="800">
+        Title="Manager Main Window" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.23*"></ColumnDefinition>
@@ -19,10 +19,50 @@
             <RowDefinition Height="7*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Drugs" />
-        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Rooms" Click="Room_Click"/>
-        <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Equipment" Click="Equipment_Click" />
-        <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Polls" />
-        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Log Out" Click="Button_Click" />
+        <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Viewbox MaxHeight="75">
+                        <TextBlock>Drugs</TextBlock>
+                    </Viewbox>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Room_Click">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Viewbox MaxHeight="75">
+                        <TextBlock>Rooms</TextBlock>
+                    </Viewbox>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Equipment_Click">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Viewbox MaxHeight="75">
+                        <TextBlock>Equipment</TextBlock>
+                    </Viewbox>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Button.ContentTemplate>
+            <DataTemplate>
+                    <Viewbox MaxHeight="75">
+                    <TextBlock>Polls</TextBlock>
+                </Viewbox>
+            </DataTemplate>
+        </Button.ContentTemplate>
+        </Button>
+        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Viewbox MaxHeight="75">
+                        <TextBlock>Log Out</TextBlock>
+                    </Viewbox>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
     </Grid>
 </Window>

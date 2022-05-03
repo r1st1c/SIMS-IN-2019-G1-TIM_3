@@ -25,7 +25,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.GetAll();
         }
 
-        public bool Create(Room room)
+        public (bool,bool) Create(Room room)
         {
             return this.roomService.Create(room);
         }
@@ -58,6 +58,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         public bool Merge(int firstId, int secondId)
         {
             return this.roomService.Merge(firstId, secondId);
+        }
+
+        public Room GetByName(string name)
+        {
+            return this.roomService.GetByName(name);
         }
 
         public RoomService roomService = new RoomService();

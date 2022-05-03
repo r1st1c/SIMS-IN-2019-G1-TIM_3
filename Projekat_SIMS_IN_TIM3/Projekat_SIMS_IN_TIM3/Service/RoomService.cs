@@ -1,4 +1,5 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+﻿using Projekat_SIMS_IN_TIM3.ManagerWindows;
+using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
@@ -26,13 +27,29 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.GetAll();
         }
 
-        public bool Create(Room room)
+        public (bool,bool) Create(Room room)
         {
-            return this.roomRepository.Create(room);
+            var list = this.roomRepository.GetAll();
+            foreach(var existingRoom in list)
+            {
+                if(existingRoom.Name == room.Name)
+                {
+                    return (false,false);
+                }
+            }
+            return (this.roomRepository.Create(room),true);
         }
 
         public bool Update(Room room)
         {
+            var list = this.roomRepository.GetAll();
+            foreach (var existingRoom in list)
+            {
+                if (existingRoom.Name == room.Name)
+                {
+                    return false;
+                }
+            }
             return this.roomRepository.Update(room);    
         }
 
@@ -86,6 +103,20 @@ namespace Projekat_SIMS_IN_TIM3.Service
         public bool Merge(int firstId, int secondId)
         {
             return this.roomRepository.Merge(firstId, secondId);
+        }
+
+        public Room GetByName(string name)
+        {
+            var list = this.roomRepository.GetAll();
+            foreach(var item in list)
+            {
+                if(item.Name == name)
+                {
+                    return item;
+                }
+            }
+            Debug.WriteLine("Room not found!");
+            return null;
         }
 
         public RoomRepository roomRepository = new RoomRepository();
