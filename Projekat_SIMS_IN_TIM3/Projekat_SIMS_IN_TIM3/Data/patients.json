@@ -1,0 +1,16 @@
+[
+  {
+    "User": {
+      "Id": 1,
+      "Jmbg": "1234567891234",
+      "Username": "usname1",
+      "Password": "dasda",
+      "Name": "Marko",
+      "Surname": "Markovic",
+      "Email": "m.markovic90@gmail.com",
+      "Address": "Glavna 101, Subotica",
+      "Phone": "065-234-500-90",
+      "DateOfBirth": "1990-06-06T10:30:00"
+    }
+  }
+]

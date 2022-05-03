@@ -2,7 +2,6 @@
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,79 +17,71 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for Calendar.xaml
+    /// Interaction logic for MedicalRecord.xaml
     /// </summary>
-    public partial class Calendar : Window
+    public partial class MedicalRecord : Window
     {
-
-        AppointmentController c = new AppointmentController();
-        public static ObservableCollection<Appointment> Appointments { get; set; }
-        public Calendar()
+        MedicalRecordController mcnt = new MedicalRecordController();
+        
+        PatientController pc = new PatientController();
+        public int PatientId { get; set; }
+       
+      
+        public MedicalRecord(int patid)
         {
             InitializeComponent();
             this.DataContext = this;
-            Appointments = new ObservableCollection<Appointment>(c.GetAll());
+            PatientId = patid;
+            pname.Content = pc.getName(PatientId);
+            surname.Content = pc.getSurname(PatientId);
+            jmbg.Content = pc.getJMBG(PatientId);
+            DateOfBirth.Content = pc.getDateOfBirth(PatientId);
+            Address.Content = pc.getAddress(PatientId);
+            Email.Content = pc.getEmail(PatientId);
+            TelephoneNumber.Content = pc.getTelNumber(PatientId);
+            
+      
         }
 
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             mainPage.Show();
-        }
-
-        private void createNewApp(object sender, RoutedEventArgs e)
-        {
-            CreateNewAppointmentWindow c = new CreateNewAppointmentWindow();
-            c.Show();
+            this.Close();
         }
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
             Calendar calendar = new Calendar();
             calendar.Show();
+            this.Close();
         }
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
             Notifications notifications = new Notifications();
             notifications.Show();
+            this.Close();
         }
 
         private void ListOfMedBtn(object sender, RoutedEventArgs e)
         {
             ListOfMedicines listOfMedicines = new ListOfMedicines();
             listOfMedicines.Show();
+            this.Close();
         }
 
         private void MedVerifBtn(object sender, RoutedEventArgs e)
         {
             MedVerif medVerif = new MedVerif();
             medVerif.Show();
-        }
-
-        private void medRecordBtn(object sender, RoutedEventArgs e)
-        {
-            Appointment appointment = (Appointment)((Button)e.Source).DataContext;
-            int patid = appointment.PatientId;
-            var m = new MedicalRecord(patid);
-           
-            m.Show();
+            this.Close();
         }
 
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
             CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq();
             createAbsenceReq.Show();
+            this.Close();
         }
-
-        private void cancelBtn(object sender, RoutedEventArgs e)
-        {
-            Appointment appointment = (Appointment)((Button)e.Source).DataContext;
-            Appointments.Remove(appointment);
-            this.c.DeleteAppointment(appointment.Id);
-        }
-
-       
-
-        
     }
 }

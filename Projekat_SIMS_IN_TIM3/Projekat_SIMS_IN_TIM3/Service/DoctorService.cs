@@ -30,5 +30,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             return doctorRepository.delete(id);
         }
+
+        public List<string> nameSurnameSpec()
+        {
+            return doctorRepository.nameSurnameSpec();
+        }
     }
 }

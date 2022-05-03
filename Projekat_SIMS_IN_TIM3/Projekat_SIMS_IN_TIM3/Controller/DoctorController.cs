@@ -31,5 +31,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             doctorService.delete(jmbg);
         }
+
+        public List<string> nameSurnameSpec()
+        {
+           return doctorService.nameSurnameSpec();
+        }
     }
 }
