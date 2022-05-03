@@ -1,4 +1,5 @@
 ﻿using Projekat_SIMS_IN_TIM3.MainWindows;
+using Projekat_SIMS_IN_TIM3.PatientXAML;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,8 +52,8 @@ namespace Projekat_SIMS_IN_TIM3
         }
         private void Patient_Click(object sender, RoutedEventArgs e)
         {
-            var patientMainWindow = new PatientMainWindow();
-            patientMainWindow.Show();
+            var patientLogin = new PatientLogin();
+            patientLogin.Show();
             Close();
 
         }
