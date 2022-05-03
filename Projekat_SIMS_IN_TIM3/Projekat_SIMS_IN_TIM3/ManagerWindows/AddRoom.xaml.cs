@@ -122,7 +122,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private Room CreateRoom()
         {
-            return new Room(this.roomController.getMaxId(), name, roomTypeSelected, (uint) floor, description);
+            return new Room(this.roomController.getMaxId(), name, roomTypeSelected, (uint) floor, description,"No");
         }
 
         private void Cancel_Button(object sender, RoutedEventArgs e)

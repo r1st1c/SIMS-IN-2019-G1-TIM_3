@@ -62,9 +62,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 return;
             }
             Rooms.Remove(room);
-            foreach (var equipment in EquipmentWindow.Equipment_All.Where(x => x.RoomId == room.Id))
+            if (EquipmentWindow.Equipment_All!=null)
             {
-                equipment.RoomName= "Main Storage";
+                foreach (var equipment in EquipmentWindow.Equipment_All.Where(x => x.RoomId == room.Id))
+                {
+                    equipment.RoomName = "Main Storage";
+                }
             }
             this.roomController.DeleteById(room.Id);
         }
