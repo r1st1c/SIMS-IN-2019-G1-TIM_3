@@ -1,7 +1,6 @@
-
-﻿using Projekat_SIMS_IN_TIM3.Controller;
-using Projekat_SIMS_IN_TIM3.MainWindows;
+﻿
 using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,25 +13,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Projekat_SIMS_IN_TIM3
+namespace Projekat_SIMS_IN_TIM3.PatientXAML
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PatientLogin.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PatientLogin : Window
     {
-
         public static string initUsname = "";
         UserLoginController controller = new UserLoginController();
-
-        public MainWindow()
+        public PatientLogin()
         {
             InitializeComponent();
             password.PasswordChar = '*';
         }
+
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
@@ -42,8 +39,7 @@ namespace Projekat_SIMS_IN_TIM3
             string Password = password.Password.ToString();
 
             UserLogin userLogin = new UserLogin(Username, Password);
-            var (isValid,type) = controller.ValidLogin(userLogin);
-
+            Boolean isValid = controller.ValidLogin(userLogin);
 
             if (!isValid)
             {
@@ -53,29 +49,10 @@ namespace Projekat_SIMS_IN_TIM3
             }
             else
             {
-                if (type == 0)
-                {
-                    ManagerMainWindow managerMainWindow = new ManagerMainWindow();
-                    managerMainWindow.Show();
-                }
-                if (type == 1)
-                {
-                    DoctorMainWindow doctorMainWindow = new DoctorMainWindow();
-                    doctorMainWindow.Show();
-                }
-                if (type == 2)
-                {
-                    SecretaryMainWindow secretaryMainWindow = new SecretaryMainWindow();
-                    secretaryMainWindow.Show();
-                }
-                if (type == 3)
-                {
-                    PatientMainWindow patientMainWindow = new PatientMainWindow();
-                    patientMainWindow.Show();
-                }
+                UpdateAndDeleteAppointment ud = new UpdateAndDeleteAppointment();
                 this.Close();
+                ud.Show();
             }
-
 
         }
     }
