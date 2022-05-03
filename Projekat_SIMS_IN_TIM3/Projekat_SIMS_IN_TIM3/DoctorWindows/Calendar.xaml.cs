@@ -70,8 +70,9 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         private void medRecordBtn(object sender, RoutedEventArgs e)
         {
             Appointment appointment = (Appointment)((Button)e.Source).DataContext;
-            int id = appointment.PatientId;
-            var m = new MedicalRecord(id);
+            int patid = appointment.PatientId;
+            var m = new MedicalRecord(patid);
+           
             m.Show();
         }
 
@@ -79,6 +80,13 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq();
             createAbsenceReq.Show();
+        }
+
+        private void cancelBtn(object sender, RoutedEventArgs e)
+        {
+            Appointment appointment = (Appointment)((Button)e.Source).DataContext;
+            Appointments.Remove(appointment);
+            this.c.DeleteAppointment(appointment.Id);
         }
 
        

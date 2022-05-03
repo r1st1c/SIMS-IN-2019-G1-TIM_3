@@ -60,7 +60,7 @@
                 <DataGridTemplateColumn Header="Cancel" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="cancelApp" Content="Cancel" />
+                            <Button x:Name="cancelApp" Content="Cancel" Click="cancelBtn" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

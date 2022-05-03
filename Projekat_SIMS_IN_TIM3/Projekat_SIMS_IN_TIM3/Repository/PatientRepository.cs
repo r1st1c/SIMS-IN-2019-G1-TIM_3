@@ -82,5 +82,90 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
                 return ls;
         }
+
+        public string getName(int id)
+        {
+            ReadJson();
+            string retVal = "";
+            foreach(Patient pat in patients)
+            {
+                retVal = pat.User.Name;
+            }
+
+            return retVal;
+        }
+
+        public string getSurname(int id)
+        {
+            ReadJson();
+            string retVal = "";
+            foreach (Patient pat in patients)
+            {
+                retVal = pat.User.Surname;
+            }
+
+            return retVal;
+        }
+
+        public DateTime getDateOfBirth(int id)
+        {
+            ReadJson();
+            DateTime retVal = DateTime.MinValue;
+            foreach (Patient pat in patients)
+            {
+                retVal = pat.User.DateOfBirth;
+            }
+
+            return retVal;
+        }
+
+        public string getJMBG(int id)
+        {
+            ReadJson();
+            string retVal = "";
+            foreach (Patient pat in patients)
+            {
+                retVal = pat.User.Jmbg;
+            }
+
+            return retVal;
+        }
+
+        public string getAddress(int id)
+        {
+            ReadJson();
+            string retVal = "";
+            foreach (Patient pat in patients)
+            {
+                retVal = pat.User.Address;
+            }
+
+            return retVal;
+        }
+
+        public string getEmail(int id)
+        {
+            ReadJson();
+            string retVal = "";
+            foreach (Patient pat in patients)
+            {
+                retVal = pat.User.Email;
+            }
+
+            return retVal;
+        }
+
+        public string getTelNumber(int id)
+        {
+            ReadJson();
+            string retVal = "";
+            foreach (Patient pat in patients)
+            {
+                retVal = pat.User.Phone;
+            }
+
+            return retVal;
+        }
+
     }
 }

@@ -28,7 +28,7 @@
 
 
         </Grid.ColumnDefinitions>
-
+        <Label Grid.Row="4" Grid.Column="3" Content="{Binding PatientId}" Foreground="White" Grid.ColumnSpan="2" Margin="125,7,157,101" ></Label>
         <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
         <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />
         <TextBlock  MouseLeftButtonDown="HomeBtn" FontStyle="Italic" FontSize="18" Height="40" HorizontalAlignment="Left"  Text="A leader in innovation, at the service of the patient" Grid.ColumnSpan="3" Margin="78,34,0,126" Grid.RowSpan="2" Width="461" />
@@ -122,21 +122,20 @@
         <Label  Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Margin="109,91,138,128" FontSize="20" Foreground="#c77ba0" FontWeight="Bold" Grid.RowSpan="2" >List of allergens</Label>
 
         <!--  Medical record - information, labels&data -->
-        <Label  Foreground="Black" Grid.Row="2" Grid.Column="1" FontSize="18" FontWeight="Bold" Margin="10,7,2,99">Patient</Label>
-        <TextBox  x:Name="NameAndSurname" BorderThickness="2" BorderBrush="Black" Grid.Row="2" Grid.Column="2" Height="29" Margin="0,6,127,100" Grid.ColumnSpan="2" ></TextBox>
+        <Label  Foreground="Black" Grid.Row="2" Grid.Column="1" FontSize="18" FontWeight="Bold" Margin="10,7,2,99">Name</Label>
+        <Label  x:Name="pname"  BorderBrush="Black"  BorderThickness="2" Content=""   Grid.Row="2" Grid.Column="2" Height="29" Margin="0,6,127,100" Grid.ColumnSpan="2" ></Label>
         <Label  Foreground="Black"   Grid.Row="2" Grid.Column="1" FontSize="18" FontWeight="Bold" Margin="11,93,204,13" Grid.ColumnSpan="2" Content="JMBG"/>
-        <Label  Foreground="Black"  Grid.Row="2" Grid.Column="1" FontSize="18" FontWeight="Bold" Margin="10,51,1,55" Content="Gender"/>
-        <RadioButton Grid.Row="2" Grid.Column="2" Height="25" FontSize="17" Margin="4,51,127,59" FontWeight="Normal" >Male</RadioButton>
-        <RadioButton Grid.Row="2" Grid.Column="2" Height="25" FontSize="17"  Margin="141,51,147,59" Grid.ColumnSpan="2" >Female</RadioButton>
+        <Label  Foreground="Black"  Grid.Row="2" Grid.Column="1" FontSize="18" FontWeight="Bold" Margin="10,51,1,55" Content="Surname"/>
         <Label  Foreground="Black"  Grid.Row="3" Grid.Column="1" FontSize="18" FontWeight="Bold" Margin="10,4,1,102" Content="Date of birth"/>
         <Label  Foreground="Black"  Grid.Row="3" Grid.Column="1" FontSize="18" FontWeight="Bold" Margin="10,53,1,53" Content="Address"/>
         <Label  Foreground="Black"  Grid.Row="4" Grid.Column="1" FontSize="18" FontWeight="Bold" Margin="10,5,1,101" Content="Telephone number"/>
         <Label  Foreground="Black"  Grid.Row="3" Grid.Column="1" FontSize="18" FontWeight="Bold" Margin="9,95,2,11" Content="Email"/>
-        <TextBox  x:Name="JMBG" BorderThickness="2" BorderBrush="Black" Grid.Row="2" Grid.Column="1" Height="29" Margin="204,93,127,13" Grid.ColumnSpan="3" />
-        <TextBox x:Name="DateOfBirth" BorderThickness="2" BorderBrush="Black" Grid.Row="3" Grid.Column="1" Height="29" Margin="203,5,127,101" Grid.ColumnSpan="3" />
-        <TextBox   x:Name="Address" BorderThickness="2" BorderBrush="Black" Grid.Row="3" Grid.Column="1" Height="29" Margin="203,51,127,55" Grid.ColumnSpan="3" />
-        <TextBox  Name="Email" BorderThickness="2" BorderBrush="Black" Grid.Row="3" Grid.Column="1" Height="29" Margin="203,95,127,11" Grid.ColumnSpan="3" />
-        <TextBox   x:Name="TelephoneNumber" BorderThickness="2" BorderBrush="Black" Grid.Row="4" Grid.Column="1" Height="29" Margin="203,6,127,100" Grid.ColumnSpan="3" />
+        <Label x:Name="jmbg" Content=""  BorderThickness="2" BorderBrush="Black" Grid.Row="2" Grid.Column="1" Height="29" Margin="204,93,127,13" Grid.ColumnSpan="3" />
+        <Label x:Name="surname" Content=""  BorderThickness="2" BorderBrush="Black" Grid.Row="2" Grid.Column="1" Height="29" Margin="204,51,127,55" Grid.ColumnSpan="3" />
+        <Label x:Name="DateOfBirth"  Content="" BorderThickness="2" BorderBrush="Black" Grid.Row="3" Grid.Column="1" Height="29" Margin="203,5,127,101" Grid.ColumnSpan="3" />
+        <Label  x:Name="Address"  Content="" BorderThickness="2" BorderBrush="Black" Grid.Row="3" Grid.Column="1" Height="29" Margin="203,51,127,55" Grid.ColumnSpan="3" />
+        <Label  Name="Email"  Content="" BorderThickness="2" BorderBrush="Black" Grid.Row="3" Grid.Column="1" Height="29" Margin="203,95,127,11" Grid.ColumnSpan="3" />
+        <Label   x:Name="TelephoneNumber" Content="" BorderThickness="2" BorderBrush="Black" Grid.Row="4" Grid.Column="1" Height="29" Margin="203,6,127,100" Grid.ColumnSpan="3" />
 
     </Grid>
 </Window>
