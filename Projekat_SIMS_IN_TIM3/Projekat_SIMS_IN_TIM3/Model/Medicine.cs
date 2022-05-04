@@ -8,6 +8,8 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class Medicine
     {
+        
+
         public Medicine()
         {
             // TODO: implement
@@ -21,15 +23,17 @@ namespace Projekat_SIMS_IN_TIM3.Model
             this.IsVerified = IsVerified;
         }
 
+      
+
         ~Medicine()
         {
             // TODO: implement
         }
 
-        private int Id { get; set; }
-        private String Name { get; set; }   
-        private String Ingredients { get; set; }
-        private bool IsVerified { get; set; }
+        public int Id { get; set; }
+        public String Name { get; set; }   
+        public String Ingredients { get; set; }
+        public bool IsVerified { get; set; }
 
     }
 }
