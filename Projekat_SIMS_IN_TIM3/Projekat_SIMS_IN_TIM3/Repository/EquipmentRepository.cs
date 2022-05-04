@@ -12,7 +12,6 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 {
     public class EquipmentRepository
    {
-        public RoomRepository roomRepository = new RoomRepository();
       public Equipment GetById(int id)
       {
             List<Equipment> allEquipment = this.GetAll();
@@ -37,24 +36,13 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     continue;
                 }
                 string[] data = csvLines[i].Split(',');
-                var roomId = Int32.Parse(data[4]);
-                string roomName;
-                if (roomId == -1)
-                {
-                    roomName = "No room (dynamic)";
-                }
-                else
-                {
-                    roomName = this.roomRepository.GetById(roomId).Name;
-                }
                 list.Add(
                             new Equipment(
                             Int32.Parse(data[0]),
                             data[1],
                             data[2],
                             Enum.Parse<EquipmentType>(data[3]),
-                            Int32.Parse(data[4]),
-                            roomName
+                            Int32.Parse(data[4])
                             )
                         );
             }

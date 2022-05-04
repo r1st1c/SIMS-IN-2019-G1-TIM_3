@@ -110,14 +110,13 @@ namespace Projekat_SIMS_IN_TIM3.Model
         }
 
 
-        public Equipment(int id,string equipmentname,string manufacturer, EquipmentType equipmentType, int roomId,string roomName)
+        public Equipment(int id,string equipmentname,string manufacturer, EquipmentType equipmentType, int roomId)
         {
             Id = id;
             Equipmentname = equipmentname;
             Manufacturer = manufacturer;
             Equipmenttype = equipmentType;
             RoomId = roomId;
-            RoomName = roomName;
         }
 
 

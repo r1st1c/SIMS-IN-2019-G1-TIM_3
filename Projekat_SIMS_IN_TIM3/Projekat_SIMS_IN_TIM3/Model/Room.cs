@@ -28,14 +28,17 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private RoomType roomType;
         private uint floor;
         private string description;
+        private int disabled;
+        private string disabledTxt;
 
-        public Room(int id, string name, RoomType roomType, uint floor, string description)
+        public Room(int id, string name, RoomType roomType, uint floor, string description, string txt)
         {
             this.id = id;
             this.name = name;
             this.roomType = roomType;
             this.floor = floor;
             this.description = description;
+            this.DisabledTxt = txt;
 
         }
 
@@ -113,7 +116,34 @@ namespace Projekat_SIMS_IN_TIM3.Model
 
         }
 
- 
+        public int Disabled
+        {
+            get
+            { return disabled; }
+            set
+            {
+                if (value != disabled)
+                {
+                    disabled = value;
+                    OnPropertyChanged("Disabled");
+                }
+            }
+        }
 
+
+        public string DisabledTxt
+        {
+            get
+            { return disabledTxt; }
+            set
+            {
+                if (value != disabledTxt)
+                {
+                    disabledTxt = value;
+                    OnPropertyChanged("DisabledTxt");
+                }
+            }
+
+        }
     }
 }

@@ -28,6 +28,7 @@
                 <DataGridTextColumn Header="Type" Binding="{Binding RoomType}" Width="*"/>
                 <DataGridTextColumn Header="Floor" Binding="{Binding Floor}" Width="*"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                <DataGridTextColumn Header="Renovating" Binding="{Binding DisabledTxt}" Width="*"/>
                 <DataGridTemplateColumn Header="Edit" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
