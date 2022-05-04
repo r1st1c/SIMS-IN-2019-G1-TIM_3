@@ -5,22 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Sign in" Height="900" Width="1100"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <Button Content="Manager" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="0" Click="Manager_Click"/>
-        <Button Content="Secretary" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="0" Click="Secretary_Click"/>
 
-        <Button Content="Doctor" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Click="Doctor_Click"/>
-        <Button Content="Patient" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Click="Patient_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
+        <Rectangle  Grid.RowSpan="4" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="768" Margin="0,65,0,0" Stroke="Black" VerticalAlignment="Top" Width="1024" Fill="#c3e0e5"/>
+        <TextBlock  Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="32" HorizontalAlignment="Center" Margin="0,82,0,61" > Hospital ZDRAVO</TextBlock>
+        <TextBlock   Grid.Row="0" FontStyle="Italic" FontSize="24"  HorizontalAlignment="Center"  Width="556" Margin="0,139,0,5" Grid.ColumnSpan="3"> A leader in innovation, at the service of the patient</TextBlock>
+
+        <TextBlock  Grid.Row="1" Grid.Column="1" FontStyle="Normal" FontSize="28"  HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Margin="0,40,0,0"> SIGN IN</TextBlock>
+
+        <Button  Grid.RowSpan="2" Grid.Column="1" x:Name="Sign_in" Click="SignIn_Click" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="77" Width="264" Background="#009e0f" Margin="0,188,0,0" Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Icons/sign-in_icon-icons.com_73414 (1).ico" Stretch="Uniform"  Height="48" Width="96" RenderTransformOrigin="-0.228,0.452" OpacityMask="#FFFDFFF5" Margin="0,0,0,0" />
+                <TextBlock Text="Sign in" FontSize="28"  FontWeight="Bold" Height="38" Width="115" Foreground="#FFFDFFF5" Margin="25,0,0,0" />
+            </StackPanel>
+        </Button>
+
+
+        <TextBox  Grid.Row="1" x:Name="username" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="460" FontSize="24" Height="47" Margin="0,171,0,0" Grid.ColumnSpan="3"/>
+
+        <PasswordBox  Grid.Row="2" x:Name="password" HorizontalAlignment="Center"    VerticalAlignment="Top"  Width="460" FontSize="24" Height="47" Margin="0,59,0,0" Grid.ColumnSpan="3"/>
+
+
+
+        <Label  Grid.Row="1" Content="Username" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" FontSize="28" RenderTransformOrigin="-0.089,0.589" Margin="320,114,0,0" Grid.ColumnSpan="2"/>
+        <Label  Grid.Row="2" Content="Password" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" FontSize="28" Margin="320,7,0,0" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

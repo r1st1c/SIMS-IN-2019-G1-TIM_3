@@ -12,9 +12,14 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         private DoctorService doctorService = new DoctorService();
 
-        public List<Doctor> getAll()
+        public List<Doctor> GetAll()
         {
-            return doctorService.getAll();
+            return doctorService.GetAll();
+        }
+
+        public Doctor GetById(int id)
+        {
+            return doctorService.GetById(id);
         }
 
         public void saveAndUpdate(Doctor doctor)
@@ -25,6 +30,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         public void delete(int jmbg)
         {
             doctorService.delete(jmbg);
+        }
+
+        public List<string> nameSurnameSpec()
+        {
+           return doctorService.nameSurnameSpec();
         }
     }
 }

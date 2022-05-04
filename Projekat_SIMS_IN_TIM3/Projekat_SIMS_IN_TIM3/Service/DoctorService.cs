@@ -11,9 +11,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
     public class DoctorService
     {
         private DoctorRepository doctorRepository = new DoctorRepository();
-        public List<Doctor> getAll()
+        public List<Doctor> GetAll()
         {
-            return doctorRepository.getAll();
+            return doctorRepository.GetAll();
+        }
+
+        public Doctor GetById(int id)
+        {
+            return doctorRepository.getById(id);
         }
 
         public bool saveAndUpdate(Doctor doctor)
@@ -24,6 +29,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
         public bool delete(int id)
         {
             return doctorRepository.delete(id);
+        }
+
+        public List<string> nameSurnameSpec()
+        {
+            return doctorRepository.nameSurnameSpec();
         }
     }
 }

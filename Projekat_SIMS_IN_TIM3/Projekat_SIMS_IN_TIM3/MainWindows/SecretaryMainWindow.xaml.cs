@@ -47,5 +47,17 @@ namespace Projekat_SIMS_IN_TIM3
 
             createGuest.Show(); 
         }
+
+        private void crud_appoitnemnt(object sender, RoutedEventArgs e)
+        {
+            CrudAppoitnemnt appointment = new CrudAppoitnemnt();
+            appointment.Show(); 
+        }
+
+        private void secreart_priority(object sender, RoutedEventArgs e)
+        {
+            SecretaryPriority secretary_priority = new SecretaryPriority();
+            secretary_priority.Show();
+        }
     }
 }

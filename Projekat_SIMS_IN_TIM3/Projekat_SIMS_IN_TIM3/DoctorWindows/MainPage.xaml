@@ -1,0 +1,88 @@
+﻿<Window x:Class="Projekat_SIMS_IN_TIM3.DoctorWindows.MainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
+        mc:Ignorable="d"
+        Title="MAIN PAGE" Height="900" Width="1100"
+        WindowStartupLocation="CenterScreen">
+    <Grid Height="768" Width="1024">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="300"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+            <ColumnDefinition />
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+
+        <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
+        <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />
+        <TextBlock  MouseLeftButtonDown="HomeBtn" FontStyle="Italic" FontSize="18" Height="40" HorizontalAlignment="Left"  Text="A leader in innovation, at the service of the patient" Grid.ColumnSpan="3" Margin="78,32,0,63" Grid.RowSpan="2" />
+
+        <Image Source="/Icons/user_icon_195366.ico" Grid.Row="0" Grid.Column="1" Width="48" Height="48" Margin="286,9,8,8" />
+        <TextBlock  Grid.Row="0" Grid.Column="2" FontStyle="Italic" FontSize="18" HorizontalAlignment="Left" Margin="0,0,0,33"><Run Text="You are signed in as:" Foreground="#555555"/></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="2" FontStyle="Normal" FontSize="20"  HorizontalAlignment="Right" Width="160" FontWeight="Bold" Margin="0,30,181,0"><Run Text="Elena Akik"/></TextBlock>
+
+        <Menu Grid.Row="0" Grid.Column="2" Width="64" HorizontalAlignment="Left" x:Name="menuProfileSignOut" Background="White" Margin="267,0,0,8" >
+            <MenuItem>
+                <MenuItem.Header>
+                    <Image Source="/Icons/lines_menu_burger_icon_123889.ico" Width="48" Height="48"  ></Image>
+                </MenuItem.Header>
+
+                <MenuItem>
+                    <Button Background="#c3e0e5" >
+                        <StackPanel>
+                            <Image Source="/Icons/user_icon_195366.ico"  Margin="0,0,0,0" ></Image>
+                            <TextBlock  Text="My profile" />
+                        </StackPanel>
+                    </Button>
+                </MenuItem>
+                <MenuItem>
+                    <Button>
+                        <StackPanel>
+                            <Image Source="/Icons/gui_sign_out_icon_157587.ico" Margin="0,0,0,0"></Image>
+                            <TextBlock  Text="Sign out" Margin="25,0,0,0" />
+                        </StackPanel>
+                    </Button>
+                </MenuItem>
+
+
+            </MenuItem>
+        </Menu>
+        <Rectangle HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3"  Width="1024" Height="70" Stroke="#FFE5D9C3" VerticalAlignment="Center"  Fill="#e5d9c3"  />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1"  Text="Welcome back, Elena!" FontWeight="Bold" FontStyle="Italic" FontSize="22" Margin="0,18,0,17"/>
+
+        <!-- calendar section -->
+        <Rectangle   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="2" Grid.Column="0"  Fill="#c3e0e5" Stroke="#c3e0e5" Grid.ColumnSpan="2" Margin="0,0,171,0" />
+        <TextBlock   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  Text="Calendar" FontWeight="Bold" FontSize="28" Margin="195,194,14,0"  />
+        <Image  MouseLeftButtonDown="CalendarPageBtn" Source="/Icons/calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico"  Grid.Row="2" Grid.Column="0" Width="128" Height="128" Margin="192,43,21,129" />
+        <!-- notiification section -->
+        <Rectangle  MouseLeftButtonDown="NotifBtn" Stroke="#c3e0e5" Grid.Row="2" Grid.Column="1" Fill="#c3e0e5" Grid.ColumnSpan="2" Margin="171,0,0,0"/>
+        <TextBlock  MouseLeftButtonDown="NotifBtn"  HorizontalAlignment="Left"  Grid.Row="2" Grid.Column="2" VerticalAlignment="Top"  Text="Notifications" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" Margin="11,194,0,0" />
+        <Image  MouseLeftButtonDown="NotifBtn"  Source="/Icons/musical-bell-outline_icon-icons.com_73481.ico" Grid.Row="2" Grid.Column="2" Width="128" Height="128" Margin="32,43,181,129" />
+        <!-- list of medicines section -->
+        <Rectangle  MouseLeftButtonDown="ListOfMedBtn" Grid.Row="3" Grid.Column="0" Stroke="#c3e0e5"   Fill="#c3e0e5" />
+        <TextBlock  MouseLeftButtonDown="ListOfMedBtn" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Margin="0,215,0,0" VerticalAlignment="Top" Text="List of" FontWeight="Bold" FontSize="28"  />
+        <TextBlock  MouseLeftButtonDown="ListOfMedBtn" HorizontalAlignment="Center" Margin="0,257,0,0" VerticalAlignment="Top"  Text="medicines" FontWeight="Bold" FontSize="28" Grid.Row="3" Grid.Column="0" Width="135" Height="40" />
+        <Image  MouseLeftButtonDown="ListOfMedBtn" Source="/Icons/chemistry_icon_188058.ico" Grid.Row="3" Grid.Column="0" Height="128" Width="128" Margin="107,66,106,119" />
+        <!-- medicine verification section -->
+        <Rectangle  MouseLeftButtonDown="MedVerifBtn" Grid.Row="3" Grid.Column="1" Stroke="#c3e0e5" Fill="#c3e0e5"/>
+        <TextBlock  MouseLeftButtonDown="MedVerifBtn" HorizontalAlignment="Left"  Margin="107,215,0,0" VerticalAlignment="Top"  Text="Medicine" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" Grid.Row="3" Width="139" Grid.Column="1" />
+        <TextBlock  MouseLeftButtonDown="MedVerifBtn" HorizontalAlignment="Center"  Grid.Row="3" Grid.Column="1" VerticalAlignment="Top"  Text="verification" FontWeight="Bold" FontSize="28" RenderTransformOrigin="0.498,1.771" Margin="0,257,0,0" />
+        <Image  MouseLeftButtonDown="MedVerifBtn" Source="/Icons/searcher_magnifyng_glass_search_locate_find_icon_123813.ico" Grid.Row="3" Grid.Column="1" Height="128" Width="128" Margin="107,66,107,119" />
+        <!-- absence req section -->
+        <Rectangle  MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="4" Grid.Column="3" Stroke="#c3e0e5"  Fill="#c3e0e5"/>
+        <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="Create" FontWeight="Bold" FontSize="28" Margin="130,188,0,0" />
+        <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"   VerticalAlignment="Top"  Text="absence" FontWeight="Bold" FontSize="28"  Width="107" Margin="0,225,0,0" />
+        <TextBlock  MouseLeftButtonDown="AbsenceReqBtn" HorizontalAlignment="Left"  Grid.Row="3" Grid.Column="2" VerticalAlignment="Top"  Text="request" FontWeight="Bold" FontSize="28" Margin="123,260,0,0" />
+        <Image Source="/Icons/note_pen_icon_174377.ico"  Grid.Row="3" Grid.Column="2" Width="128" Height="128" Margin="106,62,107,143" />
+    </Grid>
+
+</Window>

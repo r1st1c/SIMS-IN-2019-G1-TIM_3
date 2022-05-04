@@ -6,23 +6,42 @@
          xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
-        Title="Create New Appointment" Height="450" Width="800">
+         WindowStartupLocation="CenterScreen"
+        Title="SCHEDULE NEW APPOINTMENT" Height="400" Width="550">
     <Grid>
-        <TextBox x:Name="tb1" HorizontalAlignment="Left" Margin="21,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb1"/>
-        <TextBox x:Name="tb2" HorizontalAlignment="Left" Margin="21,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb2"/>
-        <TextBox x:Name="tb3" HorizontalAlignment="Center" Margin="2,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb3"/>
-        <TextBox x:Name="tb4" HorizontalAlignment="Center" Margin="2,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" AutomationProperties.Name="tb4"/>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-        <Label Content="StartTime" HorizontalAlignment="Left" Margin="21,15,0,0" VerticalAlignment="Top"/>
-        <xctk:DateTimePicker x:Name="startTime1" HorizontalAlignment="Left" Margin="21,40,0,0" VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="745"/>
-
-        <Label Content="DurationInMinutes" HorizontalAlignment="Left" Margin="21,75,0,0" VerticalAlignment="Top"/>
-        <Label Content="AppointmentType" HorizontalAlignment="Left" Margin="21,130,0,0" VerticalAlignment="Top"/>
-        <Label Content="DoctorId" HorizontalAlignment="Left" Margin="21,190,0,0" VerticalAlignment="Top"/>
-        <Label Content="PatientId" HorizontalAlignment="Left" Margin="21,250,0,0" VerticalAlignment="Top" AutomationProperties.Name=""/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
 
 
-        <Button Content="Create" Background="#FF89E461" Margin="340,343,340,0" VerticalAlignment="Top" AutomationProperties.Name="create1" Click="Create" RenderTransformOrigin="-8.087,0.481" FontWeight="Bold" FontSize="14"/>
+        </Grid.ColumnDefinitions>
 
+        <xctk:DateTimePicker   Height="30" Grid.Row="3" x:Name="startTime1" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="338" Margin="202,10,0,0" Grid.ColumnSpan="2" MaxWidth="340"/>
+
+        <Label  Grid.Row="0" Content="Patient" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="" Margin="2,18,0,0" Foreground="Black" FontWeight="Bold" FontSize="18" Grid.Column="0"/>
+        <ComboBox  Grid.Row="0" x:Name="patient" MaxWidth="340" Margin="202,18,10,7" MaxHeight="30" 
+                  ItemsSource="{Binding Path=Patients}" SelectedValue="{Binding Path=PatientSelected}" Grid.ColumnSpan="2"/>
+        <Label  Grid.Row="1" Content="AppointmentType" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="1,6,0,0" FontWeight="Bold" Foreground="Black" FontSize="18" Width="171" Grid.Column="0"/>
+        <ComboBox Name="apptype" Grid.Row="1" Grid.ColumnSpan="2" MaxWidth="340" Margin="202,10,10,15" Height="30"
+                  ItemsSource="{Binding Path= AppTypes}" SelectedValue="{Binding Path=AppTypeSelected}"/>
+        <Label  Grid.Row="1" Grid.Column="0" Content="Doctor" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Margin="2,62,0,0" Grid.RowSpan="2" FontSize="18"/>
+        <ComboBox Name="doctor" Grid.Row="2" Grid.ColumnSpan="2"  MaxWidth="340" Margin="202,0,10,10" Height="30"
+                  ItemsSource="{Binding Path=Doctors}" SelectedValue="{Binding Path=DoctorSelected}"/>
+        <Label  Grid.Row="3" Grid.Column="0"  Foreground="Black" FontSize="18" Content="StartTime" HorizontalAlignment="Left"  VerticalAlignment="Center" FontWeight="Bold" Margin="1,0,0,0"/>
+        <Label  Grid.Row="4" FontSize="18"  Foreground="Black" Content="Duration(in minutes)" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="1,0,0,0" FontWeight="Bold" Width="214" Grid.Column="0"/>
+        <TextBox x:Name="duration"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="202,11,10,10" Grid.Row="4" Grid.ColumnSpan="2" Height="30"/>
+
+        <Button  Grid.Row="6"  Content="Schedule" Background="#FF89E461"  VerticalAlignment="Center" AutomationProperties.Name="create1"   Click="Create" FontWeight="Bold" FontSize="14" Margin="70,0,71,0"/>
+        <Button  Grid.Row="6"  Content="Cancel" Background="#FF89E461"  VerticalAlignment="Top" AutomationProperties.Name="create1" Click="Cancel" FontWeight="Bold" FontSize="14" Margin="71,11,70,0" Grid.Column="1"/>
     </Grid>
 </Window>

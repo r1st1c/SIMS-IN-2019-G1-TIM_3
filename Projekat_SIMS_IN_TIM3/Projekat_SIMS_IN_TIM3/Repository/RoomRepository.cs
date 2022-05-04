@@ -45,12 +45,24 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     continue;
                 }
                 string[] data = csvLines[i].Split(',');
+
+                string txt;
+                if(Int32.Parse(data[5]) == 0)
+                {
+                    txt = "No";
+                }
+                else
+                {
+                    txt = "Yes";
+                }
+
                 list.Add(new Room(
                     Int32.Parse(data[0]),
                     data[1],
                     Enum.Parse<RoomType>(data[2]),
                     UInt32.Parse(data[3]),
-                    data[4]
+                    data[4],
+                    txt
                 ));
                 
             }
@@ -63,7 +75,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             if (File.Exists(fileName))
             {
                 //RoomWindow.Rooms.Add(room);
-                string data = next_id() + "," + room.Name + "," + room.RoomType + "," + room.Floor + "," + room.Description + "\n";
+                string data = next_id() + "," + room.Name + "," + room.RoomType + "," + room.Floor + "," + room.Description + "," + "0" +   "\n";
                 File.AppendAllText(fileName, data);
                 return true;
             }
@@ -74,7 +86,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       public bool Update(Room room)
       {
             string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\rooms.csv");
-            csvLines[room.Id] = room.Id + "," + room.Name + "," + room.RoomType + "," + room.Floor + "," + room.Description;
+            csvLines[room.Id] = room.Id + "," + room.Name + "," + room.RoomType + "," + room.Floor + "," + room.Description + "," + room.Disabled;
             File.WriteAllLines(@"C:\Users\Ristic\Documents\rooms.csv", csvLines);
             return true;
         }
@@ -86,8 +98,24 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllLines(@"C:\Users\Ristic\Documents\rooms.csv", csvLines);
             return true;
         }
-      
-      public bool Split(int id)
+
+        public bool ScheduleRenovation(int roomId, string start, string end,string description)
+        {
+            var room = this.GetById(roomId);
+            room.Disabled = 1;
+            this.Update(room);
+            string fileName = @"C:\Users\Ristic\Documents\room_basic_renovation.csv";
+            if (File.Exists(fileName))
+            {
+                string data = roomId + "," + start + "," + end + "," + description + "\n";
+                File.AppendAllText(fileName, data);
+                return true;
+            }
+            Debug.Write("Csv file doesnt exist");
+            return false;
+        }
+
+        public bool Split(int id)
       {
          throw new NotImplementedException();
       }
@@ -96,6 +124,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       {
          throw new NotImplementedException();
       }
+
+       
    
    }
 }

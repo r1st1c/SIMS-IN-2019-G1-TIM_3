@@ -106,18 +106,23 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("All fields are necessary");
                 return;
             }
-            else
+            var (succWritten,nameOk) = this.roomController.Create(room);
+            if (!nameOk)
             {
-                this.roomController.Create(room);
+                MessageBox.Show("Room name must be unique!");
+                return;
+            }
+            if (succWritten)
+            {
                 Debug.Write("Room successfully written in csv");
                 RoomWindow.Rooms.Add(room);
+                Close();
             }
-            Close();
         }
 
         private Room CreateRoom()
         {
-            return new Room(this.roomController.getMaxId(), name, roomTypeSelected, (uint) floor, description);
+            return new Room(this.roomController.getMaxId(), name, roomTypeSelected, (uint) floor, description,"No");
         }
 
         private void Cancel_Button(object sender, RoutedEventArgs e)

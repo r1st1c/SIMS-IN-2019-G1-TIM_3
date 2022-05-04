@@ -8,13 +8,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class Guest
     {
-        private int id;
-        private String jmbg;
-        private String name;
-        private String surname;
-        private String username;
-        private String password;
-
+      
         public Guest()
         {
             

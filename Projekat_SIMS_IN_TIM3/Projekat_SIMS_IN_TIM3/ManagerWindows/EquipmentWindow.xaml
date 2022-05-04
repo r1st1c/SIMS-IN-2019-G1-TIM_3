@@ -1,0 +1,51 @@
+﻿<Window x:Class="Projekat_SIMS_IN_TIM3.ManagerWindows.EquipmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
+        mc:Ignorable="d"
+        Title="Equipment Window" Height="540" Width="960" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.ColumnSpan="3" x:Name="dataGridEquipment" Grid.Row="1" ItemsSource="{Binding Equipment_All,Mode=TwoWay}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" 
+                  Height="800" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Equipmentname}" Width="*"/>
+                <DataGridTextColumn Header="Manufacturer" Binding="{Binding Manufacturer}" Width="*"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Equipmenttype}" Width="*"/>
+                <DataGridTextColumn Header="Room" Binding="{Binding RoomName}" Width="*"/>
+                <DataGridTemplateColumn Header="Move Equipment" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="moveTo" Content="Move to" Click="Move_Button">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Equipmenttype}" Value="dynamic_equipment">
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="0" Grid.Column="1" Content="Add Equipment" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    </Grid>
+</Window>
