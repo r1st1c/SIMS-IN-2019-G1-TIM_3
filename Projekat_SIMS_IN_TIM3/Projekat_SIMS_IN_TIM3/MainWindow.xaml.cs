@@ -1,5 +1,6 @@
 
 ﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.DoctorWindows;
 using Projekat_SIMS_IN_TIM3.MainWindows;
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
@@ -60,7 +61,7 @@ namespace Projekat_SIMS_IN_TIM3
                 }
                 if (type == 1)
                 {
-                    DoctorMainWindow doctorMainWindow = new DoctorMainWindow();
+                    MainPage doctorMainWindow = new MainPage();
                     doctorMainWindow.Show();
                 }
                 if (type == 2)
