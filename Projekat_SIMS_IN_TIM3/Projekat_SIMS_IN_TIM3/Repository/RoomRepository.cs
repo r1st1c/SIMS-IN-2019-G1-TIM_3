@@ -99,7 +99,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return true;
         }
 
-        public bool ScheduleRenovation(int roomId, string start, string end)
+        public bool ScheduleRenovation(int roomId, string start, string end,string description)
         {
             var room = this.GetById(roomId);
             room.Disabled = 1;
@@ -107,7 +107,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             string fileName = @"C:\Users\Ristic\Documents\room_basic_renovation.csv";
             if (File.Exists(fileName))
             {
-                string data = roomId + "," + start + "," + end + "\n";
+                string data = roomId + "," + start + "," + end + "," + description + "\n";
                 File.AppendAllText(fileName, data);
                 return true;
             }

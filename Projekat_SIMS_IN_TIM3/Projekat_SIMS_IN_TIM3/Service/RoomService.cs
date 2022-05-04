@@ -91,9 +91,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return retVal;
         }
 
-        public bool ScheduleRenovation(int roomId, string start, string end)
+        public bool ScheduleRenovation(int roomId, string start, string end,string description)
         {
-            return this.roomRepository.ScheduleRenovation(roomId, start, end);
+            return this.roomRepository.ScheduleRenovation(roomId, start, end, description);
         }
 
         public bool Split(int id)

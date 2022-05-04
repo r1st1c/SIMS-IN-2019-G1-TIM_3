@@ -27,6 +27,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public Room Room { get; set; }
         public RoomController roomController= new RoomController();
         public int Duration { set; get; }
+
+        public string Description { set; get; }
         public BasicRenovationWindow(Room room)
         {
             Room = room;
@@ -46,7 +48,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Invalid duration!");
                 return;
             }
-
+            if (Description == "")
+            {
+                MessageBox.Show("Invalid description!");
+                return;
+            }
             renovationsGrid.ItemsSource = new ObservableCollection<RenovationTerm>(this.roomController.BasicRenovation(Room.Id, DateTime.Parse(StartDate.Text), DateTime.Parse(EndDate.Text), Duration));
             
         }
@@ -59,7 +65,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public void Schedule_Click(object sender, RoutedEventArgs e)
         {
             RenovationTerm rt = (RenovationTerm)((Button)e.Source).DataContext;
-            this.roomController.ScheduleRenovation(Room.Id, rt.StartDate, rt.EndDate);
+            this.roomController.ScheduleRenovation(Room.Id, rt.StartDate, rt.EndDate, Description);
             foreach(var room in RoomWindow.Rooms)
             {
                 if (room.Id == Room.Id)
