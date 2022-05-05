@@ -88,5 +88,23 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             createAbsenceReq.Show();
             this.Close();
         }
+
+        public void addMedPrescription(object sender, RoutedEventArgs e)
+        {
+            AddMedPrescription addMedPrescription = new AddMedPrescription(PatientId);
+            addMedPrescription.Show();
+        }
+
+        public void addReport(object sender, RoutedEventArgs e)
+        {
+            AddReport addReport = new AddReport();
+            addReport.Show();
+        }
+
+        public void seeMoreLink(object sender, RoutedEventArgs e)
+        {
+            Anamnesis amamnesis = new Anamnesis();
+            amamnesis.Show();
+        }
     }
 }

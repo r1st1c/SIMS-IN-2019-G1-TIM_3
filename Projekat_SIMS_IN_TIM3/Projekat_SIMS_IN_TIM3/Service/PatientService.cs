@@ -71,7 +71,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return patientRepository.getTelNumber(id);
         }
 
-
+        public int getIdByNameAndSurname(string name, string surname)
+        {
+            return patientRepository.getIdByNameAndSurname(name, surname);
+        }
 
 
     }
