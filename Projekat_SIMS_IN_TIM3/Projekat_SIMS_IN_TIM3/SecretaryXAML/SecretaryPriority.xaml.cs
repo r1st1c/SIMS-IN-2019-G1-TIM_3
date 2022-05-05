@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekat_SIMS_IN_TIM3.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,21 +12,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Projekat_SIMS_IN_TIM3.Model;
-using Projekat_SIMS_IN_TIM3.Controller;
 
-namespace Projekat_SIMS_IN_TIM3.PatientXAML
+namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
 {
-   
-    
-    public partial class SearchAppointments : Window
+    /// <summary>
+    /// Interaction logic for SecretaryPriority.xaml
+    /// </summary>
+    public partial class SecretaryPriority : Window
     {
         public App application { get; set; }
         public List<Appointment> appointments { get; set; }
 
         public Appointment selectedAppointment { get; set; }
-
-        public SearchAppointments()
+        public SecretaryPriority()
         {
             InitializeComponent();
             this.DataContext = this;
@@ -33,16 +32,16 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             application = Application.Current as App;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnShwo_Click(object sender, RoutedEventArgs e)
         {
             int doctorId = Convert.ToInt32(txtDoctorId.Text); //uvezati sa wpfom
-            string priority = combobox.Text;
+            string priority = comboBox.Text;
 
-            DateTime wantedStartTIme = (DateTime)StartTime1.SelectedDate; //unesen pocetak
-            DateTime wantedEndTIme = (DateTime)EndTime1.SelectedDate; //unesen kraj
+            DateTime wantedStartTIme = (DateTime)startTime1.SelectedDate; //unesen pocetak
+            DateTime wantedEndTIme = (DateTime)endTime1.SelectedDate; //unesen kraj
 
             appointments = application.appointmentController.GetByDoctorsId(doctorId);
-
+            
 
             List<int> toRemove = new List<int>();
             foreach (Appointment app in appointments)//Ne radi za vreme - ne radi iterator zbog remove
@@ -95,11 +94,11 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
                         }
                     }
 
-                    foreach (int id in toRemove)
+                    foreach(int id in toRemove)
                     {
-                        for (int i = 0; i < appointments.Count; i++)
+                        for(int i = 0; i < appointments.Count; i++)
                         {
-                            if (appointments[i].Id == id)
+                            if(appointments[i].Id == id)
                             {
                                 appointments.Remove(appointments[i]);
                             }
@@ -112,12 +111,12 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
         }
 
-        private void Select(object sender, RoutedEventArgs e)
+        private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
             selectedAppointment = (Appointment)DataBinding1.SelectedItem;
         }
 
-        private void SignUp(object sender, RoutedEventArgs e)
+        private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
             int appointmentId = selectedAppointment.Id;
             int patientId = 1; //uvezati sa frontom
@@ -130,11 +129,5 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             application.appointmentController.CreateAppointment(newAppointment);
             MessageBox.Show("Successfully signed up for appointment ");
         }
-
-
-        //dobavi sve slobodne preglede kod lekara u datom intervalu
-        // ako je dobavljena lista prazna -> gledamo prioritet
-        // dobavi sve slobodne u datom intervalu ako je vreme prioritet
-        // dobavi sve slobodne drugih lekara 
     }
 }

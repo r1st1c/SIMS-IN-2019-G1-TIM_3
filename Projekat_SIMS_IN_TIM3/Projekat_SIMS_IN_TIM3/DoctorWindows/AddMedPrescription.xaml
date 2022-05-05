@@ -42,5 +42,6 @@
     <Button Click="Cancel" Grid.Row="6"  Content="Cancel" Height ="36" Background="Red"  VerticalAlignment="Center" AutomationProperties.Name="create1"  FontWeight="Bold" FontSize="14" Margin="71,0,51,0" Grid.Column="1" Width="105"/>
     <Label  Grid.Row="3" FontSize="18"  Foreground="Black" Content="Frequency of use" HorizontalAlignment="Center"  VerticalAlignment="Top" FontWeight="Bold" Width="214" Margin="0,55,0,0" Grid.RowSpan="2"/>
     <TextBox x:Name="fOfUse"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="202,57,10,27" Grid.Row="3" Grid.ColumnSpan="2" Height="30" Grid.RowSpan="2"/>
+
     </Grid>
 </Window>

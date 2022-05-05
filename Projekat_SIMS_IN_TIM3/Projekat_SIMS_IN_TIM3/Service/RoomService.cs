@@ -1,4 +1,5 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+﻿using Projekat_SIMS_IN_TIM3.ManagerWindows;
+using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
@@ -26,18 +27,35 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.GetAll();
         }
 
-        public bool Create(Room room)
+        public (bool,bool) Create(Room room)
         {
-            return this.roomRepository.Create(room);
+            var list = this.roomRepository.GetAll();
+            foreach(var existingRoom in list)
+            {
+                if(existingRoom.Name == room.Name)
+                {
+                    return (false,false);
+                }
+            }
+            return (this.roomRepository.Create(room),true);
         }
 
         public bool Update(Room room)
         {
+            var list = this.roomRepository.GetAll();
+            foreach (var existingRoom in list)
+            {
+                if (existingRoom.Name == room.Name)
+                {
+                    return false;
+                }
+            }
             return this.roomRepository.Update(room);    
         }
 
         public bool DeleteById(int id)
         {
+            this.equipmentRepository.MoveEquipmentToDefaultRoomAfterDeletingRoom(id);
             return this.roomRepository.DeleteById(id);
         }
 
@@ -73,9 +91,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return retVal;
         }
 
-        public bool ScheduleRenovation(int roomId, string start, string end)
+        public bool ScheduleRenovation(int roomId, string start, string end,string description)
         {
-            return this.roomRepository.ScheduleRenovation(roomId, start, end);
+            return this.roomRepository.ScheduleRenovation(roomId, start, end, description);
         }
 
         public bool Split(int id)
@@ -88,8 +106,22 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.Merge(firstId, secondId);
         }
 
+        public Room GetByName(string name)
+        {
+            var list = this.roomRepository.GetAll();
+            foreach(var item in list)
+            {
+                if(item.Name == name)
+                {
+                    return item;
+                }
+            }
+            Debug.WriteLine("Room not found!");
+            return null;
+        }
+
         public RoomRepository roomRepository = new RoomRepository();
         public AppointmentRepository appointmentRepository = new AppointmentRepository();
-        public DoctorRepository doctorRepository = new DoctorRepository();
+        public EquipmentRepository equipmentRepository = new EquipmentRepository();
     }
 }

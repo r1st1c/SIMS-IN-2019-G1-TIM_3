@@ -1,8 +1,9 @@
-﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     /// </summary>
     public partial class AddMedPrescription : Window
     {
+
         PatientController patientController = new PatientController();
         MedicinePrescriptionController prescriptionController = new MedicinePrescriptionController();
         public ObservableCollection<string> Patients { get; set; }
@@ -119,6 +121,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                     Close();
                     break;
             }
+
         }
     }
 }

@@ -18,7 +18,23 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public List<Equipment> GetAll()
         {
-            return this.equipmentRepository.GetAll();
+            List<Equipment> retVal = this.equipmentRepository.GetAll();
+            List<Room> roomList = this.roomRepository.GetAll();
+            foreach(Equipment equipment in retVal)
+            {
+                foreach(Room room in roomList)
+                {
+                    if (equipment.RoomId == -1)
+                    {
+                        equipment.RoomName = "No room (DYNAMIC)";
+                    }
+                    if(room.Id == equipment.RoomId)
+                    {
+                        equipment.RoomName = room.Name;
+                    }
+                }
+            }
+            return retVal;
         }
 
         public bool Move(int equipmentId, int targetRoomId, DateTime date)

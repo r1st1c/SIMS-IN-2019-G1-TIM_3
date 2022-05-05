@@ -56,7 +56,19 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             Room room = (Room)((Button)e.Source).DataContext;
+            if(room.Id == 0)
+            {
+                MessageBox.Show("Default storage room cant be deleted!");
+                return;
+            }
             Rooms.Remove(room);
+            if (EquipmentWindow.Equipment_All!=null)
+            {
+                foreach (var equipment in EquipmentWindow.Equipment_All.Where(x => x.RoomId == room.Id))
+                {
+                    equipment.RoomName = this.roomController.GetById(0).Name;
+                }
+            }
             this.roomController.DeleteById(room.Id);
         }
 

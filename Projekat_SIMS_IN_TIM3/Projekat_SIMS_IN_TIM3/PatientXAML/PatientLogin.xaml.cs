@@ -1,4 +1,4 @@
-﻿using Projekat_SIMS_IN_TIM3.DoctorWindows;
+﻿
 using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Controller;
 using System;
@@ -15,26 +15,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Projekat_SIMS_IN_TIM3.MainWindows
+namespace Projekat_SIMS_IN_TIM3.PatientXAML
 {
     /// <summary>
-    /// Interaction logic for DoctorSignIn.xaml
+    /// Interaction logic for PatientLogin.xaml
     /// </summary>
-    public partial class DoctorSignIn : Window
+    public partial class PatientLogin : Window
     {
         public static string initUsname = "";
         UserLoginController controller = new UserLoginController();
-
-        public DoctorSignIn()
+        public PatientLogin()
         {
             InitializeComponent();
             password.PasswordChar = '*';
-          
         }
+
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-          
+
             /*string Username = username.Text.ToString();
             initUsname = Username;
             string Password = password.Password.ToString();
@@ -42,18 +41,19 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
             UserLogin userLogin = new UserLogin(Username, Password);
             Boolean isValid = controller.ValidLogin(userLogin);
 
-                if (!isValid)
+            if (!isValid)
             {
                 MessageBox.Show("Wrong username or password");
                 username.Text = "";
                 password.Password = "";
-            } else
+            }
+            else
             {
-                MainPage mainPage = new MainPage();
+                UpdateAndDeleteAppointment ud = new UpdateAndDeleteAppointment();
                 this.Close();
-                mainPage.Show();
+                ud.Show();
             }*/
-  
+
         }
     }
 }

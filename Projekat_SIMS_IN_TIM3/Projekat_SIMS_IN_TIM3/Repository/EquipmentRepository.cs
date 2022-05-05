@@ -31,19 +31,20 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             List<Equipment> list = new List<Equipment>();
             for (int i = 0; i < csvLines.Length; i++)
             {
-                if(csvLines[i] == "")
+                if (csvLines[i] == "")
                 {
                     continue;
                 }
                 string[] data = csvLines[i].Split(',');
-                list.Add(new Equipment(
-                    Int32.Parse(data[0]),
-                    data[1],
-                    data[2],
-                    Enum.Parse<EquipmentType>(data[3]),
-                    Int32.Parse(data[4])
-                ));
-                
+                list.Add(
+                            new Equipment(
+                            Int32.Parse(data[0]),
+                            data[1],
+                            data[2],
+                            Enum.Parse<EquipmentType>(data[3]),
+                            Int32.Parse(data[4])
+                            )
+                        );
             }
             return list;
         }
@@ -92,6 +93,19 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                 File.WriteAllLines(@"C:\Users\Ristic\Documents\equipment_future_move.csv", csvLines);
             }
             return list;
+        }
+        public void MoveEquipmentToDefaultRoomAfterDeletingRoom(int roomId)
+        {
+            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\equipment.csv");
+            for (int i = 0; i < csvLines.Length; i++)
+            {
+                string[] data = csvLines[i].Split(',');
+                if(Int32.Parse(data[4]) == roomId)
+                {
+                    csvLines[i] = data[0] + "," + data[1] + "," + data[2] + "," + data[3] + "," + "0";
+                }
+            }
+            File.WriteAllLines(@"C:\Users\Ristic\Documents\equipment.csv", csvLines);
         }
     }
 }
