@@ -59,5 +59,11 @@ namespace Projekat_SIMS_IN_TIM3
             SecretaryPriority secretary_priority = new SecretaryPriority();
             secretary_priority.Show();
         }
+
+        private void secreart_allergen(object sender, RoutedEventArgs e)
+        {
+            SecretaryAllergens secretaryAllergens = new SecretaryAllergens();
+            secretaryAllergens.Show();
+        }
     }
 }
