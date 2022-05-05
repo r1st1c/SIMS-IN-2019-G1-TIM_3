@@ -95,5 +95,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             AddReport addReport = new AddReport();
             addReport.Show();
         }
+
+        public void seeMoreLink(object sender, RoutedEventArgs e)
+        {
+            Anamnesis amamnesis = new Anamnesis();
+            amamnesis.Show();
+        }
     }
 }

@@ -28,6 +28,8 @@
 
 
         </Grid.ColumnDefinitions>
+
+        <Label  Grid.Row="5" Grid.Column="2" FontSize="18" Foreground="Red" Hyperlink.Click="seeMoreLink" FontWeight="Bold" Margin="89,107,13,19">See more</Label>
         <Label Grid.Row="4" Grid.Column="3" Content="{Binding PatientId}" Foreground="White" Grid.ColumnSpan="2" Margin="125,7,157,101" ></Label>
         <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
         <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />

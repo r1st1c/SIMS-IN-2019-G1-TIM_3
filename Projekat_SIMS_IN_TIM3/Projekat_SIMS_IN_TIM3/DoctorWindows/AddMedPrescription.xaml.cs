@@ -101,14 +101,24 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 this.Close();
             }
 
+     
 
+        }
 
+        public void Cancel(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to cancel adding prescription? \n + By canceling it, all previously entered data will disappear!", "Cancel appointment", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Calendar calendar = new Calendar();
+                    calendar.Show();
+                    break;
 
-
-
-            
-            
-
+                case MessageBoxResult.No:
+                    Close();
+                    break;
+            }
         }
     }
 }
