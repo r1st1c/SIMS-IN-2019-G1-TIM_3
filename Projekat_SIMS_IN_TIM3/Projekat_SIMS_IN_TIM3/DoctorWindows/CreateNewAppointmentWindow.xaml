@@ -29,14 +29,14 @@
         <xctk:DateTimePicker   Height="30" Grid.Row="3" x:Name="startTime1" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="338" Margin="202,10,0,0" Grid.ColumnSpan="2" MaxWidth="340"/>
 
         <Label  Grid.Row="0" Content="Patient" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="" Margin="2,18,0,0" Foreground="Black" FontWeight="Bold" FontSize="18" Grid.Column="0"/>
-        <ComboBox  Grid.Row="0" x:Name="patient" MaxWidth="340" Margin="202,18,10,7" MaxHeight="30" 
-                  ItemsSource="{Binding Path=Patients}" SelectedValue="{Binding Path=PatientSelected}" Grid.ColumnSpan="2"/>
+        <ComboBox  Grid.Row="0" x:Name="patientCb" MaxWidth="340" Margin="202,18,10,7" MaxHeight="30" 
+                  ItemsSource="{Binding Path=Patients}"  Grid.ColumnSpan="2"/>
         <Label  Grid.Row="1" Content="AppointmentType" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="1,6,0,0" FontWeight="Bold" Foreground="Black" FontSize="18" Width="171" Grid.Column="0"/>
         <ComboBox Name="apptype" Grid.Row="1" Grid.ColumnSpan="2" MaxWidth="340" Margin="202,10,10,15" Height="30"
                   ItemsSource="{Binding Path= AppTypes}" SelectedValue="{Binding Path=AppTypeSelected}"/>
         <Label  Grid.Row="1" Grid.Column="0" Content="Doctor" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Margin="2,62,0,0" Grid.RowSpan="2" FontSize="18"/>
-        <ComboBox Name="doctor" Grid.Row="2" Grid.ColumnSpan="2"  MaxWidth="340" Margin="202,0,10,10" Height="30"
-                  ItemsSource="{Binding Path=Doctors}" SelectedValue="{Binding Path=DoctorSelected}"/>
+        <ComboBox Name="doctorCb" Grid.Row="2" Grid.ColumnSpan="2"  MaxWidth="340" Margin="202,0,10,10" Height="30"
+                  ItemsSource="{Binding Path=Doctors}" />
         <Label  Grid.Row="3" Grid.Column="0"  Foreground="Black" FontSize="18" Content="StartTime" HorizontalAlignment="Left"  VerticalAlignment="Center" FontWeight="Bold" Margin="1,0,0,0"/>
         <Label  Grid.Row="4" FontSize="18"  Foreground="Black" Content="Duration(in minutes)" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="1,0,0,0" FontWeight="Bold" Width="214" Grid.Column="0"/>
         <TextBox x:Name="duration"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="202,11,10,10" Grid.Row="4" Grid.ColumnSpan="2" Height="30"/>

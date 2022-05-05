@@ -52,6 +52,14 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return doctors.Find(x => x.User.Id == id);
         }
 
+        public int getIdByNameAndSurname(string name, string surname)
+        {
+            readJson();
+            int id = int.MinValue;
+            id = doctors.FindIndex(obj => obj.User.Name == name && obj.User.Surname == surname);
+            return id;
+        }
+
         public bool saveAndUpdate(Doctor doctor)
         {
             doctors.Add(doctor);
@@ -76,7 +84,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
            foreach (Doctor doctor in doctors)
             {
-                string retVal = doctor.User.Name + " " + doctor.User.Surname + ", " + doctor.specializationType;
+                string retVal = doctor.User.Name + " " + doctor.User.Surname + " " + doctor.specializationType;
                 spec.Add(retVal);
             }
                return spec;
