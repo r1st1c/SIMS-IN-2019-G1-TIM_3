@@ -23,6 +23,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     public partial class AddMedPrescription : Window
     {
         PatientController patientController = new PatientController();
+        MedicinePrescriptionController prescriptionController = new MedicinePrescriptionController();
         public ObservableCollection<string> Patients { get; set; }
         private string PatientSelected;
 
@@ -33,10 +34,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         int maxId = 0;
 
         List<Patient> patients = new List<Patient>();
+
         
 
        
-        public AddMedPrescription()
+        public AddMedPrescription(int PatientId)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -80,7 +82,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
-                /*
+                
                 maxId++;
                 var newMedPrescription = new MedicinePrescription(
                     maxId,
@@ -88,9 +90,15 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                     patId,
                     docId,
                     dt,
-                    dur,
+                    TimeSpan.FromMinutes(dur),
                     true,
-                    freq); */
+                    TimeSpan.FromMinutes(freq));
+
+                prescriptionController.create(newMedPrescription);
+
+                MessageBox.Show("You have successfully added new prescription! \n Check patient's medical record to see all prescriptions!", "Added new prescriptions");
+                
+                this.Close();
             }
 
 

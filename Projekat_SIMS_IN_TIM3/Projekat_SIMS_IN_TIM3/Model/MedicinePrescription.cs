@@ -31,14 +31,14 @@ namespace Projekat_SIMS_IN_TIM3.Model
         }
 
         
-        private int Id;
-        private int MedicineId;
-        private int PatientId;
-        private int DoctorId;
-        private DateTime DateAndTime;
-        private TimeSpan DurationOfUse;
-        private bool IsActive;
-        private TimeSpan FrequencyOfUse;
+        public int Id;
+        public int MedicineId;
+        public int PatientId;
+        public int DoctorId;
+        public DateTime DateAndTime;
+        public TimeSpan DurationOfUse;
+        public bool IsActive;
+        public TimeSpan FrequencyOfUse;
 
     }
 }
