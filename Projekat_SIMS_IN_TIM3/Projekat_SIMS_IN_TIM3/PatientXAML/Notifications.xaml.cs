@@ -22,7 +22,8 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
     public partial class Notifications : Window
     {
         public App application { get; set; }
-        public MedicalRecord medRecord { get; set; }
+        public List<MedicinePrescription> prescriptions { get; set; }
+
         // da li medical record ili list<medicine prescription>
         public Notifications()
         {
@@ -31,6 +32,9 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             this.DataContext = this;
 
             application = Application.Current as App;
+            prescriptions = application.medPrescriptionController.getAll();
+
+            /*DataBinding1.ItemsSource = prescriptions;*/
         }
     }
 }
