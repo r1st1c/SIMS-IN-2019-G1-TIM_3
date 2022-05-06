@@ -34,6 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public RoomWindow()
         {
             InitializeComponent();
+            this.roomController.UpdateDisabledFields();
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
             

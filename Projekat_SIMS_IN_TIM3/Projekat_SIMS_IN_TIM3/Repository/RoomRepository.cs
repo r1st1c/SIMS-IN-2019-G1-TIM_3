@@ -102,8 +102,16 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         public bool ScheduleRenovation(int roomId, string start, string end,string description)
         {
             var room = this.GetById(roomId);
-            room.Disabled = 1;
-            this.Update(room);
+            DateTime dateStart = DateTime.ParseExact(start, "dd-MMM-yy", null);
+            DateTime dateEnd = DateTime.ParseExact(start, "dd-MMM-yy", null);
+            dateEnd = dateEnd.AddHours(23);
+            dateEnd = dateEnd.AddMinutes(59);
+            dateEnd = dateEnd.AddSeconds(59);
+            if (DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
+            {
+                room.Disabled = 1;
+                this.Update(room);
+            }
             string fileName = @"C:\Users\Ristic\Documents\room_basic_renovation.csv";
             if (File.Exists(fileName))
             {
@@ -113,6 +121,44 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             }
             Debug.Write("Csv file doesnt exist");
             return false;
+        }
+        public List<RenovationTerm> GetRenovationSchedules()
+        {
+            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_basic_renovation.csv");
+            List<RenovationTerm> list = new List<RenovationTerm>();
+            for (int i = 0; i < csvLines.Length; i++)
+            {
+                if (csvLines[i] == "")
+                {
+                    continue;
+                }
+                string[] data = csvLines[i].Split(',');
+                list.Add(new RenovationTerm(
+                    Int32.Parse(data[0]),
+                    data[1],
+                    data[2]
+                ));
+            }
+            return list;
+        }
+
+        public void DeleteScheduling(RenovationTerm renovationTerm)
+        {
+            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_basic_renovation.csv");
+            for (int i = 0; i < csvLines.Length; i++)
+            {
+                if (csvLines[i] == "")
+                {
+                    continue;
+                }
+                string[] data = csvLines[i].Split(',');
+                if (Int32.Parse(data[0])==renovationTerm.id  &&  renovationTerm.startDate==data[1]  && renovationTerm.endDate == data[2])
+                {
+                    csvLines[i] = "";
+                }
+            }
+            File.WriteAllLines(@"C:\Users\Ristic\Documents\room_basic_renovation.csv", csvLines);
+
         }
 
         public bool Split(int id)
