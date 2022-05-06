@@ -54,7 +54,13 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             WriteToJson();
         }
 
-        
+        public List<MedicinePrescription> getAll()
+        {
+            readJson();
+            return prescriptions;
+        }
+
+
 
     }
 }
