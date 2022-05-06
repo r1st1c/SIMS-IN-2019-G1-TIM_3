@@ -42,7 +42,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                             data[1],
                             data[2],
                             Enum.Parse<EquipmentType>(data[3]),
-                            Int32.Parse(data[4])
+                            Int32.Parse(data[4]),
+                            Int32.Parse(data[5])
                             )
                         );
             }
@@ -52,7 +53,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         {
             string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\equipment.csv");
             Equipment equipment = GetById(equipmentId);
-            csvLines[equipmentId] = equipment.Id + "," + equipment.Equipmentname + "," + equipment.Manufacturer + "," + equipment.Equipmenttype + "," + targetRoomId;
+            csvLines[equipmentId] = equipment.Id + "," + equipment.Equipmentname + "," + equipment.Manufacturer + "," + equipment.Equipmenttype + "," + equipment.Amount + "," + targetRoomId;
             File.WriteAllLines(@"C:\Users\Ristic\Documents\equipment.csv", csvLines);
             return true;
         }
@@ -100,9 +101,10 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             for (int i = 0; i < csvLines.Length; i++)
             {
                 string[] data = csvLines[i].Split(',');
-                if(Int32.Parse(data[4]) == roomId)
+                int csv_equipment_roomid = Int32.Parse(data[5]);
+                if (csv_equipment_roomid == roomId)
                 {
-                    csvLines[i] = data[0] + "," + data[1] + "," + data[2] + "," + data[3] + "," + "0";
+                    csvLines[i] = data[0] + "," + data[1] + "," + data[2] + "," + data[3] + "," + data[4] + "," + "0";
                 }
             }
             File.WriteAllLines(@"C:\Users\Ristic\Documents\equipment.csv", csvLines);

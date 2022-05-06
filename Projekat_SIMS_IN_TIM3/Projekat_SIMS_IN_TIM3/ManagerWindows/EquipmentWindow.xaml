@@ -25,6 +25,7 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Equipmentname}" Width="*"/>
                 <DataGridTextColumn Header="Manufacturer" Binding="{Binding Manufacturer}" Width="*"/>
                 <DataGridTextColumn Header="Type" Binding="{Binding Equipmenttype}" Width="*"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"/>
                 <DataGridTextColumn Header="Room" Binding="{Binding RoomName}" Width="*"/>
                 <DataGridTemplateColumn Header="Move Equipment" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
