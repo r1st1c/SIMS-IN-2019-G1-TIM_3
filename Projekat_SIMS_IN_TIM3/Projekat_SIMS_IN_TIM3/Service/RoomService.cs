@@ -126,6 +126,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 }
             }
         }
+        public List<RenovationTerm> GetRenovationSchedules()
+        {
+            return this.roomRepository.GetRenovationSchedules();
+        }
 
         public bool Split(int id)
         {
