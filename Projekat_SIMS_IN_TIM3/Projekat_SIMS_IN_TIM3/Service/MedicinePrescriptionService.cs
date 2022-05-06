@@ -21,5 +21,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             repository.update(mp);
         }
+
+        public List<MedicinePrescription> getAll()
+        {
+            return this.repository.getAll();
+        }
     }
 }

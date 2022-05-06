@@ -20,5 +20,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             service.update(mp);
         }
+
+        public List<MedicinePrescription> getAll()
+        {
+            return this.service.getAll();
+        }
     }
 }
