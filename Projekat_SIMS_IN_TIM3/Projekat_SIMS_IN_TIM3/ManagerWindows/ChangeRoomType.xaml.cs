@@ -90,7 +90,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 room.Description = NewDescription;
                 room.RoomType = RoomTypeSelected;
             }
-                 
+            foreach (var equipment in EquipmentWindow.Equipment_All)
+            {
+                if (toUpdate.Id == equipment.RoomId)
+                {
+                    equipment.RoomName = NewRoomName;
+                }
+            }     
             Close();
 
         }
