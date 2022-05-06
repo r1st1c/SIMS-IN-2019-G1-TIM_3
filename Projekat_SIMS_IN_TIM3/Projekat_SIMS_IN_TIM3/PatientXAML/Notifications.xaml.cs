@@ -23,18 +23,66 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
     {
         public App application { get; set; }
         public List<MedicinePrescription> prescriptions { get; set; }
-
-        // da li medical record ili list<medicine prescription>
-        public Notifications()
+        public Patient patient { get; set; }
+        public List<Notification> notifications { get; set; }
+        public Notifications(String Username)
         {
             InitializeComponent();
 
             this.DataContext = this;
+            
 
             application = Application.Current as App;
-            //prescriptions = application.medPrescriptionController.getAll();
 
+            prescriptions = application.medPrescriptionController.getAll();
+            List<Patient> patients = application.patientController.GetAll();
+
+            Patient patient = null;
+
+            foreach (Patient pat in patients)
+            {
+                if(pat.User.Username == Username)
+                {
+                    patient = pat;
+                    break;
+                }
+            }
+
+
+            DateTime currTime = DateTime.Now;
+
+            
+            
+            foreach(MedicinePrescription prescription in prescriptions)
+            {
+                if(prescription.PatientId==patient.User.Id)
+                {
+                    //logika za obavestenja
+                    int startHour = 8;
+                    TimeSpan frequency = prescription.FrequencyOfUse;
+                    int hr = frequency.Hours;
+                    while(startHour<24)
+                    {
+                        
+                    }
+                }
+            }
             /*DataBinding1.ItemsSource = prescriptions;*/
+
+            /*public int Id;
+            public int MedicineId;
+            public int PatientId;
+            public int DoctorId;
+            public DateTime DateAndTime;
+            public TimeSpan DurationOfUse;
+            public bool IsActive;
+            public TimeSpan FrequencyOfUse;*/
+
+            /*
+            public int Id { get; set; }
+            public String MedicineName { get; set; }
+            public DateTime Time { get; set; }
+             */
         }
     }
 }
