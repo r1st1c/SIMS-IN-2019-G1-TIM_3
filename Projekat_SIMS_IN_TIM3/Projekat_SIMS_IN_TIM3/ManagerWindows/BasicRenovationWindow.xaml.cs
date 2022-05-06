@@ -66,9 +66,14 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             RenovationTerm rt = (RenovationTerm)((Button)e.Source).DataContext;
             this.roomController.ScheduleRenovation(Room.Id, rt.StartDate, rt.EndDate, Description);
-            foreach(var room in RoomWindow.Rooms)
+            DateTime dateStart = DateTime.ParseExact(rt.StartDate, "dd-MMM-yy", null);
+            DateTime dateEnd = DateTime.ParseExact(rt.EndDate, "dd-MMM-yy", null);
+            dateEnd = dateEnd.AddHours(23);
+            dateEnd = dateEnd.AddMinutes(59);
+            dateEnd = dateEnd.AddSeconds(59);
+            foreach (var room in RoomWindow.Rooms)
             {
-                if (room.Id == Room.Id)
+                if (room.Id == Room.Id && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
                 {
                     room.DisabledTxt = "Yes";
                 }

@@ -33,6 +33,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             
 
             application = Application.Current as App;
+
             prescriptions = application.medPrescriptionController.getAll();
             List<Patient> patients = application.patientController.GetAll();
 
@@ -46,6 +47,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
                     break;
                 }
             }
+
 
             DateTime currTime = DateTime.Now;
 
