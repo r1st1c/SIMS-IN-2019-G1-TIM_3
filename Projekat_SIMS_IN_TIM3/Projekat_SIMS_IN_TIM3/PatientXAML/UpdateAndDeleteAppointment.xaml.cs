@@ -36,10 +36,10 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             this.DataContext = this;
 
             application = Application.Current as App;
-            appointments = application.appointmentController.GetAll();
+            
             
 
-            var appsNew = application.appointmentController.GetAll();
+            var appsNew = application.appointmentController.GetByPatientsId(1);
             
          
             DataBinding1.ItemsSource = appsNew;
@@ -47,7 +47,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
         public void Show(object sender, RoutedEventArgs e)
         {
-            var appsNew = application.appointmentController.GetAll();
+            var appsNew = application.appointmentController.GetByPatientsId(1);
             DataBinding1.ItemsSource = appsNew;
         }
 
@@ -100,7 +100,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
                 }
                 else
                 {
-                    if (diff.TotalDays < 1 && initialDiff.TotalDays <= 4)
+                    if (diff.TotalDays <= 1 && initialDiff.TotalDays <= 4)
                     {
                         MessageBox.Show("Too late to update appointment");
                     }
