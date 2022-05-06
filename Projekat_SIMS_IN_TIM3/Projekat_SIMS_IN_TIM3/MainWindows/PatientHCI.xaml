@@ -28,7 +28,7 @@
                 </DataTemplate>
             </Button.ContentTemplate>
         </Button>
-        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Room_Click">
+        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="75">
@@ -37,7 +37,7 @@
                 </DataTemplate>
             </Button.ContentTemplate>
         </Button>
-        <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Equipment_Click">
+        <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="75">
@@ -55,7 +55,7 @@
                 </DataTemplate>
             </Button.ContentTemplate>
         </Button>
-        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click">
+        <Button Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="75">
