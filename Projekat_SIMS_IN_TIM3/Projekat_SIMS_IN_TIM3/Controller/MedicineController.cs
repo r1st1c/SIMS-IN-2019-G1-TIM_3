@@ -14,6 +14,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 
         public List<Medicine> getAll() { return medicineService.getAll(); }
 
+        public Medicine GetById(int Id) { return medicineService.GetById(Id); }
         public void createMedicine(Medicine medicine) { medicineService.createMedicine(medicine); }
 
         public void updateMedicine(Medicine medicine) { medicineService.updateMedicine(medicine); }

@@ -48,7 +48,11 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return medicines;
         }
 
-
+        public Medicine GetById(int id)
+        {
+            readJson();
+            return medicines.Find(obj => obj.Id == id);
+        }
         public void createMedicine(Medicine medicine)
         {
             medicines.Add(medicine);
