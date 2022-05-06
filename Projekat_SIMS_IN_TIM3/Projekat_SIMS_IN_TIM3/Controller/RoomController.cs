@@ -50,6 +50,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.ScheduleRenovation(roomId, start, end, description);
         }
 
+        public void UpdateDisabledFields()
+        {
+            this.roomService.UpdateDisabledFields();
+        }
+
         public bool Split(int id)
         {
             return this.roomService.Split(id);

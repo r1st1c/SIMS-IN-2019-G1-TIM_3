@@ -96,6 +96,37 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.ScheduleRenovation(roomId, start, end, description);
         }
 
+        public void UpdateDisabledFields()
+        {
+            List<RenovationTerm> renovationTerms = this.roomRepository.GetRenovationSchedules();
+            List<Room> roomList = this.roomRepository.GetAll();
+            foreach (Room room in roomList)
+            {
+                foreach(RenovationTerm renovationTerm in renovationTerms)
+                {
+                    if (room.Id == renovationTerm.Id)
+                    {
+                        DateTime dateStart = DateTime.ParseExact(renovationTerm.startDate, "dd-MMM-yy", null);
+                        DateTime dateEnd = DateTime.ParseExact(renovationTerm.endDate, "dd-MMM-yy", null);
+                        dateEnd = dateEnd.AddHours(23);
+                        dateEnd = dateEnd.AddMinutes(59);
+                        dateEnd = dateEnd.AddSeconds(59);
+                        if (DateTime.Now >= dateStart && DateTime.Now <= dateEnd && room.Disabled==0)
+                        {
+                            room.Disabled = 1;
+                            this.roomRepository.Update(room);
+                        }
+                        if (DateTime.Now > dateEnd)
+                        {
+                            room.Disabled = 0;
+                            this.roomRepository.Update(room);
+                            this.roomRepository.DeleteScheduling(renovationTerm);
+                        }
+                    }
+                }
+            }
+        }
+
         public bool Split(int id)
         {
             return this.roomRepository.Split(id);
