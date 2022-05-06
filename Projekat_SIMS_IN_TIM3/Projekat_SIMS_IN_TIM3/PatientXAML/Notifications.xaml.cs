@@ -49,24 +49,30 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             }
 
 
-            DateTime currTime = DateTime.Now;
+            int currTime = DateTime.Now.Hour;
 
-            
+            int id = 0;
             
             foreach(MedicinePrescription prescription in prescriptions)
             {
                 if(prescription.PatientId==patient.User.Id)
                 {
                     //logika za obavestenja
+                    
                     int startHour = 8;
                     TimeSpan frequency = prescription.FrequencyOfUse;
                     int hr = frequency.Hours;
                     while(startHour<24)
                     {
-                        
+                        if(startHour-currTime<2)
+                        {
+                            Medicine med = prescription.MedicineId;
+                        }
                     }
                 }
             }
+
+
             /*DataBinding1.ItemsSource = prescriptions;*/
 
             /*public int Id;
