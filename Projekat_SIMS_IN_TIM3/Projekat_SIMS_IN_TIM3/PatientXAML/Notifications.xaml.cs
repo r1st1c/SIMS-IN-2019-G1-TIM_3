@@ -66,7 +66,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
                     {
                         if(startHour-currTime<2)
                         {
-                            Medicine med = prescription.MedicineId;
+                            Medicine med = application.medicineController.GetById(prescription.MedicineId);
                         }
                     }
                 }
