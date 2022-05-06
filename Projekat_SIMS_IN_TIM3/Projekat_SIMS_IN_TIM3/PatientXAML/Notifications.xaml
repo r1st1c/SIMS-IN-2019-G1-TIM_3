@@ -14,14 +14,11 @@
                         <TextBlock Text="Id: "/>
                         <TextBlock Text="{Binding Id}" FontWeight="Bold"/>
                         <TextBlock Text="   "/>
-                        <TextBlock Text="StartTime: "/>
-                        <TextBlock Text="{Binding StartTime}" FontWeight="Bold"/>
+                        <TextBlock Text="Name: "/>
+                        <TextBlock Text="{Binding MedicineName}" FontWeight="Bold"/>
                         <TextBlock Text="   "/>
-                        <TextBlock Text="Duration: "/>
-                        <TextBlock Text="{Binding DurationInMinutes}" FontWeight="Bold"/>
-                        <TextBlock Text="   "/>
-                        <TextBlock Text="DoctorId: "/>
-                        <TextBlock Text="{Binding DoctorId}" FontWeight="Bold"/>
+                        <TextBlock Text="Time: "/>
+                        <TextBlock Text="{Binding Time}" FontWeight="Bold"/>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

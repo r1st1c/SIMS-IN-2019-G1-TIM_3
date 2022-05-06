@@ -1,6 +1,7 @@
 ﻿using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.PatientXAML;
+using Projekat_SIMS_IN_TIM3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,13 @@ namespace Projekat_SIMS_IN_TIM3
         {
             Notifications notifications = new Notifications(Username);
             notifications.Show();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

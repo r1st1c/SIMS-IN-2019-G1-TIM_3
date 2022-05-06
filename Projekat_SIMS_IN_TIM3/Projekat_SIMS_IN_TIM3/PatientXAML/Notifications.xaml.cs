@@ -52,7 +52,8 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             int currTime = DateTime.Now.Hour;
 
             int id = 0;
-            
+            notifications = new List<Notification>();
+
             foreach(MedicinePrescription prescription in prescriptions)
             {
                 if(prescription.PatientId==patient.User.Id)
@@ -61,19 +62,29 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
                     
                     int startHour = 8;
                     TimeSpan frequency = prescription.FrequencyOfUse;
-                    int hr = frequency.Hours;
-                    while(startHour<24)
+                    
+                    int hr = frequency.Days;
+
+                  
+                    while(startHour<24 && hr!=0)
                     {
-                        if(startHour-currTime<2)
+                        if(startHour-currTime<=2 && startHour-currTime>0)
                         {
                             Medicine med = application.medicineController.GetById(prescription.MedicineId);
+                            string medName = med.Name;
+                            TimeSpan ts = new TimeSpan(startHour, 0, 0);
+                            Notification notif = new Notification(id++, medName, ts);
+                            notifications.Add(notif);
+                            
                         }
+                        startHour += hr;
+                        
                     }
                 }
             }
 
 
-            /*DataBinding1.ItemsSource = prescriptions;*/
+            DataBinding1.ItemsSource = notifications;
 
             /*public int Id;
             public int MedicineId;

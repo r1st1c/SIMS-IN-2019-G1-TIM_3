@@ -13,7 +13,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
             // TODO: implement
         }
 
-        public Notification(int Id, String MedicineName, DateTime Time)
+        public Notification(int Id, String MedicineName, TimeSpan Time)
         {
             this.Id = Id;
             this.MedicineName = MedicineName;
@@ -29,6 +29,6 @@ namespace Projekat_SIMS_IN_TIM3.Model
 
         public int Id { get; set; }
         public String MedicineName { get; set; }
-        public DateTime Time { get; set; }
+        public TimeSpan Time { get; set; }
     }
 }
