@@ -32,7 +32,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             this.DataContext = this;
 
             application = Application.Current as App;
-            prescriptions = application.medPrescriptionController.getAll();
+            //prescriptions = application.medPrescriptionController.getAll();
 
             /*DataBinding1.ItemsSource = prescriptions;*/
         }
