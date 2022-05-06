@@ -1,10 +1,10 @@
 [
   {
     "User": {
-      "Id": 0,
+      "Id": 1,
       "Jmbg": "1234567891234",
-      "Username": "usname1",
-      "Password": "dasda",
+      "Username": "pacijent",
+      "Password": "123",
       "Name": "Marko",
       "Surname": "Markovic",
       "Email": "m.markovic90@gmail.com",
