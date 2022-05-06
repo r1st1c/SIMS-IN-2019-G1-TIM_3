@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="PatientMainWindow" Height="450" Width="800">
     <Grid RenderTransformOrigin="1.069,0.547">
-        <Button Content="Create" HorizontalAlignment="Left" Margin="93,79,0,0" VerticalAlignment="Top" Click="Button_Click" Height="87" Width="89"/>
+        <Button Content="Create" HorizontalAlignment="Left" Margin="64,121,0,0" VerticalAlignment="Top" Click="Button_Click" Height="87" Width="89"/>
         <Button Content="Edit/Delete" HorizontalAlignment="Left" Margin="366,132,0,0" VerticalAlignment="Top" Height="85" Width="102" Click="Button_Click_1"/>
-        <Button Content="PriorityAppointment" HorizontalAlignment="Left" Height="89" Margin="138,259,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click_2"/>
+        <Button Content="PriorityAppointment" HorizontalAlignment="Left" Height="89" Margin="213,132,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click_2" RenderTransformOrigin="1.595,0.524"/>
+        <Button Content="Notifications" HorizontalAlignment="Left" Margin="525,130,0,0" VerticalAlignment="Top" Height="79" Width="123" Click="Button_Click_3"/>
+        <Button Content="Log out" HorizontalAlignment="Left" Margin="586,316,0,0" VerticalAlignment="Top" Height="51" Width="99" Click="Button_Click_4"/>
     </Grid>
 </Window>

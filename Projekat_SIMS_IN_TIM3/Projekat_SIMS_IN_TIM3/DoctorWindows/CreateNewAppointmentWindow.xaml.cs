@@ -28,11 +28,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         DoctorController doctorController = new DoctorController();
         public ObservableCollection<string> Doctors { get; set; }
-        private Doctor DoctorSelected;
+        private string DoctorSelected;
 
         PatientController patientController = new PatientController();
         public ObservableCollection<string> Patients { get; set; }
-        private Patient PatientSelected;
+        private string PatientSelected;
 
         private AppointmentType AppTypeSelected;
 
@@ -57,13 +57,24 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         
         public void Create(object sender, RoutedEventArgs e)
           {
-                    lastId++;
+                    
             // patient, apptype, doctor, startTime1, duration
             DateTime dt = (DateTime)startTime1.Value;
             AppointmentType at = AppTypeSelected;
-            
-            int patientId = PatientSelected.User.Id;
-            int doctorsId = DoctorSelected.User.Id;
+
+            string pat = patientCb.SelectedItem.ToString();
+            string[]? strings = pat.Split(" ");
+            string patname = strings[0];
+            string patsurname = strings[1];
+
+            string doc = doctorCb.SelectedItem.ToString();
+            string[]? strings1 = doc.Split(" ");
+            string docname = strings1[0];
+            string docsurname = strings1[1];
+            string docspec = strings1[2];
+
+            int patientId = patientController.getIdByNameAndSurname(patname, patsurname);
+            int doctorsId = doctorController.getIdByNameAndSurname(docname, docsurname);
             int dur = Convert.ToInt32(duration.Text);
 
             if(dt < DateTime.Now)
@@ -75,6 +86,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             if(dur < 0)
             {
                 MessageBox.Show("Duration cannot be negative number");
+                return;
             }
 
             if(dt == null || at == null || dur == null || patientId == null || doctorsId == null )
@@ -83,6 +95,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
+                lastId++;
                 var newApp = new Appointment(
                         lastId,
                         dt,
@@ -100,6 +113,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                         calendar.Show();
                         break;
                 }
+                this.Close();
             }
            
                 }

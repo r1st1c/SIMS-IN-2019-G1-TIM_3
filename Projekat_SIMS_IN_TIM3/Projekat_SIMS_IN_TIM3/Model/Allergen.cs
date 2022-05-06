@@ -19,14 +19,26 @@ namespace Projekat_SIMS_IN_TIM3.Model
             this.Details = Details;
         }
 
+        public Allergen(int Id,int patietId, String Name, String Details)
+        {
+            this.Id = Id;
+            this.patietId = patietId;
+            this.Name = Name;
+            this.Details = Details;
+
+        }
+
         ~Allergen()
         {
             // TODO: implement
         }
 
-        private int Id { get; set; }
-        private String Name { get; set; }
-        private String Details { get; set; }
+        public int Id { get; set; }
+
+        public int patietId { get; set; }
+
+        public String Name { get; set; }
+        public String Details { get; set; }
 
     }
 }

@@ -88,9 +88,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\medReport.json">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Update="ManagerWindows\EquipmentWindow.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="PatientHCIWindows\" />
   </ItemGroup>
 
 </Project>

@@ -42,6 +42,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return patientService.getName(id);
         }
 
+        public int getIdByNameAndSurname(string name, string surname)
+        {
+            return patientService.getIdByNameAndSurname(name, surname);
+        }
+
         public string getSurname(int id) { return patientService.getSurname(id); }
         public DateTime getDateOfBirth(int id) { return patientService.getDateOfBirth(id); }
         public string getJMBG(int id) { return patientService.getJMBG(id); }
