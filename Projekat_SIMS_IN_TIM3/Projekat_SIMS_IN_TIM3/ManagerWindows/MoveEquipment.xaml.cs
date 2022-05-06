@@ -2,6 +2,7 @@
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,7 +46,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Date must be picked!");
                 return;
             }
-            if (RoomNameSelected==this.equipmentController.GetById(equipmentId).RoomName)
+            if (this.roomController.GetByName(RoomNameSelected).Id == this.equipmentController.GetById(equipmentId).RoomId)
             {
                 MessageBox.Show("Equipment already at selected room!");
                 return;
