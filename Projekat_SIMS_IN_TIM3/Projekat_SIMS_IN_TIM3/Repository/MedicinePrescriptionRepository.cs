@@ -17,6 +17,17 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public MedicinePrescriptionRepository() { readJson();  }
 
+
+        public int getNextId()
+        {
+            int lastId = int.MinValue;
+            readJson();
+            foreach (MedicinePrescription prescription in prescriptions)
+            {
+                lastId = prescriptions.Last().Id;
+            }
+            return lastId;
+        }
         public void readJson()
         {
             if (!File.Exists(fileLocation))
@@ -54,7 +65,30 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             WriteToJson();
         }
 
-        
+        public List<MedicinePrescription> getAll()
+        {
+            readJson();
+            return prescriptions;
+        }
 
+        public void delete(int pId)
+        {
+            readJson();
+            int index = prescriptions.FindIndex(obj => obj.Id == pId);
+            prescriptions.RemoveAt(index);
+            WriteToJson();
+        }
+
+        public List<MedicinePrescription> getAllById(int id)
+        {
+            readJson();
+            return prescriptions.FindAll(obj => obj.PatientId == id);
+        }
+
+        public MedicinePrescription getById(int id)
+        {
+            readJson();
+            return prescriptions.Find(obj => obj.Id == id);
+        }
     }
 }

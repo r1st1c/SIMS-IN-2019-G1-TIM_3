@@ -10,6 +10,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class AppointmentController
     {
+        public int getNextId()
+        {
+            return appointmentService.getNextId();
+        }
+
         public void CreateAppointment(Model.Appointment appointment)
         {
             this.appointmentService.CreateAppointment(appointment);

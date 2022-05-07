@@ -18,9 +18,9 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for AddReport.xaml
+    /// Interaction logic for EditReport.xaml
     /// </summary>
-    public partial class AddReport : Window
+    public partial class EditReport : Window
     {
         public ObservableCollection<AppointmentType> AppTypes { get; set; }
         private AppointmentType AppTypeSelected;
@@ -28,19 +28,21 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         ReportController reportController = new ReportController();
         PatientController patientController = new PatientController();
         public ObservableCollection<string> Patients { get; set; }
-
-
-        public AddReport()
+        public int SelectedReportId { get; set; }
+        public EditReport(int editId)
         {
             InitializeComponent();
             this.DataContext = this;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
             AppTypes = new ObservableCollection<AppointmentType>(Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList());
+            SelectedReportId = editId;
         }
 
-        public void createReport(object sender, RoutedEventArgs e)
+        public void editReport(object sender, RoutedEventArgs e)
         {
-            // patientCb, startTime1, appTypeCb, perceived, conclusion
+            Report newReport = this.reportController.getById(SelectedReportId);
+
+
             DateTime dt = (DateTime)startTime1.Value;
             AppointmentType at = AppTypeSelected;
             string pc = perceived.Text;
@@ -57,29 +59,36 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             }
 
-            if(dt == null || at == null || pc == "" || cl == "" || patId == null )
+            if (dt == null || at == null || pc == "" || cl == "" || patId == null)
             {
                 MessageBox.Show("All fields are necessary!");
                 return;
-            } else
-            {
-                lastId = reportController.getNextId();
-                lastId++;
-                var newReport = new Report(
-                    lastId,
-                    patId,
-                    0,
-                    at,
-                    dt,
-                    pc,
-                    cl
-                    );
-
-                reportController.create(newReport);
-                MessageBox.Show("You have successfully added new report! \n Check patient's medical record to see all medical reports!", "Added medical report");
-                this.Close();
             }
+            
+            newReport.DateAndTime = dt;
+            newReport.PerceivedDifficulties = pc;
+            newReport.GeneralConclusion = cl;
+            newReport.PatientId = patId;
+            newReport.DoctorId = 0;
+            newReport.Type = at;
 
+            List<Report> reportList = Anamnesis.Reports.ToList();
+
+                foreach(Report report in reportList.Where(x => x.Id == newReport.Id))
+            {
+                report.DoctorId = 0;
+                report.PatientId = patId;
+                report.DateAndTime = dt;
+                report.PerceivedDifficulties = pc;
+                report.GeneralConclusion = cl;
+                report.Type = at;
+            }
+            
+                
+                reportController.update(newReport);
+                MessageBox.Show("You have successfully edited report! \n Check patient's medical record to see all medical reports!", "Edited medical report");
+                Close();
+            
         }
     }
 }

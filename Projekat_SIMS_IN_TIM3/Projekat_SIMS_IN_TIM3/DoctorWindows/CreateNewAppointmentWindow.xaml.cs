@@ -26,6 +26,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         List<Appointment> appointments = new List<Appointment>();
         private Appointment chosen;
 
+        AppointmentController appointmentController = new AppointmentController();
         DoctorController doctorController = new DoctorController();
         public ObservableCollection<string> Doctors { get; set; }
         private string DoctorSelected;
@@ -41,7 +42,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         //private Room RoomSelected;
         public ObservableCollection<AppointmentType> AppTypes { get; set; }
 
-        int lastId = 0;
+        int lastId = int.MinValue;
         public CreateNewAppointmentWindow()
         {
             InitializeComponent();
@@ -95,7 +96,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
-                lastId++;
+                lastId = appointmentController.getNextId(); 
                 var newApp = new Appointment(
                         lastId,
                         dt,
