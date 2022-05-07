@@ -1,4 +1,4 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Service;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,9 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 
         public List<MedicinePrescription> getAll()
         {
-            return service.getAll();
+
+             return this.service.getAll();
+         
         }
 
         public void delete(int rId)
@@ -43,6 +45,8 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         public MedicinePrescription getById(int id)
         {
             return service.getById(id);
+
+          
         }
     }
 }

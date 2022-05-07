@@ -2,6 +2,7 @@
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,12 +46,30 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Date must be picked!");
                 return;
             }
-            if (RoomNameSelected==this.equipmentController.GetById(equipmentId).RoomName)
+            if (this.roomController.GetByName(RoomNameSelected).Id == this.equipmentController.GetById(equipmentId).RoomId)
             {
                 MessageBox.Show("Equipment already at selected room!");
                 return;
             }
-            int targetRoomId = this.roomController.GetByName(RoomNameSelected).Id;
+            Room targetRoom = this.roomController.GetByName(RoomNameSelected);
+            int targetRoomId = targetRoom.Id;
+            List<RenovationTerm> renovationTerms = this.roomController.GetRenovationSchedules();
+            foreach(RenovationTerm renovationTerm in renovationTerms)
+            {
+                if(renovationTerm.Id == targetRoomId)
+                {
+                    DateTime dateStart = DateTime.ParseExact(renovationTerm.startDate, "dd-MMM-yy", null);
+                    DateTime dateEnd = DateTime.ParseExact(renovationTerm.endDate, "dd-MMM-yy", null);
+                    dateEnd = dateEnd.AddHours(23);
+                    dateEnd = dateEnd.AddMinutes(59);
+                    dateEnd = dateEnd.AddSeconds(59);
+                    if (DateTime.Parse(PickedDate.Text)>= dateStart && DateTime.Parse(PickedDate.Text) <= dateEnd)
+                    {
+                        MessageBox.Show("Cannot move to target room because it is under renovation at that time");
+                        return;
+                    }
+                }
+            }
             var (toRefresh, toClose) = this.equipmentController.Move(equipmentId, targetRoomId, DateTime.Parse(PickedDate.Text));
 
             if (toRefresh)

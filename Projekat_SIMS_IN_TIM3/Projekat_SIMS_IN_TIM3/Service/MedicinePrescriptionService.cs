@@ -27,7 +27,8 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public List<MedicinePrescription> getAll()
         {
-            return repository.getAll();
+
+            return this.repository.getAll();
         }
 
         public void delete(int rId)
@@ -43,6 +44,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         public MedicinePrescription getById(int id)
         {
             return repository.getById(id);
+
         }
     }
 }

@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="Notifications" Height="450" Width="800">
     <Grid>
-        
+        <ListView x:Name="DataBinding1" Margin="10,61,29,153">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="Id: "/>
+                        <TextBlock Text="{Binding Id}" FontWeight="Bold"/>
+                        <TextBlock Text="   "/>
+                        <TextBlock Text="Name: "/>
+                        <TextBlock Text="{Binding MedicineName}" FontWeight="Bold"/>
+                        <TextBlock Text="   "/>
+                        <TextBlock Text="Time: "/>
+                        <TextBlock Text="{Binding Time}" FontWeight="Bold"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>

@@ -14,6 +14,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public List<Medicine> getAll() { return medicineRepository.getAll();  }
 
+        public Medicine GetById(int Id) { return medicineRepository.GetById(Id); }
         public void createMedicine(Medicine medicine) { medicineRepository.createMedicine(medicine); }
 
         public void updateMedicine(Medicine medicine) { medicineRepository.updateMedicine(medicine); }
