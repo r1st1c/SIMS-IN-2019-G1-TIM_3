@@ -28,6 +28,7 @@ namespace Projekat_SIMS_IN_TIM3
 
         public static string initUsname = "";
         UserLoginController controller = new UserLoginController();
+        DoctorController doctorController = new DoctorController();
 
         public MainWindow()
         {
@@ -61,6 +62,7 @@ namespace Projekat_SIMS_IN_TIM3
                 }
                 if (type == 1)
                 {
+                    
                     MainPage doctorMainWindow = new MainPage();
                     doctorMainWindow.Show();
                 }

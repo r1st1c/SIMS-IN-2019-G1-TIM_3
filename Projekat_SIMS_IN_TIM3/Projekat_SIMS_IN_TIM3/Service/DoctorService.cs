@@ -26,6 +26,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return doctorRepository.getIdByNameAndSurname(name, surname);
         }
 
+        public int getIdByUsername(string usname)
+        {
+            return doctorRepository.getIdByUsername(usname);
+        }
+
         public bool saveAndUpdate(Doctor doctor)
         {
             return doctorRepository.saveAndUpdate(doctor);

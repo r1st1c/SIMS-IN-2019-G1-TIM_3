@@ -40,14 +40,10 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             Email.Content = pc.getEmail(PatientId);
             TelephoneNumber.Content = pc.getTelNumber(PatientId);
             
-      
         }
 
-        /*private void addMedPrescription(object sender, RoutedEventArgs e)
-        {
-            
-        }*/
 
+      
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
@@ -103,8 +99,18 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         public void seeMoreLink(object sender, RoutedEventArgs e)
         {
-            Anamnesis amamnesis = new Anamnesis();
+            int id = (int)labelPatientId.Content;
+            Anamnesis amamnesis = new Anamnesis(id);
             amamnesis.Show();
         }
+
+        public void presc(object sender, RoutedEventArgs e)
+        {
+            int id = (int)labelPatientId.Content;
+            anamnesisPrescriptions apr = new anamnesisPrescriptions(id);
+            apr.Show();
+        }
+
+        
     }
 }

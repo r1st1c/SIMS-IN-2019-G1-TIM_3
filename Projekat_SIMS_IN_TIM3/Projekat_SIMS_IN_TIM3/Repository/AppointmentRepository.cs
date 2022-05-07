@@ -19,6 +19,20 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             ReadJson();
         }
 
+        public int getNextId()
+        {
+            int lastId = 0;
+            ReadJson();
+            foreach(Appointment appointment in appointments)
+            {
+                lastId = appointments.Last().Id;
+            }
+            
+            
+
+            return lastId;
+        }
+
         public void ReadJson()
         {
             if (!File.Exists(fileLocation))

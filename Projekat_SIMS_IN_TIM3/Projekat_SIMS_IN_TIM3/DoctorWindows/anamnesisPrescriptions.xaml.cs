@@ -18,44 +18,38 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for Anamnesis.xaml
+    /// Interaction logic for anamnesisPrescriptions.xaml
     /// </summary>
-    public partial class Anamnesis : Window
+    public partial class anamnesisPrescriptions : Window
     {
-        ReportController reportController = new ReportController();
-        public static ObservableCollection<Report> Reports { get; set;  }
-
-       
+        MedicinePrescriptionController pc = new MedicinePrescriptionController();
         public int PatientId { get; set; }
-        public Anamnesis(int id)
+        public static ObservableCollection<MedicinePrescription> Prescriptions { get; set; }
+        public anamnesisPrescriptions(int id)
         {
             InitializeComponent();
             this.DataContext = this;
             PatientId = id;
-            Reports = new ObservableCollection<Report>(reportController.getAllById(PatientId));
-           
-        }
-
-        public void editReport(object sender, RoutedEventArgs e)
-        {
-            Report report = (Report)((Button)e.Source).DataContext;
-            int editid = report.Id;
-            EditReport editReport = new EditReport(editid);
-            editReport.Show();
-            
-        }
-
-        public void deleteReport(object sender, RoutedEventArgs e)
-        {
-            Report report = (Report)((Button)e.Source).DataContext;
-            Reports.Remove(report);
-            this.reportController.delete(report.Id);
-            
-        }
-
+            Prescriptions = new ObservableCollection<MedicinePrescription>(pc.getAllById(PatientId));
         
+        }
 
-    
+        public void editPre(object sender, RoutedEventArgs e)
+        {
+            MedicinePrescription prescription = (MedicinePrescription)((Button)e.Source).DataContext;
+            int editId = prescription.Id;
+            EditPrescription editPrescription = new EditPrescription(editId);
+            editPrescription.Show();
+
+        }
+
+        public void deletePre(object sender, RoutedEventArgs e)
+        {
+            MedicinePrescription mp = (MedicinePrescription)((Button)e.Source).DataContext;
+            Prescriptions.Remove(mp);
+            this.pc.delete(mp.Id);
+        }
+
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
@@ -63,12 +57,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.Close();
         }
 
-        private void createNewApp(object sender, RoutedEventArgs e)
-        {
-            CreateNewAppointmentWindow c = new CreateNewAppointmentWindow();
-            c.Show();
-            this.Close();
-        }
+      
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
             Calendar calendar = new Calendar();
@@ -103,6 +92,5 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             createAbsenceReq.Show();
             this.Close();
         }
-
     }
 }

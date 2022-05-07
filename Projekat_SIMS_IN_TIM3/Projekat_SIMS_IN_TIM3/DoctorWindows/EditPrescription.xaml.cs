@@ -1,9 +1,8 @@
-using Projekat_SIMS_IN_TIM3.Controller;
+﻿using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +18,10 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for AddMedPrescription.xaml
+    /// Interaction logic for EditPrescription.xaml
     /// </summary>
-    public partial class AddMedPrescription : Window
+    public partial class EditPrescription : Window
     {
-
         PatientController patientController = new PatientController();
         MedicinePrescriptionController prescriptionController = new MedicinePrescriptionController();
         public ObservableCollection<string> Patients { get; set; }
@@ -34,22 +32,22 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         private string MedicineSelected;
 
         int maxId = int.MinValue;
+        public int SelectedPresId { get; set; }
 
         List<Patient> patients = new List<Patient>();
-
-      
-        public AddMedPrescription(int PatientId)
+        public EditPrescription(int editId)
         {
             InitializeComponent();
             this.DataContext = this;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
             Medicines = new ObservableCollection<string>(medicineController.getAllVerified());
-
+            SelectedPresId = editId;
             patients = patientController.GetAll();
         }
 
         public void Create(object sender, RoutedEventArgs e)
         {
+            MedicinePrescription newPrescription = this.prescriptionController.getById(SelectedPresId);
             
             DateTime dt = (DateTime)startTime1.Value;
             int dur = Convert.ToInt32(duration.Text);
@@ -65,7 +63,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             string medName = medicinesCb.SelectedItem.ToString();
             int medId = medicineController.getIdByName(medName);
 
-            if(dt < DateTime.Now)
+            if (dt < DateTime.Now)
             {
                 MessageBox.Show("Wrong date and time! Enter new values for it!");
                 return;
@@ -76,50 +74,40 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             }
 
-            if(dt == null || dur == null || freq == null || patId == null || docId == null || medId == null)
+            if (dt == null || dur == null || freq == null || patId == null || docId == null || medId == null)
             {
                 MessageBox.Show("All fields are necessary!");
                 return;
-            } else
-            {
-
-                maxId = prescriptionController.getNextId();
-                maxId++;
-                var newMedPrescription = new MedicinePrescription(
-                    maxId,
-                    medId,
-                    patId,
-                    docId,
-                    dt,
-                    TimeSpan.FromMinutes(dur),
-                    true,
-                    TimeSpan.FromMinutes(freq));
-
-                prescriptionController.create(newMedPrescription);
-
-                MessageBox.Show("You have successfully added new prescription! \n Check patient's medical record to see all prescriptions!", "Added new prescriptions");
-                
-                this.Close();
             }
 
-     
+            newPrescription.DateAndTime = dt;
+            newPrescription.DurationOfUse = TimeSpan.FromDays(dur);
+            newPrescription.FrequencyOfUse = TimeSpan.FromHours(freq);
+            newPrescription.PatientId = patId;
+            newPrescription.DoctorId = 0;
+            newPrescription.MedicineId = medId;
 
+                
+            List<MedicinePrescription> prescriptionsList = anamnesisPrescriptions.Prescriptions.ToList();
+                foreach (MedicinePrescription prescription in prescriptionsList)
+            {
+                prescription.DurationOfUse = TimeSpan.FromDays(dur);
+                prescription.FrequencyOfUse = TimeSpan.FromHours(freq);
+                prescription.PatientId = patId;
+                prescription.DoctorId = 0;
+                prescription.MedicineId = medId;
+            }
+
+                prescriptionController.update(newPrescription);
+
+                MessageBox.Show("You have successfully added new prescription! \n Check patient's medical record to see all prescriptions!", "Added new prescriptions");
+
+                this.Close();
+            
         }
 
         public void Cancel(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to cancel adding prescription? \n + By canceling it, all previously entered data will disappear!", "Cancel appointment", MessageBoxButton.YesNo);
-            switch (result)
-            {
-                case MessageBoxResult.Yes:
-                    Calendar calendar = new Calendar();
-                    calendar.Show();
-                    break;
-
-                case MessageBoxResult.No:
-                    Close();
-                    break;
-            }
 
         }
     }
