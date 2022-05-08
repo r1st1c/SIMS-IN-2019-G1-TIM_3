@@ -1,5 +1,4 @@
-﻿using Projekat_SIMS_IN_TIM3.PatientHCIWindows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Projekat_SIMS_IN_TIM3.MainWindows
+namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 {
     /// <summary>
-    /// Interaction logic for PatientHCI.xaml
+    /// Interaction logic for ProfileWindow.xaml
     /// </summary>
-    public partial class PatientHCI : Window
+    public partial class ProfileWindow : Window
     {
-        public PatientHCI()
+        public ProfileWindow()
         {
             InitializeComponent();
         }
