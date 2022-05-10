@@ -46,11 +46,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             addRoom.Show();
         }
 
-        private void Change_Type_Click(object sender, RoutedEventArgs e)
+        private void Edit_Room_Click(object sender, RoutedEventArgs e)
         {
             Room room = (Room)((Button)e.Source).DataContext;
             int id = room.Id;
-            var change = new ChangeRoomType(id);
+            var change = new EditRoomWindow(id);
             change.Show();
         }
 

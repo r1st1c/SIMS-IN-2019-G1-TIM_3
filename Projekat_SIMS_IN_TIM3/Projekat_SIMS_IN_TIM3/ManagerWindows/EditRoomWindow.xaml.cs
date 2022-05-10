@@ -20,9 +20,9 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
     /// <summary>
-    /// Interaction logic for ChangeRoomType.xaml
+    /// Interaction logic for EditRoomWindow.xaml
     /// </summary>
-    public partial class ChangeRoomType : Window
+    public partial class EditRoomWindow : Window
     {
         RoomController roomController = new RoomController();
         private RoomType roomTypeSelected;
@@ -59,7 +59,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
         }
 
-        public ChangeRoomType(int roomId)
+        public EditRoomWindow(int roomId)
         {
             InitializeComponent();
             this.DataContext = this;
