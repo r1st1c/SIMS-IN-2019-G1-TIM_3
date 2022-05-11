@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="Edit Room" Height="300" Width="300">
+        Title="Edit Room" Height="300" Width="300" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -13,16 +13,16 @@
         </Grid.RowDefinitions>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Margin="150,91,0,0" Grid.Row="1"/>
         <Label Content="New Room Type:&#xD;&#xA;" HorizontalAlignment="Left" Margin="29,89,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1"/>
-        <Label Content="{Binding SelectedRoomId}" HorizontalAlignment="Left" Margin="140,29,0,0" VerticalAlignment="Top" Height="25" Width="28" RenderTransformOrigin="0.495,0.527" Grid.Row="1"/>
+        <Label Content="{Binding SelectedRoomName}" HorizontalAlignment="Left" Margin="140,29,0,0" VerticalAlignment="Top" Height="25" Width="139" RenderTransformOrigin="0.495,0.527" Grid.Row="1"/>
         <Button Content="Confirm" Margin="51,161,168,0" VerticalAlignment="Top" Height="32" Background="Lime" FontWeight="Bold" Click="Confirm_Button" Grid.Row="1"/>
         <Button Content="Cancel" Margin="168,161,51,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button" Grid.Row="1"/>
-        <Label Content="Room id:" HorizontalAlignment="Left" Margin="83,29,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Label Content="Room name:" HorizontalAlignment="Left" Margin="63,29,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <Label Content ="New Room Name:" HorizontalAlignment="Left" Margin="29,60,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1"/>
-        <TextBox  Text="{Binding Path=NewRoomName}" HorizontalAlignment="Left" Margin="150,63,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="New Description:" HorizontalAlignment="Left" Margin="29,121,0,0" VerticalAlignment="Top" Height="24" Grid.Row="1"/>
-        <TextBox Text="{Binding Path=NewDescription}" HorizontalAlignment="Left" Margin="150,124,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Edit Room" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" Foreground="Black" Grid.RowSpan="2"/>
         <Label Content="*Note ALL fields are necessary" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Foreground="Red" Grid.Row="1"/>
+        <TextBox Text="{Binding Path=NewDescription}" HorizontalAlignment="Left" Margin="150,124,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox  Text="{Binding Path=NewRoomName}" HorizontalAlignment="Left" Margin="150,63,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 
     </Grid>

@@ -41,6 +41,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             get;set;
         }
 
+        public string SelectedRoomName { get; set; }
+
 
         public ObservableCollection<RoomType> RoomTypes
         {
@@ -65,6 +67,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             this.DataContext = this;
             RoomTypes = new ObservableCollection<RoomType>(Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList());
             SelectedRoomId = roomId;
+            SelectedRoomName = this.roomController.GetById(SelectedRoomId).Name;
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
