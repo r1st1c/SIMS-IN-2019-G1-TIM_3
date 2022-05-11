@@ -71,7 +71,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             dateEnd = dateEnd.AddHours(23);
             dateEnd = dateEnd.AddMinutes(59);
             dateEnd = dateEnd.AddSeconds(59);
-            foreach (var room in RoomWindow.Rooms)
+            foreach (var room in RoomPage.Rooms)
             {
                 if (room.Id == Room.Id && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
                 {

@@ -83,14 +83,14 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Room names must be unique");
                 return;
             }
-            List<Room> roomList = RoomWindow.Rooms.ToList();
+            List<Room> roomList = RoomPage.Rooms.ToList();
             foreach (var room in roomList.Where(x => x.Id == toUpdate.Id))
             {
                 room.Name = NewRoomName;
                 room.Description = NewDescription;
                 room.RoomType = RoomTypeSelected;
             }
-            foreach (var equipment in EquipmentWindow.Equipment_All)
+            foreach (var equipment in EquipmentPage.Equipment_All)
             {
                 if (toUpdate.Id == equipment.RoomId)
                 {

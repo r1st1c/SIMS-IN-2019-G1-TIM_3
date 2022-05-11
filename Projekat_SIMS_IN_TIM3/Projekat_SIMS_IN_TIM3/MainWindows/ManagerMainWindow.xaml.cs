@@ -27,8 +27,7 @@ namespace Projekat_SIMS_IN_TIM3
 
         private void Room_Click(object sender, RoutedEventArgs e)
         {
-            var roomWindow = new RoomWindow();
-            roomWindow.Show();
+            MainFrame.Content = new RoomPage();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,8 +37,7 @@ namespace Projekat_SIMS_IN_TIM3
 
         private void Equipment_Click(object sender, RoutedEventArgs e)
         {
-            var eqWIndow = new EquipmentWindow();
-            eqWIndow.Show();
+            MainFrame.Content = new EquipmentPage();
         }
     }
 }

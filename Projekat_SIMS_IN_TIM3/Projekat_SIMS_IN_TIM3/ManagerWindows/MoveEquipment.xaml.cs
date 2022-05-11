@@ -75,7 +75,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             if (toRefresh)
             {
                 var toUpdate = this.equipmentController.GetById(equipmentId);
-                List<Equipment> list = EquipmentWindow.Equipment_All.ToList();
+                List<Equipment> list = EquipmentPage.Equipment_All.ToList();
                 foreach (var eq in list.Where(x => x.Id == toUpdate.Id))
                 {
                     eq.RoomId = targetRoomId;
