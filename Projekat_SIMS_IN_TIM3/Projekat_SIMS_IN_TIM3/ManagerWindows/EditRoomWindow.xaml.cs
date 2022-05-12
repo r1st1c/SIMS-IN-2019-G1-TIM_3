@@ -79,12 +79,19 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
             Room toUpdate = this.roomController.GetById(SelectedRoomId);
             toUpdate.RoomType = RoomTypeSelected;
-            toUpdate.Name = NewRoomName;
             toUpdate.Description = NewDescription;
-            if (!this.roomController.Update(toUpdate))
+            if (NewRoomName == toUpdate.Name)
             {
-                MessageBox.Show("Room names must be unique");
-                return;
+                this.roomController.UpdateUsingSameName(toUpdate);
+            }
+            else
+            {
+                toUpdate.Name = NewRoomName;
+                if (!this.roomController.UpdateUsingNewName(toUpdate))
+                {
+                    MessageBox.Show("Room names must be unique");
+                    return;
+                }
             }
             List<Room> roomList = RoomPage.Rooms.ToList();
             foreach (var room in roomList.Where(x => x.Id == toUpdate.Id))

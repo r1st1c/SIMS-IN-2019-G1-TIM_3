@@ -5,18 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="Edit Room" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Edit Room" Height="350" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBlock Text="Edit Room" HorizontalAlignment="Center" Margin="0,14,0,0" VerticalAlignment="Top" FontSize="24" Foreground="Black"/>
-        <TextBlock Text="*Note ALL fields are necessary" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" Foreground="Red"/>
-        <TextBlock FontSize="16" Text="Room Name:" HorizontalAlignment="Left" Margin="33,103,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=NewRoomName}" HorizontalAlignment="Left" Margin="150,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock FontSize="16" Text="Room Type:" HorizontalAlignment="Left" Margin="41,133,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Margin="150,133,0,0"/>
-        <TextBlock FontSize="16" Text="Description:" HorizontalAlignment="Left" Margin="41,164,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=NewDescription}" HorizontalAlignment="Left" Margin="150,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Confirm" Margin="51,203,168,0" VerticalAlignment="Top" Height="32" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
-        <Button Content="Cancel" Margin="168,203,51,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.6*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1.6*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Edit Room" Margin="0,10,0,0" FontSize="24" Foreground="Black" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+        <TextBlock Text="*Note ALL fields are necessary" Margin="0,45,0,0"  Foreground="Red" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+
+        <TextBlock FontSize="16" Text="Room Name:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <TextBox Text="{Binding Path=NewRoomName}" FontSize="16" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="128"/>
+
+        <TextBlock FontSize="16" Text="Room Type:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <ComboBox FontSize="16" ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="128"/>
+
+        <TextBlock FontSize="16" Text="Description:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <TextBox Text="{Binding Path=NewDescription}" Margin="10,10,10,10" FontSize="16" Grid.Row="3" Grid.Column="1" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" TextWrapping="Wrap"/>
+
+        <Button Content="Confirm" Background="Lime" FontWeight="Bold" Click="Confirm_Button" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="100"  Height="32"/>
+        <Button Content="Cancel" Background="Red" FontWeight="Bold" Click="Cancel_Button" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="100"  Height="32"/>
 
 
     </Grid>

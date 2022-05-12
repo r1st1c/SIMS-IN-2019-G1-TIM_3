@@ -5,20 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="Basic Renovation" Height="540" Width="960" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Basic Renovation" Height="576" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Confirm" Margin="50,371,828,0" VerticalAlignment="Top" Height="30" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
-        <Button Content="Cancel" Margin="156,370,724,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
-        <DatePicker x:Name="StartDate" HorizontalAlignment="Left" Margin="134,187,0,0" VerticalAlignment="Top" Height="24"/>
-        <TextBlock FontSize="16" Text="Starting date:" HorizontalAlignment="Left" Margin="32,188,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="EndDate" HorizontalAlignment="Left" Margin="134,221,0,0" VerticalAlignment="Top" Height="24"/>
-        <TextBlock FontSize="16" Text="End date:" HorizontalAlignment="Left" Margin="60,221,0,0" VerticalAlignment="Top"/>
-        <TextBlock FontSize="16" Text="Duration(Days):" HorizontalAlignment="Left" Margin="17,259,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="134,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="{Binding Duration}" RenderTransformOrigin="0.5,0.503" Height="21"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="6*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
+        <TextBlock FontWeight="Bold" TextWrapping="Wrap" Text="Basic Renovation" FontSize="30" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock Text="*Note ALL fields are necessary" Foreground="Red" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+
+        <TextBlock TextWrapping="Wrap" Text="Available Terms:" FontSize="30" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+        <TextBlock TextWrapping="Wrap" Text="Selected Room:"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top"  HorizontalAlignment="Center" FontSize="28"/>
+        <Label Content="{Binding Room.Name}" FontSize="20" FontWeight="Bold" Width="128" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+
+        <TextBlock FontSize="16" Text="Starting date:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <DatePicker FontSize="16" x:Name="StartDate"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="0,0,7,0"/>
+
+        <TextBlock FontSize="16" Text="End date:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <DatePicker FontSize="16" x:Name="EndDate" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="0,0,7,0"/>
+
+        <TextBlock FontSize="16" Text="Duration(Days):" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <TextBox  FontSize="16" TextWrapping="Wrap"  Text="{Binding Duration}"  Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
+
+
+        <TextBlock FontSize="16" Text="Description:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <TextBox  FontSize="16" Text="{Binding Description}" TextWrapping="Wrap"  Grid.Row="5" Grid.Column="1" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
 
         <DataGrid  x:Name="renovationsGrid" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="296,83,44,52">
+                  SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" Grid.RowSpan="6" Margin="0,0,20,20">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}" Width="*"/>
                 <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}" Width="*"/>
@@ -31,13 +57,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox Text="{Binding Description}" HorizontalAlignment="Left" Margin="134,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Height="45"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,296,0,0" FontSize="16" Text="Description:" VerticalAlignment="Top"/>
-        <Label Content="{Binding Room.Name}" HorizontalAlignment="Left" Margin="13,136,0,0" VerticalAlignment="Top" FontSize="20" Height="40" Width="262" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Left" Margin="501,32,0,0" TextWrapping="Wrap" Text="Available Terms:" VerticalAlignment="Top" FontSize="30"/>
-        <TextBlock FontWeight="Bold" HorizontalAlignment="Left" Margin="32,32,0,0" TextWrapping="Wrap" Text="Basic Renovation" VerticalAlignment="Top" FontSize="30"/>
-        <TextBlock HorizontalAlignment="Left" Margin="55,96,0,0" TextWrapping="Wrap" Text="Selected Room:" VerticalAlignment="Top" FontSize="26"/>
 
-
+        <Button Content="Confirm" Background="Lime" FontWeight="Bold" Click="Confirm_Button"  Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="32" Width="100"/>
+        <Button Content="Cancel"  Background="Red" FontWeight="Bold" Click="Cancel_Button"  Grid.Row="6" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center"  Height="32" Width="100"/>
     </Grid>
 </Window>
