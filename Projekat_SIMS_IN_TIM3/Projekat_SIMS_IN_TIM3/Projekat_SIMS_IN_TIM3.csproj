@@ -93,10 +93,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="ManagerWindows\EquipmentWindow.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-  </ItemGroup>
-
 </Project>
