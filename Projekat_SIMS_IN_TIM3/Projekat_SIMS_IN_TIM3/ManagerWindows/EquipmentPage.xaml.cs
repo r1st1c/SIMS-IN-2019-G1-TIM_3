@@ -36,7 +36,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             Equipment equipment = (Equipment)((Button)e.Source).DataContext;
             var move = new MoveEquipment(equipment);
-            move.Show();
+            move.ShowDialog();
         }
     }
 }

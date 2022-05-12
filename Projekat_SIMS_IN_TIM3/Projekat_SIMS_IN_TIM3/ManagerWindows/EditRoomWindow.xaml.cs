@@ -40,10 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             get;set;
         }
-
-        public string SelectedRoomName { get; set; }
-
-
+        
         public ObservableCollection<RoomType> RoomTypes
         {
             get; set;
@@ -66,8 +63,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             InitializeComponent();
             this.DataContext = this;
             RoomTypes = new ObservableCollection<RoomType>(Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList());
+            Room selectedRoom = this.roomController.GetById(roomId);
             SelectedRoomId = roomId;
-            SelectedRoomName = this.roomController.GetById(SelectedRoomId).Name;
+            NewRoomName = selectedRoom.Name;
+            NewDescription = selectedRoom.Description;
+            RoomTypeSelected = selectedRoom.RoomType;
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)

@@ -46,7 +46,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             Room room = (Room)((Button)e.Source).DataContext;
             int id = room.Id;
             var change = new EditRoomWindow(id);
-            change.Show();
+            change.ShowDialog();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -72,7 +72,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             Room room = (Room)((Button)e.Source).DataContext;
             var basic = new BasicRenovationWindow(room);
-            basic.Show();
+            basic.ShowDialog();
         }
     }
 }

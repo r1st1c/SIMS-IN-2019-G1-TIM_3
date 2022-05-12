@@ -10,10 +10,10 @@
         <Button Content="Confirm" Margin="50,371,828,0" VerticalAlignment="Top" Height="30" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
         <Button Content="Cancel" Margin="156,370,724,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
         <DatePicker x:Name="StartDate" HorizontalAlignment="Left" Margin="134,187,0,0" VerticalAlignment="Top" Height="24"/>
-        <Label Content="Starting date:&#xD;&#xA;" HorizontalAlignment="Left" Margin="42,186,0,0" VerticalAlignment="Top" Height="30"/>
+        <TextBlock FontSize="16" Text="Starting date:" HorizontalAlignment="Left" Margin="32,188,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="EndDate" HorizontalAlignment="Left" Margin="134,221,0,0" VerticalAlignment="Top" Height="24"/>
-        <Label Content="End date:" HorizontalAlignment="Left" Margin="42,221,0,0" VerticalAlignment="Top" Width="92"/>
-        <Label Content="Duration(Days):" HorizontalAlignment="Left" Margin="42,257,0,0" VerticalAlignment="Top"/>
+        <TextBlock FontSize="16" Text="End date:" HorizontalAlignment="Left" Margin="60,221,0,0" VerticalAlignment="Top"/>
+        <TextBlock FontSize="16" Text="Duration(Days):" HorizontalAlignment="Left" Margin="17,259,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="134,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="{Binding Duration}" RenderTransformOrigin="0.5,0.503" Height="21"/>
 
 
@@ -32,7 +32,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBox Text="{Binding Description}" HorizontalAlignment="Left" Margin="134,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Height="45"/>
-        <TextBlock HorizontalAlignment="Left" Margin="48,295,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="37,296,0,0" FontSize="16" Text="Description:" VerticalAlignment="Top"/>
         <Label Content="{Binding Room.Name}" HorizontalAlignment="Left" Margin="13,136,0,0" VerticalAlignment="Top" FontSize="20" Height="40" Width="262" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <TextBlock HorizontalAlignment="Left" Margin="501,32,0,0" TextWrapping="Wrap" Text="Available Terms:" VerticalAlignment="Top" FontSize="30"/>
         <TextBlock FontWeight="Bold" HorizontalAlignment="Left" Margin="32,32,0,0" TextWrapping="Wrap" Text="Basic Renovation" VerticalAlignment="Top" FontSize="30"/>

@@ -7,18 +7,18 @@
         mc:Ignorable="d"
         Title="Adding New Room" Height="350" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label Content="Adding New Room" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" Foreground="Black"/>
-        <Label Content="*Note ALL fields are necessary" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Foreground="Red"/>
-        <Label Content="Room Name:" HorizontalAlignment="Left" Margin="53,108,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Type:" HorizontalAlignment="Left" Margin="53,137,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Description:" HorizontalAlignment="Left" Margin="53,168,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox HorizontalAlignment="Left" Margin="175,112,0,0" TextWrapping="Wrap" Text="{Binding Namew}" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Margin="175,142,0,0"/>
+        <TextBlock Text="Adding New Room" HorizontalAlignment="Center" Margin="0,17,0,0" VerticalAlignment="Top" FontSize="24" Foreground="Black"/>
+        <TextBlock Text="*Note ALL fields are necessary" HorizontalAlignment="Center" Margin="0,63,0,0" VerticalAlignment="Top" Foreground="Red"/>
+        <TextBlock Text="Room Name:" HorizontalAlignment="Left" Margin="67,104,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock Text="Room Type:" HorizontalAlignment="Left" Margin="76,140,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock Text="Description:" HorizontalAlignment="Left" Margin="75,173,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock Text="Room Floor:" HorizontalAlignment="Left" Margin="73,206,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox HorizontalAlignment="Left" Margin="175,105,0,0" TextWrapping="Wrap" Text="{Binding Namew}" VerticalAlignment="Top" Width="120" FontSize="16"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Margin="175,140,0,0" Height="21"/>
         <TextBox HorizontalAlignment="Left" Margin="175,172,0,0" TextWrapping="Wrap" Text="{Binding Description}" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <Button Content="Confirm" HorizontalAlignment="Left" Margin="71,251,0,0" VerticalAlignment="Top" Height="32" Width="84" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="195,251,0,0" VerticalAlignment="Top" Height="32" Width="84" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
-        <Label Content="Floor:" HorizontalAlignment="Left" Margin="53,196,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox HorizontalAlignment="Left" Margin="175,200,0,0" TextWrapping="Wrap" Text="{Binding Floor}" VerticalAlignment="Top" Width="120" FontSize="16"/>
+        <TextBox HorizontalAlignment="Left" Margin="175,206,0,0" TextWrapping="Wrap" Text="{Binding Floor}" VerticalAlignment="Top" Width="120" FontSize="16"/>
 
     </Grid>
 </Window>
