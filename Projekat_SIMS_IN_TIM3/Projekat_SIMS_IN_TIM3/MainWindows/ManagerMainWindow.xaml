@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3"
         mc:Ignorable="d"
-        Title="Manager Main Window" Height="900" Width="1600" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None">
+        Title="Manager Main Window" Height="900" Width="1600" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.23*"></ColumnDefinition>

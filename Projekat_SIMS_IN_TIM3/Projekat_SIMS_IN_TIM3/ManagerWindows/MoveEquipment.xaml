@@ -5,15 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="Move Equipment" Height="300" Width="300">
+        Title="Move Equipment" Height="300" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Move Equipment" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="24"/>
         <Button Content="Confirm" Margin="51,201,168,0" VerticalAlignment="Top" Height="32" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
         <Button Content="Cancel" Margin="168,201,51,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
-        <DatePicker Name="PickedDate" HorizontalAlignment="Left" Margin="145,117,0,0" VerticalAlignment="Top" Height="24" Width="104"/>
-        <Label Content=" New Room:" HorizontalAlignment="Left" Margin="43,84,0,0" VerticalAlignment="Top" Height="27" Width="89"/>
-        <Label Content="Date of moving:" HorizontalAlignment="Left" Margin="51,116,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="137,87,0,0"  ItemsSource="{Binding Path=RoomNames}" SelectedValue="{Binding Path=RoomNameSelected}" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5"/>
+        <DatePicker Name="PickedDate" HorizontalAlignment="Left" Margin="144,169,0,0" VerticalAlignment="Top" Height="24" Width="104"/>
+        <ComboBox HorizontalAlignment="Left" Margin="144,139,0,0"  ItemsSource="{Binding Path=RoomNames}" SelectedValue="{Binding Path=RoomNameSelected}" VerticalAlignment="Top" Width="105" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="51,86,0,0" TextWrapping="Wrap" Text="Selected Equipment:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="51,114,0,0" TextWrapping="Wrap" Text="Current Room:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="51,142,0,0" TextWrapping="Wrap" Text="Target Room:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="51,173,0,0" TextWrapping="Wrap" Text="Date of moving:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="145,114,0,0" TextWrapping="Wrap" Text="{Binding Path=CurrentRoom }" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="166,86,0,0" TextWrapping="Wrap" Text="{Binding Path=SelectedEquipment }" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

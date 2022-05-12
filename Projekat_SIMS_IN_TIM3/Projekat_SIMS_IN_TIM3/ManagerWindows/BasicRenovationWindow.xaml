@@ -5,21 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="Basic Renovation" Height="540" Width="960" ResizeMode="NoResize">
+        Title="Basic Renovation" Height="540" Width="960" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Confirm" Margin="60,354,818,0" VerticalAlignment="Top" Height="30" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
-        <Button Content="Cancel" Margin="166,353,714,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
-        <DatePicker x:Name="StartDate" HorizontalAlignment="Left" Margin="144,170,0,0" VerticalAlignment="Top" Height="24"/>
-        <Label Content="Starting date:&#xD;&#xA;" HorizontalAlignment="Left" Margin="52,169,0,0" VerticalAlignment="Top" Height="30"/>
-        <DatePicker x:Name="EndDate" HorizontalAlignment="Left" Margin="144,204,0,0" VerticalAlignment="Top" Height="24"/>
-        <Label Content="End date:" HorizontalAlignment="Left" Margin="52,204,0,0" VerticalAlignment="Top" Width="92"/>
-        <Label Content="Basic renovation of room&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" FontSize="24" Height="38" Width="274"/>
-        <Label Content="Duration(Days):" HorizontalAlignment="Left" Margin="52,240,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="144,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="{Binding Duration}" RenderTransformOrigin="0.5,0.503" Height="21"/>
+        <Button Content="Confirm" Margin="50,371,828,0" VerticalAlignment="Top" Height="30" Background="Lime" FontWeight="Bold" Click="Confirm_Button"/>
+        <Button Content="Cancel" Margin="156,370,724,0" VerticalAlignment="Top" Height="32" Background="Red" FontWeight="Bold" Click="Cancel_Button"/>
+        <DatePicker x:Name="StartDate" HorizontalAlignment="Left" Margin="134,187,0,0" VerticalAlignment="Top" Height="24"/>
+        <Label Content="Starting date:&#xD;&#xA;" HorizontalAlignment="Left" Margin="42,186,0,0" VerticalAlignment="Top" Height="30"/>
+        <DatePicker x:Name="EndDate" HorizontalAlignment="Left" Margin="134,221,0,0" VerticalAlignment="Top" Height="24"/>
+        <Label Content="End date:" HorizontalAlignment="Left" Margin="42,221,0,0" VerticalAlignment="Top" Width="92"/>
+        <Label Content="Duration(Days):" HorizontalAlignment="Left" Margin="42,257,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="134,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="{Binding Duration}" RenderTransformOrigin="0.5,0.503" Height="21"/>
 
 
         <DataGrid  x:Name="renovationsGrid" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="296,45,44,52">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="296,83,44,52">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}" Width="*"/>
                 <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}" Width="*"/>
@@ -32,9 +31,12 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox Text="{Binding Description}" HorizontalAlignment="Left" Margin="144,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Height="45"/>
-        <TextBlock HorizontalAlignment="Left" Margin="58,278,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top"/>
-        <Label Content="{Binding Room.Name}" HorizontalAlignment="Left" Margin="16,83,0,0" VerticalAlignment="Top" FontSize="20" Height="40" Width="262" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <TextBox Text="{Binding Description}" HorizontalAlignment="Left" Margin="134,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Height="45"/>
+        <TextBlock HorizontalAlignment="Left" Margin="48,295,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top"/>
+        <Label Content="{Binding Room.Name}" HorizontalAlignment="Left" Margin="13,136,0,0" VerticalAlignment="Top" FontSize="20" Height="40" Width="262" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="501,32,0,0" TextWrapping="Wrap" Text="Available Terms:" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock FontWeight="Bold" HorizontalAlignment="Left" Margin="32,32,0,0" TextWrapping="Wrap" Text="Basic Renovation" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,96,0,0" TextWrapping="Wrap" Text="Selected Room:" VerticalAlignment="Top" FontSize="26"/>
 
 
     </Grid>

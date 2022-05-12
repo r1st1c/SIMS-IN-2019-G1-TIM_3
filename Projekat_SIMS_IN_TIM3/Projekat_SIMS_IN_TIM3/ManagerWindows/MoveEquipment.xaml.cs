@@ -26,7 +26,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public RoomController roomController = new RoomController();
         public int equipmentId { get; set; }
         public string RoomNameSelected { get; set; }
-
+        public string SelectedEquipment { get; set; }
+        public string CurrentRoom { get; set; }
         public List<string> RoomNames { get; set; } = new List<string>();
         public MoveEquipment(Equipment equipment)
         {
@@ -38,6 +39,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 RoomNames.Add(room.Name);
             }
             this.equipmentId = equipment.Id;
+            this.CurrentRoom = this.roomController.GetById(equipment.RoomId).Name;
+            this.SelectedEquipment = equipment.Equipmentname;
         }
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
