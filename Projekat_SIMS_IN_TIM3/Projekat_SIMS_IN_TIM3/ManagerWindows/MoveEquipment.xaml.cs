@@ -91,5 +91,10 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             Close();
         }
+
+        private void Today_Click(object sender, RoutedEventArgs e)
+        {
+            PickedDate.SelectedDate = DateTime.Today;
+        }
     }
 }
