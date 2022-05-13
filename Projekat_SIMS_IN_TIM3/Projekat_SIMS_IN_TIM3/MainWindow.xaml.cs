@@ -34,6 +34,7 @@ namespace Projekat_SIMS_IN_TIM3
         {
             InitializeComponent();
             password.PasswordChar = '*';
+            username.Focus();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
@@ -80,6 +81,10 @@ namespace Projekat_SIMS_IN_TIM3
             }
 
 
+        }
+        private void HelloWorld_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }
