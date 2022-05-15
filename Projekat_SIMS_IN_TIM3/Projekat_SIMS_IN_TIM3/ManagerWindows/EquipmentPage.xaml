@@ -5,21 +5,29 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="900" d:DesignWidth="1600"
       Title="EquipmentPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.8*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.4*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.ColumnSpan="3" x:Name="dataGridEquipment" Grid.Row="1" ItemsSource="{Binding Equipment_All,Mode=TwoWay}" IsReadOnly="True" 
+        <TextBox x:Name="Search_Box" FontSize="20" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160" Height="30" TextWrapping="Wrap" Text="" Margin="10,0,0,0"/>
+        <Button Grid.Row="0" Grid.Column="1" Content="Search"  VerticalAlignment="Center" Height="30" FontSize="20" Margin="180,0,10,0" Click="Search_Click"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="40,0,0,2" TextWrapping="Wrap" Text="Show only" VerticalAlignment="Center" FontSize="22"/>
+        <RadioButton GroupName="type" Grid.Row="0" Grid.Column="2" Content="Static Equipment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170,0,0,0" FontSize="20"  VerticalContentAlignment="Center" Checked="Filter_Static"/>
+        <RadioButton GroupName="type" Grid.Row="0" Grid.Column="2" Content="Dynamic Equipment" Margin="170,0,0,0" VerticalAlignment="Bottom" FontSize="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" Checked="Filter_Dynamic"/>
+        
+        <DataGrid Grid.ColumnSpan="4" x:Name="dataGridEquipment" Grid.Row="1" ItemsSource="{Binding Equipment_All}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.2*"/>
@@ -48,14 +56,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button.ContentTemplate>
-                <DataTemplate>
-                    <Viewbox MaxHeight="55">
-                        <TextBlock>Add Equipment</TextBlock>
-                    </Viewbox>
-                </DataTemplate>
-            </Button.ContentTemplate>
-        </Button>
+
     </Grid>
 </Page>
