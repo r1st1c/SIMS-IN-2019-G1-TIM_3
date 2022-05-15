@@ -23,6 +23,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public List<String> getAllVerified() { return medicineRepository.getAllVerified(); }
 
+        public List<Medicine> getAllUnverified() {  return medicineRepository.getAllUnverified(); } 
         public int getIdByName(string name) { return medicineRepository.getIdByName(name); }
 
 

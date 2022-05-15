@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Model
 {
+
+
     public class Medicine
     {
         
@@ -33,7 +35,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public int Id { get; set; }
         public String Name { get; set; }   
         public String Ingredients { get; set; }
-        public bool IsVerified { get; set; }
+        public bool IsVerified  { get; set; }
 
     }
 }

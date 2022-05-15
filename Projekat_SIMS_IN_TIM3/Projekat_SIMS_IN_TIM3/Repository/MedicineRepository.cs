@@ -92,6 +92,12 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return list;
         }
 
+        public List<Medicine> getAllUnverified()
+        {
+            readJson();
+            return medicines.FindAll(a => a.IsVerified == false);
+        }
+
         public int getIdByName(string name)
         {
             readJson();
