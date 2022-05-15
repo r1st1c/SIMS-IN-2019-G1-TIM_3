@@ -68,7 +68,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                     dateEnd = dateEnd.AddSeconds(59);
                     if (DateTime.Parse(PickedDate.Text)>= dateStart && DateTime.Parse(PickedDate.Text) <= dateEnd)
                     {
-                        MessageBox.Show("Cannot move to target room because it is under renovation at that time");
+                        MessageBox.Show("Cannot move to target room because it is under renovation at selected time");
                         return;
                     }
                 }
