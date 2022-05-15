@@ -70,7 +70,7 @@
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="75">
-                        <TextBlock>Log Out</TextBlock>
+                        <TextBlock>Exit</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
