@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
 
         <DataGrid  Grid.ColumnSpan="7" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding Rooms,Mode=TwoWay}" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False">
+                  SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>

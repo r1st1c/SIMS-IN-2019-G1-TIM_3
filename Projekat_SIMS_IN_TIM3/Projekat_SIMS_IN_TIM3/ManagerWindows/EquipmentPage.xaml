@@ -20,15 +20,15 @@
         </Grid.RowDefinitions>
 
         <DataGrid Grid.ColumnSpan="3" x:Name="dataGridEquipment" Grid.Row="1" ItemsSource="{Binding Equipment_All,Mode=TwoWay}" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False">
+                  SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.2*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Equipmentname}" Width="*"/>
                 <DataGridTextColumn Header="Manufacturer" Binding="{Binding Manufacturer}" Width="*"/>
                 <DataGridTextColumn Header="Type" Binding="{Binding Equipmenttype}" Width="*"/>
-                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="0.3*"/>
                 <DataGridTextColumn Header="Room" Binding="{Binding RoomName}" Width="*"/>
-                <DataGridTemplateColumn Header="Move Equipment" Width="*">
+                <DataGridTemplateColumn Header="Move Equipment" Width="0.5*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="moveTo" Content="Move to" Click="Move_Button">
