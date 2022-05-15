@@ -29,10 +29,13 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             return this.roomService.Create(room);
         }
-
-        public bool Update(Room room)
+        public bool UpdateUsingNewName(Room room)
         {
-            return this.roomService.Update(room);
+            return this.roomService.UpdateUsingNewName(room);
+        }
+        public bool UpdateUsingSameName(Room room)
+        {
+            return this.roomService.UpdateUsingSameName(room);
         }
 
         public bool DeleteById(int id)

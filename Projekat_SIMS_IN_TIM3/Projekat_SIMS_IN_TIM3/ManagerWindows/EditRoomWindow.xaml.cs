@@ -20,9 +20,9 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
     /// <summary>
-    /// Interaction logic for ChangeRoomType.xaml
+    /// Interaction logic for EditRoomWindow.xaml
     /// </summary>
-    public partial class ChangeRoomType : Window
+    public partial class EditRoomWindow : Window
     {
         RoomController roomController = new RoomController();
         private RoomType roomTypeSelected;
@@ -40,8 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             get;set;
         }
-
-
+        
         public ObservableCollection<RoomType> RoomTypes
         {
             get; set;
@@ -59,12 +58,16 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
         }
 
-        public ChangeRoomType(int roomId)
+        public EditRoomWindow(int roomId)
         {
             InitializeComponent();
             this.DataContext = this;
             RoomTypes = new ObservableCollection<RoomType>(Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList());
+            Room selectedRoom = this.roomController.GetById(roomId);
             SelectedRoomId = roomId;
+            NewRoomName = selectedRoom.Name;
+            NewDescription = selectedRoom.Description;
+            RoomTypeSelected = selectedRoom.RoomType;
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
@@ -76,21 +79,28 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
             Room toUpdate = this.roomController.GetById(SelectedRoomId);
             toUpdate.RoomType = RoomTypeSelected;
-            toUpdate.Name = NewRoomName;
             toUpdate.Description = NewDescription;
-            if (!this.roomController.Update(toUpdate))
+            if (NewRoomName == toUpdate.Name)
             {
-                MessageBox.Show("Room names must be unique");
-                return;
+                this.roomController.UpdateUsingSameName(toUpdate);
             }
-            List<Room> roomList = RoomWindow.Rooms.ToList();
+            else
+            {
+                toUpdate.Name = NewRoomName;
+                if (!this.roomController.UpdateUsingNewName(toUpdate))
+                {
+                    MessageBox.Show("Room names must be unique");
+                    return;
+                }
+            }
+            List<Room> roomList = RoomPage.Rooms.ToList();
             foreach (var room in roomList.Where(x => x.Id == toUpdate.Id))
             {
                 room.Name = NewRoomName;
                 room.Description = NewDescription;
                 room.RoomType = RoomTypeSelected;
             }
-            foreach (var equipment in EquipmentWindow.Equipment_All)
+            foreach (var equipment in EquipmentPage.Equipment_All)
             {
                 if (toUpdate.Id == equipment.RoomId)
                 {

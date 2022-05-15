@@ -26,7 +26,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public RoomController roomController = new RoomController();
         public int equipmentId { get; set; }
         public string RoomNameSelected { get; set; }
-
+        public string SelectedEquipment { get; set; }
+        public string CurrentRoom { get; set; }
         public List<string> RoomNames { get; set; } = new List<string>();
         public MoveEquipment(Equipment equipment)
         {
@@ -38,6 +39,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 RoomNames.Add(room.Name);
             }
             this.equipmentId = equipment.Id;
+            this.CurrentRoom = this.roomController.GetById(equipment.RoomId).Name;
+            this.SelectedEquipment = equipment.Equipmentname;
         }
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
@@ -65,7 +68,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                     dateEnd = dateEnd.AddSeconds(59);
                     if (DateTime.Parse(PickedDate.Text)>= dateStart && DateTime.Parse(PickedDate.Text) <= dateEnd)
                     {
-                        MessageBox.Show("Cannot move to target room because it is under renovation at that time");
+                        MessageBox.Show("Cannot move to target room because it is under renovation at selected time");
                         return;
                     }
                 }
@@ -75,7 +78,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             if (toRefresh)
             {
                 var toUpdate = this.equipmentController.GetById(equipmentId);
-                List<Equipment> list = EquipmentWindow.Equipment_All.ToList();
+                List<Equipment> list = EquipmentPage.Equipment_All.ToList();
                 foreach (var eq in list.Where(x => x.Id == toUpdate.Id))
                 {
                     eq.RoomId = targetRoomId;
@@ -87,6 +90,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Cancel_Button(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Today_Click(object sender, RoutedEventArgs e)
+        {
+            PickedDate.SelectedDate = DateTime.Today;
         }
     }
 }

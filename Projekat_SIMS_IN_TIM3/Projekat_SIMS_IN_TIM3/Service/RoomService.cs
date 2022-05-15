@@ -40,7 +40,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return (this.roomRepository.Create(room),true);
         }
 
-        public bool Update(Room room)
+        public bool UpdateUsingSameName(Room room)
+        {
+            return this.roomRepository.Update(room);
+        }
+        public bool UpdateUsingNewName(Room room)
         {
             var list = this.roomRepository.GetAll();
             foreach (var existingRoom in list)

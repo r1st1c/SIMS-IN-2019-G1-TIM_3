@@ -1,6 +1,7 @@
 ﻿using Projekat_SIMS_IN_TIM3.ManagerWindows;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +21,24 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class ManagerMainWindow : Window
     {
+        public static RoomPage roomPage { get; set; }
+        public static EquipmentPage equipmentPage { get; set; }
+        public static BrushConverter brushConverter { get; set; }
         public ManagerMainWindow()
         {
+            roomPage = new RoomPage();
+            equipmentPage = new EquipmentPage();
+            brushConverter = new BrushConverter();
             InitializeComponent();
         }
 
         private void Room_Click(object sender, RoutedEventArgs e)
         {
-            var roomWindow = new RoomWindow();
-            roomWindow.Show();
+            roomsBtn.Background = Brushes.Aqua;
+            equipmentBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            pollsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            drugsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            MainFrame.Content = roomPage;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,8 +48,11 @@ namespace Projekat_SIMS_IN_TIM3
 
         private void Equipment_Click(object sender, RoutedEventArgs e)
         {
-            var eqWIndow = new EquipmentWindow();
-            eqWIndow.Show();
+            roomsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            equipmentBtn.Background = Brushes.Aqua;
+            pollsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            drugsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            MainFrame.Content = equipmentPage;
         }
     }
 }

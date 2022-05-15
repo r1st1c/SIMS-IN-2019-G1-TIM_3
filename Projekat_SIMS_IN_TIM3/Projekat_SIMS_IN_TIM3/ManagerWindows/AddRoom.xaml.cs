@@ -115,7 +115,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             if (succWritten)
             {
                 Debug.Write("Room successfully written in csv");
-                RoomWindow.Rooms.Add(room);
+                RoomPage.Rooms.Add(room);
                 Close();
             }
         }
