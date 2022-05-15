@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Model
 {
-    public class AdvancedRenovationQuery
+    public class MergeRenovationQuery
     {
         public DateRange Range { get; set; }
         public int RoomId1 { get; set; }
@@ -14,7 +14,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public int Duration { get; set; }
         public string Description { get; set; }
 
-        public AdvancedRenovationQuery(DateTime start, DateTime end, int id1, int id2, int duration, string description)
+        public MergeRenovationQuery(DateTime start, DateTime end, int id1, int id2, int duration, string description)
         {
             this.Range = new DateRange(start, end);
             this.RoomId1 = id1;

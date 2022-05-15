@@ -31,6 +31,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             InitializeComponent();
             this.roomController.UpdateDisabledFields();
+            this.roomController.DisableAdvancedRenovatingRooms();
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
         }

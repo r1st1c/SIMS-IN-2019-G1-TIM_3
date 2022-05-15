@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Model
 {
-    public class AdvancedRenovationTerm
+    public class MergeRenovationTerm
     {
         public int Id { get; set; }
         public int RoomId1 { get; set; }
@@ -15,9 +15,18 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public string EndingDate { get; set; }
         public string Description { get; set; }
 
-        public AdvancedRenovationTerm(int id,int room1id, int room2id, string start, string end, string description)
+        public MergeRenovationTerm(int id,int room1id, int room2id, string start, string end, string description)
         {
             this.Id = id;
+            this.StartingDate = start;
+            this.EndingDate = end;
+            this.Description = description;
+            this.RoomId1 = room1id;
+            this.RoomId2 = room2id;
+        }
+
+        public MergeRenovationTerm( int room1id, int room2id, string start, string end, string description)
+        {
             this.StartingDate = start;
             this.EndingDate = end;
             this.Description = description;

@@ -174,7 +174,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
          throw new NotImplementedException();
       }
       
-      public bool ScheduleMerge(AdvancedRenovationTerm advancedRenovationTerm)
+      public bool ScheduleMerge(MergeRenovationTerm advancedRenovationTerm)
       {
           var room1 = this.GetById(advancedRenovationTerm.RoomId1);
           var room2 = this.GetById(advancedRenovationTerm.RoomId2);
@@ -197,8 +197,27 @@ namespace Projekat_SIMS_IN_TIM3.Repository
           Debug.Write("Csv file doesnt exist");
           return false;
         }
+      public List<MergeRenovationTerm> GetMergeSchedules()
+      {
+          string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_merge.csv");
+          List<MergeRenovationTerm> list = new List<MergeRenovationTerm>();
+          for (int i = 0; i < csvLines.Length; i++)
+          {
+              if (csvLines[i] == "")
+              {
+                  continue;
+              }
+              string[] data = csvLines[i].Split(',');
+              list.Add(new MergeRenovationTerm(
+                  Int32.Parse(data[0]),
+                  Int32.Parse(data[1]),
+                  data[2],
+                  data[3],
+                  data[4]
+              ));
+          }
+          return list;
+      }
+    }
 
-       
-   
-   }
 }

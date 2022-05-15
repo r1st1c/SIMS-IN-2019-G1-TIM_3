@@ -43,18 +43,18 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             int duration = Int32.Parse(this.duration.Text);
             DateTime startDate = DateTime.Parse(this.StartDate.Text);
             DateTime endDate = DateTime.Parse(this.EndDate.Text);
-            var query = new AdvancedRenovationQuery(startDate, endDate, firstRoomId, secondRoomId, duration, description);
-            List<AdvancedRenovationTerm> available = this.roomController.AdvancedRenovation(query);
+            var query = new MergeRenovationQuery(startDate, endDate, firstRoomId, secondRoomId, duration, description);
+            List<MergeRenovationTerm> available = this.roomController.AdvancedRenovation(query);
             renovationsGrid.ItemsSource = available;
         }
 
         private void Cancel_Button(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
         private void Schedule_Click(object sender, RoutedEventArgs e)
         {
-            AdvancedRenovationTerm rt = (AdvancedRenovationTerm)((Button)e.Source).DataContext;
+            MergeRenovationTerm rt = (MergeRenovationTerm)((Button)e.Source).DataContext;
             this.roomController.ScheduleMerge(rt);
             DateTime dateStart = DateTime.ParseExact(rt.StartingDate, "dd-MMM-yy", null);
             DateTime dateEnd = DateRange.GetLastMoment(DateTime.ParseExact(rt.EndingDate, "dd-MMM-yy", null));
