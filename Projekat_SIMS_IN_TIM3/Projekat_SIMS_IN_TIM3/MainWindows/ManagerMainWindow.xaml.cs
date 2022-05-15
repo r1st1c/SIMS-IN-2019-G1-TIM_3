@@ -21,13 +21,9 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class ManagerMainWindow : Window
     {
-        public static RoomPage roomPage { get; set; }
-        public static EquipmentPage equipmentPage { get; set; }
         public static BrushConverter brushConverter { get; set; }
         public ManagerMainWindow()
         {
-            roomPage = new RoomPage();
-            equipmentPage = new EquipmentPage();
             brushConverter = new BrushConverter();
             InitializeComponent();
         }
@@ -38,7 +34,7 @@ namespace Projekat_SIMS_IN_TIM3
             equipmentBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
             pollsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
             drugsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
-            MainFrame.Content = roomPage;
+            MainFrame.Content = new RoomPage();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,7 +48,7 @@ namespace Projekat_SIMS_IN_TIM3
             equipmentBtn.Background = Brushes.Aqua;
             pollsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
             drugsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
-            MainFrame.Content = equipmentPage;
+            MainFrame.Content = new EquipmentPage();
         }
     }
 }

@@ -16,5 +16,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
             this.Start = start;
             this.End = end;
         }
+
+        public static DateTime GetLastMoment(DateTime end)
+        {
+            return end.AddHours(23).AddMinutes(59).AddSeconds(59);
+        }
     }
 }

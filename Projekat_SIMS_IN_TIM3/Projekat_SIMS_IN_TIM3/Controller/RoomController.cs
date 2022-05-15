@@ -72,9 +72,9 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.Split(id);
         }
 
-        public bool Merge(int firstId, int secondId)
+        public bool ScheduleMerge(AdvancedRenovationTerm advancedRenovationTerm)
         {
-            return this.roomService.Merge(firstId, secondId);
+            return this.roomService.ScheduleMerge(advancedRenovationTerm);
         }
 
         public Room GetByName(string name)

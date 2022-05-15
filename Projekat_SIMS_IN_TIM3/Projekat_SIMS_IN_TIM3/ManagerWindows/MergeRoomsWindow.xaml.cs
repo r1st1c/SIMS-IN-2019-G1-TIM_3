@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +54,19 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         }
         private void Schedule_Click(object sender, RoutedEventArgs e)
         {
+            AdvancedRenovationTerm rt = (AdvancedRenovationTerm)((Button)e.Source).DataContext;
+            this.roomController.ScheduleMerge(rt);
+            DateTime dateStart = DateTime.ParseExact(rt.StartingDate, "dd-MMM-yy", null);
+            DateTime dateEnd = DateRange.GetLastMoment(DateTime.ParseExact(rt.EndingDate, "dd-MMM-yy", null));
+            foreach (var room in RoomPage.Rooms)
+            {
+                if ((room.Id == rt.RoomId1 || room.Id == rt.RoomId2) && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
+                {
+                    room.DisabledTxt = "Yes";
+                }
+
+            }
+            Close();
 
         }
     }

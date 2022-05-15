@@ -46,14 +46,22 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                 }
                 string[] data = csvLines[i].Split(',');
 
-                string txt;
+                string renovating;
                 if(Int32.Parse(data[5]) == 0)
                 {
-                    txt = "No";
+                    renovating = "No";
+                }
+                else if(Int32.Parse(data[5]) == 1)
+                {
+                    renovating = "Basic";
+                }
+                else if (Int32.Parse(data[5]) == 2)
+                {
+                    renovating = "Advanced";
                 }
                 else
                 {
-                    txt = "Yes";
+                    renovating = "?";
                 }
 
                 list.Add(new Room(
@@ -62,7 +70,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     Enum.Parse<RoomType>(data[2]),
                     UInt32.Parse(data[3]),
                     data[4],
-                    txt
+                    renovating
                 ));
                 
             }
@@ -166,10 +174,29 @@ namespace Projekat_SIMS_IN_TIM3.Repository
          throw new NotImplementedException();
       }
       
-      public bool Merge(int firstId, int secondId)
+      public bool ScheduleMerge(AdvancedRenovationTerm advancedRenovationTerm)
       {
-         throw new NotImplementedException();
-      }
+          var room1 = this.GetById(advancedRenovationTerm.RoomId1);
+          var room2 = this.GetById(advancedRenovationTerm.RoomId2);
+          if (DateTime.Now >= DateTime.ParseExact(advancedRenovationTerm.StartingDate, "dd-MMM-yy", null) 
+              && DateTime.Now <= DateTime.ParseExact(advancedRenovationTerm.EndingDate, "dd-MMM-yy", null))
+          {
+              room1.Disabled = 2;
+              room2.Disabled = 2;
+              this.Update(room1);
+              this.Update(room2);
+          }
+          string fileName = @"C:\Users\Ristic\Documents\room_merge.csv";
+          if (File.Exists(fileName))
+          {
+              string data = advancedRenovationTerm.RoomId1 + "," + advancedRenovationTerm.RoomId2 + "," + advancedRenovationTerm.StartingDate + 
+                            "," + advancedRenovationTerm.EndingDate + "," + advancedRenovationTerm.Description + "\n";
+              File.AppendAllText(fileName, data);
+              return true;
+          }
+          Debug.Write("Csv file doesnt exist");
+          return false;
+        }
 
        
    

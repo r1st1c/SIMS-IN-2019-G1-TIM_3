@@ -148,7 +148,12 @@ namespace Projekat_SIMS_IN_TIM3.Service
             {
                 if (IntersectedAvailabeDays[i].AddDays(duration) == IntersectedAvailabeDays[i + duration])
                 {
-                    retVal.Add(new AdvancedRenovationTerm(renovationId++, IntersectedAvailabeDays[i].ToShortDateString(), IntersectedAvailabeDays[i + duration].ToShortDateString(),advancedRenovationQuery.Description));
+                    retVal.Add(new AdvancedRenovationTerm(renovationId++,
+                                                            advancedRenovationQuery.RoomId1,
+                                                            advancedRenovationQuery.RoomId2,
+                                                            IntersectedAvailabeDays[i].ToShortDateString(), 
+                                                            IntersectedAvailabeDays[i + duration].ToShortDateString(),
+                                                            advancedRenovationQuery.Description));
                 }
             }
             return retVal;
@@ -193,9 +198,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.Split(id);
         }
 
-        public bool Merge(int firstId, int secondId)
+        public bool ScheduleMerge(AdvancedRenovationTerm advancedRenovationTerm)
         {
-            return this.roomRepository.Merge(firstId, secondId);
+            return this.roomRepository.ScheduleMerge(advancedRenovationTerm);
         }
 
         public Room GetByName(string name)
