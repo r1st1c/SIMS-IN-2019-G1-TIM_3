@@ -32,6 +32,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             InitializeComponent();
             this.roomController.UpdateDisabledFields();
             this.roomController.DisableAdvancedRenovatingRooms();
+            this.roomController.EnableAdvancedRenovatedRooms();
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
         }
@@ -78,8 +79,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Merge_Click(object sender, RoutedEventArgs e)
         {
-            var advanced = new AdvancedRoomRenovationWindow();
-            advanced.ShowDialog();
+            var merge = new MergeRoomsWindow();
+            merge.ShowDialog();
         }
     }
 }

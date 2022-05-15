@@ -62,9 +62,9 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.GetRenovationSchedules();
         }
 
-        public List<MergeRenovationTerm> AdvancedRenovation(MergeRenovationQuery advancedRenovationQuery)
+        public List<MergeRenovationTerm> MergeRenovation(MergeRenovationQuery mergeRenovationQuery)
         {
-            return this.roomService.AdvancedRenovation(advancedRenovationQuery);
+            return this.roomService.MergeRenovation(mergeRenovationQuery);
         }
 
         public bool Split(int id)
@@ -72,16 +72,19 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.Split(id);
         }
 
-        public bool ScheduleMerge(MergeRenovationTerm advancedRenovationTerm)
+        public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
         {
-            return this.roomService.ScheduleMerge(advancedRenovationTerm);
+            return this.roomService.ScheduleMerge(mergeRenovationTerm);
         }
 
         public void DisableAdvancedRenovatingRooms()
         {
             this.roomService.DisableAdvancedRenovatingRooms();
         }
-
+        public void EnableAdvancedRenovatedRooms()
+        {
+            this.roomService.EnableAdvancedRenovatedRooms();
+        }
         public Room GetByName(string name)
         {
             return this.roomService.GetByName(name);

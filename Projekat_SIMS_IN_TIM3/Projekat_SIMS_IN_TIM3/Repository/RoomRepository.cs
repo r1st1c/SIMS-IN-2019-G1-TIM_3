@@ -174,12 +174,12 @@ namespace Projekat_SIMS_IN_TIM3.Repository
          throw new NotImplementedException();
       }
       
-      public bool ScheduleMerge(MergeRenovationTerm advancedRenovationTerm)
+      public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
       {
-          var room1 = this.GetById(advancedRenovationTerm.RoomId1);
-          var room2 = this.GetById(advancedRenovationTerm.RoomId2);
-          if (DateTime.Now >= DateTime.ParseExact(advancedRenovationTerm.StartingDate, "dd-MMM-yy", null) 
-              && DateTime.Now <= DateTime.ParseExact(advancedRenovationTerm.EndingDate, "dd-MMM-yy", null))
+          var room1 = this.GetById(mergeRenovationTerm.RoomId1);
+          var room2 = this.GetById(mergeRenovationTerm.RoomId2);
+          if (DateTime.Now >= DateTime.ParseExact(mergeRenovationTerm.StartingDate, "dd-MMM-yy", null) 
+              && DateTime.Now <= DateTime.ParseExact(mergeRenovationTerm.EndingDate, "dd-MMM-yy", null))
           {
               room1.Disabled = 2;
               room2.Disabled = 2;
@@ -189,8 +189,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
           string fileName = @"C:\Users\Ristic\Documents\room_merge.csv";
           if (File.Exists(fileName))
           {
-              string data = advancedRenovationTerm.RoomId1 + "," + advancedRenovationTerm.RoomId2 + "," + advancedRenovationTerm.StartingDate + 
-                            "," + advancedRenovationTerm.EndingDate + "," + advancedRenovationTerm.Description + "\n";
+              string data = mergeRenovationTerm.RoomId1 + "," + mergeRenovationTerm.RoomId2 + "," + mergeRenovationTerm.StartingDate + 
+                            "," + mergeRenovationTerm.EndingDate + "," + mergeRenovationTerm.Description + "\n";
               File.AppendAllText(fileName, data);
               return true;
           }
@@ -218,6 +218,25 @@ namespace Projekat_SIMS_IN_TIM3.Repository
           }
           return list;
       }
-    }
+      public void DeleteMergeScheduling(MergeRenovationTerm renovationTerm)
+      {
+          string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_merge.csv");
+          for (int i = 0; i < csvLines.Length; i++)
+          {
+              if (csvLines[i] == "")
+              {
+                  continue;
+              }
+              string[] data = csvLines[i].Split(',');
+              if (Int32.Parse(data[0]) == renovationTerm.RoomId1 && renovationTerm.RoomId2 == Int32.Parse(data[1]) && renovationTerm.StartingDate == data[2] && renovationTerm.EndingDate == data[3])
+              {
+                  csvLines[i] = "";
+              }
+          }
+          File.WriteAllLines(@"C:\Users\Ristic\Documents\room_merge.csv", csvLines);
+      } 
 
+    }
+    
 }
+

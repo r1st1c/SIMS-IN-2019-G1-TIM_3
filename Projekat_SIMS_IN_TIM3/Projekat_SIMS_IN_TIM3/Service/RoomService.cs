@@ -135,12 +135,12 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.GetRenovationSchedules();
         }
 
-        public List<MergeRenovationTerm> AdvancedRenovation(MergeRenovationQuery advancedRenovationQuery)
+        public List<MergeRenovationTerm> MergeRenovation(MergeRenovationQuery mergeRenovationQuery)
         {
-            var IntersectedAvailabeDays = FindIntersectedAvailableDays(advancedRenovationQuery);
+            var IntersectedAvailabeDays = FindIntersectedAvailableDays(mergeRenovationQuery);
 
             List<MergeRenovationTerm> retVal = new List<MergeRenovationTerm>();
-            int duration = advancedRenovationQuery.Duration;
+            int duration = mergeRenovationQuery.Duration;
             duration--;//first day is already included so we subrtact that day from total amount of days'
             int renovationId = 0;
 
@@ -149,23 +149,23 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 if (IntersectedAvailabeDays[i].AddDays(duration) == IntersectedAvailabeDays[i + duration])
                 {
                     retVal.Add(new MergeRenovationTerm(renovationId++,
-                                                            advancedRenovationQuery.RoomId1,
-                                                            advancedRenovationQuery.RoomId2,
+                                                            mergeRenovationQuery.RoomId1,
+                                                            mergeRenovationQuery.RoomId2,
                                                             IntersectedAvailabeDays[i].ToShortDateString(), 
                                                             IntersectedAvailabeDays[i + duration].ToShortDateString(),
-                                                            advancedRenovationQuery.Description));
+                                                                mergeRenovationQuery.Description));
                 }
             }
             return retVal;
         }
 
-        private List<DateTime> FindIntersectedAvailableDays(MergeRenovationQuery advancedRenovationQuery)
+        private List<DateTime> FindIntersectedAvailableDays(MergeRenovationQuery mergeRenovationQuery)
         {
             var FirstRoomAvailableDays = new List<DateTime>();
             var SecondRoomAvailableDays = new List<DateTime>();
             var allAppointments = this.appointmentRepository.GetAll();
 
-            for (var dt = advancedRenovationQuery.Range.Start; dt <= advancedRenovationQuery.Range.End; dt = dt.AddDays(1))
+            for (var dt = mergeRenovationQuery.Range.Start; dt <= mergeRenovationQuery.Range.End; dt = dt.AddDays(1))
             {
                 FirstRoomAvailableDays.Add(dt);
                 SecondRoomAvailableDays.Add(dt);
@@ -176,13 +176,13 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 foreach (var appointment in allAppointments)
                 {
                     if (FirstRoomAvailableDays[i].Date == appointment.StartTime.Date &&
-                        advancedRenovationQuery.RoomId1 == appointment.RoomNumber)
+                        mergeRenovationQuery.RoomId1 == appointment.RoomNumber)
                     {
                         FirstRoomAvailableDays.RemoveAt(i);
                     }
 
                     if (SecondRoomAvailableDays[i].Date == appointment.StartTime.Date &&
-                        advancedRenovationQuery.RoomId2 == appointment.RoomNumber)
+                        mergeRenovationQuery.RoomId2 == appointment.RoomNumber)
                     {
                         SecondRoomAvailableDays.RemoveAt(i);
                     }
@@ -198,24 +198,43 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.Split(id);
         }
 
-        public bool ScheduleMerge(MergeRenovationTerm advancedRenovationTerm)
+        public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
         {
-            return this.roomRepository.ScheduleMerge(advancedRenovationTerm);
+            return this.roomRepository.ScheduleMerge(mergeRenovationTerm);
         }
 
         public void DisableAdvancedRenovatingRooms()
         {
-            List<MergeRenovationTerm> advancedRenovations = this.roomRepository.GetMergeSchedules();
+            List<MergeRenovationTerm> mergeRenovations = this.roomRepository.GetMergeSchedules();
             List<Room> existing = this.roomRepository.GetAll();
             foreach (var room in existing)
             {
-                foreach (var renovationTerm in advancedRenovations)
+                foreach (var renovationTerm in mergeRenovations)
                 {
                     if (DateTime.Now >= DateTime.ParseExact(renovationTerm.StartingDate, "dd-MMM-yy", null) && 
                         (room.Id == renovationTerm.RoomId1 || room.Id == renovationTerm.RoomId2))
                     {
                         room.Disabled = 2;
                         this.roomRepository.Update(room);
+                    }
+                }
+            }
+        }
+
+        public void EnableAdvancedRenovatedRooms()
+        {
+            List<MergeRenovationTerm> mergeRenovations = this.roomRepository.GetMergeSchedules();
+            List<Room> existing = this.roomRepository.GetAll();
+            foreach (var room in existing)
+            {
+                foreach (var renovationTerm in mergeRenovations)
+                {
+                    if (DateTime.Now > DateRange.GetLastMoment(DateTime.ParseExact(renovationTerm.EndingDate, "dd-MMM-yy", null)) &&
+                        (room.Id == renovationTerm.RoomId1 || room.Id == renovationTerm.RoomId2))
+                    {
+                        room.Disabled = 0;
+                        this.roomRepository.Update(room);
+                        this.roomRepository.DeleteMergeScheduling(renovationTerm);
                     }
                 }
             }

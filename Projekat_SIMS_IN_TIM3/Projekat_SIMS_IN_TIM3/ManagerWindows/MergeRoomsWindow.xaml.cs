@@ -18,13 +18,13 @@ using Projekat_SIMS_IN_TIM3.Model;
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
     /// <summary>
-    /// Interaction logic for AdvancedRoomRenovationWindow.xaml
+    /// Interaction logic for MergeRoomsWindow.xaml
     /// </summary>
-    public partial class AdvancedRoomRenovationWindow : Window
+    public partial class MergeRoomsWindow : Window
     {
         public List<string> RoomNames { get; set; }
         public RoomController roomController { get; set; } = new RoomController();
-        public AdvancedRoomRenovationWindow()
+        public MergeRoomsWindow()
         {
             InitializeComponent();
             this.DataContext = this;
@@ -44,7 +44,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             DateTime startDate = DateTime.Parse(this.StartDate.Text);
             DateTime endDate = DateTime.Parse(this.EndDate.Text);
             var query = new MergeRenovationQuery(startDate, endDate, firstRoomId, secondRoomId, duration, description);
-            List<MergeRenovationTerm> available = this.roomController.AdvancedRenovation(query);
+            List<MergeRenovationTerm> available = this.roomController.MergeRenovation(query);
             renovationsGrid.ItemsSource = available;
         }
 
