@@ -3,6 +3,7 @@ using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,10 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class EquipmentPage : Page
     {
+        
+
         public static ObservableCollection<Equipment> Equipment_All { get; set; }
+
         public static EquipmentController equipmentController = new EquipmentController();
         public static List<Equipment> Equipment_Backup { get; set; }
         public EquipmentPage()
@@ -42,23 +46,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             move.ShowDialog();
         }
 
-        public void Search_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox tb = (TextBox)sender;
-            tb.Text = string.Empty;
-            tb.GotFocus -= Search_GotFocus;
-        }
         
-        public void Search_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox box = sender as TextBox;
-            if (box.Text.Trim().Equals(string.Empty))
-            {
-                box.Text = "Search by Name";
-                box.GotFocus += Search_LostFocus;
-            }
-        }
-
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             string toSearch = Search_Box.Text;
@@ -67,7 +55,6 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             {
                 if(ContainsIgnoreCase(equipment.Equipmentname,toSearch))
                 {
-                    Debug.WriteLine(equipment.Equipmentname);
                     queryResult.Add(equipment);
                 }
             }
@@ -77,6 +64,9 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 Debug.WriteLine(equipment.Equipmentname);
             }
             Debug.WriteLine("THIS ENDED");
+            //dataGridEquipment.ItemsSource = null;
+            //dataGridEquipment.ItemsSource = queryResult;
+            //removing elements from list crashes aswell
         }
 
         bool ContainsIgnoreCase(string str, string substr)

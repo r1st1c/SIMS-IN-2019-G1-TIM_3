@@ -135,6 +135,59 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.GetRenovationSchedules();
         }
 
+        public List<AdvancedRenovationTerm> AdvancedRenovation(AdvancedRenovationQuery advancedRenovationQuery)
+        {
+            var IntersectedAvailabeDays = FindIntersectedAvailableDays(advancedRenovationQuery);
+
+            List<AdvancedRenovationTerm> retVal = new List<AdvancedRenovationTerm>();
+            int duration = advancedRenovationQuery.Duration;
+            duration--;//first day is already included so we subrtact that day from total amount of days'
+            int renovationId = 0;
+
+            for (int i = 0; i < IntersectedAvailabeDays.Count - duration; i++)
+            {
+                if (IntersectedAvailabeDays[i].AddDays(duration) == IntersectedAvailabeDays[i + duration])
+                {
+                    retVal.Add(new AdvancedRenovationTerm(renovationId++, IntersectedAvailabeDays[i].ToShortDateString(), IntersectedAvailabeDays[i + duration].ToShortDateString(),advancedRenovationQuery.Description));
+                }
+            }
+            return retVal;
+        }
+
+        private List<DateTime> FindIntersectedAvailableDays(AdvancedRenovationQuery advancedRenovationQuery)
+        {
+            var FirstRoomAvailableDays = new List<DateTime>();
+            var SecondRoomAvailableDays = new List<DateTime>();
+            var allAppointments = this.appointmentRepository.GetAll();
+
+            for (var dt = advancedRenovationQuery.Range.Start; dt <= advancedRenovationQuery.Range.End; dt = dt.AddDays(1))
+            {
+                FirstRoomAvailableDays.Add(dt);
+                SecondRoomAvailableDays.Add(dt);
+            }
+
+            for (int i = 0; i < FirstRoomAvailableDays.Count; i++)
+            {
+                foreach (var appointment in allAppointments)
+                {
+                    if (FirstRoomAvailableDays[i].Date == appointment.StartTime.Date &&
+                        advancedRenovationQuery.RoomId1 == appointment.RoomNumber)
+                    {
+                        FirstRoomAvailableDays.RemoveAt(i);
+                    }
+
+                    if (SecondRoomAvailableDays[i].Date == appointment.StartTime.Date &&
+                        advancedRenovationQuery.RoomId2 == appointment.RoomNumber)
+                    {
+                        SecondRoomAvailableDays.RemoveAt(i);
+                    }
+                }
+            }
+
+            List<DateTime> IntersectedAvailabeDays = FirstRoomAvailableDays.Intersect(SecondRoomAvailableDays).ToList();
+            return IntersectedAvailabeDays;
+        }
+
         public bool Split(int id)
         {
             return this.roomRepository.Split(id);

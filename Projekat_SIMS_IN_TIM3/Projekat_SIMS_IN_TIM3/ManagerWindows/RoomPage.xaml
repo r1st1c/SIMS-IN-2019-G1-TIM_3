@@ -64,7 +64,7 @@
                 </DataTemplate>
             </Button.ContentTemplate>
         </Button>
-        <Button Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Button Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Merge_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">

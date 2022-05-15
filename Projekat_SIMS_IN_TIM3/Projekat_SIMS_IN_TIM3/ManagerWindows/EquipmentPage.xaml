@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
+      xmlns:adorners="http://gu.se/Adorners"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1600"
       Title="EquipmentPage">
@@ -20,7 +21,7 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="Search_Box" FontSize="20" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160" Height="30" TextWrapping="Wrap" Text="" Margin="10,0,0,0"/>
+        <TextBox x:Name="Search_Box" FontSize="20" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160" Height="30" TextWrapping="Wrap" Text="" Margin="10,0,0,0" adorners:Watermark.Text="Search here..." adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused"/>
         <Button Grid.Row="0" Grid.Column="1" Content="Search"  VerticalAlignment="Center" Height="30" FontSize="20" Margin="180,0,10,0" Click="Search_Click"/>
 
         <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="40,0,0,2" TextWrapping="Wrap" Text="Show only" VerticalAlignment="Center" FontSize="22"/>

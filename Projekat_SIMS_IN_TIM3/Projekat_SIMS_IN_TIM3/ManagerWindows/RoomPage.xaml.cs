@@ -74,5 +74,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             var basic = new BasicRenovationWindow(room);
             basic.ShowDialog();
         }
+
+        private void Merge_Click(object sender, RoutedEventArgs e)
+        {
+            var advanced = new AdvancedRoomRenovationWindow();
+            advanced.ShowDialog();
+        }
     }
 }

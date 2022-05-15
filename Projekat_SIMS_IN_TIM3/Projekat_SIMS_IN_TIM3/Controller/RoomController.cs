@@ -62,6 +62,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.GetRenovationSchedules();
         }
 
+        public List<AdvancedRenovationTerm> AdvancedRenovation(AdvancedRenovationQuery advancedRenovationQuery)
+        {
+            return this.roomService.AdvancedRenovation(advancedRenovationQuery);
+        }
+
         public bool Split(int id)
         {
             return this.roomService.Split(id);
