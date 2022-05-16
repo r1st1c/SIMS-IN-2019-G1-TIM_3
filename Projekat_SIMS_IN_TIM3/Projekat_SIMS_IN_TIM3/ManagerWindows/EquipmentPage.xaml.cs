@@ -77,15 +77,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             {
                 queryResult.Add(equipment);
             }
-            
             Equipment_All = queryResult;
-            Equipment testAdd = new Equipment(5, "test", "test", EquipmentType.static_equipment, 1, 0);
-            Equipment_All.Add(testAdd);
             foreach (var equipment in Equipment_All)
             {
                 Debug.WriteLine(equipment.Equipmentname);
             }
-            //Equipment_All = new ObservableCollection<Equipment>();
             Debug.WriteLine("THIS ENDED");
             //dataGridEquipment.ItemsSource = null;
             //dataGridEquipment.ItemsSource = queryResult;
