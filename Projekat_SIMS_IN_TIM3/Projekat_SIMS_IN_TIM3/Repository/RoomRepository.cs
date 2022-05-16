@@ -46,14 +46,22 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                 }
                 string[] data = csvLines[i].Split(',');
 
-                string txt;
+                string renovating;
                 if(Int32.Parse(data[5]) == 0)
                 {
-                    txt = "No";
+                    renovating = "No";
+                }
+                else if(Int32.Parse(data[5]) == 1)
+                {
+                    renovating = "Basic";
+                }
+                else if (Int32.Parse(data[5]) == 2)
+                {
+                    renovating = "Advanced";
                 }
                 else
                 {
-                    txt = "Yes";
+                    renovating = "?";
                 }
 
                 list.Add(new Room(
@@ -62,7 +70,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     Enum.Parse<RoomType>(data[2]),
                     UInt32.Parse(data[3]),
                     data[4],
-                    txt
+                    renovating
                 ));
                 
             }
@@ -166,12 +174,71 @@ namespace Projekat_SIMS_IN_TIM3.Repository
          throw new NotImplementedException();
       }
       
-      public bool Merge(int firstId, int secondId)
+      public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
       {
-         throw new NotImplementedException();
+          var room1 = this.GetById(mergeRenovationTerm.RoomId1);
+          var room2 = this.GetById(mergeRenovationTerm.RoomId2);
+          if (DateTime.Now >= DateTime.ParseExact(mergeRenovationTerm.StartingDate, "dd-MMM-yy", null) 
+              && DateTime.Now <= DateTime.ParseExact(mergeRenovationTerm.EndingDate, "dd-MMM-yy", null))
+          {
+              room1.Disabled = 2;
+              room2.Disabled = 2;
+              this.Update(room1);
+              this.Update(room2);
+          }
+          string fileName = @"C:\Users\Ristic\Documents\room_merge.csv";
+          if (File.Exists(fileName))
+          {
+              string data = mergeRenovationTerm.RoomId1 + "," + mergeRenovationTerm.RoomId2 + "," + mergeRenovationTerm.StartingDate + 
+                            "," + mergeRenovationTerm.EndingDate + "," + mergeRenovationTerm.Name +"," + mergeRenovationTerm.RoomType + "," + mergeRenovationTerm.Description + "\n";
+              File.AppendAllText(fileName, data);
+              return true;
+          }
+          Debug.Write("Csv file doesnt exist");
+          return false;
+        }
+      public List<MergeRenovationTerm> GetMergeSchedules()
+      {
+          string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_merge.csv");
+          List<MergeRenovationTerm> list = new List<MergeRenovationTerm>();
+          for (int i = 0; i < csvLines.Length; i++)
+          {
+              if (csvLines[i] == "")
+              {
+                  continue;
+              }
+              string[] data = csvLines[i].Split(',');
+              list.Add(new MergeRenovationTerm(
+                  Int32.Parse(data[0]),
+                  Int32.Parse(data[1]),
+                  data[2],
+                  data[3],
+                  data[6],
+                  data[4], 
+                  Enum.Parse<RoomType>(data[5])
+              ));
+          }
+          return list;
       }
+      public void DeleteMergeScheduling(MergeRenovationTerm renovationTerm)
+      {
+          string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_merge.csv");
+          for (int i = 0; i < csvLines.Length; i++)
+          {
+              if (csvLines[i] == "")
+              {
+                  continue;
+              }
+              string[] data = csvLines[i].Split(',');
+              if (Int32.Parse(data[0]) == renovationTerm.RoomId1 && renovationTerm.RoomId2 == Int32.Parse(data[1]) && renovationTerm.StartingDate == data[2] && renovationTerm.EndingDate == data[3])
+              {
+                  csvLines[i] = "";
+              }
+          }
+          File.WriteAllLines(@"C:\Users\Ristic\Documents\room_merge.csv", csvLines);
+      } 
 
-       
-   
-   }
+    }
+    
 }
+
