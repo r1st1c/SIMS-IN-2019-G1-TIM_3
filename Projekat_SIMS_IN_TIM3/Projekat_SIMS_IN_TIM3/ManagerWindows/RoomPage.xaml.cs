@@ -82,5 +82,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             var merge = new MergeRoomsWindow();
             merge.ShowDialog();
         }
+
+        private void Split_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)((Button)e.Source).DataContext;
+            var split = new SplitRoomWindow(room);
+            split.ShowDialog();
+        }
     }
 }
