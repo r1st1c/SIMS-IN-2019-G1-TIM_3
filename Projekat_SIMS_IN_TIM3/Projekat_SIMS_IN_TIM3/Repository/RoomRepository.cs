@@ -326,7 +326,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     continue;
                 }
                 string[] data = csvLines[i].Split(',');
-                if (Int32.Parse(data[0]) == splitRenovationTerm.RoomToSplitId && splitRenovationTerm.StartingDate == data[2] && splitRenovationTerm.EndingDate == data[3])
+                if (Int32.Parse(data[0]) == splitRenovationTerm.RoomToSplitId && splitRenovationTerm.StartingDate == data[7] && splitRenovationTerm.EndingDate == data[8])
                 {
                     csvLines[i] = "";
                 }

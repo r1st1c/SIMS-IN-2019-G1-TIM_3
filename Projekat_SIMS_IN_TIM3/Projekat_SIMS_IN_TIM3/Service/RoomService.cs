@@ -243,27 +243,25 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             List<MergeRenovationTerm> mergeRenovations = this.roomRepository.GetMergeSchedules();
             List<Room> existing = this.roomRepository.GetAll();
-            uint floor=1;
+            List<Room> toCreateList = new List<Room>();
             foreach (var renovationTerm in mergeRenovations)
             {
-                bool tocreate = false;
                 foreach (var room in existing)
                 {
                     if (DateTime.Now > DateRange.GetLastMoment(DateTime.ParseExact(renovationTerm.EndingDate, "dd-MMM-yy", null)) &&
                         (room.Id == renovationTerm.RoomId1 || room.Id == renovationTerm.RoomId2))
                     {
-                        floor = room.Floor;
-                        tocreate = true;
+                        toCreateList.Add(new Room(0, renovationTerm.Name, renovationTerm.RoomType, room.Floor, renovationTerm.Description, "No"));
                         this.roomRepository.DeleteById(room.Id);
+                        this.roomRepository.DeleteMergeScheduling(renovationTerm);
                     }
                 }
-
-                if (tocreate)
-                {
-                    this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.Name,
-                        renovationTerm.RoomType, floor, renovationTerm.Description, "No"));
-                    this.roomRepository.DeleteMergeScheduling(renovationTerm);
-                }
+            }
+            var distinctedList = toCreateList.DistinctBy(x => x.Name).ToList();
+            foreach (Room tocreate in distinctedList)
+            {
+                tocreate.Id = this.roomRepository.next_id();
+                this.roomRepository.Create(tocreate);
             }
         }
 

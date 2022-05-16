@@ -68,7 +68,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             {
                 if ((room.Id == rt.RoomId1 || room.Id == rt.RoomId2) && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
                 {
-                    room.DisabledTxt = "Yes";
+                    room.DisabledTxt = "Merging";
                 }
 
             }
