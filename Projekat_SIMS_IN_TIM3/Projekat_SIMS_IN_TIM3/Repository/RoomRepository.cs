@@ -190,7 +190,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
           if (File.Exists(fileName))
           {
               string data = mergeRenovationTerm.RoomId1 + "," + mergeRenovationTerm.RoomId2 + "," + mergeRenovationTerm.StartingDate + 
-                            "," + mergeRenovationTerm.EndingDate + "," + mergeRenovationTerm.Description + "\n";
+                            "," + mergeRenovationTerm.EndingDate + "," + mergeRenovationTerm.Name +"," + mergeRenovationTerm.RoomType + "," + mergeRenovationTerm.Description + "\n";
               File.AppendAllText(fileName, data);
               return true;
           }
@@ -213,7 +213,9 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                   Int32.Parse(data[1]),
                   data[2],
                   data[3],
-                  data[4]
+                  data[6],
+                  data[4], 
+                  Enum.Parse<RoomType>(data[5])
               ));
           }
           return list;

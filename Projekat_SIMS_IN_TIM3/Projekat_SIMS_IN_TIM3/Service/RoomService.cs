@@ -153,7 +153,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
                                                             mergeRenovationQuery.RoomId2,
                                                             IntersectedAvailabeDays[i].ToShortDateString(), 
                                                             IntersectedAvailabeDays[i + duration].ToShortDateString(),
-                                                                mergeRenovationQuery.Description));
+                                                                mergeRenovationQuery.Description,
+                                                                mergeRenovationQuery.Name,
+                                                                mergeRenovationQuery.RoomType));
                 }
             }
             return retVal;
@@ -225,17 +227,26 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             List<MergeRenovationTerm> mergeRenovations = this.roomRepository.GetMergeSchedules();
             List<Room> existing = this.roomRepository.GetAll();
-            foreach (var room in existing)
+            uint floor=1;
+            foreach (var renovationTerm in mergeRenovations)
             {
-                foreach (var renovationTerm in mergeRenovations)
+                bool tocreate = false;
+                foreach (var room in existing)
                 {
                     if (DateTime.Now > DateRange.GetLastMoment(DateTime.ParseExact(renovationTerm.EndingDate, "dd-MMM-yy", null)) &&
                         (room.Id == renovationTerm.RoomId1 || room.Id == renovationTerm.RoomId2))
                     {
-                        room.Disabled = 0;
-                        this.roomRepository.Update(room);
-                        this.roomRepository.DeleteMergeScheduling(renovationTerm);
+                        floor = room.Floor;
+                        tocreate = true;
+                        this.roomRepository.DeleteById(room.Id);
                     }
+                }
+
+                if (tocreate)
+                {
+                    this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.Name,
+                        renovationTerm.RoomType, floor, renovationTerm.Description, "No"));
+                    this.roomRepository.DeleteMergeScheduling(renovationTerm);
                 }
             }
         }

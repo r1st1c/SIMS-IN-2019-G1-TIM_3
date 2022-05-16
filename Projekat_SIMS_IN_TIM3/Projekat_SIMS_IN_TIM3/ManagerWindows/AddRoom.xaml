@@ -27,7 +27,7 @@
         <TextBox TextWrapping="Wrap" Text="{Binding Namew}" FontSize="16" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" Width="128"/>
 
         <TextBlock Text="Room Type:" FontSize="16" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
-        <ComboBox  ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" Width="128"/>
+        <ComboBox FontSize="16" ItemsSource="{Binding Path=RoomTypes}" SelectedValue="{Binding Path=RoomTypeSelected}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" Width="128"/>
 
         <TextBlock Text="Room Floor:" FontSize="16" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
         <TextBox TextWrapping="Wrap" Text="{Binding Floor}" FontSize="16" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" Width="128"/>

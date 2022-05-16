@@ -68,7 +68,7 @@
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
-                        <TextBlock>Advanced Renovation</TextBlock>
+                        <TextBlock>Merge Roms</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>

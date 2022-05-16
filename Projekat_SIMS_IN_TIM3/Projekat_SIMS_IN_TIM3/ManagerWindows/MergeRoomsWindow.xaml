@@ -18,6 +18,8 @@
             <RowDefinition Height="0.8*" />
             <RowDefinition Height="0.8*" />
             <RowDefinition Height="0.8*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="0.8*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
@@ -28,8 +30,8 @@
         <TextBlock TextWrapping="Wrap" Text="Available Terms:" FontSize="30" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
 
         <TextBlock TextWrapping="Wrap" Text="Select Rooms:"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="18" Margin="0,0,7,0"/>
-        <ComboBox x:Name="firstRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16" Width="171" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="120,20,0,0" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="secondRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16"  Width="171" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Margin="120,0,0,20" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="firstRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16" Width="171" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="120,12,0,0" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="secondRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16"  Width="171" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Margin="120,0,0,12" Grid.ColumnSpan="2"/>
 
 
         <TextBlock FontSize="16" Text="Starting date:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
@@ -41,12 +43,18 @@
         <TextBlock FontSize="16" Text="Duration(Days):" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
         <TextBox x:Name="duration"  FontSize="16" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
 
+        <TextBlock FontSize="16" Text="New Name:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <TextBox x:Name="newName"  FontSize="16" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
 
-        <TextBlock FontSize="16" Text="Description:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Margin="0,25,7,0"/>
-        <TextBox x:Name="description_box" FontSize="16"  TextWrapping="Wrap"  Grid.Row="5" Grid.Column="1" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Margin="0,25,7,0"/>
+        <TextBlock FontSize="16" Text="New Type:" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <ComboBox Name="newType" FontSize="16"  ItemsSource="{Binding Path=RoomTypes}" Grid.Row="6" VerticalAlignment="Center"  HorizontalAlignment="Left" Width="171" Grid.ColumnSpan="2" Margin="120,0,0,0"/>
+
+
+        <TextBlock FontSize="16" Text="Description:" Grid.Row="7" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Margin="0,25,7,0"/>
+        <TextBox x:Name="description" FontSize="16"  TextWrapping="Wrap"  Grid.Row="7" Grid.Column="1" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Margin="0,13,7,0"/>
 
         <DataGrid  x:Name="renovationsGrid" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" Grid.RowSpan="6" Margin="0,0,20,20">
+                  SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" Grid.RowSpan="8" Margin="0,0,20,20">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Start Date" Binding="{Binding StartingDate}" Width="*"/>
                 <DataGridTextColumn Header="End Date" Binding="{Binding EndingDate}" Width="*"/>
@@ -60,7 +68,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Content="Confirm" Background="Lime" FontWeight="Bold" Click="Confirm_Button"  Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" Height="32" Width="100" Margin="18,0,0,0"/>
-        <Button Content="Cancel"  Background="Red" FontWeight="Bold" Click="Cancel_Button"  Grid.Row="6" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Right"  Height="32" Width="100" Margin="0,0,18,0"/>
+        <Button Content="Confirm" Background="Lime" FontWeight="Bold" Click="Confirm_Button"  Grid.Row="8" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" Height="32" Width="100" Margin="18,0,0,0"/>
+        <Button Content="Cancel"  Background="Red" FontWeight="Bold" Click="Cancel_Button"  Grid.Row="8" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Right"  Height="32" Width="100" Margin="0,0,18,0"/>
     </Grid>
 </Window>
