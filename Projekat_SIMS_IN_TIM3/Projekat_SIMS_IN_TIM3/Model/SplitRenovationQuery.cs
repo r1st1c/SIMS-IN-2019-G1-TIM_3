@@ -8,9 +8,19 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class SplitRenovationQuery
     {
-        public SplitRenovationQuery(DateRange range, int roomtosplitid, int duration, string newroomname1, string newroomname2, RoomType newroomtype1, RoomType newroomtype2, string newroomdescription1, string newroomdescription2)
+        public SplitRenovationQuery(
+            DateTime start, 
+            DateTime end, 
+            int roomtosplitid, 
+            int duration, 
+            string newroomname1, 
+            string newroomname2, 
+            RoomType newroomtype1, 
+            RoomType newroomtype2, 
+            string newroomdescription1, 
+            string newroomdescription2)
         {
-            Range = range;
+            Range = new DateRange(start, end);
             Roomtosplitid = roomtosplitid;
             Duration = duration;
             Newroomname1 = newroomname1;

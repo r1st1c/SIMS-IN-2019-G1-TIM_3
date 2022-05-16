@@ -67,11 +67,11 @@
         <TextBox x:Name="roomDescription2"  FontSize="16" TextWrapping="Wrap"  Grid.Row="11" Grid.Column="1" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Margin="0,6,7,6"/>
 
 
-        <DataGrid  x:Name="renovationsGrid" IsReadOnly="True" 
+        <DataGrid  x:Name="splitGrid" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" Grid.RowSpan="12" Margin="0,0,20,20">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}" Width="*"/>
-                <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}" Width="*"/>
+                <DataGridTextColumn Header="Start Date" Binding="{Binding StartingDate}" Width="*"/>
+                <DataGridTextColumn Header="End Date" Binding="{Binding EndingDate}" Width="*"/>
                 <DataGridTemplateColumn Header="Schedule" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
