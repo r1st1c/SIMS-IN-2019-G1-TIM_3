@@ -13,11 +13,14 @@ namespace Projekat_SIMS_IN_TIM3.Repository
     public class RoomRepository
    {
 
-        
+        private readonly string roomspath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\rooms.csv";
+        private readonly string roombasicrenovationpath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\room_basic_renovation.csv";
+        private readonly string roommergepath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\room_merge.csv";
+
 
         public int next_id()
         {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\rooms.csv");
+            string[] csvLines = File.ReadAllLines(roomspath);
             return csvLines.Length;
         }
 
@@ -36,7 +39,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       
       public List<Room> GetAll()
       {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\rooms.csv");
+            string[] csvLines = File.ReadAllLines(roomspath);
             List<Room> list = new List<Room>();
             for (int i = 0; i < csvLines.Length; i++)
             {
@@ -79,7 +82,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       
       public bool Create(Room room)
       {
-            string fileName = @"C:\Users\Ristic\Documents\rooms.csv";
+            string fileName = roomspath;
             if (File.Exists(fileName))
             {
                 //RoomWindow.Rooms.Add(room);
@@ -93,17 +96,17 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       
       public bool Update(Room room)
       {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\rooms.csv");
+            string[] csvLines = File.ReadAllLines(roomspath);
             csvLines[room.Id] = room.Id + "," + room.Name + "," + room.RoomType + "," + room.Floor + "," + room.Description + "," + room.Disabled;
-            File.WriteAllLines(@"C:\Users\Ristic\Documents\rooms.csv", csvLines);
+            File.WriteAllLines(roomspath, csvLines);
             return true;
         }
       
       public bool DeleteById(int id)
       {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\rooms.csv");
+            string[] csvLines = File.ReadAllLines(roomspath);
             csvLines[id] = "";
-            File.WriteAllLines(@"C:\Users\Ristic\Documents\rooms.csv", csvLines);
+            File.WriteAllLines(roomspath, csvLines);
             return true;
         }
 
@@ -120,7 +123,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                 room.Disabled = 1;
                 this.Update(room);
             }
-            string fileName = @"C:\Users\Ristic\Documents\room_basic_renovation.csv";
+            string fileName = roombasicrenovationpath;
             if (File.Exists(fileName))
             {
                 string data = roomId + "," + start + "," + end + "," + description + "\n";
@@ -132,7 +135,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         }
         public List<RenovationTerm> GetRenovationSchedules()
         {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_basic_renovation.csv");
+            string[] csvLines = File.ReadAllLines(roombasicrenovationpath);
             List<RenovationTerm> list = new List<RenovationTerm>();
             for (int i = 0; i < csvLines.Length; i++)
             {
@@ -152,7 +155,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public void DeleteScheduling(RenovationTerm renovationTerm)
         {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_basic_renovation.csv");
+            string[] csvLines = File.ReadAllLines(roombasicrenovationpath);
             for (int i = 0; i < csvLines.Length; i++)
             {
                 if (csvLines[i] == "")
@@ -165,7 +168,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     csvLines[i] = "";
                 }
             }
-            File.WriteAllLines(@"C:\Users\Ristic\Documents\room_basic_renovation.csv", csvLines);
+            File.WriteAllLines(roombasicrenovationpath, csvLines);
 
         }
 
@@ -186,7 +189,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
               this.Update(room1);
               this.Update(room2);
           }
-          string fileName = @"C:\Users\Ristic\Documents\room_merge.csv";
+          string fileName = roommergepath;
           if (File.Exists(fileName))
           {
               string data = mergeRenovationTerm.RoomId1 + "," + mergeRenovationTerm.RoomId2 + "," + mergeRenovationTerm.StartingDate + 
@@ -199,7 +202,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         }
       public List<MergeRenovationTerm> GetMergeSchedules()
       {
-          string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_merge.csv");
+          string[] csvLines = File.ReadAllLines(roommergepath);
           List<MergeRenovationTerm> list = new List<MergeRenovationTerm>();
           for (int i = 0; i < csvLines.Length; i++)
           {
@@ -222,7 +225,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       }
       public void DeleteMergeScheduling(MergeRenovationTerm renovationTerm)
       {
-          string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\room_merge.csv");
+          string[] csvLines = File.ReadAllLines(roommergepath);
           for (int i = 0; i < csvLines.Length; i++)
           {
               if (csvLines[i] == "")
@@ -235,7 +238,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                   csvLines[i] = "";
               }
           }
-          File.WriteAllLines(@"C:\Users\Ristic\Documents\room_merge.csv", csvLines);
+          File.WriteAllLines(roommergepath, csvLines);
       } 
 
     }
