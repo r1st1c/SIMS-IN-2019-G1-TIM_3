@@ -325,16 +325,16 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public void DisableSplittingRooms()
         {
-            List<MergeRenovationTerm> mergeRenovations = this.roomRepository.GetMergeSchedules();
+            List<SplitRenovationTerm> mergeRenovations = this.roomRepository.GetSplitSchedules();
             List<Room> existing = this.roomRepository.GetAll();
             foreach (var room in existing)
             {
                 foreach (var renovationTerm in mergeRenovations)
                 {
                     if (DateTime.Now >= DateTime.ParseExact(renovationTerm.StartingDate, "dd-MMM-yy", null) &&
-                        (room.Id == renovationTerm.RoomId1 || room.Id == renovationTerm.RoomId2))
+                         room.Id == renovationTerm.RoomToSplitId)
                     {
-                        room.Disabled = 2;
+                        room.Disabled = 3;
                         this.roomRepository.Update(room);
                     }
                 }

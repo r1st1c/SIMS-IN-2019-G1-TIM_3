@@ -92,6 +92,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             return this.roomService.ScheduleSplit(splitRenovationTerm);
         }
+        public void DisableSplittingRooms()
+        {
+            this.roomService.DisableSplittingRooms();
+        }
         public RoomService roomService = new RoomService();
 
     }
