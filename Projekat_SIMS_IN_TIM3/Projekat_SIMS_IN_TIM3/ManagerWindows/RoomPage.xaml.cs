@@ -60,13 +60,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 return;
             }
             Rooms.Remove(room);
-            if (EquipmentPage.Equipment_All != null)
+            /*if (EquipmentPage.Equipment_All != null)
             {
                 foreach (var equipment in EquipmentPage.Equipment_All.Where(x => x.RoomId == room.Id))
                 {
                     equipment.RoomName = this.roomController.GetById(0).Name;
                 }
-            }
+            }*/
             this.roomController.DeleteById(room.Id);
         }
 

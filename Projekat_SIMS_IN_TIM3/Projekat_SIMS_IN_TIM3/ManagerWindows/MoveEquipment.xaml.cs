@@ -2,6 +2,7 @@
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -24,14 +25,16 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         public EquipmentController equipmentController = new EquipmentController();
         public RoomController roomController = new RoomController();
+        ObservableCollection<Equipment> Equipment_All { get; set; }
         public int equipmentId { get; set; }
         public string RoomNameSelected { get; set; }
         public string SelectedEquipment { get; set; }
         public string CurrentRoom { get; set; }
         public List<string> RoomNames { get; set; } = new List<string>();
-        public MoveEquipment(Equipment equipment)
+        public MoveEquipment(Equipment equipment, ObservableCollection<Equipment> equipment_All)
         {
             InitializeComponent();
+            this.Equipment_All = equipment_All;
             this.DataContext = this;
             var roomList = this.roomController.GetAll();
             foreach(Room room in roomList)
@@ -78,7 +81,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             if (toRefresh)
             {
                 var toUpdate = this.equipmentController.GetById(equipmentId);
-                List<Equipment> list = EquipmentPage.Equipment_All.ToList();
+                List<Equipment> list = this.Equipment_All.ToList();
                 foreach (var eq in list.Where(x => x.Id == toUpdate.Id))
                 {
                     eq.RoomId = targetRoomId;
