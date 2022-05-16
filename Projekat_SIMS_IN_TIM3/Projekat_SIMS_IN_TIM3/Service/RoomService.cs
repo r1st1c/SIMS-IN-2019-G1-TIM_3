@@ -21,6 +21,19 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             return this.roomRepository.GetById(id);
         }
+        public Room GetByName(string name)
+        {
+            var list = this.roomRepository.GetAll();
+            foreach (var item in list)
+            {
+                if (item.Name == name)
+                {
+                    return item;
+                }
+            }
+            Debug.WriteLine("Room not found!");
+            return null;
+        }
 
         public List<Room> GetAll()
         {
@@ -62,7 +75,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
             this.equipmentRepository.MoveEquipmentToDefaultRoomAfterDeletingRoom(id);
             return this.roomRepository.DeleteById(id);
         }
-
+        /// CRUD
+        /// 
+        ///////////////////////////////////////////////////////////////////////////////// 
+        /// 
+        /// BASIC RENOVATION
         public List<RenovationTerm> BasicRenovation(int roomId, DateTime start, DateTime end,int duration)
         {
             var dates = new List<DateTime>();
@@ -134,8 +151,12 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             return this.roomRepository.GetRenovationSchedules();
         }
-
-        public List<MergeRenovationTerm> MergeRenovation(MergeRenovationQuery mergeRenovationQuery)
+        /// BASIC RENOVATION
+        /// 
+        ///////////////////////////////////////////////////////////////////////////////// 
+        /// 
+        /// MERGE
+        public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationQuery mergeRenovationQuery)
         {
             var IntersectedAvailabeDays = FindIntersectedAvailableDays(mergeRenovationQuery);
 
@@ -195,17 +216,12 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return IntersectedAvailabeDays;
         }
 
-        public bool Split(int id)
-        {
-            return this.roomRepository.Split(id);
-        }
-
         public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
         {
             return this.roomRepository.ScheduleMerge(mergeRenovationTerm);
         }
 
-        public void DisableAdvancedRenovatingRooms()
+        public void DisableMergingRooms()
         {
             List<MergeRenovationTerm> mergeRenovations = this.roomRepository.GetMergeSchedules();
             List<Room> existing = this.roomRepository.GetAll();
@@ -223,46 +239,124 @@ namespace Projekat_SIMS_IN_TIM3.Service
             }
         }
 
-        public void EnableAdvancedRenovatedRooms()
+        public void ExecuteMerging()
         {
             List<MergeRenovationTerm> mergeRenovations = this.roomRepository.GetMergeSchedules();
             List<Room> existing = this.roomRepository.GetAll();
-            uint floor=1;
+            List<Room> toCreateList = new List<Room>();
             foreach (var renovationTerm in mergeRenovations)
             {
-                bool tocreate = false;
                 foreach (var room in existing)
                 {
                     if (DateTime.Now > DateRange.GetLastMoment(DateTime.ParseExact(renovationTerm.EndingDate, "dd-MMM-yy", null)) &&
                         (room.Id == renovationTerm.RoomId1 || room.Id == renovationTerm.RoomId2))
                     {
-                        floor = room.Floor;
-                        tocreate = true;
+                        toCreateList.Add(new Room(0, renovationTerm.Name, renovationTerm.RoomType, room.Floor, renovationTerm.Description, "No"));
                         this.roomRepository.DeleteById(room.Id);
+                        this.roomRepository.DeleteMergeScheduling(renovationTerm);
                     }
                 }
-
-                if (tocreate)
-                {
-                    this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.Name,
-                        renovationTerm.RoomType, floor, renovationTerm.Description, "No"));
-                    this.roomRepository.DeleteMergeScheduling(renovationTerm);
-                }
+            }
+            var distinctedList = toCreateList.DistinctBy(x => x.Name).ToList();
+            foreach (Room tocreate in distinctedList)
+            {
+                tocreate.Id = this.roomRepository.next_id();
+                this.roomRepository.Create(tocreate);
             }
         }
 
-        public Room GetByName(string name)
+        /// MERGE
+        /// 
+        ///////////////////////////////////////////////////////////////////////////////// 
+        /// 
+        /// SPLIT
+ 
+        public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationQuery splitRenovationQuery)
         {
-            var list = this.roomRepository.GetAll();
-            foreach(var item in list)
+            var dates = new List<DateTime>();
+
+            for (var dt = splitRenovationQuery.Range.Start; dt <= splitRenovationQuery.Range.End; dt = dt.AddDays(1))
             {
-                if(item.Name == name)
+                dates.Add(dt);
+            }
+            //Debug.WriteLine("NUMBER OF DATES:" + dates.Count);
+            var appointments = this.appointmentRepository.GetAll();
+            for (int i = 0; i < dates.Count; i++)
+            {
+                //Debug.WriteLine("INDEX:" + i);
+                foreach (var appointment in appointments)
                 {
-                    return item;
+                    if (dates[i] == appointment.StartTime.Date && splitRenovationQuery.Roomtosplitid == appointment.RoomNumber)
+                    {
+                        dates.RemoveAt(i);
+                    }
                 }
             }
-            Debug.WriteLine("Room not found!");
-            return null;
+            List<SplitRenovationTerm> retVal = new List<SplitRenovationTerm>();
+            int duration = splitRenovationQuery.Duration;
+            duration--;//first day is already included so we subrtact that day from total amount of days
+            int renovationId = 0;
+            for (int i = 0; i < dates.Count - duration; i++)
+            {
+                if (dates[i].AddDays(duration) == dates[i + duration])
+                {
+                    retVal.Add(new SplitRenovationTerm(
+                        renovationId++,
+                        splitRenovationQuery.Roomtosplitid,
+                        splitRenovationQuery.Newroomname1,
+                        splitRenovationQuery.Newroomname2,
+                        splitRenovationQuery.Newroomdescription1,
+                        splitRenovationQuery.Newroomdescription2,
+                        splitRenovationQuery.Newroomtype1,
+                        splitRenovationQuery.Newroomtype2,
+                        dates[i].ToShortDateString(),
+                        dates[i+duration].ToShortDateString()
+                        ));
+                }
+            }
+            return retVal;
+        }
+        public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)
+        {
+            return this.roomRepository.ScheduleSplit(splitRenovationTerm);
+        }
+
+        public void DisableSplittingRooms()
+        {
+            List<SplitRenovationTerm> mergeRenovations = this.roomRepository.GetSplitSchedules();
+            List<Room> existing = this.roomRepository.GetAll();
+            foreach (var room in existing)
+            {
+                foreach (var renovationTerm in mergeRenovations)
+                {
+                    if (DateTime.Now >= DateTime.ParseExact(renovationTerm.StartingDate, "dd-MMM-yy", null) &&
+                         room.Id == renovationTerm.RoomToSplitId)
+                    {
+                        room.Disabled = 3;
+                        this.roomRepository.Update(room);
+                    }
+                }
+            }
+        }
+        public void ExecuteSplitting()
+        {
+            List<SplitRenovationTerm> splitRenovationTerms = this.roomRepository.GetSplitSchedules();
+            List<Room> existing = this.roomRepository.GetAll();
+            foreach (var renovationTerm in splitRenovationTerms)
+            {
+                bool tocreate = false;
+                foreach (var room in existing)
+                {
+                    if (DateTime.Now > DateRange.GetLastMoment(DateTime.ParseExact(renovationTerm.EndingDate, "dd-MMM-yy", null)) &&
+                        renovationTerm.RoomToSplitId==room.Id)
+                    {
+                        this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.RoomName1, renovationTerm.RoomType1, room.Floor, renovationTerm.RoomDescription1, "No"));
+                        this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.RoomName2, renovationTerm.RoomType2, room.Floor, renovationTerm.RoomDescription2, "No"));
+                        this.roomRepository.DeleteById(room.Id);
+                        this.roomRepository.DeleteSplitScheduling(renovationTerm);
+                    }
+                }
+            }
         }
 
         public RoomRepository roomRepository = new RoomRepository();

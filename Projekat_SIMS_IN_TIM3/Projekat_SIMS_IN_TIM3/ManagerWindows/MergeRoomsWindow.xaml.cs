@@ -50,7 +50,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             DateTime endDate = DateTime.Parse(this.EndDate.Text);
             Debug.WriteLine(roomtype);
             var query = new MergeRenovationQuery(startDate, endDate, firstRoomId, secondRoomId, duration, description,name,roomtype);
-            List<MergeRenovationTerm> available = this.roomController.MergeRenovation(query);
+            List<MergeRenovationTerm> available = this.roomController.GetMergeRenovationAvailableTerms(query);
             renovationsGrid.ItemsSource = available;
         }
 
@@ -68,7 +68,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             {
                 if ((room.Id == rt.RoomId1 || room.Id == rt.RoomId2) && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
                 {
-                    room.DisabledTxt = "Yes";
+                    room.DisabledTxt = "Merging";
                 }
 
             }

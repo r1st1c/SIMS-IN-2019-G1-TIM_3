@@ -19,7 +19,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             return this.roomService.GetById(id);
         }
-
+        public Room GetByName(string name)
+        {
+            return this.roomService.GetByName(name);
+        }
         public List<Room> GetAll()
         {
             return this.roomService.GetAll();
@@ -62,14 +65,9 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.GetRenovationSchedules();
         }
 
-        public List<MergeRenovationTerm> MergeRenovation(MergeRenovationQuery mergeRenovationQuery)
+        public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationQuery mergeRenovationQuery)
         {
-            return this.roomService.MergeRenovation(mergeRenovationQuery);
-        }
-
-        public bool Split(int id)
-        {
-            return this.roomService.Split(id);
+            return this.roomService.GetMergeRenovationAvailableTerms(mergeRenovationQuery);
         }
 
         public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
@@ -77,19 +75,32 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.ScheduleMerge(mergeRenovationTerm);
         }
 
-        public void DisableAdvancedRenovatingRooms()
+        public void DisableMergingRooms()
         {
-            this.roomService.DisableAdvancedRenovatingRooms();
+            this.roomService.DisableMergingRooms();
         }
-        public void EnableAdvancedRenovatedRooms()
+        public void ExecuteMerging()
         {
-            this.roomService.EnableAdvancedRenovatedRooms();
+            this.roomService.ExecuteMerging();
         }
-        public Room GetByName(string name)
+        public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationQuery splitRenovationQuery)
         {
-            return this.roomService.GetByName(name);
+            return this.roomService.GetSplitRenovationAvailableTerms(splitRenovationQuery);
         }
 
+        public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)
+        {
+            return this.roomService.ScheduleSplit(splitRenovationTerm);
+        }
+        public void DisableSplittingRooms()
+        {
+            this.roomService.DisableSplittingRooms();
+        }
+
+        public void ExecuteSplitting()
+        {
+            this.roomService.ExecuteSplitting();
+        }
         public RoomService roomService = new RoomService();
 
     }

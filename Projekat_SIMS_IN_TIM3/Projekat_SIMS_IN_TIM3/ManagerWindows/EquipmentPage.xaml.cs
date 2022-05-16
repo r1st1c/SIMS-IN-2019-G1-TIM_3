@@ -23,11 +23,33 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// <summary>
     /// Interaction logic for EquipmentPage.xaml
     /// </summary>
-    public partial class EquipmentPage : Page
+    public partial class EquipmentPage : Page,INotifyPropertyChanged
     {
-        
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public static ObservableCollection<Equipment> Equipment_All { get; set; }
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private ObservableCollection<Equipment> _equipment_All;
+
+        public ObservableCollection<Equipment> Equipment_All
+        {
+            get
+            { return _equipment_All; }
+            set
+            {
+                if (value != _equipment_All)
+                {
+                    _equipment_All = value;
+                    OnPropertyChanged("Equipment_All");
+                }
+            }
+        }
 
         public static EquipmentController equipmentController = new EquipmentController();
         public static List<Equipment> Equipment_Backup { get; set; }
@@ -42,7 +64,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Move_Button(object sender, RoutedEventArgs e)
         {
             Equipment equipment = (Equipment)((Button)e.Source).DataContext;
-            var move = new MoveEquipment(equipment);
+            var move = new MoveEquipment(equipment, Equipment_All);
             move.ShowDialog();
         }
 
@@ -50,15 +72,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             string toSearch = Search_Box.Text;
-            List<Equipment> queryResult = new List<Equipment>();
-            foreach (var equipment in Equipment_Backup)
+            ObservableCollection<Equipment> queryResult = new ObservableCollection<Equipment>();
+            foreach (var equipment in Equipment_Backup.Where(e=>ContainsIgnoreCase(e.Equipmentname,toSearch)))
             {
-                if(ContainsIgnoreCase(equipment.Equipmentname,toSearch))
-                {
-                    queryResult.Add(equipment);
-                }
+                queryResult.Add(equipment);
             }
-            Equipment_All = new ObservableCollection<Equipment>(queryResult);
+            Equipment_All = queryResult;
             foreach (var equipment in Equipment_All)
             {
                 Debug.WriteLine(equipment.Equipmentname);
