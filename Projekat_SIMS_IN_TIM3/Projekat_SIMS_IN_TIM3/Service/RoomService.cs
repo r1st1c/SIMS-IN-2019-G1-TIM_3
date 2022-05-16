@@ -340,6 +340,26 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 }
             }
         }
+        public void ExecuteSplitting()
+        {
+            List<SplitRenovationTerm> splitRenovationTerms = this.roomRepository.GetSplitSchedules();
+            List<Room> existing = this.roomRepository.GetAll();
+            foreach (var renovationTerm in splitRenovationTerms)
+            {
+                bool tocreate = false;
+                foreach (var room in existing)
+                {
+                    if (DateTime.Now > DateRange.GetLastMoment(DateTime.ParseExact(renovationTerm.EndingDate, "dd-MMM-yy", null)) &&
+                        renovationTerm.RoomToSplitId==room.Id)
+                    {
+                        this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.RoomName1, renovationTerm.RoomType1, room.Floor, renovationTerm.RoomDescription1, "No"));
+                        this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.RoomName2, renovationTerm.RoomType2, room.Floor, renovationTerm.RoomDescription2, "No"));
+                        this.roomRepository.DeleteById(room.Id);
+                        this.roomRepository.DeleteSplitScheduling(renovationTerm);
+                    }
+                }
+            }
+        }
 
         public RoomRepository roomRepository = new RoomRepository();
         public AppointmentRepository appointmentRepository = new AppointmentRepository();

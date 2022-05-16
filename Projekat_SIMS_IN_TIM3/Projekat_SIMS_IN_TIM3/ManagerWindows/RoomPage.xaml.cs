@@ -34,6 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             this.roomController.DisableMergingRooms();
             this.roomController.ExecuteMerging();
             this.roomController.DisableSplittingRooms();
+            this.roomController.ExecuteSplitting();
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
         }

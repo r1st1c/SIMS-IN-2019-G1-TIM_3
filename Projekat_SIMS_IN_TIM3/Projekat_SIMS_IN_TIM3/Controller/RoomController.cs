@@ -96,6 +96,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             this.roomService.DisableSplittingRooms();
         }
+
+        public void ExecuteSplitting()
+        {
+            this.roomService.ExecuteSplitting();
+        }
         public RoomService roomService = new RoomService();
 
     }

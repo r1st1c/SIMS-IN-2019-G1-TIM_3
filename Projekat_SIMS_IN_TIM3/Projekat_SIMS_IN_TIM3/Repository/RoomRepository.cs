@@ -315,11 +315,24 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             }
             return list;
         }
-        /*
+        
         public void DeleteSplitScheduling(SplitRenovationTerm splitRenovationTerm)
         {
-
-        }*/
+            string[] csvLines = File.ReadAllLines(roomsplitpath);
+            for (int i = 0; i < csvLines.Length; i++)
+            {
+                if (csvLines[i] == "")
+                {
+                    continue;
+                }
+                string[] data = csvLines[i].Split(',');
+                if (Int32.Parse(data[0]) == splitRenovationTerm.RoomToSplitId && splitRenovationTerm.StartingDate == data[2] && splitRenovationTerm.EndingDate == data[3])
+                {
+                    csvLines[i] = "";
+                }
+            }
+            File.WriteAllLines(roomsplitpath, csvLines);
+        }
     }
     
 }
