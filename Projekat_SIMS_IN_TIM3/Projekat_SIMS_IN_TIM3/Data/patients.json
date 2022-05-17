@@ -11,7 +11,10 @@
       "Address": "Glavna 101, Subotica",
       "Phone": "065-234-500-90",
       "DateOfBirth": "1990-06-06T10:30:00"
-    }
+
+    },
+
+    "CancellationDates": [ "1990-06-06T10:30:00" ]
   },
   {
     "User": {
@@ -25,7 +28,8 @@
       "Address": "Adresa1, Grad1",
       "Phone": "065-224-500-90",
       "DateOfBirth": "1999-06-08T14:30:00"
-    }
+    },
+    "CancellationDates": [ "1990-06-06T10:30:00" ]
   }
 ]
 

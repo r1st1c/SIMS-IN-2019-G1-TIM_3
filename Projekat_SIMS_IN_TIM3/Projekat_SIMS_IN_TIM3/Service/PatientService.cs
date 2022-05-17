@@ -11,6 +11,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
     public class PatientService
     {
         private PatientRepository patientRepository = new PatientRepository();
+        private AppointmentRepository appointmentRepository = new AppointmentRepository();
         public List<Patient> GetAll()
         {
             return patientRepository.GetAll();
@@ -75,6 +76,65 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             return patientRepository.getIdByNameAndSurname(name, surname);
         }
+
+        public Boolean cancelAppointment(int patientId, int appointmentId)
+        {
+            if(canCancelAppointment(patientId))
+            {
+                freeAppointment(appointmentId);
+                return true;
+            }
+            else
+            {
+                patientRepository.Delete(patientId);
+                return false;
+            }
+        }
+
+        public void freeAppointment(int appointmentId)
+        {
+            Appointment appointment = appointmentRepository.GetById(appointmentId);
+
+            appointmentRepository.DeleteAppointment(appointmentId);
+
+            appointment.PatientId = -1;
+
+            appointmentRepository.CreateAppointment(appointment);
+        }
+
+        public Boolean canCancelAppointment(int patientId)
+        {
+            Patient patient = patientRepository.GetById(patientId);
+
+            return cancellationTresholdReached(patient) ? false : true;
+
+        }
+
+        public Boolean cancellationTresholdReached(Patient patient)
+        {
+            List<DateTime> cancellationDates = patient.CancellationDates;
+            int cancellationsCount = cancellationDates.Count();
+
+            if(cancellationsCount < 5)
+            {
+                return false;
+            }
+
+            TimeSpan timeDifference = getTimeDifference(cancellationDates);
+
+            return timeDifference.TotalDays <= 30;
+            
+        }
+
+        public TimeSpan getTimeDifference(List<DateTime> cancellationDates)
+        {
+            int cancellationsCount = cancellationDates.Count();
+            DateTime fifthLastCancellation = cancellationDates[cancellationsCount - 5];
+
+            return DateTime.Now - fifthLastCancellation;
+        }
+
+      
 
 
     }
