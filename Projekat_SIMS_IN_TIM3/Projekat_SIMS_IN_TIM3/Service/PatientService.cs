@@ -82,6 +82,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             if(canCancelAppointment(patientId))
             {
                 freeAppointment(appointmentId);
+                addCancellationDate(patientId);
                 return true;
             }
             else
@@ -89,6 +90,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 patientRepository.Delete(patientId);
                 return false;
             }
+        }
+
+        public void addCancellationDate(int patientId)
+        {
+            Patient patient = patientRepository.GetById(patientId);
+            patient.CancellationDates.Add(DateTime.Now);
+            patientRepository.Delete(patientId);
+            patientRepository.Save(patient);
         }
 
         public void freeAppointment(int appointmentId)
