@@ -26,18 +26,25 @@ namespace Projekat_SIMS_IN_TIM3.Model
         {
             Name = name;
         }
+        public MedicineIngredient()
+        {
 
-        private int id;
-        private string name;
+        }
+        ~MedicineIngredient()
+        {
+
+        }
+        private int _id;
+        private string _name;
         public int Id
         {
             get
-            { return id; }
+            { return _id; }
             set
             {
-                if (value != id)
+                if (value != _id)
                 {
-                    id = value;
+                    _id = value;
                     OnPropertyChanged("Id");
                 }
             }
@@ -45,12 +52,12 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public string Name
         {
             get
-            { return name; }
+            { return _name; }
             set
             {
-                if (value != name)
+                if (value != _name)
                 {
-                    name = value;
+                    _name = value;
                     OnPropertyChanged("Name");
                 }
             }
