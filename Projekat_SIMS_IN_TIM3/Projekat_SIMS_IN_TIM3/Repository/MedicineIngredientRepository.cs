@@ -11,7 +11,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 {
     public class MedicineIngredientRepository
     {
-        private readonly string medicineingredientpath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\room_split.csv";
+        private readonly string medicineingredientpath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\medicine_ingredients.csv";
 
         public int next_id()
         {
@@ -50,16 +50,17 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return found;
         }
 
-        public bool Create(MedicineIngredient toCreate)
+        public MedicineIngredient Create(MedicineIngredient toCreate)
         {
             if (File.Exists(medicineingredientpath))
             {
+                toCreate.Id = next_id();
                 string data = next_id() + "," + toCreate.Name + "\n";
                 File.AppendAllText(medicineingredientpath, data);
-                return true;
+                return toCreate;
             }
             Debug.Write("Csv file doesnt exist");
-            return false;
+            return null;
         }
 
         public bool Update(MedicineIngredient toUpdate)

@@ -75,7 +75,7 @@
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
-                        <TextBlock>Merge Roms</TextBlock>
+                        <TextBlock>Merge Two Rooms</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
