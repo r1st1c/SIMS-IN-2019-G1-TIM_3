@@ -25,6 +25,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
     public partial class UpdateAndDeleteAppointment : Window
     {
 
+        public Boolean toBlock = true;
         public App application { get; set; }
         public List<Appointment> appointments { get; set; } = new List<Appointment>();
         public Appointment selectedAppointment { get; set; }
@@ -63,13 +64,14 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             DataBinding1.ItemsSource = appsNew;
         }
 
-        public Boolean Cancel(object sender, RoutedEventArgs e)
+        public void Cancel(object sender, RoutedEventArgs e)
         {
             Boolean canceledAppointment = application.patientController.cancelAppointment(patientId, selectedAppointment.Id);
 
             if(canceledAppointment)
             {
                 Show(sender, e);
+                toBlock = false;
             }
             else
             {
@@ -77,9 +79,10 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
+                toBlock = true;
             }
 
-            return canceledAppointment;
+           
         }
 
         public void Select(object sender, RoutedEventArgs e)
@@ -127,9 +130,9 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             }
             else
             {
+                Cancel(sender, e);
 
-
-                if (Cancel(sender, e))
+                if (toBlock)
                 {
 
                     application.appointmentController.DeleteAppointment(appointmentId);
