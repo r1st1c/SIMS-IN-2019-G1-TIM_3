@@ -32,11 +32,12 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
          public List<AppText> appTexts {get; set;} = new List<AppText>();*/
 
         public int patientId = 1;
+        public String Username;
         public UpdateAndDeleteAppointment(string Username)
         {
             InitializeComponent();
             this.DataContext = this;
-
+            this.Username = Username;
             application = Application.Current as App;
 
             List<Patient> patients = this.application.patientController.GetAll();
@@ -72,6 +73,10 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             else
             {
                 //logout
+                this.application.userLoginController.DeleteLogIn(Username);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
             }
           
             
@@ -123,13 +128,16 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             else
             {
 
+                
+                Cancel(sender, e);
+
                 application.appointmentController.DeleteAppointment(appointmentId);
                 var newAppointment = new Appointment(appointmentId, (DateTime)startTime1.Value, selectedAppointment.DurationInMinutes,
                     selectedAppointment.Type, selectedAppointment.DoctorId, selectedAppointment.PatientId);
 
 
                 application.appointmentController.CreateAppointment(newAppointment);
-                MessageBox.Show("Successfully updated appointment ");
+               
             }
         }
     }
