@@ -16,5 +16,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             return user1.ValidLogin(user);
         }
+
+        public void DeleteLogIn(String Username)
+        {
+            user1.DeleteLogIn(Username);
+        }
     }
 }
