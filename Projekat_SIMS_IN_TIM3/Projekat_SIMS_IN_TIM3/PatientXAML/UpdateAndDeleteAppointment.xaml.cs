@@ -63,23 +63,23 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             DataBinding1.ItemsSource = appsNew;
         }
 
-        public void Cancel(object sender, RoutedEventArgs e)
+        public Boolean Cancel(object sender, RoutedEventArgs e)
         {
             Boolean canceledAppointment = application.patientController.cancelAppointment(patientId, selectedAppointment.Id);
+
             if(canceledAppointment)
             {
                 Show(sender, e);
             }
             else
             {
-                //logout
                 this.application.userLoginController.DeleteLogIn(Username);
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
             }
-          
-            
+
+            return canceledAppointment;
         }
 
         public void Select(object sender, RoutedEventArgs e)
@@ -128,16 +128,17 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             else
             {
 
-                
-                Cancel(sender, e);
 
-                application.appointmentController.DeleteAppointment(appointmentId);
-                var newAppointment = new Appointment(appointmentId, (DateTime)startTime1.Value, selectedAppointment.DurationInMinutes,
-                    selectedAppointment.Type, selectedAppointment.DoctorId, selectedAppointment.PatientId);
+                if (Cancel(sender, e))
+                {
+
+                    application.appointmentController.DeleteAppointment(appointmentId);
+                    var newAppointment = new Appointment(appointmentId, (DateTime)startTime1.Value, selectedAppointment.DurationInMinutes,
+                        selectedAppointment.Type, selectedAppointment.DoctorId, selectedAppointment.PatientId);
 
 
-                application.appointmentController.CreateAppointment(newAppointment);
-               
+                    application.appointmentController.CreateAppointment(newAppointment);
+                }    
             }
         }
     }
