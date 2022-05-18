@@ -1,1 +1,17 @@
-[{"CancellationDates":["1990-06-06T10:30:00"],"User":{"Id":1,"Jmbg":"1234567891244","Username":"pacijent","Password":"123","Name":"Nikola","Surname":"Nikolic","Email":"nikolicnikola90@gmail.com","Address":"Adresa1, Grad1","Phone":"065-224-500-90","DateOfBirth":"1999-06-08T14:30:00"}}]
+[
+  {
+    "CancellationDates": [ "1990-06-06T10:30:00" ],
+    "User": {
+      "Id": 1,
+      "Jmbg": "1234567891244",
+      "Username": "pacijent",
+      "Password": "123",
+      "Name": "Nikola",
+      "Surname": "Nikolic",
+      "Email": "nikolicnikola90@gmail.com",
+      "Address": "Adresa1, Grad1",
+      "Phone": "065-224-500-90",
+      "DateOfBirth": "1999-06-08T14:30:00"
+    }
+  }
+]
