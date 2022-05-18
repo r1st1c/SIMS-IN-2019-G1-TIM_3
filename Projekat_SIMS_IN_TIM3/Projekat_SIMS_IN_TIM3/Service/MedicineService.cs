@@ -11,7 +11,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
     public class MedicineService
     {
         private MedicineRepository medicineRepository = new MedicineRepository();
-
+        public int GetNextId() { return medicineRepository.GetNextId(); }
         public List<Medicine> getAll() { return medicineRepository.getAll();  }
 
         public Medicine GetById(int Id) { return medicineRepository.GetById(Id); }
@@ -25,6 +25,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public List<Medicine> getAllUnverified() {  return medicineRepository.getAllUnverified(); } 
         public int getIdByName(string name) { return medicineRepository.getIdByName(name); }
+        public Medicine GetByName(string name) { return medicineRepository.GetByName(name); }
 
 
 

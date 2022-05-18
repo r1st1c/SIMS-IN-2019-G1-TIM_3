@@ -63,5 +63,9 @@ namespace Projekat_SIMS_IN_TIM3.Model
             }
         }
 
+        public override string? ToString()
+        {
+            return this.Name;
+        }
     }
 }

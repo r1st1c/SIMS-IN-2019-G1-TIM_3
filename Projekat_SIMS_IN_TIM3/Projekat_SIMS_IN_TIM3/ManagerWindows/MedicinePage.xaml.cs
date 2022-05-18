@@ -20,13 +20,13 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
     /// <summary>
-    /// Interaction logic for DrugsPage.xaml
+    /// Interaction logic for MedicinePage.xaml
     /// </summary>
-    public partial class DrugsPage : Page
+    public partial class MedicinePage : Page
     {
         public ObservableCollection<Medicine> all { get; set; } = new ObservableCollection<Medicine>();
         public MedicineController medicineController = new MedicineController();
-        public DrugsPage()
+        public MedicinePage()
         {
             /*List<MedicineIngredient> brufenIngredients = new List<MedicineIngredient>();
             brufenIngredients.Add(new MedicineIngredient("Ibuprofen"));
@@ -35,11 +35,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             InitializeComponent();
             this.DataContext = this;
             var list = this.medicineController.getAll();
-            foreach (var med in list)
-            {
-                Debug.WriteLine(med.Name);
-            }
             all = new ObservableCollection<Medicine>(list);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var add = new AddMedicineWindow(all);
+            add.ShowDialog();
         }
     }
 }

@@ -26,6 +26,13 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             return this.medicineIngredientRepository.Create(toCreate);
         }
-
+        public MedicineIngredient GetByName(string name)
+        {
+            foreach(var ingredient in this.GetAll())
+            {
+                if(ingredient.Name == name) return ingredient;
+            }
+            return null;
+        }
     }
 }

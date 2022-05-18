@@ -25,5 +25,9 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             return this.medicineIngredientService.Create(toCreate);
         }
+        public MedicineIngredient GetByName(string name)
+        {
+            return this.medicineIngredientService.GetByName(name);
+        }
     }
 }

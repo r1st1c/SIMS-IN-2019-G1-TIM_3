@@ -31,11 +31,11 @@
                 </DataTemplate>
             </Button.ContentTemplate>
         </Button>
-        <Button x:Name="drugsBtn" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Drugs_Click">
+        <Button x:Name="medicineBtn" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Medicine_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="75">
-                        <TextBlock>Drugs</TextBlock>
+                        <TextBlock>Medicine</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
