@@ -25,6 +25,7 @@
     <None Remove="Icons\sign-in_icon-icons.com_73414 %281%29.ico" />
     <None Remove="Icons\user_circle_icon_173498.ico" />
     <None Remove="Icons\user_icon_195366.ico" />
+    <None Remove="Icons\x-mark-32.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,6 +78,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\user_icon_195366.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\x-mark-32.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -24,36 +24,68 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
     {
         public static string initUsname = "";
         UserLoginController controller = new UserLoginController();
+        DoctorController doctorController = new DoctorController();
 
         public DoctorSignIn()
         {
             InitializeComponent();
             password.PasswordChar = '*';
-          
+            username.Focus();
+
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-          
-            /*string Username = username.Text.ToString();
+            string Username = username.Text.ToString();
             initUsname = Username;
             string Password = password.Password.ToString();
 
             UserLogin userLogin = new UserLogin(Username, Password);
-            Boolean isValid = controller.ValidLogin(userLogin);
+            var (isValid, type) = controller.ValidLogin(userLogin);
 
-                if (!isValid)
+            
+
+
+            if (!isValid)
             {
                 MessageBox.Show("Wrong username or password");
                 username.Text = "";
                 password.Password = "";
-            } else
+            }
+            else
             {
-                MainPage mainPage = new MainPage();
+                if (type == 0)
+                {
+                    ManagerMainWindow managerMainWindow = new ManagerMainWindow();
+                    managerMainWindow.Show();
+                }
+                if (type == 1)
+                {
+                    //int doctorsId = doctorController.getIdByUsername(Username);
+                    MainPage doctorMainWindow = new MainPage();
+                    doctorMainWindow.Show();
+                }
+                if (type == 2)
+                {
+                    SecretaryMainWindow secretaryMainWindow = new SecretaryMainWindow();
+                    secretaryMainWindow.Show();
+                }
+                if (type == 3)
+                {
+                    PatientMainWindow patientMainWindow = new PatientMainWindow(Username);
+                    patientMainWindow.Show();
+                }
                 this.Close();
-                mainPage.Show();
-            }*/
-  
+            }
+
+
+
+
+        }
+
+        private void HelloWorld_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }

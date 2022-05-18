@@ -30,12 +30,6 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             mainPage.Show();
         }
 
-        private void createNewApp(object sender, RoutedEventArgs e)
-        {
-            CreateNewAppointmentWindow c = new CreateNewAppointmentWindow();
-            c.Show();
-            this.Close();
-        }
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
             Calendar calendar = new Calendar();
@@ -70,5 +64,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             createAbsenceReq.Show();
             this.Close();
         }
+
+      
     }
 }
