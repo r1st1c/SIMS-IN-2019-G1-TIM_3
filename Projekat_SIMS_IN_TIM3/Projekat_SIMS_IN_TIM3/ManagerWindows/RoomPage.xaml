@@ -29,7 +29,7 @@
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.15*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Type" Binding="{Binding RoomType}" Width="*"/>
-                <DataGridTextColumn Header="Floor" Binding="{Binding Floor}" Width="0.2*"/>
+                <DataGridTextColumn Header="Floor" Binding="{Binding Floor}" Width="0.3*"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
                 <DataGridTextColumn Header="Renovating" Binding="{Binding DisabledTxt}" Width="*"/>
                 <DataGridTemplateColumn Header="Edit" Width="*">
@@ -75,7 +75,7 @@
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
-                        <TextBlock>Merge Roms</TextBlock>
+                        <TextBlock>Merge Two Rooms</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
