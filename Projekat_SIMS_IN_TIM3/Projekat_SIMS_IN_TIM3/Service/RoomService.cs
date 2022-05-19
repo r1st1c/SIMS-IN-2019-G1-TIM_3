@@ -379,7 +379,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         ///////////////////////////////////////////////////////////////////////////////// 
         /// 
         /// SPLIT
-        public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationQuery splitRenovationQuery)
+        public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery)
         {
             var dates = new List<DateTime>();
 
@@ -394,7 +394,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return available;
         }
 
-        private static void FindAvailableTerms(SplitRenovationQuery splitRenovationQuery, List<DateTime> dates,
+        private static void FindAvailableTerms(SplitRenovationTerm splitRenovationQuery, List<DateTime> dates,
             List<SplitRenovationTerm> available)
         {
             splitRenovationQuery
@@ -410,7 +410,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             }
         }
 
-        private static int AddAvailableTerm(SplitRenovationQuery splitRenovationQuery, List<DateTime> dates,
+        private static int AddAvailableTerm(SplitRenovationTerm splitRenovationQuery, List<DateTime> dates,
             List<SplitRenovationTerm> available,
             int renovationId, int i)
         {
@@ -423,13 +423,13 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 splitRenovationQuery.Newroomdescription2,
                 splitRenovationQuery.Newroomtype1,
                 splitRenovationQuery.Newroomtype2,
-                dates[i].ToShortDateString(),
-                dates[i + splitRenovationQuery.Duration].ToShortDateString()
+                dates[i],
+                dates[i + splitRenovationQuery.Duration]
             ));
             return renovationId;
         }
 
-        private static void FindAvailableDays(SplitRenovationQuery splitRenovationQuery, List<DateTime> dates,
+        private static void FindAvailableDays(SplitRenovationTerm splitRenovationQuery, List<DateTime> dates,
             List<Appointment> appointments)
         {
             for (int i = 0; i < dates.Count; i++)
@@ -444,13 +444,13 @@ namespace Projekat_SIMS_IN_TIM3.Service
             }
         }
 
-        private static bool StartDayPlusDurationIsEndDay(SplitRenovationQuery splitRenovationQuery,
+        private static bool StartDayPlusDurationIsEndDay(SplitRenovationTerm splitRenovationQuery,
             List<DateTime> dates, int i)
         {
             return dates[i].AddDays(splitRenovationQuery.Duration) == dates[i + splitRenovationQuery.Duration];
         }
 
-        private static void FillInAllDays(SplitRenovationQuery splitRenovationQuery, List<DateTime> dates)
+        private static void FillInAllDays(SplitRenovationTerm splitRenovationQuery, List<DateTime> dates)
         {
             for (var dt = splitRenovationQuery.Range.Start; dt <= splitRenovationQuery.Range.End; dt = dt.AddDays(1))
             {
@@ -458,7 +458,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             }
         }
 
-        private static bool RoomHasAppointmentAtGivenDate(SplitRenovationQuery splitRenovationQuery,
+        private static bool RoomHasAppointmentAtGivenDate(SplitRenovationTerm splitRenovationQuery,
             List<DateTime> dates, int i, Appointment appointment)
         {
             return dates[i] == appointment.StartTime.Date &&
@@ -494,12 +494,12 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         private static bool RoomFound(Room room, SplitRenovationTerm renovationTerm)
         {
-            return room.Id == renovationTerm.RoomToSplitId;
+            return room.Id == renovationTerm.Roomtosplitid;
         }
 
         private static bool StartingDayPassed(SplitRenovationTerm renovationTerm)
         {
-            return DateTime.Now >= DateTime.ParseExact(renovationTerm.StartingDate, "dd-MMM-yy", null);
+            return DateTime.Now >= renovationTerm.Range.Start;
         }
 
         public void ExecuteSplitting()
@@ -527,16 +527,16 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         private void CreateNewRooms(SplitRenovationTerm renovationTerm, Room room)
         {
-            this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.RoomName1,
-                renovationTerm.RoomType1, room.Floor, renovationTerm.RoomDescription1, "No"));
-            this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.RoomName2,
-                renovationTerm.RoomType2, room.Floor, renovationTerm.RoomDescription2, "No"));
+            this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.Newroomname1,
+                renovationTerm.Newroomtype1, room.Floor, renovationTerm.Newroomdescription1, "No"));
+            this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.Newroomname2,
+                renovationTerm.Newroomtype2, room.Floor, renovationTerm.Newroomdescription2, "No"));
         }
 
         private static bool EndingDateHasPassed(SplitRenovationTerm renovationTerm)
         {
             return DateTime.Now >
-                   DateRange.GetLastMoment(DateTime.ParseExact(renovationTerm.EndingDate, "dd-MMM-yy", null));
+                   DateRange.GetLastMoment(renovationTerm.Range.End);
         }
 
         public RoomRepository roomRepository = new RoomRepository();

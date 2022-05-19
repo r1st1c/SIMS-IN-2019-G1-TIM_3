@@ -39,7 +39,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             RoomType.TryParse(this.roomType1.Text, out new1); 
             RoomType new2;
             RoomType.TryParse(this.roomType1.Text, out new2);
-            this.splitGrid.ItemsSource = this.roomController.GetSplitRenovationAvailableTerms(new SplitRenovationQuery(
+            this.splitGrid.ItemsSource = this.roomController.GetSplitRenovationAvailableTerms(new SplitRenovationTerm(
                 DateTime.Parse(this.StartDate.Text),
                 DateTime.Parse(this.EndDate.Text),
                 this.Room.Id,
@@ -59,11 +59,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             SplitRenovationTerm rt = (SplitRenovationTerm)((Button)e.Source).DataContext;
             this.roomController.ScheduleSplit(rt);
-            DateTime dateStart = DateTime.ParseExact(rt.StartingDate, "dd-MMM-yy", null);
-            DateTime dateEnd = DateRange.GetLastMoment(DateTime.ParseExact(rt.EndingDate, "dd-MMM-yy", null));
+            DateTime dateStart = rt.Range.Start;
+            DateTime dateEnd = DateRange.GetLastMoment(rt.Range.End);
             foreach (var room in RoomPage.Rooms)
             {
-                if (room.Id == rt.RoomToSplitId && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
+                if (room.Id == rt.Roomtosplitid && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
                 {
                     room.DisabledTxt = "Splitting";
                 }

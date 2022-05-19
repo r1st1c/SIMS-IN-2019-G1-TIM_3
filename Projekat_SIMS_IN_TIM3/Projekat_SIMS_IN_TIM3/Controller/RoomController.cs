@@ -83,7 +83,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             this.roomService.ExecuteMerging();
         }
-        public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationQuery splitRenovationQuery)
+        public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery)
         {
             return this.roomService.GetSplitRenovationAvailableTerms(splitRenovationQuery);
         }
