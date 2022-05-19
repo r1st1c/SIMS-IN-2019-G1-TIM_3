@@ -65,7 +65,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.GetRenovationSchedules();
         }
 
-        public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationQuery mergeRenovationQuery)
+        public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
         {
             return this.roomService.GetMergeRenovationAvailableTerms(mergeRenovationQuery);
         }

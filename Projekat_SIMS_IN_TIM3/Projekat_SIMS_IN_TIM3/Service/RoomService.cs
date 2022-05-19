@@ -169,7 +169,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         ///////////////////////////////////////////////////////////////////////////////// 
         /// 
         /// MERGE
-        public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationQuery mergeRenovationQuery)
+        public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
         {
             List<DateTime> intersectedAvailableDays = FindIntersectedAvailableDays(mergeRenovationQuery);
 
@@ -179,7 +179,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return available;
         }
 
-        private static void FindAvailableTerms(MergeRenovationQuery mergeRenovationQuery,
+        private static void FindAvailableTerms(MergeRenovationTerm mergeRenovationQuery,
             List<DateTime> intersectedAvailableDays,
             List<MergeRenovationTerm> available)
         {
@@ -197,29 +197,29 @@ namespace Projekat_SIMS_IN_TIM3.Service
             }
         }
 
-        private static int AddAsAvailableTerm(MergeRenovationQuery mergeRenovationQuery,
+        private static int AddAsAvailableTerm(MergeRenovationTerm mergeRenovationQuery,
             List<MergeRenovationTerm> available, int renovationId,
             List<DateTime> intersectedAvailableDays, int i)
         {
             available.Add(new MergeRenovationTerm(renovationId++,
                 mergeRenovationQuery.RoomId1,
                 mergeRenovationQuery.RoomId2,
-                intersectedAvailableDays[i].ToShortDateString(),
-                intersectedAvailableDays[i + mergeRenovationQuery.Duration].ToShortDateString(),
+                intersectedAvailableDays[i],
+                intersectedAvailableDays[i + mergeRenovationQuery.Duration],
                 mergeRenovationQuery.Description,
                 mergeRenovationQuery.Name,
                 mergeRenovationQuery.RoomType));
             return renovationId;
         }
 
-        private static bool StartDayPlusDurationIsEndDay(MergeRenovationQuery mergeRenovationQuery,
+        private static bool StartDayPlusDurationIsEndDay(MergeRenovationTerm mergeRenovationQuery,
             List<DateTime> intersectedAvailableDays, int i)
         {
             return intersectedAvailableDays[i].AddDays(mergeRenovationQuery.Duration) ==
                    intersectedAvailableDays[i + mergeRenovationQuery.Duration];
         }
 
-        private List<DateTime> FindIntersectedAvailableDays(MergeRenovationQuery mergeRenovationQuery)
+        private List<DateTime> FindIntersectedAvailableDays(MergeRenovationTerm mergeRenovationQuery)
         {
             var firstRoomAvailableDays = new List<DateTime>();
             var secondRoomAvailableDays = new List<DateTime>();
@@ -232,7 +232,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return firstRoomAvailableDays.Intersect(secondRoomAvailableDays).ToList();
         }
 
-        private static void RemoveOccupiedDays(MergeRenovationQuery mergeRenovationQuery,
+        private static void RemoveOccupiedDays(MergeRenovationTerm mergeRenovationQuery,
             List<DateTime> firstRoomAvailableDays,
             List<Appointment> allAppointments, List<DateTime> secondRoomAvailableDays)
         {
@@ -253,7 +253,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             }
         }
 
-        private static bool RoomHasAppointmentAtGivenDate(MergeRenovationQuery mergeRenovationQuery,
+        private static bool RoomHasAppointmentAtGivenDate(MergeRenovationTerm mergeRenovationQuery,
             List<DateTime> roomAvailableDays, int i, Appointment appointment, int roomId)
         {
             if (roomId == 1)
@@ -271,7 +271,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             throw new Exception("ROOM ID RoomHasAppointmentAtGivenDate == ???");
         }
 
-        private static void FillInAllDays(MergeRenovationQuery mergeRenovationQuery,
+        private static void FillInAllDays(MergeRenovationTerm mergeRenovationQuery,
             List<DateTime> firstRoomAvailableDays,
             List<DateTime> secondRoomAvailableDays)
         {
@@ -311,7 +311,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         private static bool StartingDatePassed(MergeRenovationTerm renovationTerm)
         {
-            return DateTime.Now >= DateTime.ParseExact(renovationTerm.StartingDate, "dd-MMM-yy", null);
+            return DateTime.Now >= renovationTerm.Range.Start;
         }
 
         public void ExecuteMerging()
@@ -371,7 +371,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         private static bool EndingDatePassed(MergeRenovationTerm renovationTerm)
         {
             return DateTime.Now >
-                   DateRange.GetLastMoment(DateTime.ParseExact(renovationTerm.EndingDate, "dd-MMM-yy", null));
+                   DateRange.GetLastMoment(renovationTerm.Range.End);
         }
 
         /// MERGE
