@@ -55,6 +55,12 @@ namespace Projekat_SIMS_IN_TIM3
             notifications.Show();
         }
 
+        private void GradeHosp_Click(object sender, RoutedEventArgs e)
+        {
+            GradeHospital gradeHospital = new GradeHospital();
+            gradeHospital.Show();
+        }
+
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
