@@ -40,7 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            if (this.selIngr.SelectedIndex<0)
+            if (NoIngredientsAreSelected())
             {
                 MessageBox.Show("You must chose at least one ingredient");
                 return;
@@ -51,11 +51,25 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             {
                 selected.Add(this.medicineIngredientController.GetByName(ingredientname.ToString()));
             }
-            Medicine replacement = this.medicineController.GetByName(repMed.SelectedValue.ToString());
-            Medicine toCreate = new Medicine(this.medicineController.GetNextId(), medName.Text, selected, false, replacement);
+
+            Medicine toCreate = new Medicine(
+                this.medicineController.GetNextId(), 
+                medName.Text, 
+                selected, 
+                false, 
+                this.medicineController.GetByName(repMed.SelectedValue.ToString())
+                );
+
             this.medicineController.createMedicine(toCreate);
+
             MedicinePageList.Add(toCreate);
+
             Close();
+        }
+
+        private bool NoIngredientsAreSelected()
+        {
+            return this.selIngr.SelectedIndex<0;
         }
 
         private void Cancel_Button(object sender, RoutedEventArgs e)
