@@ -28,7 +28,7 @@
                 </DataTemplate>
             </Button.ContentTemplate>
         </Button>
-        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Appointments_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="75">

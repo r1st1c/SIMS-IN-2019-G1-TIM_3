@@ -3,11 +3,6 @@ using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,58 +13,62 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
     /// <summary>
-    /// Interaction logic for RoomWindow.xaml
+    /// Interaction logic for RoomPage.xaml
     /// </summary>
-    public partial class RoomWindow : Window
+    public partial class RoomPage : Page
     {
         RoomController roomController = new RoomController();
 
         AppointmentController appointmentController = new AppointmentController();
         public static ObservableCollection<Room> Rooms { get; set; }
-        public RoomWindow()
+        public RoomPage()
         {
             InitializeComponent();
             this.roomController.UpdateDisabledFields();
+            this.roomController.DisableMergingRooms();
+            this.roomController.ExecuteMerging();
+            this.roomController.DisableSplittingRooms();
+            this.roomController.ExecuteSplitting();
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
-            
         }
 
         private void Add_Room_Click(object sender, RoutedEventArgs e)
         {
             var addRoom = new AddRoom();
-            addRoom.Show();
+            addRoom.ShowDialog();
         }
 
-        private void Change_Type_Click(object sender, RoutedEventArgs e)
+        private void Edit_Room_Click(object sender, RoutedEventArgs e)
         {
             Room room = (Room)((Button)e.Source).DataContext;
             int id = room.Id;
-            var change = new ChangeRoomType(id);
-            change.Show();
+            var change = new EditRoomWindow(id);
+            change.ShowDialog();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             Room room = (Room)((Button)e.Source).DataContext;
-            if(room.Id == 0)
+            if (room.Id == 0)
             {
                 MessageBox.Show("Default storage room cant be deleted!");
                 return;
             }
             Rooms.Remove(room);
-            if (EquipmentWindow.Equipment_All!=null)
+            /*if (EquipmentPage.Equipment_All != null)
             {
-                foreach (var equipment in EquipmentWindow.Equipment_All.Where(x => x.RoomId == room.Id))
+                foreach (var equipment in EquipmentPage.Equipment_All.Where(x => x.RoomId == room.Id))
                 {
                     equipment.RoomName = this.roomController.GetById(0).Name;
                 }
-            }
+            }*/
             this.roomController.DeleteById(room.Id);
         }
 
@@ -77,7 +76,20 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             Room room = (Room)((Button)e.Source).DataContext;
             var basic = new BasicRenovationWindow(room);
-            basic.Show();
+            basic.ShowDialog();
+        }
+
+        private void Merge_Click(object sender, RoutedEventArgs e)
+        {
+            var merge = new MergeRoomsWindow();
+            merge.ShowDialog();
+        }
+
+        private void Split_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)((Button)e.Source).DataContext;
+            var split = new SplitRoomWindow(room);
+            split.ShowDialog();
         }
     }
 }

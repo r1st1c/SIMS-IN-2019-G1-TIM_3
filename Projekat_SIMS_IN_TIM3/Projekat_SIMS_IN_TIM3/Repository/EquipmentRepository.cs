@@ -12,7 +12,10 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 {
     public class EquipmentRepository
    {
-      public Equipment GetById(int id)
+        private readonly string equipmentpath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\equipment.csv";
+        private readonly string equipmentfuturemovepath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\equipment_future_move.csv";
+
+        public Equipment GetById(int id)
       {
             List<Equipment> allEquipment = this.GetAll();
             foreach(Equipment equipment in allEquipment)
@@ -27,7 +30,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       
       public List<Equipment> GetAll()
       {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\equipment.csv");
+            string[] csvLines = File.ReadAllLines(equipmentpath);
             List<Equipment> list = new List<Equipment>();
             for (int i = 0; i < csvLines.Length; i++)
             {
@@ -51,17 +54,17 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         }
         public bool Move(int equipmentId, int targetRoomId)
         {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\equipment.csv");
+            string[] csvLines = File.ReadAllLines(equipmentpath);
             Equipment equipment = GetById(equipmentId);
             csvLines[equipmentId] = equipment.Id + "," + equipment.Equipmentname + "," + equipment.Manufacturer + "," + equipment.Equipmenttype + "," + equipment.Amount + "," + targetRoomId;
-            File.WriteAllLines(@"C:\Users\Ristic\Documents\equipment.csv", csvLines);
+            File.WriteAllLines(equipmentpath, csvLines);
             return true;
         }
 
         public bool scheduleFutureMove(int equipmentId, int targetRoomId, DateTime date)
         {
 
-            string fileName = @"C:\Users\Ristic\Documents\equipment_future_move.csv";
+            string fileName = equipmentfuturemovepath;
             if (File.Exists(fileName))
             {
                 //RoomWindow.Rooms.Add(room);
@@ -74,7 +77,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         }
 
         public List<EquipmentMoveOrder> GetAvailableForMoving() {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\equipment_future_move.csv");
+            string[] csvLines = File.ReadAllLines(equipmentfuturemovepath);
             List<EquipmentMoveOrder> list = new List<EquipmentMoveOrder>();
             for (int i = 0; i < csvLines.Length; i++)
             {
@@ -91,13 +94,13 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     Int32.Parse(data[1])));
                     csvLines[i] = "";
                 }
-                File.WriteAllLines(@"C:\Users\Ristic\Documents\equipment_future_move.csv", csvLines);
+                File.WriteAllLines(equipmentfuturemovepath, csvLines);
             }
             return list;
         }
         public void MoveEquipmentToDefaultRoomAfterDeletingRoom(int roomId)
         {
-            string[] csvLines = File.ReadAllLines(@"C:\Users\Ristic\Documents\equipment.csv");
+            string[] csvLines = File.ReadAllLines(equipmentpath);
             for (int i = 0; i < csvLines.Length; i++)
             {
                 string[] data = csvLines[i].Split(',');
@@ -107,7 +110,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     csvLines[i] = data[0] + "," + data[1] + "," + data[2] + "," + data[3] + "," + data[4] + "," + "0";
                 }
             }
-            File.WriteAllLines(@"C:\Users\Ristic\Documents\equipment.csv", csvLines);
+            File.WriteAllLines(equipmentpath, csvLines);
         }
     }
 }

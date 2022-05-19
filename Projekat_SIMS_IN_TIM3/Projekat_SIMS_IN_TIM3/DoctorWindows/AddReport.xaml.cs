@@ -24,7 +24,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     {
         public ObservableCollection<AppointmentType> AppTypes { get; set; }
         private AppointmentType AppTypeSelected;
-        int lastId = 0;
+        int lastId = int.MinValue;
         ReportController reportController = new ReportController();
         PatientController patientController = new PatientController();
         public ObservableCollection<string> Patients { get; set; }
@@ -63,8 +63,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
+                lastId = reportController.getNextId();
                 lastId++;
-
                 var newReport = new Report(
                     lastId,
                     patId,
@@ -76,7 +76,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                     );
 
                 reportController.create(newReport);
-                MessageBox.Show("You have successfully scheduled new appointment! \n Check calendar to see all scheduled appointments!", "Scheduled appointment", MessageBoxButton.OK);
+                MessageBox.Show("You have successfully added new report! \n Check patient's medical record to see all medical reports!", "Added medical report");
                 this.Close();
             }
 

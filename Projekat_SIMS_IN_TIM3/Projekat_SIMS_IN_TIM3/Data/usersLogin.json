@@ -1,5 +1,17 @@
-﻿akikelena1;elena123;1 
-mikamikic;mika009;2
-aaa;123;0
-sekretar;123;2
-pacijent;123;3
+﻿[
+  {
+    "Username": "akikelena1",
+    "Password": "elena123",
+    "Role": 1
+  },
+  {
+    "Username": "123",
+    "Password": "123",
+    "Role": 0
+  },
+  {
+    "Username": "pacijent",
+    "Password": "123",
+    "Role": 3
+  }
+]

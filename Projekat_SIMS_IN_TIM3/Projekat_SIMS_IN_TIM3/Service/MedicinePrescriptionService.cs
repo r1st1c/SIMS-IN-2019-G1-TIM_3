@@ -12,7 +12,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         public MedicinePrescriptionRepository repository = new MedicinePrescriptionRepository();
 
-
+        public int getNextId()
+        {
+            return repository.getNextId();
+        }
         public void create(MedicinePrescription mp)
         {
             repository.create(mp);
@@ -24,7 +27,24 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public List<MedicinePrescription> getAll()
         {
+
             return this.repository.getAll();
+        }
+
+        public void delete(int rId)
+        {
+            repository.delete(rId);
+        }
+
+        public List<MedicinePrescription> getAllById(int id)
+        {
+            return repository.getAllById(id);
+        }
+
+        public MedicinePrescription getById(int id)
+        {
+            return repository.getById(id);
+
         }
     }
 }

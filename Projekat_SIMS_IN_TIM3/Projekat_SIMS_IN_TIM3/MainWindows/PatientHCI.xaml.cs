@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekat_SIMS_IN_TIM3.PatientHCIWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,12 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
         public PatientHCI()
         {
             InitializeComponent();
+        }
+
+        private void Appointments_Click(object sender, RoutedEventArgs e)
+        {
+            var appointmentWindow = new AppointmentsWindow();
+            appointmentWindow.Show();
         }
     }
 }

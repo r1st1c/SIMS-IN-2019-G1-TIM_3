@@ -18,6 +18,24 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             readJson();
         }
 
+        public int getNextId()
+        {
+            int lastId = int.MinValue;
+            readJson();
+            foreach(Report report in reports)
+            {
+                if(reports == null)
+                {
+                    lastId = 0;
+                } else
+                {
+                    lastId = reports.Last().Id;
+                }
+                
+            }
+            return lastId;
+        }
+
         public void readJson()
         {
 
@@ -54,6 +72,32 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             int idx = reports.FindIndex(obj => obj.Id == mp.Id);
             reports[idx] = mp;
             WriteToJson();
+        }
+
+        public List<Report> getAll()
+        {
+            readJson();
+            return reports;
+        }
+
+        public void delete(int rId)
+        {
+            readJson();
+            int index = reports.FindIndex(obj => obj.Id == rId);
+            reports.RemoveAt(index);
+            WriteToJson();
+        }
+
+        public List<Report> getAllById(int id)
+        {
+            readJson();
+            return reports.FindAll(obj => obj.PatientId == id);
+        }
+
+        public Report getById(int id)
+        {
+            readJson();
+            return reports.Find(obj => obj.Id == id);
         }
     }
 }

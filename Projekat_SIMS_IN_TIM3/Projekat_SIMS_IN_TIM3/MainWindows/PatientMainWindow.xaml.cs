@@ -39,7 +39,7 @@ namespace Projekat_SIMS_IN_TIM3
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            UpdateAndDeleteAppointment ud = new UpdateAndDeleteAppointment();
+            UpdateAndDeleteAppointment ud = new UpdateAndDeleteAppointment(Username);
             ud.Show();
         }
 

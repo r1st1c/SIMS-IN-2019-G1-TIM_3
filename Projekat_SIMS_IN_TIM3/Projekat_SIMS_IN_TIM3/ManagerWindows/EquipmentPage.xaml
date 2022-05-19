@@ -1,0 +1,62 @@
+﻿<Page x:Class="Projekat_SIMS_IN_TIM3.ManagerWindows.EquipmentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
+      xmlns:adorners="http://gu.se/Adorners"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1600"
+      Title="EquipmentPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="Search_Box" FontSize="20" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160" Height="30" TextWrapping="Wrap" Text="" Margin="10,0,0,0" adorners:Watermark.Text="Search here..." adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused"/>
+        <Button Grid.Row="0" Grid.Column="1" Content="Search"  VerticalAlignment="Center" Height="30" FontSize="20" Margin="180,0,10,0" Click="Search_Click"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="40,0,0,2" TextWrapping="Wrap" Text="Show only" VerticalAlignment="Center" FontSize="22"/>
+        <RadioButton GroupName="type" Grid.Row="0" Grid.Column="2" Content="Static Equipment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170,0,0,0" FontSize="20"  VerticalContentAlignment="Center" Checked="Filter_Static"/>
+        <RadioButton GroupName="type" Grid.Row="0" Grid.Column="2" Content="Dynamic Equipment" Margin="170,0,0,0" VerticalAlignment="Bottom" FontSize="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" Checked="Filter_Dynamic"/>
+        
+        <DataGrid Grid.ColumnSpan="4" x:Name="dataGridEquipment" Grid.Row="1" ItemsSource="{Binding Equipment_All}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.2*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Equipmentname}" Width="*"/>
+                <DataGridTextColumn Header="Manufacturer" Binding="{Binding Manufacturer}" Width="*"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Equipmenttype}" Width="*"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="0.3*"/>
+                <DataGridTextColumn Header="Room" Binding="{Binding RoomName}" Width="*"/>
+                <DataGridTemplateColumn Header="Move Equipment" Width="0.5*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="moveTo" Content="Move to" Click="Move_Button">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Equipmenttype}" Value="dynamic_equipment">
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>

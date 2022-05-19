@@ -31,14 +31,14 @@ namespace Projekat_SIMS_IN_TIM3.Model
         }
 
         
-        public int Id;
-        public int MedicineId;
-        public int PatientId;
-        public int DoctorId;
-        public DateTime DateAndTime;
-        public TimeSpan DurationOfUse;
-        public bool IsActive;
-        public TimeSpan FrequencyOfUse;
+        public int Id { get; set; }
+        public int MedicineId { get; set; }
+        public int PatientId { get; set; }
+        public int DoctorId { get; set; }
+        public DateTime DateAndTime { get; set; }
+        public TimeSpan DurationOfUse { get; set; }
+        public bool IsActive { get; set; }
+        public TimeSpan FrequencyOfUse { get; set; }
 
     }
 }

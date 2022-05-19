@@ -11,7 +11,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     public class MedicineController
     {
         private MedicineService medicineService = new MedicineService();
-
+        public int GetNextId() { return medicineService.GetNextId(); }
         public List<Medicine> getAll() { return medicineService.getAll(); }
 
         public Medicine GetById(int Id) { return medicineService.GetById(Id); }
@@ -22,6 +22,13 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         public void delete(int medId) { medicineService.delete(medId); }
 
         public List<String> getAllVerified() { return medicineService.getAllVerified(); }
+
+        public List<Medicine> getAllUnverified()
+        {
+            return medicineService.getAllUnverified();
+        }
+        public Medicine GetByName(string name) { return medicineService.GetByName(name); }
+
 
         public int getIdByName(string name) { return medicineService.getIdByName(name); }
     }

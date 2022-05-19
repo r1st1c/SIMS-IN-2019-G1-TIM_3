@@ -1,6 +1,7 @@
 ﻿using Projekat_SIMS_IN_TIM3.ManagerWindows;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +21,21 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class ManagerMainWindow : Window
     {
+        public static BrushConverter brushConverter { get; set; }
         public ManagerMainWindow()
         {
+            brushConverter = new BrushConverter();
             InitializeComponent();
         }
 
         private void Room_Click(object sender, RoutedEventArgs e)
         {
-            var roomWindow = new RoomWindow();
-            roomWindow.Show();
+            roomsBtn.Background = Brushes.Aqua;
+            equipmentBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            pollsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            medicineBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            ingredientsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            MainFrame.Content = new RoomPage();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,8 +45,31 @@ namespace Projekat_SIMS_IN_TIM3
 
         private void Equipment_Click(object sender, RoutedEventArgs e)
         {
-            var eqWIndow = new EquipmentWindow();
-            eqWIndow.Show();
+            roomsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            equipmentBtn.Background = Brushes.Aqua;
+            pollsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            ingredientsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            medicineBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            MainFrame.Content = new EquipmentPage();
+        }
+
+        private void Medicine_Click(object sender, RoutedEventArgs e)
+        {
+            roomsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            equipmentBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            ingredientsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            pollsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            medicineBtn.Background = Brushes.Aqua;
+            MainFrame.Content = new MedicinePage();
+        }
+        private void Ingredients_Click(object sender, RoutedEventArgs e)
+        {
+            roomsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            equipmentBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            pollsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            ingredientsBtn.Background = Brushes.Aqua;
+            medicineBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
+            MainFrame.Content = new IngredientsPage();
         }
     }
 }

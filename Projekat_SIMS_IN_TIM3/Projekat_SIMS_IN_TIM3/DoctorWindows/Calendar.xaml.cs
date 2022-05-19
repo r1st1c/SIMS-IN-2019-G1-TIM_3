@@ -42,29 +42,34 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             CreateNewAppointmentWindow c = new CreateNewAppointmentWindow();
             c.Show();
+            this.Close();
         }
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
             Calendar calendar = new Calendar();
             calendar.Show();
+            this.Close();
         }
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
             Notifications notifications = new Notifications();
             notifications.Show();
+            this.Close();
         }
 
         private void ListOfMedBtn(object sender, RoutedEventArgs e)
         {
             ListOfMedicines listOfMedicines = new ListOfMedicines();
             listOfMedicines.Show();
+            this.Close();
         }
 
         private void MedVerifBtn(object sender, RoutedEventArgs e)
         {
             MedVerif medVerif = new MedVerif();
             medVerif.Show();
+            this.Close();
         }
 
         private void medRecordBtn(object sender, RoutedEventArgs e)
@@ -74,12 +79,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             var m = new MedicalRecord(patid);
            
             m.Show();
+            this.Close();
         }
 
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
             CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq();
             createAbsenceReq.Show();
+            this.Close();
         }
 
         private void cancelBtn(object sender, RoutedEventArgs e)
@@ -87,6 +94,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             Appointment appointment = (Appointment)((Button)e.Source).DataContext;
             Appointments.Remove(appointment);
             this.c.DeleteAppointment(appointment.Id);
+            
         }
 
        

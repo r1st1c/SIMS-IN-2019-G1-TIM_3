@@ -19,6 +19,11 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             readJson();
         }
 
+        public int GetNextId()
+        {
+            return medicines.Max(x => x.Id)+1;
+        }
+
         public void readJson()
         {
             if (!File.Exists(fileLocation))
@@ -92,12 +97,24 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return list;
         }
 
+        public List<Medicine> getAllUnverified()
+        {
+            readJson();
+            return medicines.FindAll(a => a.IsVerified == false);
+        }
+
         public int getIdByName(string name)
         {
             readJson();
             int id = int.MinValue;
             id = medicines.FindIndex(obj => obj.Name == name);
             return id;
+        }
+
+        public Medicine GetByName(string name)
+        {
+            readJson();
+            return medicines.Find(obj => obj.Name.Equals(name));
         }
     }
 }

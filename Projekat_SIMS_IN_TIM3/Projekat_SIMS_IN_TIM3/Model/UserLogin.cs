@@ -10,7 +10,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
     {
         public String Username { get; set; }
         public String Password { get; set; }
-
+        public int Role { get; set; }
         public UserLogin(string usname, string psw)
         {
             this.Password = psw;

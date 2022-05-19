@@ -40,17 +40,17 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             if(StartDate.Text=="" || EndDate.Text == "")
             {
-                MessageBox.Show("You must pick both start and end date!");
+                MessageBox.Show("You must pick both starting and ending date!");
                 return;
             }
             if(Duration <= 0)
             {
-                MessageBox.Show("Invalid duration!");
+                MessageBox.Show("Duration cannot be value lower than 1!");
                 return;
             }
             if (Description == "")
             {
-                MessageBox.Show("Invalid description!");
+                MessageBox.Show("Description field mustn't be empty!");
                 return;
             }
             renovationsGrid.ItemsSource = new ObservableCollection<RenovationTerm>(this.roomController.BasicRenovation(Room.Id, DateTime.Parse(StartDate.Text), DateTime.Parse(EndDate.Text), Duration));
@@ -71,7 +71,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             dateEnd = dateEnd.AddHours(23);
             dateEnd = dateEnd.AddMinutes(59);
             dateEnd = dateEnd.AddSeconds(59);
-            foreach (var room in RoomWindow.Rooms)
+            foreach (var room in RoomPage.Rooms)
             {
                 if (room.Id == Room.Id && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
                 {

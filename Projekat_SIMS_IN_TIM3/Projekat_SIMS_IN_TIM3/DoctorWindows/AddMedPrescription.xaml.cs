@@ -33,13 +33,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         public ObservableCollection<string> Medicines { get; set; }
         private string MedicineSelected;
 
-        int maxId = 0;
+        int maxId = int.MinValue;
 
         List<Patient> patients = new List<Patient>();
 
-        
-
-       
+      
         public AddMedPrescription(int PatientId)
         {
             InitializeComponent();
@@ -52,7 +50,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         public void Create(object sender, RoutedEventArgs e)
         {
-            maxId++;
+            
             DateTime dt = (DateTime)startTime1.Value;
             int dur = Convert.ToInt32(duration.Text);
             int freq = Convert.ToInt32(fOfUse.Text);
@@ -84,7 +82,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
-                
+
+                maxId = prescriptionController.getNextId();
                 maxId++;
                 var newMedPrescription = new MedicinePrescription(
                     maxId,
