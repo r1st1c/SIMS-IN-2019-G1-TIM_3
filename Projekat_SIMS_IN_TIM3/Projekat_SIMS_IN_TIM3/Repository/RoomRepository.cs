@@ -263,7 +263,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         /// LOGIC BEHIND SPLITTING
         public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)
         {
-            var room = this.GetById(splitRenovationTerm.Roomtosplitid);
+            var room = this.GetById(splitRenovationTerm.RoomToSplitId);
             if (DateTime.Now >= splitRenovationTerm.Range.Start
                 && DateTime.Now <= splitRenovationTerm.Range.End)
             {
@@ -273,13 +273,13 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             string fileName = roomsplitpath;
             if (File.Exists(fileName))
             {
-                string data = splitRenovationTerm.Roomtosplitid + "," + 
-                    splitRenovationTerm.Newroomname1 + "," + 
-                    splitRenovationTerm.Newroomname2 + "," + 
-                    splitRenovationTerm.Newroomdescription1 + "," +
-                    splitRenovationTerm.Newroomdescription2 + "," +
-                    splitRenovationTerm.Newroomtype1 + "," +
-                    splitRenovationTerm.Newroomtype2 + "," +
+                string data = splitRenovationTerm.RoomToSplitId + "," + 
+                    splitRenovationTerm.NewRoomName1 + "," + 
+                    splitRenovationTerm.NewRoomName2 + "," + 
+                    splitRenovationTerm.NewRoomDescription1 + "," +
+                    splitRenovationTerm.NewRoomDescription2 + "," +
+                    splitRenovationTerm.NewRoomType1 + "," +
+                    splitRenovationTerm.NewRoomType2 + "," +
                     splitRenovationTerm.Range.Start.ToShortDateString() + "," +
                     splitRenovationTerm.Range.End.ToShortDateString() + 
                     "\n";
@@ -326,7 +326,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     continue;
                 }
                 string[] data = csvLines[i].Split(',');
-                if (Int32.Parse(data[0]) == splitRenovationTerm.Roomtosplitid && splitRenovationTerm.Range.Start.ToShortDateString() == data[7] && splitRenovationTerm.Range.End.ToShortDateString() == data[8])
+                if (Int32.Parse(data[0]) == splitRenovationTerm.RoomToSplitId && splitRenovationTerm.Range.Start.ToShortDateString() == data[7] && splitRenovationTerm.Range.End.ToShortDateString() == data[8])
                 {
                     csvLines[i] = "";
                 }

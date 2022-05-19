@@ -11,59 +11,59 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public SplitRenovationTerm(
             DateTime start, 
             DateTime end, 
-            int roomtosplitid, 
+            int roomToSplitId, 
             int duration, 
-            string newroomname1, 
-            string newroomname2, 
-            RoomType newroomtype1, 
-            RoomType newroomtype2, 
-            string newroomdescription1, 
-            string newroomdescription2)
+            string newRoomName1, 
+            string newRoomName2, 
+            RoomType newRoomType1, 
+            RoomType newRoomType2, 
+            string newRoomDescription1, 
+            string newRoomDescription2)
         {
             Range = new DateRange(start, end);
-            Roomtosplitid = roomtosplitid;
+            RoomToSplitId = roomToSplitId;
             Duration = duration;
-            Newroomname1 = newroomname1;
-            Newroomname2 = newroomname2;
-            Newroomtype1 = newroomtype1;
-            Newroomtype2 = newroomtype2;
-            Newroomdescription1 = newroomdescription1;
-            Newroomdescription2 = newroomdescription2;
+            NewRoomName1 = newRoomName1;
+            NewRoomName2 = newRoomName2;
+            NewRoomType1 = newRoomType1;
+            NewRoomType2 = newRoomType2;
+            NewRoomDescription1 = newRoomDescription1;
+            NewRoomDescription2 = newRoomDescription2;
         }
         public SplitRenovationTerm(int id, int toSplitId, string roomName1, string roomName2, string roomDescription1, string roomDescription2, RoomType roomType1, RoomType roomType2, DateTime start, DateTime end)
         {
             Id = id;
-            Roomtosplitid = toSplitId;
-            Newroomname1 = roomName1;
-            Newroomname2 = roomName2;
-            Newroomdescription1 = roomDescription1;
-            Newroomdescription2 = roomDescription2;
-            Newroomtype1 = roomType1;
-            Newroomtype2 = roomType2;
+            RoomToSplitId = toSplitId;
+            NewRoomName1 = roomName1;
+            NewRoomName2 = roomName2;
+            NewRoomDescription1 = roomDescription1;
+            NewRoomDescription2 = roomDescription2;
+            NewRoomType1 = roomType1;
+            NewRoomType2 = roomType2;
             Range = new DateRange(start, end);
         }
         public SplitRenovationTerm(int toSplitId, string roomName1, string roomName2, string roomDescription1, string roomDescription2, RoomType roomType1, RoomType roomType2, DateTime start, DateTime end)
         {
-            Newroomname1 = roomName1;
-            Newroomname2 = roomName2;
-            Roomtosplitid = toSplitId;
-            Newroomdescription1 = roomDescription1;
-            Newroomdescription2 = roomDescription2;
-            Newroomtype1 = roomType1;
-            Newroomtype2 = roomType2;
+            NewRoomName1 = roomName1;
+            NewRoomName2 = roomName2;
+            RoomToSplitId = toSplitId;
+            NewRoomDescription1 = roomDescription1;
+            NewRoomDescription2 = roomDescription2;
+            NewRoomType1 = roomType1;
+            NewRoomType2 = roomType2;
             Range = new DateRange(start, end);
         }
 
         public int Id { get; set; }
         public DateRange Range { get; set; }
-        public int Roomtosplitid { get; set; }
+        public int RoomToSplitId { get; set; }
         public int Duration { get; set; }
-        public string Newroomname1 { get; set; }    
-        public string Newroomname2 { get; set; }
-        public RoomType Newroomtype1 { get; set; }
-        public RoomType Newroomtype2 { get; set; }
-        public string Newroomdescription1 { get; set; }
-        public string Newroomdescription2 { get; set; }
+        public string NewRoomName1 { get; set; }    
+        public string NewRoomName2 { get; set; }
+        public RoomType NewRoomType1 { get; set; }
+        public RoomType NewRoomType2 { get; set; }
+        public string NewRoomDescription1 { get; set; }
+        public string NewRoomDescription2 { get; set; }
 
     }
 }

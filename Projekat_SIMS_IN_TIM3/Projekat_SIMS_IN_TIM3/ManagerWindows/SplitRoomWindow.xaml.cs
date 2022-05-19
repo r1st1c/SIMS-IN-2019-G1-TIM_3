@@ -63,7 +63,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             DateTime dateEnd = DateRange.GetLastMoment(rt.Range.End);
             foreach (var room in RoomPage.Rooms)
             {
-                if (room.Id == rt.Roomtosplitid && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
+                if (room.Id == rt.RoomToSplitId && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
                 {
                     room.DisabledTxt = "Splitting";
                 }
