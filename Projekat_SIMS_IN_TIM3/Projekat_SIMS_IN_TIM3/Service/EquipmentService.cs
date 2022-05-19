@@ -58,6 +58,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
             }
         }
 
+        public List<Equipment> GetByType(EquipmentType query)
+        {
+            return this.GetAll().Where(x => x.Equipmenttype == query).ToList();
+        }
+
 
         public RoomRepository roomRepository = new RoomRepository();
         public EquipmentRepository equipmentRepository = new EquipmentRepository();
