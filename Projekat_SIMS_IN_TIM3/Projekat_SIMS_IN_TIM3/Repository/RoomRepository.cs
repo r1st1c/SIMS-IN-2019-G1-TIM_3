@@ -196,8 +196,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
       {
           var room1 = this.GetById(mergeRenovationTerm.RoomId1);
           var room2 = this.GetById(mergeRenovationTerm.RoomId2);
-          if (DateTime.Now >= DateTime.ParseExact(mergeRenovationTerm.StartingDate, "dd-MMM-yy", null) 
-              && DateTime.Now <= DateTime.ParseExact(mergeRenovationTerm.EndingDate, "dd-MMM-yy", null))
+          if (DateTime.Now >= mergeRenovationTerm.Range.Start 
+              && DateTime.Now <= mergeRenovationTerm.Range.End)
           {
               room1.Disabled = 2;
               room2.Disabled = 2;
@@ -207,8 +207,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
           string fileName = roommergepath;
           if (File.Exists(fileName))
           {
-              string data = mergeRenovationTerm.RoomId1 + "," + mergeRenovationTerm.RoomId2 + "," + mergeRenovationTerm.StartingDate + 
-                            "," + mergeRenovationTerm.EndingDate + "," + mergeRenovationTerm.Name +"," + mergeRenovationTerm.RoomType + "," + mergeRenovationTerm.Description + "\n";
+              string data = mergeRenovationTerm.RoomId1 + "," + mergeRenovationTerm.RoomId2 + "," + mergeRenovationTerm.Range.Start.ToShortDateString() + 
+                            "," + mergeRenovationTerm.Range.End.ToShortDateString() + "," + mergeRenovationTerm.Name +"," + mergeRenovationTerm.RoomType + "," + mergeRenovationTerm.Description + "\n";
               File.AppendAllText(fileName, data);
               return true;
           }
@@ -230,8 +230,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
               list.Add(new MergeRenovationTerm(
                   Int32.Parse(data[0]),
                   Int32.Parse(data[1]),
-                  data[2],
-                  data[3],
+                  DateTime.ParseExact(data[2], "dd-MMM-yy", null),
+                  DateTime.ParseExact(data[3], "dd-MMM-yy", null),
                   data[6],
                   data[4], 
                   Enum.Parse<RoomType>(data[5])
@@ -249,7 +249,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                   continue;
               }
               string[] data = csvLines[i].Split(',');
-              if (Int32.Parse(data[0]) == renovationTerm.RoomId1 && renovationTerm.RoomId2 == Int32.Parse(data[1]) && renovationTerm.StartingDate == data[2] && renovationTerm.EndingDate == data[3])
+              if (Int32.Parse(data[0]) == renovationTerm.RoomId1 && renovationTerm.RoomId2 == Int32.Parse(data[1]) && renovationTerm.Range.Start.ToShortDateString() == data[2] && renovationTerm.Range.End.ToShortDateString() == data[3])
               {
                   csvLines[i] = "";
               }
@@ -263,9 +263,9 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         /// LOGIC BEHIND SPLITTING
         public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)
         {
-            var room = this.GetById(splitRenovationTerm.RoomToSplitId);
-            if (DateTime.Now >= DateTime.ParseExact(splitRenovationTerm.StartingDate, "dd-MMM-yy", null)
-                && DateTime.Now <= DateTime.ParseExact(splitRenovationTerm.EndingDate, "dd-MMM-yy", null))
+            var room = this.GetById(splitRenovationTerm.Roomtosplitid);
+            if (DateTime.Now >= splitRenovationTerm.Range.Start
+                && DateTime.Now <= splitRenovationTerm.Range.End)
             {
                 room.Disabled = 3;
                 this.Update(room);
@@ -273,15 +273,15 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             string fileName = roomsplitpath;
             if (File.Exists(fileName))
             {
-                string data = splitRenovationTerm.RoomToSplitId + "," + 
-                    splitRenovationTerm.RoomName1 + "," + 
-                    splitRenovationTerm.RoomName2 + "," + 
-                    splitRenovationTerm.RoomDescription1 + "," +
-                    splitRenovationTerm.RoomDescription2 + "," +
-                    splitRenovationTerm.RoomType1 + "," +
-                    splitRenovationTerm.RoomType2 + "," +
-                    splitRenovationTerm.StartingDate + "," +
-                    splitRenovationTerm.EndingDate + 
+                string data = splitRenovationTerm.Roomtosplitid + "," + 
+                    splitRenovationTerm.Newroomname1 + "," + 
+                    splitRenovationTerm.Newroomname2 + "," + 
+                    splitRenovationTerm.Newroomdescription1 + "," +
+                    splitRenovationTerm.Newroomdescription2 + "," +
+                    splitRenovationTerm.Newroomtype1 + "," +
+                    splitRenovationTerm.Newroomtype2 + "," +
+                    splitRenovationTerm.Range.Start.ToShortDateString() + "," +
+                    splitRenovationTerm.Range.End.ToShortDateString() + 
                     "\n";
                 File.AppendAllText(fileName, data);
                 return true;
@@ -309,8 +309,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     data[4],
                     Enum.Parse<RoomType>(data[5]),
                     Enum.Parse<RoomType>(data[6]),
-                    data[7],
-                    data[8]
+                    DateTime.ParseExact(data[7], "dd-MMM-yy", null),
+                    DateTime.ParseExact(data[8], "dd-MMM-yy", null)
                     ));
             }
             return list;
@@ -326,7 +326,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                     continue;
                 }
                 string[] data = csvLines[i].Split(',');
-                if (Int32.Parse(data[0]) == splitRenovationTerm.RoomToSplitId && splitRenovationTerm.StartingDate == data[7] && splitRenovationTerm.EndingDate == data[8])
+                if (Int32.Parse(data[0]) == splitRenovationTerm.Roomtosplitid && splitRenovationTerm.Range.Start.ToShortDateString() == data[7] && splitRenovationTerm.Range.End.ToShortDateString() == data[8])
                 {
                     csvLines[i] = "";
                 }

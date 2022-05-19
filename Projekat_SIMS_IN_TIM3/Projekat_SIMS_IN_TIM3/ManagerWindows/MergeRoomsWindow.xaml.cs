@@ -49,7 +49,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             DateTime startDate = DateTime.Parse(this.StartDate.Text);
             DateTime endDate = DateTime.Parse(this.EndDate.Text);
             Debug.WriteLine(roomtype);
-            var query = new MergeRenovationQuery(startDate, endDate, firstRoomId, secondRoomId, duration, description,name,roomtype);
+            var query = new MergeRenovationTerm(startDate, endDate, firstRoomId, secondRoomId, duration, description,name,roomtype);
             List<MergeRenovationTerm> available = this.roomController.GetMergeRenovationAvailableTerms(query);
             renovationsGrid.ItemsSource = available;
         }
@@ -62,8 +62,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             MergeRenovationTerm rt = (MergeRenovationTerm)((Button)e.Source).DataContext;
             this.roomController.ScheduleMerge(rt);
-            DateTime dateStart = DateTime.ParseExact(rt.StartingDate, "dd-MMM-yy", null);
-            DateTime dateEnd = DateRange.GetLastMoment(DateTime.ParseExact(rt.EndingDate, "dd-MMM-yy", null));
+            DateTime dateStart = rt.Range.Start;
+            DateTime dateEnd = DateRange.GetLastMoment(rt.Range.End);
             foreach (var room in RoomPage.Rooms)
             {
                 if ((room.Id == rt.RoomId1 || room.Id == rt.RoomId2) && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
