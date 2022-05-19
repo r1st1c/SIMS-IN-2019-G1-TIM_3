@@ -24,10 +24,9 @@
         <TextBox x:Name="Search_Box" FontSize="20" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160" Height="30" TextWrapping="Wrap" Text="" Margin="10,0,0,0" adorners:Watermark.Text="Search here..." adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused"/>
         <Button Grid.Row="0" Grid.Column="1" Content="Search"  VerticalAlignment="Center" Height="30" FontSize="20" Margin="180,0,10,0" Click="Search_Click"/>
 
-        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="40,0,0,2" TextWrapping="Wrap" Text="Show only" VerticalAlignment="Center" FontSize="22"/>
-        <RadioButton GroupName="type" Grid.Row="0" Grid.Column="2" Content="Static Equipment" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170,0,0,0" FontSize="20"  VerticalContentAlignment="Center" Checked="Filter_Static"/>
-        <RadioButton GroupName="type" Grid.Row="0" Grid.Column="2" Content="Dynamic Equipment" Margin="170,0,0,0" VerticalAlignment="Bottom" FontSize="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" Checked="Filter_Dynamic"/>
-        
+        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="80,0,0,2" TextWrapping="Wrap" Text="Filter:" VerticalAlignment="Center" FontSize="22"/>
+        <ComboBox x:Name="FilterComboBox" Grid.Row="0" Grid.Column="2" Margin="169,0,80,0" VerticalAlignment="Center" ItemsSource="{Binding Path=FilterTypesList}" FontSize="22" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged"/>
+
         <DataGrid Grid.ColumnSpan="4" x:Name="dataGridEquipment" Grid.Row="1" ItemsSource="{Binding Equipment_All}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
             <DataGrid.Columns>

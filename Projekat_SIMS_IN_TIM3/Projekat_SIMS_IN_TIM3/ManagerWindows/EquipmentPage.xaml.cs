@@ -50,6 +50,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 }
             }
         }
+        public List<string> FilterTypesList { get; set; } = new List<string>(){"All","Static","Dynamic"};
 
         public static EquipmentController equipmentController = new EquipmentController();
         public static List<Equipment> Equipment_Backup { get; set; }
@@ -73,19 +74,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             string toSearch = Search_Box.Text;
             ObservableCollection<Equipment> queryResult = new ObservableCollection<Equipment>();
-            foreach (var equipment in Equipment_Backup.Where(e=>ContainsIgnoreCase(e.Equipmentname,toSearch)))
+            foreach (var equipment in Equipment_All.Where(e=>ContainsIgnoreCase(e.Equipmentname,toSearch)))
             {
                 queryResult.Add(equipment);
             }
             Equipment_All = queryResult;
-            foreach (var equipment in Equipment_All)
-            {
-                Debug.WriteLine(equipment.Equipmentname);
-            }
-            Debug.WriteLine("THIS ENDED");
-            //dataGridEquipment.ItemsSource = null;
-            //dataGridEquipment.ItemsSource = queryResult;
-            //removing elements from list crashes aswell
         }
 
         bool ContainsIgnoreCase(string str, string substr)
@@ -93,37 +86,22 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             return str.ToLower().Contains(substr.ToLower());
         }
 
-        private void Filter_Static(object sender, RoutedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            List<Equipment> queryResult = new List<Equipment>();
-            foreach (var equipment in Equipment_Backup)
+            if (FilterComboBox.SelectedIndex == 0)
             {
-                if (equipment.Equipmenttype == EquipmentType.static_equipment)
-                {
-                    queryResult.Add(equipment);
-                }
+                Equipment_All = new ObservableCollection<Equipment>(equipmentController.GetAll());
             }
-            Equipment_All = new ObservableCollection<Equipment>(queryResult);
-            foreach (var equipment in Equipment_All)
+            if (FilterComboBox.SelectedIndex == 1)
             {
-                Debug.WriteLine(equipment.Equipmentname);
+                Equipment_All = new ObservableCollection<Equipment>(equipmentController.GetByType(EquipmentType.static_equipment));
             }
-        }
-        private void Filter_Dynamic(object sender, RoutedEventArgs e)
-        {
-            List<Equipment> queryResult = new List<Equipment>();
-            foreach (var equipment in Equipment_Backup)
+            else if (FilterComboBox.SelectedIndex == 2)
             {
-                if (equipment.Equipmenttype == EquipmentType.dynamic_equipment)
-                {
-                    queryResult.Add(equipment);
-                }
+                Equipment_All = new ObservableCollection<Equipment>(equipmentController.GetByType(EquipmentType.dynamic_equipment));
             }
-            Equipment_All = new ObservableCollection<Equipment>(queryResult);
-            foreach (var equipment in Equipment_All)
-            {
-                Debug.WriteLine(equipment.Equipmentname);
-            }
+
+            Search_Box.Text = "";
         }
     }
 }
