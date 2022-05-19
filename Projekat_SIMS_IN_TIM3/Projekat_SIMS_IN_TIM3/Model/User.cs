@@ -47,5 +47,12 @@ namespace Projekat_SIMS_IN_TIM3.Model
             this.Phone = phone;
             this.DateOfBirth = dataOfBirth;
         }
+
+        public User(int Id, string Name, string Surname)
+        {
+            this.Id = Id;
+            this.Name= Name;
+            this.Surname = Surname;
+        }
     }
 }

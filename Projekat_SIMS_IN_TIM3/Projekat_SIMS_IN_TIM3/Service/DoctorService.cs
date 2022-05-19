@@ -45,5 +45,28 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             return doctorRepository.nameSurnameSpec();
         }
+
+        public void addGrade(DoctorGradeDTO gradeDTO, int doctorId)
+        {
+            Doctor doctor = doctorRepository.getById(doctorId);
+
+            doctor = applyGrades(doctor, gradeDTO);
+
+            doctorRepository.delete(doctorId);
+            doctorRepository.saveAndUpdate(doctor);
+        }
+
+        public Doctor applyGrades(Doctor doctor, DoctorGradeDTO gradeDTO)
+        {
+
+            doctor.KnowledgeGrades.Add(gradeDTO.KnowledgeGrade);
+            doctor.HelpfulnessGrades.Add(gradeDTO.HelpfulnessGrade);
+            doctor.PunctualityGrades.Add(gradeDTO.PunctualityGrade);
+            doctor.PleasantnessGrades.Add(gradeDTO.PleasantnessGrade);
+
+            return doctor;
+        }
+
+
     }
 }
