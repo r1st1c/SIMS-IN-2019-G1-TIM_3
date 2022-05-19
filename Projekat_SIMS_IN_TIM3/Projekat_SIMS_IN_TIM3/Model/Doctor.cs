@@ -13,6 +13,11 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public String specializationType { get; set; }
         private List<Appointment> appointments { get; set; }    
         
+        public List<int> KnowledgeGrades { get; set; }
+        public List<int> HelpfulnessGrades { get; set; }
+        public List<int> PunctualityGrades { get; set; }
+
+        public List<int> PleasantnessGrades { get; set; }
 
         public Doctor()
         {
@@ -30,6 +35,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 email, address, phone, dataOfBirth);
             //this.room = room;
             this.specializationType = specializationType;
+            this.KnowledgeGrades = new List<int>();
+            this.HelpfulnessGrades = new List<int>();
+            this.PunctualityGrades = new List<int>();
+            this.PleasantnessGrades = new List<int>();
         }
        
 
@@ -37,6 +46,11 @@ namespace Projekat_SIMS_IN_TIM3.Model
         {
             this.username = username;
             this.password = password;
+        }
+
+        public Doctor(int Id,string Name, string Surname)
+        {
+            User user = new User(Id, Name, Surname);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Projekat_SIMS_IN_TIM3
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            UpdateAndDeleteAppointment ud = new UpdateAndDeleteAppointment();
+            UpdateAndDeleteAppointment ud = new UpdateAndDeleteAppointment(Username);
             ud.Show();
         }
 
@@ -53,6 +53,18 @@ namespace Projekat_SIMS_IN_TIM3
         {
             Notifications notifications = new Notifications(Username);
             notifications.Show();
+        }
+
+        private void GradeHosp_Click(object sender, RoutedEventArgs e)
+        {
+            GradeHospital gradeHospital = new GradeHospital();
+            gradeHospital.Show();
+        }
+
+        private void GradeDoc_Click(object sender, RoutedEventArgs e)
+        {
+            GradeDoctor gradeDoctor = new GradeDoctor(Username);
+            gradeDoctor.Show();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)

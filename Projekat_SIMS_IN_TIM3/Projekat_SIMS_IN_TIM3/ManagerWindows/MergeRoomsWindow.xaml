@@ -1,0 +1,74 @@
+﻿<Window x:Class="Projekat_SIMS_IN_TIM3.ManagerWindows.MergeRoomsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
+        mc:Ignorable="d"
+        Title="Merge Rooms"  Height="576" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="6*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1.3*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock TextWrapping="Wrap" Text="Merging rooms" FontSize="24" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock FontWeight="Bold" Text="*Note ALL fields are necessary" Foreground="Red" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+
+        <TextBlock TextWrapping="Wrap" Text="Available Terms:" FontSize="30" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+        <TextBlock TextWrapping="Wrap" Text="Select Rooms:"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="18" Margin="0,0,7,0"/>
+        <ComboBox x:Name="firstRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16" Width="171" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="120,12,0,0" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="secondRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16"  Width="171" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Margin="120,0,0,12" Grid.ColumnSpan="2"/>
+
+
+        <TextBlock FontSize="16" Text="Starting date:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <DatePicker FontSize="16" x:Name="StartDate"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
+
+        <TextBlock FontSize="16" Text="End date:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <DatePicker FontSize="16" x:Name="EndDate" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,7,0"/>
+
+        <TextBlock FontSize="16" Text="Duration(Days):" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <TextBox x:Name="duration"  FontSize="16" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
+
+        <TextBlock FontSize="16" Text="New Name:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <TextBox x:Name="newName"  FontSize="16" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
+
+        <TextBlock FontSize="16" Text="New Type:" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <ComboBox Name="newType" FontSize="16"  ItemsSource="{Binding Path=RoomTypes}" Grid.Row="6" VerticalAlignment="Center"  HorizontalAlignment="Left" Width="171" Grid.ColumnSpan="2" Margin="120,0,0,0"/>
+
+
+        <TextBlock FontSize="16" Text="Description:" Grid.Row="7" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Margin="0,25,7,0"/>
+        <TextBox x:Name="description" FontSize="16"  TextWrapping="Wrap"  Grid.Row="7" Grid.Column="1" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Margin="0,13,7,0"/>
+
+        <DataGrid  x:Name="renovationsGrid" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" Grid.RowSpan="8" Margin="0,0,20,20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Start Date" Binding="{Binding Range.Start, StringFormat=d}" Width="*"/>
+                <DataGridTextColumn Header="End Date" Binding="{Binding Range.End, StringFormat=d}" Width="*"/>
+                <DataGridTemplateColumn Header="Schedule" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="schedule" Content="Schedule" Click="Schedule_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Confirm" Background="Lime" FontWeight="Bold" Click="Confirm_Button"  Grid.Row="8" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" Height="32" Width="100" Margin="18,0,0,0"/>
+        <Button Content="Cancel"  Background="Red" FontWeight="Bold" Click="Cancel_Button"  Grid.Row="8" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Right"  Height="32" Width="100" Margin="0,0,18,0"/>
+    </Grid>
+</Window>

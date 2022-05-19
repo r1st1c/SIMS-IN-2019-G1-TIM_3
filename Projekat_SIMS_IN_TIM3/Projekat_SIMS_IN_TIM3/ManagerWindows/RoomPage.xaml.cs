@@ -31,6 +31,10 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             InitializeComponent();
             this.roomController.UpdateDisabledFields();
+            this.roomController.DisableMergingRooms();
+            this.roomController.ExecuteMerging();
+            this.roomController.DisableSplittingRooms();
+            this.roomController.ExecuteSplitting();
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
         }
@@ -58,13 +62,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 return;
             }
             Rooms.Remove(room);
-            if (EquipmentPage.Equipment_All != null)
+            /*if (EquipmentPage.Equipment_All != null)
             {
                 foreach (var equipment in EquipmentPage.Equipment_All.Where(x => x.RoomId == room.Id))
                 {
                     equipment.RoomName = this.roomController.GetById(0).Name;
                 }
-            }
+            }*/
             this.roomController.DeleteById(room.Id);
         }
 
@@ -73,6 +77,19 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             Room room = (Room)((Button)e.Source).DataContext;
             var basic = new BasicRenovationWindow(room);
             basic.ShowDialog();
+        }
+
+        private void Merge_Click(object sender, RoutedEventArgs e)
+        {
+            var merge = new MergeRoomsWindow();
+            merge.ShowDialog();
+        }
+
+        private void Split_Click(object sender, RoutedEventArgs e)
+        {
+            Room room = (Room)((Button)e.Source).DataContext;
+            var split = new SplitRoomWindow(room);
+            split.ShowDialog();
         }
     }
 }

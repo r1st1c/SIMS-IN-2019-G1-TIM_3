@@ -9,7 +9,7 @@
         Title="UpdateAndDeleteAppointment" Height="450" Width="800">
     <Grid>
         <Button Content="Update" HorizontalAlignment="Left" Margin="690,381,0,0" VerticalAlignment="Top" Click="Update" AutomationProperties.Name="Update" Height="30" Width="53"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="42,391,0,0" VerticalAlignment="Top" Click="Delete" AutomationProperties.Name="Delete" Height="33" Width="53"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="42,391,0,0" VerticalAlignment="Top" Click="Cancel" AutomationProperties.Name="Delete" Height="33" Width="53"/>
         <Button Content="Select" HorizontalAlignment="Left" Margin="265,275,0,0" VerticalAlignment="Top" Click="Select" AutomationProperties.Name="Select" Height="37" Width="52"/>
         <Button Content="Show" HorizontalAlignment="Left" Margin="36,279,0,0" VerticalAlignment="Top" Click="Show" RenderTransformOrigin="0.5,0.5" AutomationProperties.Name="Show"  Height="33" Width="59"/>
        

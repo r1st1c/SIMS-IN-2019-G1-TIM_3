@@ -25,19 +25,32 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
     public partial class UpdateAndDeleteAppointment : Window
     {
 
+        public Boolean toBlock = true;
         public App application { get; set; }
         public List<Appointment> appointments { get; set; } = new List<Appointment>();
         public Appointment selectedAppointment { get; set; }
-       /* public AppText appText { get; set; }
-        public List<AppText> appTexts {get; set;} = new List<AppText>();*/
-        public UpdateAndDeleteAppointment()
+        /* public AppText appText { get; set; }
+         public List<AppText> appTexts {get; set;} = new List<AppText>();*/
+
+        public int patientId = 1;
+        public String Username;
+        public UpdateAndDeleteAppointment(string Username)
         {
             InitializeComponent();
             this.DataContext = this;
-
+            this.Username = Username;
             application = Application.Current as App;
-            
-            
+
+            List<Patient> patients = this.application.patientController.GetAll();
+
+            foreach(Patient pat in patients)
+            {
+                if(pat.User.Username == Username)
+                {
+                    patientId = pat.User.Id;
+                    break;
+                }
+            }
 
             var appsNew = application.appointmentController.GetByPatientsId(1);
             
@@ -51,30 +64,31 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             DataBinding1.ItemsSource = appsNew;
         }
 
-        public void Delete(object sender, RoutedEventArgs e)
+        public void Cancel(object sender, RoutedEventArgs e)
         {
-            application.appointmentController.DeleteAppointment(selectedAppointment.Id);
-            MessageBox.Show("Successfully deleted appointment");
+            Boolean canceledAppointment = application.patientController.cancelAppointment(patientId, selectedAppointment.Id);
 
-          
-            startTime1.Value = default(DateTime);
+            if(canceledAppointment)
+            {
+                Show(sender, e);
+                toBlock = false;
+            }
+            else
+            {
+                this.application.userLoginController.DeleteLogIn(Username);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+                toBlock = true;
+            }
+
+           
         }
 
         public void Select(object sender, RoutedEventArgs e)
         {
             selectedAppointment = (Appointment)DataBinding1.SelectedItem;
-            /*tb1.Text = selectedPatient.User.Name;
-            tb2.Text = selectedPatient.User.Surname;
-            tb3.Text = selectedPatient.User.Username;
-            tb4.Text = selectedPatient.User.Jmbg;
-            tb5.Text = selectedPatient.User.Password;
-            tb6.Text = selectedPatient.User.Email;
-            tb7.Text = selectedPatient.User.Address;
-            tb8.Text = selectedPatient.User.Phone;
-            dataofbirth1.SelectedDate = selectedPatient.User.DateOfBirth;*/
-
-             
-                
+          
         }
 
         public void Update(object sender, RoutedEventArgs e)
@@ -116,14 +130,18 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             }
             else
             {
+                Cancel(sender, e);
 
-                application.appointmentController.DeleteAppointment(appointmentId);
-                var newAppointment = new Appointment(appointmentId, (DateTime)startTime1.Value, selectedAppointment.DurationInMinutes,
-                    selectedAppointment.Type, selectedAppointment.DoctorId, selectedAppointment.PatientId);
+                if (toBlock)
+                {
+
+                    application.appointmentController.DeleteAppointment(appointmentId);
+                    var newAppointment = new Appointment(appointmentId, (DateTime)startTime1.Value, selectedAppointment.DurationInMinutes,
+                        selectedAppointment.Type, selectedAppointment.DoctorId, selectedAppointment.PatientId);
 
 
-                application.appointmentController.CreateAppointment(newAppointment);
-                MessageBox.Show("Successfully updated appointment ");
+                    application.appointmentController.CreateAppointment(newAppointment);
+                }    
             }
         }
     }

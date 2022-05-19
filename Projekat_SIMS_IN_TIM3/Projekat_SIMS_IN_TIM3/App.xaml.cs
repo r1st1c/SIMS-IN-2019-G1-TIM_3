@@ -15,6 +15,7 @@ namespace Projekat_SIMS_IN_TIM3
     public partial class App : Application
     {
         public readonly UserController userController = new UserController();
+        public readonly UserLoginController userLoginController = new UserLoginController();
         public readonly PatientController patientController = new PatientController();
         public readonly GuestController guestController = new GuestController();
         public readonly AppointmentController appointmentController = new AppointmentController();
@@ -22,6 +23,7 @@ namespace Projekat_SIMS_IN_TIM3
         public readonly AllergenController allergenController = new AllergenController();
         public readonly MedicinePrescriptionController medPrescriptionController = new MedicinePrescriptionController();
         public readonly MedicineController medicineController = new MedicineController();
+        public readonly HospitalController hospitalController = new HospitalController();
         public string id;
         internal object doctorController;
     }

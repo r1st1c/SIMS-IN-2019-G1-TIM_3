@@ -1,0 +1,4 @@
+0,CT Scanner,Toshiba,static_equipment,1,0
+1,Xray Scanner,Toshiba,static_equipment,1,0
+2,MRI Scanner,Samsung,static_equipment,1,0
+3,Bandages,Galenika,dynamic_equipment,100,-1

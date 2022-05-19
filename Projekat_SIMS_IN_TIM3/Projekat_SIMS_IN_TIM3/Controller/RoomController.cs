@@ -19,7 +19,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             return this.roomService.GetById(id);
         }
-
+        public Room GetByName(string name)
+        {
+            return this.roomService.GetByName(name);
+        }
         public List<Room> GetAll()
         {
             return this.roomService.GetAll();
@@ -62,21 +65,42 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.GetRenovationSchedules();
         }
 
-        public bool Split(int id)
+        public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
         {
-            return this.roomService.Split(id);
+            return this.roomService.GetMergeRenovationAvailableTerms(mergeRenovationQuery);
         }
 
-        public bool Merge(int firstId, int secondId)
+        public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
         {
-            return this.roomService.Merge(firstId, secondId);
+            return this.roomService.ScheduleMerge(mergeRenovationTerm);
         }
 
-        public Room GetByName(string name)
+        public void DisableMergingRooms()
         {
-            return this.roomService.GetByName(name);
+            this.roomService.DisableMergingRooms();
+        }
+        public void ExecuteMerging()
+        {
+            this.roomService.ExecuteMerging();
+        }
+        public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery)
+        {
+            return this.roomService.GetSplitRenovationAvailableTerms(splitRenovationQuery);
         }
 
+        public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)
+        {
+            return this.roomService.ScheduleSplit(splitRenovationTerm);
+        }
+        public void DisableSplittingRooms()
+        {
+            this.roomService.DisableSplittingRooms();
+        }
+
+        public void ExecuteSplitting()
+        {
+            this.roomService.ExecuteSplitting();
+        }
         public RoomService roomService = new RoomService();
 
     }
