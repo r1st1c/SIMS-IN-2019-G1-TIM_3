@@ -43,6 +43,22 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
+        public int getNextId()
+        {
+            int lastId = int.MinValue;
+            ReadJson();
+            foreach(AbsenceRequest request in requests)
+            {
+                if(requests == null)
+                {
+                    lastId = 0;
+                } else
+
+                lastId = requests.Last().Id;
+            }
+            return lastId;
+        }
+
         public void createAbsenceRequest(AbsenceRequest request)
         {
             ReadJson();
@@ -52,23 +68,12 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                 request.requestStatus = AbsenceRequest.RequestStatus.OnHold;
             }
 
-            // provera da li je poslat 2 dana pre zeljenog pocetka
-            bool checkTime = checkTimeOfSendingRequest(request.StartDate);
-
-            // provera ima li zakazanih pregleda/operacija u tom periodu
-            int checkTerms = checkScheduledTerms(request.StartDate, request.EndDate, request.DoctorId);
-
-            // provera ima li vise od 1 lekara iste specijalizacije da su poslali zahtev u istom periodu
-            int checkSpecialization = CheckDoctorSpecialization(doctorRepository.getById(request.DoctorId).specializationType);
-
-                if(checkTime == true && checkTerms < 0 && checkSpecialization <1 )
-            {
-                requests.Add(request);
-            }
-
-            
+           requests.Add(request);
+           WriteToJson();
+             
         }
 
+        // da li je pocetak odmora zakazan bar za 2 dana posle danasnjeg dana
         public bool checkTimeOfSendingRequest(DateTime startDate)
         {
             DateTime now = DateTime.Now;
@@ -81,7 +86,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                 return false;
         }
 
-        public int CheckDoctorSpecialization(String specialization)
+        // provera da li postoji lekar koji je podneo zahtev za odsustvo u istom periodu
+        public int CheckDoctorSpecialization(String specialization, DateTime start, DateTime end)
         {
             ReadJson();
             var requestBySameSpecialization = 0;
@@ -90,31 +96,32 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             {
                 string SpecializationInRequests = doctorRepository.getById(request.DoctorId).specializationType;
 
-                    if(SpecializationInRequests == specialization)
+                if (SpecializationInRequests == specialization)
                 {
-                    requestBySameSpecialization++;
+                    if ((start.Date < request.StartDate.Date && end == request.StartDate.Date) ||
+                        (start.Date < request.EndDate.Date && end <= request.EndDate.Date) ||
+                        (start.Date >= request.StartDate.Date && end <= request.EndDate.Date) ||
+                        (start.Date >= request.StartDate.Date && end > request.EndDate.Date))
+                    {
+                        requestBySameSpecialization++;
+                    }
                 }
               
             }
             return requestBySameSpecialization;
         }
 
-        
-        public int checkScheduledTerms(DateTime startDate, DateTime endDate, int doctorsId)
+        public bool isThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
         {
-            var appointments = appointmentRepository.GetByDoctorsId(doctorsId);
-            var scheduledTerms = 0;
-            foreach (var appointment in appointments)
+            int numOfAlreadySentReqs = CheckDoctorSpecialization(specialization, start, end); 
+                if(numOfAlreadySentReqs != 0)
             {
-                if(appointment.StartTime.Date > startDate.Date && appointment.StartTime.Date < endDate.Date)
-                {
-                    scheduledTerms++;
-                }
-            }
-            return scheduledTerms;
+                return true;
+            } else 
+                return false;
         }
-        
-
+ 
+  
         public List<AbsenceRequest> getAll()
         {
             ReadJson();

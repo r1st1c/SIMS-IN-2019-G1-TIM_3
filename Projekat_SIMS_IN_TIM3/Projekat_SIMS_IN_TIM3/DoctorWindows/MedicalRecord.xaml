@@ -28,10 +28,10 @@
 
 
         </Grid.ColumnDefinitions>
-
+        <Label  x:Name="labelDoctorId" Grid.Row="0" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="168,0,131,0" Grid.ColumnSpan="2"  />
         <Button  Click="seeMoreLink" Grid.Row="5" Grid.Column="2" FontSize="22" Foreground="Black" Background="AntiqueWhite" Margin="0,36,10,74">Medical reports</Button>
         <Button  Click="presc" Grid.Row="5" Grid.Column="3" FontSize="22" Foreground="Black" Background="AntiqueWhite" Margin="77,36,138,74" Grid.ColumnSpan="2">Medical reports</Button>
-        <Label  x:Name="labelPatientId" Grid.Row="0" Grid.Column="2" Content="{Binding PatientId}" Foreground="White" Grid.ColumnSpan="2" Margin="77,14,204,19"  ></Label>
+        <Label  x:Name="labelPatientId" Grid.Row="0" Grid.Column="2" Content="{Binding PatientId}" Foreground="Black" Grid.ColumnSpan="2" Margin="77,14,204,19"  ></Label>
         <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
         <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />
         <TextBlock  MouseLeftButtonDown="HomeBtn" FontStyle="Italic" FontSize="18" Height="40" HorizontalAlignment="Left"  Text="A leader in innovation, at the service of the patient" Grid.ColumnSpan="3" Margin="78,34,0,126" Grid.RowSpan="2" Width="461" />

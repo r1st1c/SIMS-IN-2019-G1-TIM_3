@@ -51,6 +51,17 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.appointmentRepository.GetById((int)appointmentId);
         }
 
+        public int numOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
+        {
+            return appointmentRepository.numOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
+        }
+
+
+        public bool isDoctorFree(int doctorId, DateTime start, DateTime end)
+        {
+            return appointmentRepository.isDoctorFree(doctorId, start, end);
+        }
+
         public AppointmentRepository appointmentRepository = new AppointmentRepository();
 
     }

@@ -30,6 +30,7 @@
         </Grid.ColumnDefinitions>
 
 
+        <Label  x:Name="labelPatientId" Grid.Row="0" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="168,0,131,0" Grid.ColumnSpan="2"  />
         <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
         <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />
         <TextBlock  MouseLeftButtonDown="HomeBtn" FontStyle="Italic" FontSize="18" Height="40" HorizontalAlignment="Left"  Text="A leader in innovation, at the service of the patient" Grid.ColumnSpan="3" Margin="78,34,0,126" Grid.RowSpan="2" Width="461" />
@@ -98,20 +99,23 @@
         <Label Grid.Row="3" Grid.Column="1" Content="Send as urgent" FontWeight="Bold" FontSize="22" Margin="9,0,1,76" />
         <xctk:DateTimePicker   Height="43" Grid.Row="1" x:Name="startTime" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime"  Width="333"  Grid.ColumnSpan="2" Grid.Column="2" Margin="76,105,0,0" Grid.RowSpan="2" />
         <xctk:DateTimePicker   Height="43" Grid.Row="2" x:Name="endTime" HorizontalAlignment="Left"  VerticalAlignment="Center" AutomationProperties.Name="endTime"  Width="333"  Grid.ColumnSpan="2" Grid.Column="2" Margin="76,0,0,0" />
-        <ComboBox Name="appTypeCb" Grid.Row="3" Grid.ColumnSpan="2"   Margin="72,0,0,92" Height="43" Grid.Column="2" />
+        <ComboBox Name="urgentCb" Grid.Row="3" Grid.ColumnSpan="2"   Margin="72,0,0,92" Height="43" Grid.Column="2" >
+            <ComboBoxItem Content="YES"></ComboBoxItem>
+            <ComboBoxItem Content="NO"></ComboBoxItem>
+        </ComboBox>
 
 
         <Label Grid.Row="3" Grid.Column="1"  Content="Additional explanation" FontWeight="Bold" FontSize="22" Grid.ColumnSpan="2" Margin="9,82,133,120" Grid.RowSpan="2"/>
-        <Border BorderBrush="Black"  BorderThickness="2"  Height="168" Grid.Column="2" Grid.ColumnSpan="3" Margin="72,69,49,33" Grid.RowSpan="2" Grid.Row="3"/>
-        <TextBlock HorizontalAlignment="Left" Margin="76,69,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="160" Width="491" FontSize="20" FontStyle="Italic" Foreground="#FF776969" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+      
+        <TextBox  x:Name="explanation" HorizontalAlignment="Left" Margin="76,69,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="160" Width="491" FontSize="20" FontStyle="Italic" Foreground="#FF776969" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
 
-        <Button  HorizontalAlignment="Left" Margin="56,39,0,0" VerticalAlignment="Top" Background="#FF009E0F" FontSize="22" FontWeight="Bold" Foreground="#FFF7F1F1" Height="65" Width="292" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5">
+        <Button  Click="sendRequest" HorizontalAlignment="Left" Margin="56,39,0,0" VerticalAlignment="Top" Background="#FF009E0F" FontSize="22" FontWeight="Bold" Foreground="#FFF7F1F1" Height="65" Width="292" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5">
             <StackPanel Orientation="Horizontal">
                 <Image Source="C:\Users\Elena\Downloads\lekar\lekar\lekar\Icons\email-32.ico" Margin="0,0,0,0" />
                 <TextBlock  Text="Send request" Height="31" FontSize="24" Margin="25,0,0,0"/>
             </StackPanel>
         </Button>
-        <Button  HorizontalAlignment="Left"  VerticalAlignment="Top" Background="#FFCF2A27" FontSize="22" FontWeight="Bold" Foreground="#FFF7F1F1" Height="65" Width="292" Grid.Column="3" Grid.ColumnSpan="2" Margin="51,39,0,0" Grid.Row="5">
+        <Button  Click="cancelSendingRequest"  HorizontalAlignment="Left"  VerticalAlignment="Top" Background="#FFCF2A27" FontSize="22" FontWeight="Bold" Foreground="#FFF7F1F1" Height="65" Width="292" Grid.Column="3" Grid.ColumnSpan="2" Margin="51,39,0,0" Grid.Row="5">
             <StackPanel Orientation="Horizontal">
                 <Image Source="\Icons\x-mark-32.ico" Height="45" Margin="0,0,0,0" Width="76" />
                 <TextBlock  Text="Cancel" Height="31" FontSize="24"  Margin="25,0,0,0"/>

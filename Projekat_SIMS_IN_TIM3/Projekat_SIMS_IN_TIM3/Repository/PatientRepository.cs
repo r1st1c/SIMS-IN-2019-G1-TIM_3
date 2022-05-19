@@ -57,7 +57,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         {
             ReadJson();
             int id = int.MinValue;
-            id = patients.FindIndex(obj => obj.User.Name == name && obj.User.Surname == surname);
+           // id = patients.FindIndex(obj => obj.User.Name == name && obj.User.Surname == surname);
+            id = patients.Find(obj => obj.User.Name == name && obj.User.Surname == surname).User.Id;
             return id;
         }
 
@@ -95,85 +96,43 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         public string getName(int id)
         {
             ReadJson();
-            string retVal = "";
-            foreach(Patient pat in patients)
-            {
-                retVal = pat.User.Name;
-            }
-
-            return retVal;
+            return patients.Find(obj => obj.User.Id == id).User.Name;   
         }
 
         public string getSurname(int id)
         {
             ReadJson();
-            string retVal = "";
-            foreach (Patient pat in patients)
-            {
-                retVal = pat.User.Surname;
-            }
-
-            return retVal;
+            return patients.Find(obj => obj.User.Id ==id).User.Surname;
         }
 
         public DateTime getDateOfBirth(int id)
         {
             ReadJson();
-            DateTime retVal = DateTime.MinValue;
-            foreach (Patient pat in patients)
-            {
-                retVal = pat.User.DateOfBirth;
-            }
-
-            return retVal;
+            return patients.Find(obj => obj.User.Id ==id).User.DateOfBirth;
         }
 
         public string getJMBG(int id)
         {
             ReadJson();
-            string retVal = "";
-            foreach (Patient pat in patients)
-            {
-                retVal = pat.User.Jmbg;
-            }
-
-            return retVal;
+            return patients.Find(obj => obj.User.Id == id).User.Jmbg;
         }
 
         public string getAddress(int id)
         {
             ReadJson();
-            string retVal = "";
-            foreach (Patient pat in patients)
-            {
-                retVal = pat.User.Address;
-            }
-
-            return retVal;
+            return patients.Find(obj => obj.User.Id == id).User.Address;
         }
 
         public string getEmail(int id)
         {
             ReadJson();
-            string retVal = "";
-            foreach (Patient pat in patients)
-            {
-                retVal = pat.User.Email;
-            }
-
-            return retVal;
+            return patients.Find(obj => obj.User.Id == id).User.Email;
         }
 
         public string getTelNumber(int id)
         {
             ReadJson();
-            string retVal = "";
-            foreach (Patient pat in patients)
-            {
-                retVal = pat.User.Phone;
-            }
-
-            return retVal;
+            return patients.Find(obj => obj.User.Id == id).User.Phone;
         }
 
       

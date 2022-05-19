@@ -35,7 +35,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         public ObservableCollection<string> Patients { get; set; }
         private string PatientSelected;
 
+        public ObservableCollection<int> PatientsIds { get; set; }
+
         private AppointmentType AppTypeSelected;
+
+        public int DoctorId { get; set; }
 
         //RoomController roomController = new RoomController();
         //public ObservableCollection<Room> Rooms { get; set; }
@@ -43,14 +47,16 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         public ObservableCollection<AppointmentType> AppTypes { get; set; }
 
         int lastId = int.MinValue;
-        public CreateNewAppointmentWindow()
+        public CreateNewAppointmentWindow(int doctorId)
         {
             InitializeComponent();
             this.DataContext = this;
+            DoctorId = doctorId;
             app = Application.Current as App;
             appointments = app.appointmentController.GetAll();
             Doctors = new ObservableCollection<string>(doctorController.nameSurnameSpec());
             Patients = new ObservableCollection<string>(patientController.nameSurname());
+           
             //Rooms = new ObservableCollection<int>(roomController.GetAll());
             AppTypes = new ObservableCollection<AppointmentType>(Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList());
 
@@ -102,7 +108,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                         dt,
                         dur,
                         at,
-                        doctorsId, patientId);
+                        Convert.ToInt32(DoctorId), Convert.ToInt32(patientId));
 
                 app.appointmentController.CreateAppointment(newApp);
 
@@ -110,7 +116,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                switch(result)
                 {
                     case MessageBoxResult.OK:
-                        Calendar calendar = new Calendar();
+                        Calendar calendar = new Calendar(DoctorId);
                         calendar.Show();
                         break;
                 }
@@ -126,7 +132,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
               switch(result)
             {
                 case MessageBoxResult.Yes:
-                    Calendar calendar = new Calendar();
+                    Calendar calendar = new Calendar(DoctorId);
                     calendar.Show();
                 break;
 

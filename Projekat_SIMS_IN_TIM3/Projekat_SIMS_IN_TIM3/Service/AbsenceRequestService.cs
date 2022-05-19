@@ -12,6 +12,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         private AbsenceRequestRepository repository = new AbsenceRequestRepository();
 
+
+        public int getNextId()
+        {
+            return repository.getNextId();
+        }
         public void createAbsenceRequest(AbsenceRequest request)
         {
             repository.createAbsenceRequest(request);
@@ -27,6 +32,20 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return repository.getAllByDoctorsId(doctorsId);
         }
 
+        public bool checkTimeOfSendingRequest(DateTime startDate)
+        {
+            return repository.checkTimeOfSendingRequest(startDate);
+        }
+
+        public int CheckDoctorSpecialization(String specialization, DateTime start, DateTime end)
+        {
+            return repository.CheckDoctorSpecialization(specialization, start, end);
+        }
+
+        public bool isThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
+        {
+            return repository.isThereDoctorWithSameSpecialization(specialization, start, end);
+        }
 
 
     }
