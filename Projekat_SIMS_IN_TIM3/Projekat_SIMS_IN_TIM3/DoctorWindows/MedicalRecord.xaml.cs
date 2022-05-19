@@ -25,13 +25,15 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         
         PatientController pc = new PatientController();
         public int PatientId { get; set; }
+        public int DoctorId     { get; set; }
        
       
-        public MedicalRecord(int patid)
+        public MedicalRecord(int patid, int doctorId)
         {
             InitializeComponent();
             this.DataContext = this;
             PatientId = patid;
+            DoctorId = doctorId;
             pname.Content = pc.getName(PatientId);
             surname.Content = pc.getSurname(PatientId);
             jmbg.Content = pc.getJMBG(PatientId);
@@ -46,13 +48,13 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
       
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
+            MainPage mainPage = new MainPage(DoctorId);
             mainPage.Show();
             this.Close();
         }
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
-            Calendar calendar = new Calendar();
+            Calendar calendar = new Calendar(DoctorId);
             calendar.Show();
             this.Close();
         }
@@ -73,41 +75,41 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void MedVerifBtn(object sender, RoutedEventArgs e)
         {
-            MedVerif medVerif = new MedVerif();
+            MedVerif medVerif = new MedVerif(DoctorId);
             medVerif.Show();
             this.Close();
         }
 
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
-            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq();
+            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq(DoctorId);
             createAbsenceReq.Show();
             this.Close();
         }
 
         public void addMedPrescription(object sender, RoutedEventArgs e)
         {
-            AddMedPrescription addMedPrescription = new AddMedPrescription(PatientId);
+            AddMedPrescription addMedPrescription = new AddMedPrescription(PatientId, DoctorId);
             addMedPrescription.Show();
         }
 
         public void addReport(object sender, RoutedEventArgs e)
         {
-            AddReport addReport = new AddReport();
+            AddReport addReport = new AddReport(DoctorId);
             addReport.Show();
         }
 
         public void seeMoreLink(object sender, RoutedEventArgs e)
         {
             int id = (int)labelPatientId.Content;
-            Anamnesis amamnesis = new Anamnesis(id);
+            Anamnesis amamnesis = new Anamnesis(id, DoctorId);
             amamnesis.Show();
         }
 
         public void presc(object sender, RoutedEventArgs e)
         {
             int id = (int)labelPatientId.Content;
-            anamnesisPrescriptions apr = new anamnesisPrescriptions(id);
+            anamnesisPrescriptions apr = new anamnesisPrescriptions(DoctorId,id);
             apr.Show();
         }
 

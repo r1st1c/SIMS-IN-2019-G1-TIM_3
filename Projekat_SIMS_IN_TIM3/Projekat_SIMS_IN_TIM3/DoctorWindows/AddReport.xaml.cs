@@ -28,12 +28,13 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         ReportController reportController = new ReportController();
         PatientController patientController = new PatientController();
         public ObservableCollection<string> Patients { get; set; }
+        public int DoctorId { get; set; }
 
-
-        public AddReport()
+        public AddReport(int doctorsId)
         {
             InitializeComponent();
             this.DataContext = this;
+            DoctorId = doctorsId;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
             AppTypes = new ObservableCollection<AppointmentType>(Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList());
         }
@@ -68,7 +69,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 var newReport = new Report(
                     lastId,
                     patId,
-                    0,
+                    Convert.ToInt32(DoctorId),
                     at,
                     dt,
                     pc,

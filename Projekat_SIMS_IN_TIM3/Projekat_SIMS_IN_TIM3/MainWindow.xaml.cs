@@ -63,9 +63,9 @@ namespace Projekat_SIMS_IN_TIM3
                 }
                 if (type == 1)
                 {
-                    
-                    MainPage doctorMainWindow = new MainPage();
-                    doctorMainWindow.Show();
+
+                    DoctorSignIn doctorSignIn = new DoctorSignIn();
+                    doctorSignIn.Show();
                 }
                 if (type == 2)
                 {

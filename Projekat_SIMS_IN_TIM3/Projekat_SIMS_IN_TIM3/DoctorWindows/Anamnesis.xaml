@@ -27,7 +27,7 @@
 
 
         </Grid.ColumnDefinitions>
-
+        <Label  x:Name="labelDoctorId" Grid.Row="0" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold"  Grid.ColumnSpan="2"  />
         <Label  x:Name="labelPatientId" Grid.Row="1" Grid.Column="3" Content="{Binding PatientId}" Margin="61,75,59,1" Foreground="White" />
         <Label Grid.Row="1" Grid.Column="1"  FontWeight="Bold" FontSize="22" Grid.ColumnSpan="2" Margin="0,82,133,9">MEDICAL REPORTS</Label>
 
