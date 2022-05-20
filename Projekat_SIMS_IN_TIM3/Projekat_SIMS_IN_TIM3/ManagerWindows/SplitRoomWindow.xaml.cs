@@ -24,21 +24,18 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         public RoomController roomController { get; set; } = new RoomController();
         public Room Room { get; set; }
+        public List<RoomType> RoomTypes { get; set; }
         public SplitRoomWindow(Room room)
         {
             InitializeComponent();
             this.selected.Content = room.Name;
             this.Room = room;
+            RoomTypes = Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList();
             this.DataContext = this;
-            InitializeComponent();
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            RoomType new1;
-            RoomType.TryParse(this.roomType1.Text, out new1); 
-            RoomType new2;
-            RoomType.TryParse(this.roomType1.Text, out new2);
             this.splitGrid.ItemsSource = this.roomController.GetSplitRenovationAvailableTerms(new SplitRenovationTerm(
                 DateTime.Parse(this.StartDate.Text),
                 DateTime.Parse(this.EndDate.Text),
@@ -46,8 +43,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 Int32.Parse(this.duration.Text),
                 this.roomName1.Text,
                 this.roomName2.Text,
-                new1,
-                new2,
+                (RoomType) Enum.Parse(typeof(RoomType), this.roomType1.Text),
+                (RoomType) Enum.Parse(typeof(RoomType), this.roomType2.Text),
                 this.roomDescription1.Text,
                 this.roomDescription2.Text));
         }
@@ -59,17 +56,30 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             SplitRenovationTerm rt = (SplitRenovationTerm)((Button)e.Source).DataContext;
             this.roomController.ScheduleSplit(rt);
-            DateTime dateStart = rt.Range.Start;
-            DateTime dateEnd = DateRange.GetLastMoment(rt.Range.End);
             foreach (var room in RoomPage.Rooms)
             {
-                if (room.Id == rt.RoomToSplitId && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
+                if (RoomWasFound(room, rt) && StartDatePassed(rt) && EndDayHasntPassed(rt))
                 {
                     room.DisabledTxt = "Splitting";
                 }
 
             }
             Close();
+        }
+
+        private static bool EndDayHasntPassed(SplitRenovationTerm rt)
+        {
+            return DateTime.Now <= DateRange.GetLastMoment(rt.Range.End);
+        }
+
+        private static bool StartDatePassed(SplitRenovationTerm rt)
+        {
+            return DateTime.Now >= rt.Range.Start;
+        }
+
+        private static bool RoomWasFound(Room room, SplitRenovationTerm rt)
+        {
+            return room.Id == rt.RoomToSplitId;
         }
     }
 }
