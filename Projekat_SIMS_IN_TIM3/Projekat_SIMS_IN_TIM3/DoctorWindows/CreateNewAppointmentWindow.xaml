@@ -52,5 +52,6 @@
 
         <Button  Grid.Row="6"  Content="Schedule" Background="#FF89E461"  VerticalAlignment="Center" AutomationProperties.Name="create1"   Click="Create" FontWeight="Bold" FontSize="14" Margin="70,0,71,0"/>
         <Button  Grid.Row="6"  Content="Cancel" Background="#FF89E461"  VerticalAlignment="Top" AutomationProperties.Name="create1" Click="Cancel" FontWeight="Bold" FontSize="14" Margin="71,11,70,0" Grid.Column="1"/>
+    
     </Grid>
 </Window>
