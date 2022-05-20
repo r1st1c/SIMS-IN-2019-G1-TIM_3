@@ -13,5 +13,6 @@
         <Button Content="Notifications" HorizontalAlignment="Left" Margin="525,130,0,0" VerticalAlignment="Top" Height="79" Width="123" Click="Button_Click_3"/>
         <Button Content="Log out" HorizontalAlignment="Left" Margin="586,316,0,0" VerticalAlignment="Top" Height="51" Width="99" Click="Button_Click_4"/>
         <Button Content="Grade Hospital&#xD;&#xA;" HorizontalAlignment="Left" Margin="152,280,0,0" VerticalAlignment="Top" Click="GradeHosp_Click" Height="87" Width="89"/>
+        <Button Content="Grade Doctor;" HorizontalAlignment="Left" Margin="328,280,0,0" VerticalAlignment="Top" Click="GradeDoc_Click" Height="87" Width="89"/>
     </Grid>
 </Window>

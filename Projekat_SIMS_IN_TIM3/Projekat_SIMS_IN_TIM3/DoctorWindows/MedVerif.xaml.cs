@@ -25,10 +25,12 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         MedicineController medicineController = new MedicineController();
         public static ObservableCollection<Medicine> UnverifiedMedicines { get; set; }
 
-        public MedVerif()
+        public int DoctorId { get; set; }
+        public MedVerif(int doctorId)
         {
             InitializeComponent();
             this.DataContext = this;
+            DoctorId = doctorId;
             UnverifiedMedicines = new ObservableCollection<Medicine>(medicineController.getAllUnverified());
         }
 
@@ -61,6 +63,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         public void rejectClick(object sender, RoutedEventArgs e)
         {
             Medicine medicine = (Medicine)((Button)e.Source).DataContext;
+            medicine.IsVerified = false;
+            medicineController.updateMedicine(medicine);
             int medId = medicine.Id;
             MessageBoxResult result1 = MessageBox.Show("Are you sure you want to reject verifying " + medicine.Name, "Reject medicine", MessageBoxButton.YesNo);
             switch (result1)
@@ -79,13 +83,13 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
+            MainPage mainPage = new MainPage(DoctorId);
             mainPage.Show();
         }
 
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
-            Calendar calendar = new Calendar();
+            Calendar calendar = new Calendar(DoctorId);
             calendar.Show();
             this.Close();
         }
@@ -106,14 +110,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void MedVerifBtn(object sender, RoutedEventArgs e)
         {
-            MedVerif medVerif = new MedVerif();
+            MedVerif medVerif = new MedVerif(DoctorId);
             medVerif.Show();
             this.Close();
         }
 
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
-            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq();
+            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq(DoctorId);
             createAbsenceReq.Show();
             this.Close();
         }

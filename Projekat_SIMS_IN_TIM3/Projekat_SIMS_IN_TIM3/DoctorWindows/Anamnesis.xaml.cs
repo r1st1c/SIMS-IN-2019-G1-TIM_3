@@ -24,14 +24,16 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     {
         ReportController reportController = new ReportController();
         public static ObservableCollection<Report> Reports { get; set;  }
+        public int DoctorId { get; set; }
 
        
         public int PatientId { get; set; }
-        public Anamnesis(int id)
+        public Anamnesis(int id, int doctorId)
         {
             InitializeComponent();
             this.DataContext = this;
             PatientId = id;
+            DoctorId = doctorId;
             Reports = new ObservableCollection<Report>(reportController.getAllById(PatientId));
            
         }
@@ -58,20 +60,20 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
+            MainPage mainPage = new MainPage(DoctorId);
             mainPage.Show();
             this.Close();
         }
 
         private void createNewApp(object sender, RoutedEventArgs e)
         {
-            CreateNewAppointmentWindow c = new CreateNewAppointmentWindow();
+            CreateNewAppointmentWindow c = new CreateNewAppointmentWindow(DoctorId);
             c.Show();
             this.Close();
         }
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
-            Calendar calendar = new Calendar();
+            Calendar calendar = new Calendar(DoctorId);
             calendar.Show();
             this.Close();
         }
@@ -92,14 +94,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void MedVerifBtn(object sender, RoutedEventArgs e)
         {
-            MedVerif medVerif = new MedVerif();
+            MedVerif medVerif = new MedVerif(DoctorId);
             medVerif.Show();
             this.Close();
         }
 
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
-            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq();
+            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq(DoctorId);
             createAbsenceReq.Show();
             this.Close();
         }

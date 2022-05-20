@@ -29,18 +29,18 @@
 
         </Grid.ColumnDefinitions>
 
-        
-       
+
+        <Label  x:Name="labelPatientId" Grid.Row="0" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="168,0,131,0" Grid.ColumnSpan="2"  />
 
         <DataGrid Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Appointments, Mode=TwoWay}" IsReadOnly="True"
-                  SelectionMode="Single" Grid.ColumnSpan="4" Margin="0,0,10,0" Grid.RowSpan="4"
+                  SelectionMode="Single" Grid.ColumnSpan="4" Margin="0,44,10,0" Grid.RowSpan="4"
                   AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date and time" Binding="{Binding StartTime}" Width="160" />
                 <DataGridTextColumn Header="Duration" Binding="{Binding DurationInMinutes}"  Width="57" />
                 <DataGridTextColumn Header="Room" Binding="{Binding RoomNumber}" Width="45" />
                 <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="75" />
-                <DataGridTextColumn Header="Patient" Binding="{Binding PatientId}" Width="*" /> 
+                <DataGridTextColumn Header="Patient" Binding="{Binding PatientId}" Width="*" />
                 <DataGridTemplateColumn Header="Medical record" Width="*" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -64,7 +64,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                
+
             </DataGrid.Columns>
 
 
@@ -87,7 +87,7 @@
 
         </Button>
 
-        <Button Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Margin="0,81,10,10" Background="#f6b26b" BorderBrush="Black" BorderThickness="2.5" >
+        <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5,130,5,96" Background="#f6b26b" BorderBrush="Black" BorderThickness="2.5" Grid.RowSpan="2" >
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Icons/pdf-file-outlined-interface-symbol_icon-icons.com_57528.ico"  Width="30" Height="30" />
                 <TextBlock Text="Generate a list of scheduled appointments" FontWeight="Bold" FontSize="17" Foreground="Black" Margin="12,0,0,0" Width="342"/>
@@ -149,9 +149,17 @@
         <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="5" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="absence" FontWeight="Bold" FontSize="18"  Width="107" Margin="69,105,0,0"  />
         <TextBlock  MouseLeftButtonDown="AbsenceReqBtn" HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Top"  Text="request" FontWeight="Bold" FontSize="18" Margin="0,127,0,0"  />
         <Image Source="/Icons/note_pen_icon_174377.ico"  Grid.Row="5" Grid.Column="0" Width="48" Height="48" Margin="78,29,79,86"  />
+        <Button  Click="createNewOp" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Margin="5,81,5,10" Background="#009e0f"  BorderBrush="Black" BorderThickness="2.5">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Icons/plus-32.ico"  Width="30" Height="30" Margin="0,0,0,0" />
+                <TextBlock Text="Schedule new operation" FontWeight="Bold" FontSize="17" Foreground="White" Margin="20,0,0,0" Width="229"/>
 
-        
-        
+            </StackPanel>
+
+        </Button>
+
+
+
     </Grid>
 
 </Window>

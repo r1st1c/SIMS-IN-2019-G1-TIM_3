@@ -24,12 +24,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     {
         MedicinePrescriptionController pc = new MedicinePrescriptionController();
         public int PatientId { get; set; }
+        public int DoctorId { get; set; }
         public static ObservableCollection<MedicinePrescription> Prescriptions { get; set; }
-        public anamnesisPrescriptions(int id)
+        public anamnesisPrescriptions(int id, int id1)
         {
             InitializeComponent();
             this.DataContext = this;
             PatientId = id;
+            DoctorId = id1;
             Prescriptions = new ObservableCollection<MedicinePrescription>(pc.getAllById(PatientId));
         
         }
@@ -52,7 +54,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
+            MainPage mainPage = new MainPage(DoctorId);
             mainPage.Show();
             this.Close();
         }
@@ -60,7 +62,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
       
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
-            Calendar calendar = new Calendar();
+            Calendar calendar = new Calendar(DoctorId);
             calendar.Show();
             this.Close();
         }
@@ -81,14 +83,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void MedVerifBtn(object sender, RoutedEventArgs e)
         {
-            MedVerif medVerif = new MedVerif();
+            MedVerif medVerif = new MedVerif(DoctorId);
             medVerif.Show();
             this.Close();
         }
 
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
-            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq();
+            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq(DoctorId);
             createAbsenceReq.Show();
             this.Close();
         }
