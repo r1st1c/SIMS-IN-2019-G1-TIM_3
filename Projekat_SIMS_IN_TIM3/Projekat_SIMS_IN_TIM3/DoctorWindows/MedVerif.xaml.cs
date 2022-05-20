@@ -63,6 +63,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         public void rejectClick(object sender, RoutedEventArgs e)
         {
             Medicine medicine = (Medicine)((Button)e.Source).DataContext;
+            medicine.IsVerified = false;
+            medicineController.updateMedicine(medicine);
             int medId = medicine.Id;
             MessageBoxResult result1 = MessageBox.Show("Are you sure you want to reject verifying " + medicine.Name, "Reject medicine", MessageBoxButton.YesNo);
             switch (result1)

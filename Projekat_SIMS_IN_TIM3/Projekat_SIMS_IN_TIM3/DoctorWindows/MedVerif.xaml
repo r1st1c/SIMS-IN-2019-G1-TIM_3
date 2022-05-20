@@ -35,7 +35,13 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="NAME" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="INGREDIENTS" Binding="{Binding Ingredients}" Width="*"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="INGREDIENTS" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox  ItemsSource="{Binding Ingredients}" IsEditable="False"  IsReadOnly="True"></ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="VERIFY" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
