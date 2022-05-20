@@ -36,12 +36,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         int maxId = int.MinValue;
 
         List<Patient> patients = new List<Patient>();
+        public int DoctorId { get; set; }
 
       
-        public AddMedPrescription(int PatientId)
+        public AddMedPrescription(int PatientId, int doctorsId)
         {
             InitializeComponent();
             this.DataContext = this;
+            DoctorId = doctorsId;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
             Medicines = new ObservableCollection<string>(medicineController.getAllVerified());
 
@@ -60,7 +62,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             string patname = strings[0];
             string patsurname = strings[1];
             int patId = patientController.getIdByNameAndSurname(patname, patsurname);
-            int docId = 0;
+            int docId = DoctorId;
 
             string medName = medicinesCb.SelectedItem.ToString();
             int medId = medicineController.getIdByName(medName);
@@ -112,7 +114,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    Calendar calendar = new Calendar();
+                    Calendar calendar = new Calendar(DoctorId);
                     calendar.Show();
                     break;
 

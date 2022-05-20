@@ -62,21 +62,5 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             Debug.Write("Csv file doesnt exist");
             return null;
         }
-
-        public bool Update(MedicineIngredient toUpdate)
-        {
-            string[] csvLines = File.ReadAllLines(medicineingredientpath);
-            csvLines[toUpdate.Id] = toUpdate.Id + "," + toUpdate.Name;
-            File.WriteAllLines(medicineingredientpath, csvLines);
-            return true;
-        }
-
-        public bool DeleteById(int id)
-        {
-            string[] csvLines = File.ReadAllLines(medicineingredientpath);
-            csvLines[id] = "";
-            File.WriteAllLines(medicineingredientpath, csvLines);
-            return true;
-        }
     }
 }

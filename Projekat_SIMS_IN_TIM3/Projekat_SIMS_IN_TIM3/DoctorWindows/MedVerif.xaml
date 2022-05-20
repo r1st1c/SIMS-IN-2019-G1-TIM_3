@@ -27,13 +27,21 @@
 
         </Grid.ColumnDefinitions>
 
+        <Label  x:Name="labelPatientId" Grid.Row="0" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="168,0,131,0" Grid.ColumnSpan="2"  />
+        
         <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5"
                   IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False"
                   ItemsSource="{Binding UnverifiedMedicines, Mode=TwoWay}" Margin="0,91,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="NAME" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="INGREDIENTS" Binding="{Binding Ingredients}" Width="*"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="INGREDIENTS" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox  ItemsSource="{Binding Ingredients}" IsEditable="False"  IsReadOnly="True"></ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="VERIFY" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -22,31 +22,41 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     /// </summary>
     public partial class Calendar : Window
     {
-
+        public int DoctorId { get; set; }
         AppointmentController c = new AppointmentController();
         public static ObservableCollection<Appointment> Appointments { get; set; }
-        public Calendar()
+        public Calendar(int doctorsId)
         {
             InitializeComponent();
             this.DataContext = this;
-            Appointments = new ObservableCollection<Appointment>(c.GetAll());
+            this.DoctorId = doctorsId;
+            
+            Appointments = new ObservableCollection<Appointment>(c.GetByDoctorsId(Convert.ToInt32(DoctorId)));
         }
 
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
+            MainPage mainPage = new MainPage(DoctorId);
             mainPage.Show();
         }
 
         private void createNewApp(object sender, RoutedEventArgs e)
         {
-            CreateNewAppointmentWindow c = new CreateNewAppointmentWindow();
+            CreateNewAppointmentWindow c = new CreateNewAppointmentWindow(DoctorId);
             c.Show();
             this.Close();
         }
+
+        private void createNewOp(object sender, RoutedEventArgs e)
+        {
+            NewOperation newOperation = new NewOperation(DoctorId);
+            newOperation.Show();
+            this.Close();
+        }
+
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
-            Calendar calendar = new Calendar();
+            Calendar calendar = new Calendar(DoctorId);
             calendar.Show();
             this.Close();
         }
@@ -67,7 +77,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void MedVerifBtn(object sender, RoutedEventArgs e)
         {
-            MedVerif medVerif = new MedVerif();
+            MedVerif medVerif = new MedVerif(DoctorId);
             medVerif.Show();
             this.Close();
         }
@@ -76,7 +86,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             Appointment appointment = (Appointment)((Button)e.Source).DataContext;
             int patid = appointment.PatientId;
-            var m = new MedicalRecord(patid);
+            var m = new MedicalRecord(patid, DoctorId);
            
             m.Show();
             this.Close();
@@ -84,7 +94,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
-            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq();
+            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq(DoctorId);
             createAbsenceReq.Show();
             this.Close();
         }

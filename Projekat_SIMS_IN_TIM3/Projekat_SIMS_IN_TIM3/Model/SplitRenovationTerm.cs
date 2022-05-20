@@ -8,42 +8,62 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class SplitRenovationTerm
     {
-        public SplitRenovationTerm(int id,int toSplitId, string roomName1, string roomName2, string roomDescription1, string roomDescription2, RoomType roomType1, RoomType roomType2, string startingDate, string endingDate)
+        public SplitRenovationTerm(
+            DateTime start, 
+            DateTime end, 
+            int roomToSplitId, 
+            int duration, 
+            string newRoomName1, 
+            string newRoomName2, 
+            RoomType newRoomType1, 
+            RoomType newRoomType2, 
+            string newRoomDescription1, 
+            string newRoomDescription2)
+        {
+            Range = new DateRange(start, end);
+            RoomToSplitId = roomToSplitId;
+            Duration = duration;
+            NewRoomName1 = newRoomName1;
+            NewRoomName2 = newRoomName2;
+            NewRoomType1 = newRoomType1;
+            NewRoomType2 = newRoomType2;
+            NewRoomDescription1 = newRoomDescription1;
+            NewRoomDescription2 = newRoomDescription2;
+        }
+        public SplitRenovationTerm(int id, int toSplitId, string roomName1, string roomName2, string roomDescription1, string roomDescription2, RoomType roomType1, RoomType roomType2, DateTime start, DateTime end)
         {
             Id = id;
             RoomToSplitId = toSplitId;
-            RoomName1 = roomName1;
-            RoomName2 = roomName2;
-            RoomDescription1 = roomDescription1;
-            RoomDescription2 = roomDescription2;
-            RoomType1 = roomType1;
-            RoomType2 = roomType2;
-            StartingDate = startingDate;
-            EndingDate = endingDate;
+            NewRoomName1 = roomName1;
+            NewRoomName2 = roomName2;
+            NewRoomDescription1 = roomDescription1;
+            NewRoomDescription2 = roomDescription2;
+            NewRoomType1 = roomType1;
+            NewRoomType2 = roomType2;
+            Range = new DateRange(start, end);
         }
-        public SplitRenovationTerm(int toSplitId, string roomName1, string roomName2, string roomDescription1, string roomDescription2, RoomType roomType1, RoomType roomType2, string startingDate, string endingDate)
+        public SplitRenovationTerm(int toSplitId, string roomName1, string roomName2, string roomDescription1, string roomDescription2, RoomType roomType1, RoomType roomType2, DateTime start, DateTime end)
         {
-            RoomName1 = roomName1;
-            RoomName2 = roomName2;
+            NewRoomName1 = roomName1;
+            NewRoomName2 = roomName2;
             RoomToSplitId = toSplitId;
-            RoomDescription1 = roomDescription1;
-            RoomDescription2 = roomDescription2;
-            RoomType1 = roomType1;
-            RoomType2 = roomType2;
-            StartingDate = startingDate;
-            EndingDate = endingDate;
+            NewRoomDescription1 = roomDescription1;
+            NewRoomDescription2 = roomDescription2;
+            NewRoomType1 = roomType1;
+            NewRoomType2 = roomType2;
+            Range = new DateRange(start, end);
         }
 
         public int Id { get; set; }
+        public DateRange Range { get; set; }
         public int RoomToSplitId { get; set; }
-        public string RoomName1 { get; set; }
-        public string RoomName2 { get; set; }
-        public string RoomDescription1 { get; set; }
-        public string RoomDescription2 { get; set; }
-        public RoomType RoomType1 { get; set; }
-        public RoomType RoomType2 { get; set; }
-        public string StartingDate { get; set; }
-        public string EndingDate { get; set; }
+        public int Duration { get; set; }
+        public string NewRoomName1 { get; set; }    
+        public string NewRoomName2 { get; set; }
+        public RoomType NewRoomType1 { get; set; }
+        public RoomType NewRoomType2 { get; set; }
+        public string NewRoomDescription1 { get; set; }
+        public string NewRoomDescription2 { get; set; }
 
     }
 }

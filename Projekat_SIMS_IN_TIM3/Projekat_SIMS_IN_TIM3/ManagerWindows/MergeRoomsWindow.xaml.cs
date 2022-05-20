@@ -39,19 +39,34 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            int firstRoomId = this.roomController.GetByName(firstRoom.Text).Id;
-            int secondRoomId = this.roomController.GetByName(secondRoom.Text).Id;
-            string description = this.description.Text;
-            string name = this.newName.Text;
-            RoomType roomtype;
-            RoomType.TryParse(this.newType.Text,out roomtype);
-            int duration = Int32.Parse(this.duration.Text);
-            DateTime startDate = DateTime.Parse(this.StartDate.Text);
-            DateTime endDate = DateTime.Parse(this.EndDate.Text);
-            Debug.WriteLine(roomtype);
-            var query = new MergeRenovationQuery(startDate, endDate, firstRoomId, secondRoomId, duration, description,name,roomtype);
-            List<MergeRenovationTerm> available = this.roomController.GetMergeRenovationAvailableTerms(query);
-            renovationsGrid.ItemsSource = available;
+            if (AnyFieldIsEmpty())
+            {
+                MessageBox.Show("ALL FIELDS ARE NECESSARY!");
+                return;
+            }
+            var query = new MergeRenovationTerm(
+                DateTime.Parse(this.StartDate.Text), 
+                DateTime.Parse(this.EndDate.Text), 
+                this.roomController.GetByName(firstRoom.Text).Id, 
+                this.roomController.GetByName(secondRoom.Text).Id, 
+                Int32.Parse(this.duration.Text), 
+                this.description.Text,
+                this.newName.Text,
+                (RoomType)Enum.Parse(typeof(RoomType),this.newType.Text)
+                );
+            renovationsGrid.ItemsSource = this.roomController.GetMergeRenovationAvailableTerms(query);
+        }
+
+        private bool AnyFieldIsEmpty()
+        {
+            return String.IsNullOrEmpty(this.StartDate.Text) || 
+                   String.IsNullOrEmpty(this.EndDate.Text) || 
+                   String.IsNullOrEmpty(this.firstRoom.Text) || 
+                   String.IsNullOrEmpty(this.secondRoom.Text) || 
+                   String.IsNullOrEmpty(this.duration.Text) || 
+                   String.IsNullOrEmpty(this.description.Text) || 
+                   String.IsNullOrEmpty(this.newName.Text) || 
+                   String.IsNullOrEmpty(this.newType.Text);
         }
 
         private void Cancel_Button(object sender, RoutedEventArgs e)
@@ -62,11 +77,9 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             MergeRenovationTerm rt = (MergeRenovationTerm)((Button)e.Source).DataContext;
             this.roomController.ScheduleMerge(rt);
-            DateTime dateStart = DateTime.ParseExact(rt.StartingDate, "dd-MMM-yy", null);
-            DateTime dateEnd = DateRange.GetLastMoment(DateTime.ParseExact(rt.EndingDate, "dd-MMM-yy", null));
             foreach (var room in RoomPage.Rooms)
             {
-                if ((room.Id == rt.RoomId1 || room.Id == rt.RoomId2) && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
+                if (RoomWasFound(room, rt) && StartDatePassed(rt) && EndDayHasntPassed(rt))
                 {
                     room.DisabledTxt = "Merging";
                 }
@@ -74,6 +87,21 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
             Close();
 
+        }
+
+        private static bool StartDatePassed(MergeRenovationTerm rt)
+        {
+            return DateTime.Now >= rt.Range.Start;
+        }
+
+        private static bool EndDayHasntPassed(MergeRenovationTerm rt)
+        {
+            return DateTime.Now <= DateRange.GetLastMoment(rt.Range.End);
+        }
+
+        private static bool RoomWasFound(Room room, MergeRenovationTerm rt)
+        {
+            return (room.Id == rt.RoomId1 || room.Id == rt.RoomId2);
         }
     }
 }
