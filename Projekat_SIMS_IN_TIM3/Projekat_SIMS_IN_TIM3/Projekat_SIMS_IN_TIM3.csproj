@@ -96,6 +96,9 @@
     <None Update="Data\medReport.json">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="Data\operations.json">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 
 </Project>

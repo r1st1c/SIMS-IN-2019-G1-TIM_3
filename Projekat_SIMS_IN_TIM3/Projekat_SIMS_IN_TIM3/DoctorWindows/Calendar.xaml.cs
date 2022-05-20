@@ -46,6 +46,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             c.Show();
             this.Close();
         }
+
+        private void createNewOp(object sender, RoutedEventArgs e)
+        {
+            NewOperation newOperation = new NewOperation(DoctorId);
+            newOperation.Show();
+            this.Close();
+        }
+
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
             Calendar calendar = new Calendar(DoctorId);
