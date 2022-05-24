@@ -284,7 +284,22 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
         {
+            var room1 = this.GetById(mergeRenovationTerm.RoomId1);
+            var room2 = this.GetById(mergeRenovationTerm.RoomId2);
+            if (DateIsBetweenStartAndEnd(mergeRenovationTerm))
+            {
+                room1.Disabled = 2;
+                room2.Disabled = 2;
+                this.roomRepository.Update(room1);
+                this.roomRepository.Update(room2);
+            }
             return this.roomRepository.ScheduleMerge(mergeRenovationTerm);
+        }
+
+        private static bool DateIsBetweenStartAndEnd(MergeRenovationTerm mergeRenovationTerm)
+        {
+            return DateTime.Now >= mergeRenovationTerm.Range.Start
+                   && DateTime.Now <= DateRange.GetLastMoment(mergeRenovationTerm.Range.End);
         }
 
         public void DisableMergingRooms()
@@ -467,7 +482,19 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)
         {
+            var room = this.GetById(splitRenovationTerm.RoomToSplitId);
+            if (DateIsBetweenStartAndEnd(splitRenovationTerm))
+            {
+                room.Disabled = 3;
+                this.roomRepository.Update(room);
+            }
             return this.roomRepository.ScheduleSplit(splitRenovationTerm);
+        }
+
+        private static bool DateIsBetweenStartAndEnd(SplitRenovationTerm splitRenovationTerm)
+        {
+            return DateTime.Now >= splitRenovationTerm.Range.Start
+                   && DateTime.Now <= DateRange.GetLastMoment(splitRenovationTerm.Range.End);
         }
 
         public void DisableSplittingRooms()
