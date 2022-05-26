@@ -36,6 +36,8 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             HospitalGradeDTO gradeDTO = makeGradeDTO();
 
             this.application.hospitalController.addGrade(gradeDTO);
+
+            MessageBox.Show("Succesfully submitted grade!");
         }
 
         private HospitalGradeDTO makeGradeDTO()
