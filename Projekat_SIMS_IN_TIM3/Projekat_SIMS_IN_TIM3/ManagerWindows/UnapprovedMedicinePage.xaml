@@ -1,0 +1,53 @@
+﻿<Page x:Class="Projekat_SIMS_IN_TIM3.ManagerWindows.UnapprovedMedicinePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1600"
+      Title="Approved Medicine Page">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid  Grid.ColumnSpan="6" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding all}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.15*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Is Verified" Binding="{Binding IsVerified}" Width="*"/>
+                <DataGridTextColumn Header="Replacement" Binding="{Binding Replacement}" Width="*"/>
+                <DataGridTemplateColumn Header="Ingredients" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Ingredients}" IsEditable="False" Text="Ingredients" IsReadOnly="True"/> 
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Button Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Viewbox MaxHeight="55">
+                        <TextBlock>Add Medicine</TextBlock>
+                    </Viewbox>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+    </Grid>
+</Page>
