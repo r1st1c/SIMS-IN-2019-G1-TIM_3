@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Model
 {
-
+    public enum MedicineStatus
+    {
+        unapproved,
+        approved,
+        rejected
+    }
 
     public class Medicine : INotifyPropertyChanged
     {
@@ -25,7 +30,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
             // TODO: implement
         }
 
-        public Medicine(int id, string name, List<MedicineIngredient> ingredients, bool isVerified, Medicine replacement)
+        public Medicine(int id, string name, List<MedicineIngredient> ingredients, MedicineStatus isVerified, Medicine replacement)
         {
             Id = id;
             Name = name;
@@ -42,7 +47,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private int _id;
         private string _name;
         private List<MedicineIngredient> _ingredients;
-        private bool _isVerified;
+        private MedicineStatus _isVerified;
         private Medicine _replacement;
         public int Id
         {
@@ -83,7 +88,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
-        public bool IsVerified
+        public MedicineStatus IsVerified
         {
             get
             { return _isVerified; }

@@ -31,10 +31,10 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             /*List<MedicineIngredient> brufenIngredients = new List<MedicineIngredient>();
             brufenIngredients.Add(new MedicineIngredient("Ibuprofen"));
             Medicine toAdd = new Medicine(0, "Brufen", brufenIngredients,true,null);
-            this.medicineController.createMedicine(toAdd);*/
+            this.medicineController.Create(toAdd);*/
             InitializeComponent();
             this.DataContext = this;
-            var list = this.medicineController.getAll();
+            var list = this.medicineController.GetAll();
             all = new ObservableCollection<Medicine>(list);
         }
 

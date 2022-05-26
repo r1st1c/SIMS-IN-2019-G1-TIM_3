@@ -12,20 +12,20 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         private MedicineService medicineService = new MedicineService();
         public int GetNextId() { return medicineService.GetNextId(); }
-        public List<Medicine> getAll() { return medicineService.getAll(); }
+        public List<Medicine> GetAll() { return medicineService.GetAll(); }
 
         public Medicine GetById(int Id) { return medicineService.GetById(Id); }
-        public void createMedicine(Medicine medicine) { medicineService.createMedicine(medicine); }
+        public void Create(Medicine medicine) { medicineService.Create(medicine); }
 
-        public void updateMedicine(Medicine medicine) { medicineService.updateMedicine(medicine); }
+        public void Update(Medicine medicine) { medicineService.Update(medicine); }
 
-        public void delete(int medId) { medicineService.delete(medId); }
+        public void Delete(int medId) { medicineService.Delete(medId); }
 
-        public List<String> getAllVerified() { return medicineService.getAllVerified(); }
+        public List<String> GetVerified() { return medicineService.GetVerified(); }
 
-        public List<Medicine> getAllUnverified()
+        public List<Medicine> GetUnverified()
         {
-            return medicineService.getAllUnverified();
+            return medicineService.GetUnverified();
         }
         public Medicine GetByName(string name) { return medicineService.GetByName(name); }
 

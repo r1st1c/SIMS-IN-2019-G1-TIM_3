@@ -40,7 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             InitializeComponent();
             this.DataContext = this;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
-            Medicines = new ObservableCollection<string>(medicineController.getAllVerified());
+            Medicines = new ObservableCollection<string>(medicineController.GetVerified());
             SelectedPresId = editId;
             patients = patientController.GetAll();
         }
