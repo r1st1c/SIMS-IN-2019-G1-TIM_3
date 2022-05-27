@@ -59,6 +59,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             return appointmentService.isDoctorFree(doctorId, start, end);
         }
+
+        public Boolean cancelAppointment(int patientId, int appointmentId)
+        {
+            return appointmentService.cancelAppointment(patientId, appointmentId);
+        }
+
         public AppointmentService appointmentService = new AppointmentService();
     }
 }
