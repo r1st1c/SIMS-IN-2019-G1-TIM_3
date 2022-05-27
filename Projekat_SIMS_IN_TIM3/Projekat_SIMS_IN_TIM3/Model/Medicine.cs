@@ -48,6 +48,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private string _name;
         private List<MedicineIngredient> _ingredients;
         private MedicineStatus _isVerified;
+        private string _reasonOfDenial;
         private Medicine _replacement;
         public int Id
         {
@@ -98,6 +99,19 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 {
                     _isVerified = value;
                     OnPropertyChanged("IsVerified");
+                }
+            }
+        }
+        public String ReasonOfDenial
+        {
+            get
+            { return _reasonOfDenial; }
+            set
+            {
+                if (value != _reasonOfDenial)
+                {
+                    _reasonOfDenial = value;
+                    OnPropertyChanged("ReasonOfDenial");
                 }
             }
         }
