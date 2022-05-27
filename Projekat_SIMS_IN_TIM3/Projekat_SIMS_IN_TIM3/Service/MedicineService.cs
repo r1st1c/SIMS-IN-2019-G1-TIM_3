@@ -24,6 +24,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         public List<String> GetVerified() { return medicineRepository.GetVerified(); }
 
         public List<Medicine> GetUnverified() {  return medicineRepository.GetUnverified(); } 
+        public List<Medicine> GetRejected() {  return medicineRepository.GetRejected(); }
         public int getIdByName(string name) { return medicineRepository.getIdByName(name); }
         public Medicine GetByName(string name) { return medicineRepository.GetByName(name); }
 

@@ -21,7 +21,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public int GetNextId()
         {
-            return medicines.Max(x => x.Id)+1;
+            return medicines.Count!=0 ? medicines.Max(x => x.Id)+1 : 0;
         }
 
         public void readJson()

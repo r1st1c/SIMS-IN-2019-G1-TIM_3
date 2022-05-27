@@ -24,17 +24,23 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             InitializeComponent();
             MedicineFrame.Content = new UnapprovedMedicinePage();
+            UnapprovedButton.Background = Brushes.Aqua;
+            RejectedButton.Background = (Brush)ManagerMainWindow.brushConverter.ConvertFrom("#FFDDDDDD");
             this.DataContext = this;
         }
 
         private void Unapproved_Click(object sender, RoutedEventArgs e)
         {
             MedicineFrame.Content = new UnapprovedMedicinePage();
+            UnapprovedButton.Background = Brushes.Aqua;
+            RejectedButton.Background = (Brush)ManagerMainWindow.brushConverter.ConvertFrom("#FFDDDDDD");
         }
 
         private void Rejected_Click(object sender, RoutedEventArgs e)
         {
-
+            MedicineFrame.Content = new RejectedMedicinePage(); 
+            UnapprovedButton.Background = (Brush)ManagerMainWindow.brushConverter.ConvertFrom("#FFDDDDDD");
+            RejectedButton.Background = Brushes.Aqua;
         }
     }
 }

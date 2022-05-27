@@ -62,7 +62,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 medName.Text, 
                 selected, 
                 MedicineStatus.unapproved,
-                replacement
+                replacement,
+                null
                 );
 
             this.medicineController.Create(toCreate);

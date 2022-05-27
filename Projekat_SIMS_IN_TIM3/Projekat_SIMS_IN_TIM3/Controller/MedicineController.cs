@@ -27,6 +27,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             return medicineService.GetUnverified();
         }
+        public List<Medicine> GetRejected()
+        {
+            return medicineService.GetRejected();
+        }
         public Medicine GetByName(string name) { return medicineService.GetByName(name); }
 
 

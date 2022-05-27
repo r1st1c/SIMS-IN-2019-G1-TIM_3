@@ -30,13 +30,14 @@ namespace Projekat_SIMS_IN_TIM3.Model
             // TODO: implement
         }
 
-        public Medicine(int id, string name, List<MedicineIngredient> ingredients, MedicineStatus isVerified, Medicine replacement)
+        public Medicine(int id, string name, List<MedicineIngredient> ingredients, MedicineStatus isVerified, Medicine replacement, string reasonOfRejection)
         {
             Id = id;
             Name = name;
             Ingredients = ingredients;
             IsVerified = isVerified;
             Replacement = replacement;
+            ReasonOfRejection = reasonOfRejection;
         }
 
         ~Medicine()
@@ -48,7 +49,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private string _name;
         private List<MedicineIngredient> _ingredients;
         private MedicineStatus _isVerified;
-        private string _reasonOfDenial;
+        private string _reasonOfRejection;
         private Medicine _replacement;
         public int Id
         {
@@ -102,16 +103,16 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
-        public String ReasonOfDenial
+        public String ReasonOfRejection
         {
             get
-            { return _reasonOfDenial; }
+            { return _reasonOfRejection; }
             set
             {
-                if (value != _reasonOfDenial)
+                if (value != _reasonOfRejection)
                 {
-                    _reasonOfDenial = value;
-                    OnPropertyChanged("ReasonOfDenial");
+                    _reasonOfRejection = value;
+                    OnPropertyChanged("ReasonOfRejection");
                 }
             }
         }
