@@ -62,7 +62,75 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return appointmentRepository.isDoctorFree(doctorId, start, end);
         }
 
+        public Boolean cancelAppointment(int patientId, int appointmentId)
+        {
+            if (canCancelAppointment(patientId))
+            {
+                freeAppointment(appointmentId);
+                addCancellationDate(patientId);
+                return true;
+            }
+            else
+            {
+                patientService.Delete(patientId);
+                return false;
+            }
+        }
+
+        public void addCancellationDate(int patientId)
+        {
+            Patient patient = patientService.GetById(patientId);
+            patient.CancellationDates.Add(DateTime.Now);
+            patientService.Delete(patientId);
+            patientService.Save(patient);
+        }
+
+        public void freeAppointment(int appointmentId)
+        {
+            Appointment appointment = appointmentRepository.GetById(appointmentId);
+
+            appointmentRepository.DeleteAppointment(appointmentId);
+
+            appointment.PatientId = -1;
+
+            appointmentRepository.CreateAppointment(appointment);
+        }
+
+        public Boolean canCancelAppointment(int patientId)
+        {
+            Patient patient = patientService.GetById(patientId);
+
+            return cancellationTresholdReached(patient) ? false : true;
+
+        }
+
+        public Boolean cancellationTresholdReached(Patient patient)
+        {
+            List<DateTime> cancellationDates = patient.CancellationDates;
+            int cancellationsCount = cancellationDates.Count();
+
+            if (cancellationsCount < 5)
+            {
+                return false;
+            }
+
+            TimeSpan timeDifference = getTimeDifference(cancellationDates);
+
+            return timeDifference.TotalDays <= 30;
+
+        }
+
+        public TimeSpan getTimeDifference(List<DateTime> cancellationDates)
+        {
+            int cancellationsCount = cancellationDates.Count();
+            DateTime fifthLastCancellation = cancellationDates[cancellationsCount - 5];
+
+            return DateTime.Now - fifthLastCancellation;
+        }
+
+
         public AppointmentRepository appointmentRepository = new AppointmentRepository();
+        public PatientService patientService = new PatientService();
 
     }
 }
