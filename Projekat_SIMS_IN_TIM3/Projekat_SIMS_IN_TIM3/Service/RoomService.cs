@@ -14,7 +14,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         public int getMaxId()
         {
-            return this.roomRepository.next_id();
+            return this.roomRepository.NextId();
         }
 
         public Room GetById(int id)
@@ -293,7 +293,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 this.roomRepository.Update(room1);
                 this.roomRepository.Update(room2);
             }
-            return this.roomRepository.ScheduleMerge(mergeRenovationTerm);
+            return this.roomRepository.MergeRepository.ScheduleMerge(mergeRenovationTerm);
         }
 
         private static bool DateIsBetweenStartAndEnd(MergeRenovationTerm mergeRenovationTerm)
@@ -304,7 +304,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public void DisableMergingRooms()
         {
-            List<MergeRenovationTerm> mergeRenovations = this.roomRepository.GetMergeSchedules();
+            List<MergeRenovationTerm> mergeRenovations = this.roomRepository.MergeRepository.GetMergeSchedules();
             List<Room> existing = this.roomRepository.GetAll();
             foreach (var room in existing)
             {
@@ -331,7 +331,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public void ExecuteMerging()
         {
-            List<MergeRenovationTerm> mergeRenovations = this.roomRepository.GetMergeSchedules();
+            List<MergeRenovationTerm> mergeRenovations = this.roomRepository.MergeRepository.GetMergeSchedules();
             List<Room> existing = this.roomRepository.GetAll();
             List<Room> toCreateList = new List<Room>();
             foreach (var renovationTerm in mergeRenovations)
@@ -353,7 +353,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         private void DeleteRoomAndItsMergeScheduling(Room room, MergeRenovationTerm renovationTerm)
         {
             this.roomRepository.DeleteById(room.Id);
-            this.roomRepository.DeleteMergeScheduling(renovationTerm);
+            this.roomRepository.MergeRepository.DeleteMergeScheduling(renovationTerm);
         }
 
         private static void CreateRoomAndAddToCreationList(List<Room> toCreateList, MergeRenovationTerm renovationTerm,
@@ -368,7 +368,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             foreach (Room toBeCreated in distinctList)
             {
-                toBeCreated.Id = this.roomRepository.next_id();
+                toBeCreated.Id = this.roomRepository.NextId();
                 this.roomRepository.Create(toBeCreated);
             }
         }
@@ -488,7 +488,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 room.Disabled = 3;
                 this.roomRepository.Update(room);
             }
-            return this.roomRepository.ScheduleSplit(splitRenovationTerm);
+            return this.roomRepository.SplitTermRepository.ScheduleSplit(splitRenovationTerm);
         }
 
         private static bool DateIsBetweenStartAndEnd(SplitRenovationTerm splitRenovationTerm)
@@ -499,7 +499,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public void DisableSplittingRooms()
         {
-            List<SplitRenovationTerm> splitRenovations = this.roomRepository.GetSplitSchedules();
+            List<SplitRenovationTerm> splitRenovations = this.roomRepository.SplitTermRepository.GetSplitSchedules();
             List<Room> existing = this.roomRepository.GetAll();
             foreach (var room in existing)
             {
@@ -531,7 +531,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public void ExecuteSplitting()
         {
-            List<SplitRenovationTerm> splitRenovationTerms = this.roomRepository.GetSplitSchedules();
+            List<SplitRenovationTerm> splitRenovationTerms = this.roomRepository.SplitTermRepository.GetSplitSchedules();
             List<Room> existing = this.roomRepository.GetAll();
             foreach (var renovationTerm in splitRenovationTerms)
             {
@@ -549,14 +549,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
         private void DeleteRoomAndItsSchedule(Room room, SplitRenovationTerm renovationTerm)
         {
             this.roomRepository.DeleteById(room.Id);
-            this.roomRepository.DeleteSplitScheduling(renovationTerm);
+            this.roomRepository.SplitTermRepository.DeleteSplitScheduling(renovationTerm);
         }
 
         private void CreateNewRooms(SplitRenovationTerm renovationTerm, Room room)
         {
-            this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.NewRoomName1,
+            this.roomRepository.Create(new Room(this.roomRepository.NextId(), renovationTerm.NewRoomName1,
                 renovationTerm.NewRoomType1, room.Floor, renovationTerm.NewRoomDescription1, "No"));
-            this.roomRepository.Create(new Room(this.roomRepository.next_id(), renovationTerm.NewRoomName2,
+            this.roomRepository.Create(new Room(this.roomRepository.NextId(), renovationTerm.NewRoomName2,
                 renovationTerm.NewRoomType2, room.Floor, renovationTerm.NewRoomDescription2, "No"));
         }
 
