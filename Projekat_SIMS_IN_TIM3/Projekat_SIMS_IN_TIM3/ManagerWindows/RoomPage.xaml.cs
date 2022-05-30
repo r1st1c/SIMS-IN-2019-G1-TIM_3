@@ -23,9 +23,9 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class RoomPage : Page
     {
-        RoomController roomController = new RoomController();
+        public RoomController roomController = new RoomController();
 
-        AppointmentController appointmentController = new AppointmentController();
+        public AppointmentController appointmentController = new AppointmentController();
         public SplitTermController SplitTermController { get; set; } = new SplitTermController();
         public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public static ObservableCollection<Room> Rooms { get; set; }
