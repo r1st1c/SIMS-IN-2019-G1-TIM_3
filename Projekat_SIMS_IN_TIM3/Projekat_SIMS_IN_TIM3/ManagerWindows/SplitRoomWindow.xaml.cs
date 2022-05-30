@@ -23,6 +23,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class SplitRoomWindow : Window
     {
         public RoomController roomController { get; set; } = new RoomController();
+        public SplitTermController SplitTermController { get; set; } = new SplitTermController();
         public Room Room { get; set; }
         public List<RoomType> RoomTypes { get; set; }
         public SplitRoomWindow(Room room)
@@ -36,7 +37,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            this.splitGrid.ItemsSource = this.roomController.GetSplitRenovationAvailableTerms(new SplitRenovationTerm(
+            this.splitGrid.ItemsSource = this.SplitTermController.GetSplitRenovationAvailableTerms(new SplitRenovationTerm(
                 DateTime.Parse(this.StartDate.Text),
                 DateTime.Parse(this.EndDate.Text),
                 this.Room.Id,
@@ -55,7 +56,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Schedule_Click(object sender, RoutedEventArgs e)
         {
             SplitRenovationTerm rt = (SplitRenovationTerm)((Button)e.Source).DataContext;
-            this.roomController.ScheduleSplit(rt);
+            this.SplitTermController.ScheduleSplit(rt);
             foreach (var room in RoomPage.Rooms)
             {
                 if (RoomWasFound(room, rt) && StartDatePassed(rt) && EndDayHasntPassed(rt))

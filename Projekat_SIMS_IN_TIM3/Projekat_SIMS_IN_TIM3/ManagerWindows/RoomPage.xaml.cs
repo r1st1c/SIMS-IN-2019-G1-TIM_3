@@ -26,15 +26,17 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         RoomController roomController = new RoomController();
 
         AppointmentController appointmentController = new AppointmentController();
+        public SplitTermController SplitTermController { get; set; } = new SplitTermController();
+        public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public static ObservableCollection<Room> Rooms { get; set; }
         public RoomPage()
         {
             InitializeComponent();
             this.roomController.UpdateDisabledFields();
-            this.roomController.DisableMergingRooms();
-            this.roomController.ExecuteMerging();
-            this.roomController.DisableSplittingRooms();
-            this.roomController.ExecuteSplitting();
+            this.MergeTermController.DisableMergingRooms();
+            this.MergeTermController.ExecuteMerging();
+            this.SplitTermController.DisableSplittingRooms();
+            this.SplitTermController.ExecuteSplitting();
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
         }

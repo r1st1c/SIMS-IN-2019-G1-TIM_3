@@ -65,43 +65,6 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.GetRenovationSchedules();
         }
 
-        public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
-        {
-            return this.roomService.GetMergeRenovationAvailableTerms(mergeRenovationQuery);
-        }
-
-        public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
-        {
-            return this.roomService.ScheduleMerge(mergeRenovationTerm);
-        }
-
-        public void DisableMergingRooms()
-        {
-            this.roomService.DisableMergingRooms();
-        }
-        public void ExecuteMerging()
-        {
-            this.roomService.ExecuteMerging();
-        }
-        public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery)
-        {
-            return this.roomService.GetSplitRenovationAvailableTerms(splitRenovationQuery);
-        }
-
-        public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)
-        {
-            return this.roomService.ScheduleSplit(splitRenovationTerm);
-        }
-        public void DisableSplittingRooms()
-        {
-            this.roomService.DisableSplittingRooms();
-        }
-
-        public void ExecuteSplitting()
-        {
-            this.roomService.ExecuteSplitting();
-        }
         public RoomService roomService = new RoomService();
-
     }
 }
