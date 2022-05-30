@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Model
 {
-
+    public enum MedicineStatus
+    {
+        unapproved,
+        approved,
+        rejected
+    }
 
     public class Medicine : INotifyPropertyChanged
     {
@@ -25,13 +30,14 @@ namespace Projekat_SIMS_IN_TIM3.Model
             // TODO: implement
         }
 
-        public Medicine(int id, string name, List<MedicineIngredient> ingredients, bool isVerified, Medicine replacement)
+        public Medicine(int id, string name, List<MedicineIngredient> ingredients, MedicineStatus isVerified, Medicine replacement, string reasonOfRejection)
         {
             Id = id;
             Name = name;
             Ingredients = ingredients;
             IsVerified = isVerified;
             Replacement = replacement;
+            ReasonOfRejection = reasonOfRejection;
         }
 
         ~Medicine()
@@ -42,7 +48,8 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private int _id;
         private string _name;
         private List<MedicineIngredient> _ingredients;
-        private bool _isVerified;
+        private MedicineStatus _isVerified;
+        private string _reasonOfRejection;
         private Medicine _replacement;
         public int Id
         {
@@ -83,7 +90,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
-        public bool IsVerified
+        public MedicineStatus IsVerified
         {
             get
             { return _isVerified; }
@@ -93,6 +100,19 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 {
                     _isVerified = value;
                     OnPropertyChanged("IsVerified");
+                }
+            }
+        }
+        public String ReasonOfRejection
+        {
+            get
+            { return _reasonOfRejection; }
+            set
+            {
+                if (value != _reasonOfRejection)
+                {
+                    _reasonOfRejection = value;
+                    OnPropertyChanged("ReasonOfRejection");
                 }
             }
         }

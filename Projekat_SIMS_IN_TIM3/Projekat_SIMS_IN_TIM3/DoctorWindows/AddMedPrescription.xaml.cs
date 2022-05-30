@@ -45,7 +45,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.DataContext = this;
             DoctorId = doctorsId;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
-            Medicines = new ObservableCollection<string>(medicineController.getAllVerified());
+            Medicines = new ObservableCollection<string>(medicineController.GetVerified());
 
             patients = patientController.GetAll();
         }

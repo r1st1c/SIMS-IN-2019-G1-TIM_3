@@ -34,7 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             InitializeComponent();
             this.DataContext = this;
             Ingredients = new ObservableCollection<MedicineIngredient>(this.medicineIngredientController.GetAll());
-            Medicines = new ObservableCollection<Medicine>(this.medicineController.getAll());
+            Medicines = new ObservableCollection<Medicine>(this.medicineController.GetAll());
             MedicinePageList = medicinePageList;
         }
 
@@ -52,19 +52,30 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 selected.Add(this.medicineIngredientController.GetByName(ingredientname.ToString()));
             }
 
+            Medicine replacement = new Medicine();
+            if (ReplacementIsSelected())
+            {
+                replacement = this.medicineController.GetByName(repMed.SelectedValue.ToString());
+            }
             Medicine toCreate = new Medicine(
                 this.medicineController.GetNextId(), 
                 medName.Text, 
                 selected, 
-                false, 
-                this.medicineController.GetByName(repMed.SelectedValue.ToString())
+                MedicineStatus.unapproved,
+                replacement,
+                null
                 );
 
-            this.medicineController.createMedicine(toCreate);
+            this.medicineController.Create(toCreate);
 
             MedicinePageList.Add(toCreate);
 
             Close();
+        }
+
+        private bool ReplacementIsSelected()
+        {
+            return repMed.SelectedIndex != -1;
         }
 
         private bool NoIngredientsAreSelected()
