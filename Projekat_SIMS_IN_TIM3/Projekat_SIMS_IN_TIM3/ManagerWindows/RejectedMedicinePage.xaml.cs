@@ -31,5 +31,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             this.DataContext = this;
             RejectedMedicines = new ObservableCollection<Medicine>(this.medicineController.GetRejected());
         }
+        private void Edit_Medicine_Click(object sender, RoutedEventArgs e)
+        {
+            Medicine selected = (Medicine)((Button)e.Source).DataContext;
+            var change = new EditMedicineWindow(selected);
+            change.ShowDialog();
+        }
     }
 }
