@@ -36,10 +36,15 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             this.MedicineList = new ObservableCollection<Medicine>(this.MedicineController.GetAll());
             this.Ingredients = new ObservableCollection<MedicineIngredient>(this.MedicineIngredientController.GetAll());
             this.medName.Text = selected.Name;
-            Debug.WriteLine(this.repMed.Items.IndexOf(selected.Replacement/*.Name*/));
-            Debug.WriteLine(this.selIngr.Items.IndexOf(selected.Ingredients[0]/*.Name*/));
-            Debug.WriteLine(selected.Replacement);
-            Debug.WriteLine(selected.Ingredients[0]);
+            int index = -1;
+            for(int i=0; i< MedicineList.Count;i++)
+            {
+                if (MedicineList[i].Name == selected.Replacement)
+                {
+                    index = i; break;
+                }
+            }
+            this.repMed.SelectedIndex = index;
             //this.repMed.SelectedIndex = this.repMed.Items.IndexOf(selected.Replacement.Name);\
 
         }
@@ -58,7 +63,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             {
                 replacement = this.MedicineController.GetByName(repMed.SelectedValue.ToString());
             }
-            this.selected.Replacement = replacement;
+            this.selected.Replacement = replacement.Name;
             this.selected.IsVerified = MedicineStatus.unapproved;
             this.selected.ReasonOfRejection = "";
             this.MedicineController.Update(selected);

@@ -52,10 +52,14 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 selected.Add(this.medicineIngredientController.GetByName(ingredientname.ToString()));
             }
 
-            Medicine replacement = new Medicine();
+            string replacement;
             if (ReplacementIsSelected())
             {
-                replacement = this.medicineController.GetByName(repMed.SelectedValue.ToString());
+                replacement = this.medicineController.GetByName(repMed.SelectedValue.ToString()).Name;
+            }
+            else
+            {
+                replacement = null;
             }
             Medicine toCreate = new Medicine(
                 this.medicineController.GetNextId(), 

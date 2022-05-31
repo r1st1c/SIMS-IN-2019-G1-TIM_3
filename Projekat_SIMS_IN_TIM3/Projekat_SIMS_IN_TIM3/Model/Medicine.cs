@@ -30,7 +30,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
             // TODO: implement
         }
 
-        public Medicine(int id, string name, List<MedicineIngredient> ingredients, MedicineStatus isVerified, Medicine replacement, string reasonOfRejection)
+        public Medicine(int id, string name, List<MedicineIngredient> ingredients, MedicineStatus isVerified, string replacement, string reasonOfRejection)
         {
             Id = id;
             Name = name;
@@ -50,7 +50,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
         private List<MedicineIngredient> _ingredients;
         private MedicineStatus _isVerified;
         private string _reasonOfRejection;
-        private Medicine _replacement;
+        private string _replacement;
         public int Id
         {
             get
@@ -116,7 +116,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
-        public Medicine Replacement
+        public string Replacement
         {
             get
             { return _replacement; }
