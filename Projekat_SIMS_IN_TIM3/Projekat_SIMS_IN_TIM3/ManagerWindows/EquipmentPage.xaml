@@ -18,16 +18,17 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.025*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="7" Fill="Black"></Rectangle>
         <TextBox x:Name="Search_Box" FontSize="20" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160" Height="30" TextWrapping="Wrap" Text="" Margin="10,0,0,0" adorners:Watermark.Text="Search here..." adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused"/>
         <Button Grid.Row="0" Grid.Column="1" Content="Search"  VerticalAlignment="Center" Height="30" FontSize="20" Margin="180,0,10,0" Click="Search_Click"/>
 
         <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="80,0,0,2" TextWrapping="Wrap" Text="Filter:" VerticalAlignment="Center" FontSize="22"/>
         <ComboBox x:Name="FilterComboBox" Grid.Row="0" Grid.Column="2" Margin="169,0,80,0" VerticalAlignment="Center" ItemsSource="{Binding Path=FilterTypesList}" FontSize="22" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged"/>
 
-        <DataGrid Grid.ColumnSpan="4" x:Name="dataGridEquipment" Grid.Row="1" ItemsSource="{Binding Equipment_All}" IsReadOnly="True" 
+        <DataGrid Grid.ColumnSpan="4" x:Name="dataGridEquipment" Grid.Row="2" ItemsSource="{Binding Equipment_All}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.2*"/>

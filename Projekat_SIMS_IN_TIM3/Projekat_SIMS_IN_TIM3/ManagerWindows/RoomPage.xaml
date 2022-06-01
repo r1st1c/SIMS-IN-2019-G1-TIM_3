@@ -20,10 +20,11 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.025*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-
-        <DataGrid  Grid.ColumnSpan="7" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding Rooms,Mode=TwoWay}" IsReadOnly="True" 
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="7" Fill="Black"></Rectangle>
+        <DataGrid  Grid.ColumnSpan="7" x:Name="dataRoom" Grid.Row="2" ItemsSource="{Binding Rooms,Mode=TwoWay}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.15*"/>
