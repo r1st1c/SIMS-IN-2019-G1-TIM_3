@@ -24,6 +24,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             this.renovationTermService.DisableRenovatingRooms();
         }
+
         public List<RenovationTerm> GetRenovationSchedules()
         {
             return this.renovationTermService.GetRenovationSchedules();

@@ -30,6 +30,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public SplitTermController SplitTermController { get; set; } = new SplitTermController();
         public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public static ObservableCollection<Room> Rooms { get; set; }
+
         public RoomPage()
         {
             InitializeComponent();
@@ -64,14 +65,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Default storage room cant be deleted!");
                 return;
             }
+
             Rooms.Remove(room);
-            /*if (EquipmentPage.Equipment_All != null)
-            {
-                foreach (var equipment in EquipmentPage.Equipment_All.Where(x => x.RoomId == room.Id))
-                {
-                    equipment.RoomName = this.roomController.GetById(0).Name;
-                }
-            }*/
             this.roomController.DeleteById(room.Id);
         }
 

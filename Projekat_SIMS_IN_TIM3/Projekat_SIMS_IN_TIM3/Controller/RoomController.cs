@@ -19,23 +19,27 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             return this.roomService.GetById(id);
         }
+
         public Room GetByName(string name)
         {
             return this.roomService.GetByName(name);
         }
+
         public List<Room> GetAll()
         {
             return this.roomService.GetAll();
         }
 
-        public (bool,bool) Create(Room room)
+        public (bool, bool) Create(Room room)
         {
             return this.roomService.Create(room);
         }
+
         public bool UpdateUsingNewName(Room room)
         {
             return this.roomService.UpdateUsingNewName(room);
         }
+
         public bool UpdateUsingSameName(Room room)
         {
             return this.roomService.UpdateUsingSameName(room);
@@ -46,7 +50,6 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.DeleteById(id);
         }
 
-        
 
         public RoomService roomService = new RoomService();
     }
