@@ -24,6 +24,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class RoomPage : Page
     {
         public RoomController roomController = new RoomController();
+        public RenovationTermController renovationTermController = new();
 
         public AppointmentController appointmentController = new AppointmentController();
         public SplitTermController SplitTermController { get; set; } = new SplitTermController();
@@ -32,7 +33,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public RoomPage()
         {
             InitializeComponent();
-            this.roomController.UpdateDisabledFields();
+            this.renovationTermController.DisableRenovatingRooms();
             this.MergeTermController.DisableMergingRooms();
             this.MergeTermController.ExecuteMerging();
             this.SplitTermController.DisableSplittingRooms();

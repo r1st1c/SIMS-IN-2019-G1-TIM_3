@@ -25,7 +25,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class BasicRenovationWindow : Window
     {
         public Room Room { get; set; }
-        public RoomController roomController= new RoomController();
+        public RoomController roomController = new RoomController();
+        public RenovationTermController renovationTermController = new();
         public int Duration { set; get; }
 
         public string Description { set; get; }
@@ -53,7 +54,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Description field mustn't be empty!");
                 return;
             }
-            renovationsGrid.ItemsSource = new ObservableCollection<RenovationTerm>(this.roomController.BasicRenovation(Room.Id, DateTime.Parse(StartDate.Text), DateTime.Parse(EndDate.Text), Duration));
+            renovationsGrid.ItemsSource = new ObservableCollection<RenovationTerm>(this.renovationTermController.BasicRenovation(new RenovationTerm(Room.Id, DateTime.Parse(StartDate.Text), DateTime.Parse(EndDate.Text), Duration, Description)));
             
         }
 
@@ -65,15 +66,10 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public void Schedule_Click(object sender, RoutedEventArgs e)
         {
             RenovationTerm rt = (RenovationTerm)((Button)e.Source).DataContext;
-            this.roomController.ScheduleRenovation(Room.Id, rt.StartDate, rt.EndDate, Description);
-            DateTime dateStart = DateTime.ParseExact(rt.StartDate, "dd-MMM-yy", null);
-            DateTime dateEnd = DateTime.ParseExact(rt.EndDate, "dd-MMM-yy", null);
-            dateEnd = dateEnd.AddHours(23);
-            dateEnd = dateEnd.AddMinutes(59);
-            dateEnd = dateEnd.AddSeconds(59);
+            this.renovationTermController.ScheduleRenovation(new RenovationTerm(rt.RoomId, rt.Range.Start, rt.Range.End, Description));
             foreach (var room in RoomPage.Rooms)
             {
-                if (room.Id == Room.Id && DateTime.Now >= dateStart && DateTime.Now <= dateEnd)
+                if (room.Id == Room.Id && DateTime.Now >= rt.Range.Start && DateTime.Now <= DateRange.GetLastMoment(rt.Range.End))
                 {
                     room.DisabledTxt = "Yes";
                 }

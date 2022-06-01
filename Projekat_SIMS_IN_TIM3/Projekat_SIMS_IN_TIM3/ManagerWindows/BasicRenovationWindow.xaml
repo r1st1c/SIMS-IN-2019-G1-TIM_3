@@ -46,8 +46,8 @@
         <DataGrid  x:Name="renovationsGrid" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" Grid.RowSpan="6" Margin="0,0,20,20">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}" Width="*"/>
-                <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}" Width="*"/>
+                <DataGridTextColumn Header="Start Date" Binding="{Binding Range.Start, StringFormat=d}" Width="*"/>
+                <DataGridTextColumn Header="End Date" Binding="{Binding Range.End, StringFormat=d}" Width="*"/>
                 <DataGridTemplateColumn Header="Schedule" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

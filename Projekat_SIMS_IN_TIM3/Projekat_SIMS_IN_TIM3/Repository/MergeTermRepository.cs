@@ -26,7 +26,7 @@ public class MergeTermRepository
             return true;
         }
 
-        Debug.Write("Csv file doesnt exist");
+        Debug.Write("Csv file doesn't exist");
         return false;
     }
 

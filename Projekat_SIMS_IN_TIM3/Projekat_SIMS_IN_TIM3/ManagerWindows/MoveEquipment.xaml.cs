@@ -25,7 +25,9 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         public EquipmentController equipmentController = new EquipmentController();
         public RoomController roomController = new RoomController();
+        public RenovationTermController renovationTermController = new RenovationTermController();
         ObservableCollection<Equipment> Equipment_All { get; set; }
+
         public int equipmentId { get; set; }
         public string RoomNameSelected { get; set; }
         public string SelectedEquipment { get; set; }
@@ -59,17 +61,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
             Room targetRoom = this.roomController.GetByName(RoomNameSelected);
             int targetRoomId = targetRoom.Id;
-            List<RenovationTerm> renovationTerms = this.roomController.GetRenovationSchedules();
+            List<RenovationTerm> renovationTerms = this.renovationTermController.GetRenovationSchedules();
             foreach(RenovationTerm renovationTerm in renovationTerms)
             {
-                if(renovationTerm.Id == targetRoomId)
+                if(renovationTerm.RoomId == targetRoomId)
                 {
-                    DateTime dateStart = DateTime.ParseExact(renovationTerm.startDate, "dd-MMM-yy", null);
-                    DateTime dateEnd = DateTime.ParseExact(renovationTerm.endDate, "dd-MMM-yy", null);
-                    dateEnd = dateEnd.AddHours(23);
-                    dateEnd = dateEnd.AddMinutes(59);
-                    dateEnd = dateEnd.AddSeconds(59);
-                    if (DateTime.Parse(PickedDate.Text)>= dateStart && DateTime.Parse(PickedDate.Text) <= dateEnd)
+                    if (DateTime.Parse(PickedDate.Text)>= renovationTerm.Range.Start && DateTime.Parse(PickedDate.Text) <= renovationTerm.Range.End)
                     {
                         MessageBox.Show("Cannot move to target room because it is under renovation at selected time");
                         return;
