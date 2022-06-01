@@ -34,7 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Edit_Medicine_Click(object sender, RoutedEventArgs e)
         {
             Medicine selected = (Medicine)((Button)e.Source).DataContext;
-            var change = new EditMedicineWindow(selected);
+            var change = new EditMedicineWindow(selected,this.RejectedMedicines);
             change.ShowDialog();
         }
     }
