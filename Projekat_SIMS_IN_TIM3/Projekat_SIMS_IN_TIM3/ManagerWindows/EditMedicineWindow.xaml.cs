@@ -28,16 +28,18 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public ObservableCollection<MedicineIngredient> Ingredients { get; set; } =
             new ObservableCollection<MedicineIngredient>();
 
+        public ObservableCollection<Medicine> RejectedMedicineList { get; set; } = new ObservableCollection<Medicine>();
         public ObservableCollection<Medicine> MedicineList { get; set; } = new ObservableCollection<Medicine>();
         public MedicineController MedicineController { get; set; } = new MedicineController();
 
         public MedicineIngredientController MedicineIngredientController { get; set; } =
             new MedicineIngredientController();
 
-        public EditMedicineWindow(Medicine selected)
+        public EditMedicineWindow(Medicine selected,ObservableCollection<Medicine> rejected)
         {
             InitializeComponent();
             this.DataContext = this;
+            this.RejectedMedicineList = rejected;
             this.selected = selected;
             this.MedicineList = new ObservableCollection<Medicine>(this.MedicineController.GetAll());
             this.Ingredients = new ObservableCollection<MedicineIngredient>(this.MedicineIngredientController.GetAll());
@@ -70,6 +72,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
+            this.RejectedMedicineList.Remove(selected);
             this.selected.Name = this.medName.Text;
             List<MedicineIngredient> selectedIngredients = new List<MedicineIngredient>();
             foreach (var ingredientname in this.selIngr.SelectedItems)
