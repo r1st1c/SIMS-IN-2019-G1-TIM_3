@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock TextWrapping="Wrap" Text="Basic Renovation" FontSize="30" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
-        <TextBlock FontWeight="Bold" Text="*Note ALL fields are necessary" Foreground="Red" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock FontWeight="Bold" Text="!!!Note ALL fields are necessary!!!" Foreground="Red" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
 
         <TextBlock TextWrapping="Wrap" Text="Available Terms:" FontSize="30" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
 

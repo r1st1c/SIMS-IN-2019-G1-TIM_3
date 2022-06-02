@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Move Equipment" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="24" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
-        <TextBlock FontWeight="Bold" Text="*Note ALL fields are necessary" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Foreground="Red" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock FontWeight="Bold" Text="!!!Note ALL fields are necessary!!!" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Foreground="Red" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
 
         <TextBlock FontSize="16" TextWrapping="Wrap" Text="Equipment:"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="35,0,7,0"/>
         <Label FontWeight="Bold" Content="{Binding Path=SelectedEquipment }" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" Height="33" Width="144"  FontSize="16" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
