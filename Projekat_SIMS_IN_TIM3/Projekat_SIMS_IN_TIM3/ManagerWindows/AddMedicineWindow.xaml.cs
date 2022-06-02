@@ -40,6 +40,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
+            if (String.IsNullOrWhiteSpace(this.medName.Text))
+            {
+                MessageBox.Show("You must enter name!");
+                return;
+            }
             if (NoIngredientsAreSelected())
             {
                 MessageBox.Show("You must chose at least one ingredient");
