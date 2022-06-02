@@ -17,6 +17,16 @@ namespace Projekat_SIMS_IN_TIM3.Model
 
         public int punctualityGrade { get; set; }
 
-        public int pleasantnessGrade { get ; set; } 
+        public int pleasantnessGrade { get ; set; }
+
+        public DoctorGrade( int doctorId, int knowledgeGrade, int helpfulnessGrade, int punctualityGrade,
+            int pleasantnessGrade)
+        {
+            this.doctorId= doctorId;
+            this.knowledgeGrade= knowledgeGrade;
+            this.helpfulnessGrade= helpfulnessGrade;
+            this.punctualityGrade= punctualityGrade;
+            this.pleasantnessGrade = pleasantnessGrade;
+        }
     }
 }
