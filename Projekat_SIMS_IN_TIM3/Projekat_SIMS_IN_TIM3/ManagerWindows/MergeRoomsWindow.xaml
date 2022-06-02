@@ -30,28 +30,28 @@
         <TextBlock TextWrapping="Wrap" Text="Available Terms:" FontSize="30" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
 
         <TextBlock TextWrapping="Wrap" Text="Select Rooms:"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="18" Margin="7,0,7,0"/>
-        <ComboBox x:Name="firstRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Top" Margin="134,12,7,0" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="secondRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Bottom" Margin="134,0,7,12" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="firstRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Top" Margin="10,12,7,0" Grid.Column="1"/>
+        <ComboBox x:Name="secondRoom" ItemsSource="{Binding Path=RoomNames}"  FontSize="16" RenderTransformOrigin="0.5,0.5" Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,7,12" Grid.Column="1"/>
 
 
         <TextBlock FontSize="16" Text="Starting date:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="7,0,7,0"/>
-        <DatePicker FontSize="16" x:Name="StartDate"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
+        <DatePicker FontSize="16" x:Name="StartDate"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="10,0,7,0"/>
 
         <TextBlock FontSize="16" Text="End date:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="7,0,7,0"/>
-        <DatePicker FontSize="16" x:Name="EndDate" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,7,0"/>
+        <DatePicker FontSize="16" x:Name="EndDate" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="10,0,7,0"/>
 
         <TextBlock FontSize="16" Text="Duration(Days):" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="7,0,7,0"/>
-        <TextBox x:Name="duration"  FontSize="16" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
+        <TextBox x:Name="duration"  FontSize="16" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="10,0,7,0"/>
 
         <TextBlock FontSize="16" Text="New Name:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="7,0,7,0"/>
-        <TextBox x:Name="newName"  FontSize="16" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" Margin="0,0,7,0"/>
+        <TextBox x:Name="newName"  FontSize="16" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="10,0,7,0"/>
 
         <TextBlock FontSize="16" Text="New Type:" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="7,0,7,0"/>
-        <ComboBox Name="newType" FontSize="16"  ItemsSource="{Binding Path=RoomTypes}" Grid.Row="6" VerticalAlignment="Center"  HorizontalAlignment="Left" Width="170" Grid.ColumnSpan="2" Margin="141,0,0,0"/>
+        <ComboBox Name="newType" FontSize="16"  ItemsSource="{Binding Path=RoomTypes}" Grid.Row="6" VerticalAlignment="Center" Margin="10,0,7,0" Grid.Column="1"/>
 
 
         <TextBlock FontSize="16" Text="Description:" Grid.Row="7" Grid.Column="0" VerticalAlignment="Top" Margin="7,25,7,0"/>
-        <TextBox x:Name="description" FontSize="16"  TextWrapping="Wrap"  Grid.Row="7" Grid.Column="1" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Margin="0,13,7,0"/>
+        <TextBox x:Name="description" FontSize="16"  TextWrapping="Wrap"  Grid.Row="7" Grid.Column="1" Margin="10,13,7,67" Grid.RowSpan="2"/>
 
         <DataGrid  x:Name="renovationsGrid" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" Grid.RowSpan="8" Margin="0,0,20,20">

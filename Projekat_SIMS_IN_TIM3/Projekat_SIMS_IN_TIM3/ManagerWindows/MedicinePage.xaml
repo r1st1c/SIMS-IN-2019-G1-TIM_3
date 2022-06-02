@@ -27,7 +27,7 @@
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
-                        <TextBlock>Unapproved Medicine</TextBlock>
+                        <TextBlock>Unapproved</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
@@ -36,7 +36,7 @@
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
-                        <TextBlock>Rejected Medicine</TextBlock>
+                        <TextBlock>Rejected</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
@@ -46,7 +46,7 @@
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
-                        <TextBlock>Add Medicine</TextBlock>
+                        <TextBlock>Add New</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
