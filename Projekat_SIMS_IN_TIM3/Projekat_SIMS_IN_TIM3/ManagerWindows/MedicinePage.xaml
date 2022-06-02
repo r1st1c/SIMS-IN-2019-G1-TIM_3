@@ -23,7 +23,7 @@
             <RowDefinition Height="0.025*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Button Name="UnapprovedButton" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Unapproved_Click">
+        <Button Name="UnapprovedButton" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Unapproved_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
@@ -32,11 +32,21 @@
                 </DataTemplate>
             </Button.ContentTemplate>
         </Button>
-        <Button Name="RejectedButton" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Rejected_Click">
+        <Button Name="RejectedButton" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Rejected_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
                         <TextBlock>Rejected Medicine</TextBlock>
+                    </Viewbox>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+
+        <Button Name="AddMedicine" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Add_Med_Click">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Viewbox MaxHeight="55">
+                        <TextBlock>Add Medicine</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
