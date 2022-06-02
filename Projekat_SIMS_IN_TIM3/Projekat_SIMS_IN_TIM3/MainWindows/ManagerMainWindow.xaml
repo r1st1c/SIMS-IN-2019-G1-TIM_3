@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3"
         mc:Ignorable="d"
-        Title="Manager Main Window" Height="900" Width="1600" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="WhiteSmoke">
+        Title="Manager Main Window" Height="900" Width="1600" WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="WhiteSmoke">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -23,7 +23,7 @@
         <Button x:Name="medicineBtn" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Medicine_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
-                    <Viewbox MaxHeight="75">
+                    <Viewbox MaxHeight="64">
                         <TextBlock>Medicine</TextBlock>
                     </Viewbox>
                 </DataTemplate>
@@ -32,7 +32,7 @@
         <Button x:Name="ingredientsBtn" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Ingredients_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
-                    <Viewbox MaxHeight="75">
+                    <Viewbox MaxHeight="64">
                         <TextBlock>Ingredients</TextBlock>
                     </Viewbox>
                 </DataTemplate>
@@ -41,7 +41,7 @@
         <Button x:Name="roomsBtn" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Room_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
-                    <Viewbox MaxHeight="75">
+                    <Viewbox MaxHeight="64">
                         <TextBlock>Rooms</TextBlock>
                     </Viewbox>
                 </DataTemplate>
@@ -50,7 +50,7 @@
         <Button x:Name="equipmentBtn" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Equipment_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
-                    <Viewbox MaxHeight="75">
+                    <Viewbox MaxHeight="64">
                         <TextBlock>Equipment</TextBlock>
                     </Viewbox>
                 </DataTemplate>
@@ -59,7 +59,7 @@
         <Button x:Name="pollsBtn" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="pollsBtn_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
-                    <Viewbox MaxHeight="75">
+                    <Viewbox MaxHeight="64">
                         <TextBlock>Polls</TextBlock>
                     </Viewbox>
                 </DataTemplate>
@@ -68,7 +68,7 @@
         <Button Background="Red" x:Name="logoutBtn" Grid.Row="0" Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Logout_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
-                    <Viewbox MaxHeight="75">
+                    <Viewbox MaxHeight="64">
                         <TextBlock>Log Out</TextBlock>
                     </Viewbox>
                 </DataTemplate>
