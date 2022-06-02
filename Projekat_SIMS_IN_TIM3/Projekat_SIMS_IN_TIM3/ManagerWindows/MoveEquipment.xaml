@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="Move Equipment" Height="350" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Move Equipment" Height="375" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -23,16 +23,16 @@
         <TextBlock Text="Move Equipment" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="24" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
         <TextBlock FontWeight="Bold" Text="*Note ALL fields are necessary" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Foreground="Red" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
 
-        <TextBlock FontSize="16" TextWrapping="Wrap" Text="Equipment:"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <TextBlock FontSize="16" TextWrapping="Wrap" Text="Equipment:"  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="35,0,7,0"/>
         <Label FontWeight="Bold" Content="{Binding Path=SelectedEquipment }" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" Height="33" Width="144"  FontSize="16" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 
-        <TextBlock FontSize="16"  TextWrapping="Wrap" Text="Current Room:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <TextBlock FontSize="16"  TextWrapping="Wrap" Text="Current Room:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="35,0,7,0"/>
         <Label FontWeight="Bold" Content="{Binding Path=CurrentRoom }" Height="35" Width="144" FontSize="16" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 
-        <TextBlock FontSize="16" TextWrapping="Wrap" Text="Target Room:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <TextBlock FontSize="16" TextWrapping="Wrap" Text="Target Room:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="35,0,7,0"/>
         <ComboBox ItemsSource="{Binding Path=RoomNames}"  FontSize="16" SelectedValue="{Binding Path=RoomNameSelected}" Width="128" RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left"/>
 
-        <TextBlock FontSize="16" TextWrapping="Wrap" Text="Date of moving:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,7,0"/>
+        <TextBlock FontSize="16" TextWrapping="Wrap" Text="Date of moving:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="35,0,0,0"/>
         <DatePicker Name="PickedDate"  Height="30" FontSize="16" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,67,0"/>
         <Button Content="Today" Height="30" Click="Today_Click" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Right" Width="50" Margin="0,0,10,0"/>
 
