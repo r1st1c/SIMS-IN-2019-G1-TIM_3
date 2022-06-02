@@ -22,6 +22,7 @@ namespace Projekat_SIMS_IN_TIM3
     public partial class ManagerMainWindow : Window
     {
         public static BrushConverter brushConverter { get; set; }
+
         public ManagerMainWindow()
         {
             brushConverter = new BrushConverter();
@@ -62,6 +63,7 @@ namespace Projekat_SIMS_IN_TIM3
             medicineBtn.Background = Brushes.Aqua;
             MainFrame.Content = new MedicinePage();
         }
+
         private void Ingredients_Click(object sender, RoutedEventArgs e)
         {
             roomsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
@@ -76,10 +78,17 @@ namespace Projekat_SIMS_IN_TIM3
         {
             roomsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
             equipmentBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
-            pollsBtn.Background =  Brushes.Aqua;
+            pollsBtn.Background = Brushes.Aqua;
             ingredientsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
             medicineBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
             MainFrame.Content = new PollPage();
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
     }
 }

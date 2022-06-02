@@ -1,5 +1,4 @@
-
-﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.DoctorWindows;
 using Projekat_SIMS_IN_TIM3.MainWindows;
 using Projekat_SIMS_IN_TIM3.Model;
@@ -25,10 +24,8 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public static string initUsname = "";
         UserLoginController controller = new UserLoginController();
-        DoctorController doctorController = new DoctorController();
 
         public MainWindow()
         {
@@ -39,13 +36,12 @@ namespace Projekat_SIMS_IN_TIM3
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-
             string Username = username.Text.ToString();
             initUsname = Username;
             string Password = password.Password.ToString();
 
             UserLogin userLogin = new UserLogin(Username, Password);
-            var (isValid,type) = controller.ValidLogin(userLogin);
+            var (isValid, type) = controller.ValidLogin(userLogin);
 
 
             if (!isValid)
@@ -61,30 +57,27 @@ namespace Projekat_SIMS_IN_TIM3
                     ManagerMainWindow managerMainWindow = new ManagerMainWindow();
                     managerMainWindow.Show();
                 }
+
                 if (type == 1)
                 {
-
                     DoctorSignIn doctorSignIn = new DoctorSignIn();
                     doctorSignIn.Show();
                 }
+
                 if (type == 2)
                 {
                     SecretaryMainWindow secretaryMainWindow = new SecretaryMainWindow();
                     secretaryMainWindow.Show();
                 }
+
                 if (type == 3)
                 {
                     PatientMainWindow patientMainWindow = new PatientMainWindow(Username);
                     patientMainWindow.Show();
                 }
+
                 this.Close();
             }
-
-
-        }
-        private void HelloWorld_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
         }
     }
 }
