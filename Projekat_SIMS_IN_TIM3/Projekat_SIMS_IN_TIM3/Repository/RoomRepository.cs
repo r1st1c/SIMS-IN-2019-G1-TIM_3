@@ -123,9 +123,5 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllLines(roomspath, csvLines);
             return true;
         }
-
-        /// CRUD
-        /// 
-        ///////////////////////////////////////////////////////////////////////////////// 
     }
 }

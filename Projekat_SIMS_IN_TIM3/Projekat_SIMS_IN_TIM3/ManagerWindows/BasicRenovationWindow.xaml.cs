@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Projekat_SIMS_IN_TIM3.View.ManagerView;
+using Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
@@ -74,7 +75,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             RenovationTerm selected = (RenovationTerm)((Button)e.Source).DataContext;
             this.renovationTermController.ScheduleRenovation(new RenovationTerm(selected.RoomId, selected.Range.Start,
  selected.Range.End, Description));
-            foreach (var room in RoomPage.Rooms)
+            foreach (var room in RoomPageViewModel.Rooms)
             {
                 if (room.Id == Room.Id && DateTime.Now >= selected.Range.Start &&
                     DateTime.Now <= DateRange.GetLastMoment(selected.Range.End))
