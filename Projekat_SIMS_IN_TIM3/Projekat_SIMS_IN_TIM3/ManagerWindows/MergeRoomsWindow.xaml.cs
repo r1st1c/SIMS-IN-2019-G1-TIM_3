@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.View.ManagerView;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
