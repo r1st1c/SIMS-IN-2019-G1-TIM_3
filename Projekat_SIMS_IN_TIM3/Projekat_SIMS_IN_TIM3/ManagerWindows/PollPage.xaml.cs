@@ -30,19 +30,31 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public DoctorController doctorController = new DoctorController();
         public ObservableCollection<Doctor> Doctors { get; set; } = new ObservableCollection<Doctor>();
         public List<DoctorGrade> DoctorGrades { get; set; } = new List<DoctorGrade>();
-        public SeriesCollection DoctorAverageGrades { get; set; } 
+
+        public SeriesCollection DoctorAverageGrades { get; set; }
+
+        /*public ObservableValue DoctorKnowledge { get; set; }
+        public ObservableValue DoctorHelpfulness { get; set; }
+        public ObservableValue DoctorPunctuality { get; set; }
+        public ObservableValue DoctorPleasantness { get; set; }*/
+        public string[] Labels { get; set; } = new[] { "Knowledge", "Helpfulness", "Punctuality", "Pleasantness" };
+
 
         public PollPage()
         {
             InitializeComponent();
-            //this.DoctorGrades = this.DoctorGradeController.GetAll();
-            DoctorGrades.Add(new DoctorGrade(0,5, 1, 5, 5));
-            DoctorGrades.Add(new DoctorGrade(0,4, 2, 3, 5));
-            DoctorGrades.Add(new DoctorGrade(0,2, 3, 1, 5));
-            DoctorGrades.Add(new DoctorGrade(0,5, 4, 3, 5));
-            DoctorGrades.Add(new DoctorGrade(0,1, 5, 5, 5));
+            //this.DoctorGrades = this.DoctorGradeController.GetAllByDoctorId();
+            DoctorGrades.Add(new DoctorGrade(0, 5, 1, 5, 5));
+            DoctorGrades.Add(new DoctorGrade(0, 4, 2, 3, 5));
+            DoctorGrades.Add(new DoctorGrade(0, 2, 3, 1, 5));
+            DoctorGrades.Add(new DoctorGrade(0, 5, 4, 3, 5));
+            DoctorGrades.Add(new DoctorGrade(0, 1, 5, 5, 5));
+            /*this.DoctorKnowledge = new ObservableValue(0);
+            this.DoctorHelpfulness = new ObservableValue(0);
+            this.DoctorPunctuality = new ObservableValue(0);
+            this.DoctorPleasantness = new ObservableValue(0);*/
 
-            DoctorGrade averageDoctorGrade = new DoctorGrade(0, 0, 0, 0, 0);
+            /*DoctorGrade averageDoctorGrade = new DoctorGrade(0, 0, 0, 0, 0);
             int i;
             for (i = 0; i < DoctorGrades.Count; i++)
             {
@@ -60,27 +72,18 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             averageDoctorGrade.pleasantnessGrade /= i;
 
             Debug.WriteLine(averageDoctorGrade.knowledgeGrade + " " + averageDoctorGrade.helpfulnessGrade);
-
+            */
             DoctorAverageGrades = new SeriesCollection
             {
-                new ColumnSeries
-                {
-                    Title = "Elena",
-                    Values = new ChartValues<double>
-                    {
-                        averageDoctorGrade.knowledgeGrade, averageDoctorGrade.helpfulnessGrade,
-                        averageDoctorGrade.punctualityGrade, averageDoctorGrade.pleasantnessGrade
-                    }
-                }
             };
 
             this.DataContext = this;
             this.Doctors = new ObservableCollection<Doctor>(this.doctorController.GetAll());
         }
+
         private void Show_Stats_Click(object sender, RoutedEventArgs e)
         {
-            /*Doctor doctor = (Doctor)((Button)e.Source).DataContext;
-            Debug.WriteLine(doctor.User.Id + " " + doctor.User.Name + " " + doctor.User.Surname);
+            Doctor doctor = (Doctor)((Button)e.Source).DataContext;
             DoctorGrade averageDoctorGrade = new DoctorGrade(doctor.User.Id, 0, 0, 0, 0);
             int i;
             for (i = 0; i < DoctorGrades.Count; i++)
@@ -93,25 +96,28 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                     averageDoctorGrade.pleasantnessGrade += DoctorGrades[i].pleasantnessGrade;
                 }
             }
-            averageDoctorGrade.knowledgeGrade /= i;
-            averageDoctorGrade.helpfulnessGrade /= i;
-            averageDoctorGrade.punctualityGrade /= i;
-            averageDoctorGrade.pleasantnessGrade /= i;
 
-            Debug.WriteLine(averageDoctorGrade.knowledgeGrade + " " + averageDoctorGrade.helpfulnessGrade);
-
-            DoctorAverageGrades = new SeriesCollection
+            averageDoctorGrade.knowledgeGrade = averageDoctorGrade.knowledgeGrade /= i;
+            averageDoctorGrade.helpfulnessGrade = averageDoctorGrade.helpfulnessGrade /= i;
+            averageDoctorGrade.punctualityGrade = averageDoctorGrade.punctualityGrade /= i;
+            averageDoctorGrade.pleasantnessGrade = averageDoctorGrade.pleasantnessGrade /= i;
+            var add = new ColumnSeries
             {
-                new ColumnSeries
+                Title = doctor.User.Name,
+                Values = new ChartValues<ObservableValue>
                 {
-                    Title = doctor.User.Name,
-                    Values = new ChartValues<double>
-                    {
-                        averageDoctorGrade.knowledgeGrade, averageDoctorGrade.helpfulnessGrade,
-                        averageDoctorGrade.punctualityGrade, averageDoctorGrade.pleasantnessGrade
-                    }
+                    new ObservableValue(averageDoctorGrade.knowledgeGrade),
+                    new ObservableValue(averageDoctorGrade.helpfulnessGrade),
+                    new ObservableValue(averageDoctorGrade.punctualityGrade),
+                    new ObservableValue(averageDoctorGrade.pleasantnessGrade)
                 }
-            };*/
+            };
+            this.DoctorGradeChart.Series.Add(add);
+        }
+
+        private void Clear_Doctor_Chart_Click(object sender, RoutedEventArgs e)
+        {
+            this.DoctorGradeChart.Series.Clear();
         }
     }
 }
