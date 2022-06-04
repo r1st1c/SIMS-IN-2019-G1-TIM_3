@@ -1,4 +1,4 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
@@ -46,6 +46,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return doctorRepository.nameSurnameSpec();
         }
 
+
         public void addGrade(DoctorGradeDTO gradeDTO, int doctorId)
         {
             Doctor doctor = doctorRepository.getById(doctorId);
@@ -68,6 +69,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         }
 
        
+
 
 
     }

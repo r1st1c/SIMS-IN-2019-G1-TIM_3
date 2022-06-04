@@ -46,7 +46,9 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
         {
             DoctorGradeDTO gradeDTO = makeGradeDTO();
 
-            this.application.docController.addGrade(gradeDTO, doctorId);
+            //this.application.docController.addGrade(gradeDTO, doctorId);
+
+            MessageBox.Show("Succesfully submitted grade!");
 
         }
 

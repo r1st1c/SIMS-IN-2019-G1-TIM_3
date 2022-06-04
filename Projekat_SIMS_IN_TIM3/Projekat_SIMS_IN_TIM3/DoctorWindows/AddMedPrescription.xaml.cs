@@ -52,9 +52,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             DoctorId = doctorsId;
             PatientsId = PatientId;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
+
             Medicines = new ObservableCollection<string>(medicineController.getAllVerified());
             PatientNameAndSurname = patientController.GetById(PatientId).User.Name.ToString() + " " + patientController.GetById(PatientId).User.Surname.ToString();
             DoctorNameAndSurname = doctorController.GetById(doctorsId).User.Name.ToString() + " " + doctorController.GetById(doctorsId).User.Surname.ToString();    
+
         }
 
         public void Create(object sender, RoutedEventArgs e)

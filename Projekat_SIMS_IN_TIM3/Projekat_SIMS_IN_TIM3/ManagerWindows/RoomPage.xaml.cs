@@ -23,18 +23,22 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class RoomPage : Page
     {
-        RoomController roomController = new RoomController();
+        public RoomController roomController = new RoomController();
+        public RenovationTermController renovationTermController = new();
 
-        AppointmentController appointmentController = new AppointmentController();
+        public AppointmentController appointmentController = new AppointmentController();
+        public SplitTermController SplitTermController { get; set; } = new SplitTermController();
+        public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public static ObservableCollection<Room> Rooms { get; set; }
+
         public RoomPage()
         {
             InitializeComponent();
-            this.roomController.UpdateDisabledFields();
-            this.roomController.DisableMergingRooms();
-            this.roomController.ExecuteMerging();
-            this.roomController.DisableSplittingRooms();
-            this.roomController.ExecuteSplitting();
+            this.renovationTermController.DisableRenovatingRooms();
+            this.MergeTermController.DisableMergingRooms();
+            this.MergeTermController.ExecuteMerging();
+            this.SplitTermController.DisableSplittingRooms();
+            this.SplitTermController.ExecuteSplitting();
             this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
         }
@@ -61,14 +65,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Default storage room cant be deleted!");
                 return;
             }
+
             Rooms.Remove(room);
-            /*if (EquipmentPage.Equipment_All != null)
-            {
-                foreach (var equipment in EquipmentPage.Equipment_All.Where(x => x.RoomId == room.Id))
-                {
-                    equipment.RoomName = this.roomController.GetById(0).Name;
-                }
-            }*/
             this.roomController.DeleteById(room.Id);
         }
 

@@ -43,10 +43,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return patientService.getIdByNameAndSurname(name, surname);
         }
 
-        public Boolean cancelAppointment(int patientId, int appointmentId)
-        {
-           return patientService.cancelAppointment(patientId, appointmentId);
-        }
+        
 
         
 

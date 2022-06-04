@@ -1,17 +1,1 @@
-﻿[
-  {
-    "Username": "akikelena1",
-    "Password": "elena123",
-    "Role": 1
-  },
-  {
-    "Username": "",
-    "Password": "",
-    "Role": 0
-  },
-  {
-    "Username": "pacijent",
-    "Password": "123",
-    "Role": 3
-  }
-]
+[{"Username":"akikelena1","Password":"elena123","Role":1},{"Username":"","Password":"","Role":0}]

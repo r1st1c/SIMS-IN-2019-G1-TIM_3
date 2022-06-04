@@ -24,6 +24,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         public List<string> RoomNames { get; set; }
         public RoomController roomController { get; set; } = new RoomController();
+        public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public List<RoomType> RoomTypes { get; set; }
         public MergeRoomsWindow()
         {
@@ -54,7 +55,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 this.newName.Text,
                 (RoomType)Enum.Parse(typeof(RoomType),this.newType.Text)
                 );
-            renovationsGrid.ItemsSource = this.roomController.GetMergeRenovationAvailableTerms(query);
+            renovationsGrid.ItemsSource = this.MergeTermController.GetMergeRenovationAvailableTerms(query);
         }
 
         private bool AnyFieldIsEmpty()
@@ -76,7 +77,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Schedule_Click(object sender, RoutedEventArgs e)
         {
             MergeRenovationTerm rt = (MergeRenovationTerm)((Button)e.Source).DataContext;
-            this.roomController.ScheduleMerge(rt);
+            this.MergeTermController.ScheduleMerge(rt);
             foreach (var room in RoomPage.Rooms)
             {
                 if (RoomWasFound(room, rt) && StartDatePassed(rt) && EndDayHasntPassed(rt))

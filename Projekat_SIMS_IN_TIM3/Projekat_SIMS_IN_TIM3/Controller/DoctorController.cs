@@ -47,9 +47,6 @@ namespace Projekat_SIMS_IN_TIM3.Controller
            return doctorService.nameSurnameSpec();
         }
 
-        public void addGrade(DoctorGradeDTO gradeDTO, int doctorId)
-        {
-            doctorService.addGrade(gradeDTO, doctorId);
-        }
+       
     }
 }
