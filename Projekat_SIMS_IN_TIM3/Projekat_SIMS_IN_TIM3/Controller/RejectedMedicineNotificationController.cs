@@ -13,19 +13,19 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         private RejectedMedicineNotificationService service = new RejectedMedicineNotificationService();
 
 
-        public List<RejectedMedicineNotification> getAll()
+        public List<RejectedMedicineNotification> GetAll()
         {
-            return service.getAll();
+            return service.GetAll();
         }
 
-        public void createNotification(RejectedMedicineNotification notification)
+        public void Create(RejectedMedicineNotification notification)
         {
-            service.createNotification(notification);
+            service.Create(notification);
         }
 
-        public void deleteNotification(int notificationId)
+        public void Delete(int notificationId)
         {
-            service.deleteNotification(notificationId);
+            service.Delete(notificationId);
         }
     }
 }

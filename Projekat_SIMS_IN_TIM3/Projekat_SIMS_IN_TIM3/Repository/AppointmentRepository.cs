@@ -19,18 +19,9 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             ReadJson();
         }
 
-        public int getNextId()
+        public int GetNextId()
         {
-            int lastId = 0;
-            ReadJson();
-            foreach(Appointment appointment in appointments)
-            {
-                lastId = appointments.Last().Id;
-            }
-            
-            
-
-            return lastId;
+            return appointments.Count != 0 ? appointments.Max(x => x.Id) + 1 : 0;
         }
 
         public void ReadJson()
@@ -56,19 +47,19 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public void CreateAppointment(Model.Appointment appointment)
+        public void Create(Appointment appointment)
         {
             appointments.Add(appointment);
             WriteToJson();
         }
 
-        public void UpdateAppointment(int id, DateTime newStartTime, DateTime newFinishTime, DateTime newDuration)
+        public void Update(Appointment appointment)
         {
             // TODO: implement
             return;
         }
 
-        public void DeleteAppointment(int appointmentId)
+        public void Delete(int appointmentId)
         {
             ReadJson();
             int index = appointments.FindIndex(obj => obj.Id == appointmentId);
@@ -102,7 +93,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return appointments.Find(obj => obj.Id == appointmentId);
         }
 
-        public int numOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
+        public int NumOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
         {
             ReadJson();
             List<Appointment> appointments1 = GetByDoctorsId(doctorId);
@@ -118,9 +109,9 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return scheduledAppointments;
         }
 
-        public bool isDoctorFree(int doctorId, DateTime start, DateTime end)
+        public bool IsDoctorFree(int doctorId, DateTime start, DateTime end)
         {
-            int numOfScheduledAppointments = numOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
+            int numOfScheduledAppointments = NumOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
             if (numOfScheduledAppointments > 0)
             {
                 return false;

@@ -12,33 +12,33 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         private AbsenceRequestService service = new AbsenceRequestService();
 
-        public int getNextId()
+        public int GetNextId()
         {
-            return service.getNextId();
+            return service.GetNextId();
         }
-        public void createAbsenceRequest(AbsenceRequest request)
+        public void Create(AbsenceRequest request)
         {
-            service.createAbsenceRequest(request);
-        }
-
-        public List<AbsenceRequest> getAll()
-        {
-            return service.getAll();
+            service.Create(request);
         }
 
-        public List<AbsenceRequest> getAllByDoctorsId(int doctorsId)
+        public List<AbsenceRequest> GetAll()
         {
-            return service.getAllByDoctorsId(doctorsId);
+            return service.GetAll();
         }
 
-        public bool checkTimeOfSendingRequest(DateTime startDate)
+        public List<AbsenceRequest> GetAllByDoctorsId(int doctorsId)
         {
-            return service.checkTimeOfSendingRequest(startDate);
+            return service.GetAllByDoctorsId(doctorsId);
         }
 
-        public bool isThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
+        public bool CheckTimeOfSendingRequest(DateTime startDate)
         {
-            return service.isThereDoctorWithSameSpecialization(specialization, start, end); 
+            return service.CheckTimeOfSendingRequest(startDate);
+        }
+
+        public bool IsThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
+        {
+            return service.IsThereDoctorWithSameSpecialization(specialization, start, end); 
         }
 
         public int CheckDoctorSpecialization(String specialization, DateTime start, DateTime end)

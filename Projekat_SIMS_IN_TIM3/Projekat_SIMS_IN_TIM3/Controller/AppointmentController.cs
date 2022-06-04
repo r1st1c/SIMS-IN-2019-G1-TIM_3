@@ -10,24 +10,24 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class AppointmentController
     {
-        public int getNextId()
+        public int GetNextId()
         {
-            return appointmentService.getNextId();
+            return appointmentService.GetNextId();
         }
 
-        public void CreateAppointment(Model.Appointment appointment)
+        public void Create(Appointment appointment)
         {
-            this.appointmentService.CreateAppointment(appointment);
+            this.appointmentService.Create(appointment);
         }
 
-        public void UpdateAppointment(int id, DateTime newStartTime, DateTime newFinishTime, DateTime newDuration)
+        public void Update(Appointment appointment)
         {
-            this.appointmentService.UpdateAppointment(id, newStartTime, newFinishTime, newDuration);
+            this.appointmentService.Update(appointment);
         }
 
-        public void DeleteAppointment(int appointmentId)
+        public void Delete(int appointmentId)
         {
-            this.appointmentService.DeleteAppointment(appointmentId);
+            this.appointmentService.Delete(appointmentId);
         }
 
         public List<Appointment> GetAll()
@@ -50,19 +50,19 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.appointmentService.GetById((int)appointmentId);
         }
 
-        public int numOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
+        public int NumOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
         {
-            return appointmentService.numOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
+            return appointmentService.NumOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
         }
 
-        public bool isDoctorFree(int doctorId, DateTime start, DateTime end)
+        public bool IsDoctorFree(int doctorId, DateTime start, DateTime end)
         {
-            return appointmentService.isDoctorFree(doctorId, start, end);
+            return appointmentService.IsDoctorFree(doctorId, start, end);
         }
 
-        public Boolean cancelAppointment(int patientId, int appointmentId)
+        public Boolean Cancel(int patientId, int appointmentId)
         {
-            return appointmentService.cancelAppointment(patientId, appointmentId);
+            return appointmentService.Cancel(patientId, appointmentId);
         }
         public AppointmentService appointmentService = new AppointmentService();
     }

@@ -34,7 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.DataContext = this;
             PatientId = id;
             DoctorId = doctorId;
-            Reports = new ObservableCollection<Report>(reportController.getAllById(PatientId));
+            Reports = new ObservableCollection<Report>(reportController.GetAllById(PatientId));
            
         }
 
@@ -51,7 +51,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             Report report = (Report)((Button)e.Source).DataContext;
             Reports.Remove(report);
-            this.reportController.delete(report.Id);
+            this.reportController.Delete(report.Id);
             
         }
 

@@ -41,7 +41,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public void create(OperationNotification notification)
+        public void Create(OperationNotification notification)
         {
             notifications.Add(notification);
             WriteToJson();

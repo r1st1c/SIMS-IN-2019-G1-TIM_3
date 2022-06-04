@@ -13,37 +13,37 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public ReportRepository repository = new ReportRepository();
 
-        public int getNextId()
+        public int GetNextId()
         {
-            return repository.getNextId();
+            return repository.GetNextId();
         }
-        public void create(Report mp)
+        public void Create(Report mp)
         {
-            repository.create(mp);
+            repository.Create(mp);
         }
-        public void update(Report mp)
+        public void Update(Report mp)
         {
-            repository.update(mp);
-        }
-
-        public List<Report> getAll()
-        {
-            return repository.getAll();
+            repository.Update(mp);
         }
 
-        public void delete(int rId)
+        public List<Report> GetAll()
         {
-            repository.delete(rId);
+            return repository.GetAll();
         }
 
-        public List<Report> getAllById(int id)
+        public void Delete(int rId)
         {
-            return repository.getAllById(id);
+            repository.Delete(rId);
         }
 
-        public Report getById(int id)
+        public List<Report> GetAllById(int id)
         {
-            return repository.getById(id);
+            return repository.GetAllById(id);
+        }
+
+        public Report GetById(int id)
+        {
+            return repository.GetById(id);
         }
     }
 }

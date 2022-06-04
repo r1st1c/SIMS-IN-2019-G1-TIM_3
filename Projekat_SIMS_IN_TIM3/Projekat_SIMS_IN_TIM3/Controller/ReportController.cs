@@ -12,38 +12,38 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         public ReportService service = new ReportService();
 
-        public int getNextId()
+        public int GetNextId()
         {
-            return service.getNextId();
+            return service.GetNextId();
         }
-        public void create(Report mp)
+        public void Create(Report mp)
         {
-            service.create(mp);
-        }
-
-        public void update(Report mp)
-        {
-            service.update(mp);
+            service.Create(mp);
         }
 
-        public List<Report> getAll()
+        public void Update(Report mp)
         {
-            return service.getAll();
+            service.Update(mp);
         }
 
-        public void delete(int rId)
+        public List<Report> GetAll()
         {
-            service.delete(rId);
+            return service.GetAll();
         }
 
-        public List<Report> getAllById(int id)
+        public void Delete(int rId)
         {
-            return service.getAllById(id);
+            service.Delete(rId);
         }
 
-        public Report getById(int id)
+        public List<Report> GetAllById(int id)
         {
-            return service.getById(id);
+            return service.GetAllById(id);
+        }
+
+        public Report GetById(int id)
+        {
+            return service.GetById(id);
         }
     }
 }

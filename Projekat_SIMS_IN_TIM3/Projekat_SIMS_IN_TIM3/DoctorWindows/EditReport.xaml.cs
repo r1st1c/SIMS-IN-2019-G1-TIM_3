@@ -40,7 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         public void editReport(object sender, RoutedEventArgs e)
         {
-            Report newReport = this.reportController.getById(SelectedReportId);
+            Report newReport = this.reportController.GetById(SelectedReportId);
 
 
             DateTime dt = (DateTime)startTime1.Value;
@@ -85,7 +85,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             }
             
                 
-                reportController.update(newReport);
+                reportController.Update(newReport);
                 MessageBox.Show("You have successfully edited report! \n Check patient's medical record to see all medical reports!", "Edited medical report");
                 Close();
             
