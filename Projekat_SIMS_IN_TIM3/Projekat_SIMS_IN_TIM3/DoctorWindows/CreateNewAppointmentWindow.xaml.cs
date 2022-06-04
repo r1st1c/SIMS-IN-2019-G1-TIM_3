@@ -23,6 +23,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     public partial class CreateNewAppointmentWindow : Window
     {
         App app;
+        public String DoctorsNameAndSurname { get; set; }
         List<Appointment> appointments = new List<Appointment>();
         private Appointment chosen;
 
@@ -56,10 +57,9 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             appointments = app.appointmentController.GetAll();
             Doctors = new ObservableCollection<string>(doctorController.nameSurnameSpec());
             Patients = new ObservableCollection<string>(patientController.nameSurname());
-           
-            //Rooms = new ObservableCollection<int>(roomController.GetAll());
+          
             AppTypes = new ObservableCollection<AppointmentType>(Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList());
-
+            DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
         }
         
         public void Create(object sender, RoutedEventArgs e)

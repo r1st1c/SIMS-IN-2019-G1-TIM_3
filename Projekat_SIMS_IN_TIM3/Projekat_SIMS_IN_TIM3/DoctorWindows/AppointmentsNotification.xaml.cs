@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for ListOfMedicines.xaml
+    /// Interaction logic for AppointmentsNotification.xaml
     /// </summary>
-    public partial class ListOfMedicines : Window
+    public partial class AppointmentsNotification : Window
     {
-        public ListOfMedicines()
+        public AppointmentsNotification(int doctorsId)
         {
             InitializeComponent();
         }

@@ -28,17 +28,17 @@
 
 
         </Grid.ColumnDefinitions>
-        <Label  x:Name="labelDoctorId" Grid.Row="0" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="168,0,131,0" Grid.ColumnSpan="2"  />
-        <Button  Click="seeMoreLink" Grid.Row="5" Grid.Column="2" FontSize="22" Foreground="Black" Background="AntiqueWhite" Margin="0,36,10,74">Medical reports</Button>
-        <Button  Click="presc" Grid.Row="5" Grid.Column="3" FontSize="22" Foreground="Black" Background="AntiqueWhite" Margin="77,36,138,74" Grid.ColumnSpan="2">Medical reports</Button>
-        <Label  x:Name="labelPatientId" Grid.Row="0" Grid.Column="2" Content="{Binding PatientId}" Foreground="Black" Grid.ColumnSpan="2" Margin="77,14,204,19"  ></Label>
+        <Button  Click="seeMoreLink" Grid.Row="4" Grid.Column="1" FontSize="22"  BorderBrush="Black" BorderThickness="2.5" Foreground="Black" Background="#ffd966" Margin="10,110,10,136" Grid.ColumnSpan="4" Grid.RowSpan="2" FontWeight="Bold">Medical reports</Button>
+        <Button  Click="presc" Grid.Row="5" Grid.Column="1" FontSize="22" Foreground="Black" BorderBrush="Black" BorderThickness="2.5"  Background="#f6b26b" Margin="12,41,10,69" Grid.ColumnSpan="4" FontWeight="Bold">Medical prescriptions</Button>
+       
+        
         <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
         <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />
         <TextBlock  MouseLeftButtonDown="HomeBtn" FontStyle="Italic" FontSize="18" Height="40" HorizontalAlignment="Left"  Text="A leader in innovation, at the service of the patient" Grid.ColumnSpan="3" Margin="78,34,0,126" Grid.RowSpan="2" Width="461" />
 
         <Image Source="/Icons/user_icon_195366.ico" Grid.Row="0" Grid.Column="3" Width="48" Height="48" RenderTransformOrigin="1.104,0.532" Margin="79,6,78,11"  />
         <TextBlock  Grid.Row="0" Grid.Column="3" FontStyle="Italic" FontSize="18" HorizontalAlignment="Left" Margin="148,1,0,32" Grid.ColumnSpan="2"><Run Text="You are signed in as:" Foreground="#555555"/></TextBlock>
-        <TextBlock Grid.Row="0" Grid.Column="3" FontStyle="Normal" FontSize="20"  HorizontalAlignment="Right" Width="156" FontWeight="Bold" Margin="0,26,106,126" Grid.ColumnSpan="2" Grid.RowSpan="2"  ><Run Text="Elena Akik"/></TextBlock>
+        <Label  Content="{Binding DoctorsNameAndSurname}" Grid.Row="0" Grid.Column="3" FontStyle="Normal" FontSize="20"  HorizontalAlignment="Right" Width="214" FontWeight="Bold" Margin="0,25,48,5" Grid.ColumnSpan="2"  />
 
         <Menu Grid.Row="0" Grid.Column="4" Width="64"  x:Name="menuProfileSignOut" Margin="131,0,10,134" Grid.RowSpan="2" Background="White" >
             <MenuItem Height="58" Width="60" Background="White">
@@ -69,30 +69,26 @@
         </Menu>
         <Rectangle  Grid.Row="1" Grid.ColumnSpan="4"  Stroke="#FFE5D9C3"  Fill="#e5d9c3" Grid.Column="1" Margin="0,0,0,64"  />
         <TextBlock HorizontalAlignment="Left" Grid.Row="1"  Text="Medical record" FontWeight="Bold" FontStyle="Normal" FontSize="36" Margin="10,17,0,74"  Grid.Column="1" Grid.ColumnSpan="2" Width="311"/>
+        <Label Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Margin="103,18,81,52" FontWeight="Bold" FontSize="18" >Identification number:</Label>
+        <Label  x:Name="labelPatientId" Grid.Row="1" Grid.Column="4" Content="{Binding PatientId}" Foreground="Black" Margin="131,15,8,74" FontSize="18" FontWeight="Bold"  />
+        <Rectangle   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0"  Fill="#c3e0e5" Stroke="#c3e0e5" Margin="0,2,10,103" Height="165" Grid.RowSpan="2"    />
+        <TextBlock   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top"  Text="Calendar" FontWeight="Bold" Margin="59,118,63,0" Height="30" FontSize="20" Grid.RowSpan="2"  />
+        <Image  MouseLeftButtonDown="CalendarPageBtn" Source="/Icons/calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico"  Grid.Row="1" Grid.Column="0" Margin="51,35,52,24"  />
 
-        <Rectangle   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0"  Fill="#c3e0e5" Stroke="#c3e0e5" Margin="0,0,10,24"    />
-        <TextBlock   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top"  Text="Calendar" FontWeight="Bold" Margin="61,76,61,0" Height="30" FontSize="18"  />
-        <Image  MouseLeftButtonDown="CalendarPageBtn" Source="/Icons/calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico"  Grid.Row="1" Grid.Column="0" Width="48" Height="48" Margin="73,23,84,64"  />
+        <Rectangle  MouseLeftButtonDown="NotifBtn" Stroke="#c3e0e5" Grid.Row="2" Grid.Column="0" Fill="#c3e0e5"  Margin="0,44,10,61" Height="165" Grid.RowSpan="2"/>
+        <TextBlock  MouseLeftButtonDown="NotifBtn"  HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Top"  Text="Notifications" FontWeight="Bold" FontSize="20" Margin="0,27,0,0"  />
+        <Image  MouseLeftButtonDown="NotifBtn"  Source="/Icons/musical-bell-outline_icon-icons.com_73481.ico" Grid.Row="2" Grid.Column="0" Margin="64,74,65,121" Grid.RowSpan="2" Width="76" Height="75"  />
 
-        <Rectangle  MouseLeftButtonDown="NotifBtn" Stroke="#c3e0e5" Grid.Row="2" Grid.Column="0" Fill="#c3e0e5"  Margin="0, 0, 10, 24"/>
-        <TextBlock  MouseLeftButtonDown="NotifBtn"  HorizontalAlignment="Left"  Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  Text="Notifications" FontWeight="Bold" FontSize="18" Margin="42,77,0,0"  />
-        <Image  MouseLeftButtonDown="NotifBtn"  Source="/Icons/musical-bell-outline_icon-icons.com_73481.ico" Grid.Row="2" Grid.Column="0" Width="48" Height="48" Margin="78,20,79,67"  />
+        <Rectangle  MouseLeftButtonDown="MedVerifBtn" Grid.Row="3" Grid.Column="0" Stroke="#c3e0e5" Fill="#c3e0e5"  Margin="-1,85,11,20" Grid.RowSpan="2" Height="165" />
+        <TextBlock  MouseLeftButtonDown="MedVerifBtn" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="Medicine" FontWeight="Bold" FontSize="18"  Grid.Row="4" Width="139" Grid.Column="0" Margin="59,59,0,0" />
+        <TextBlock  MouseLeftButtonDown="MedVerifBtn" HorizontalAlignment="Left"  Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"  Text="verification" FontWeight="Bold" FontSize="18" Margin="52,83,0,0" Height="32" />
+        <Image  MouseLeftButtonDown="MedVerifBtn" Source="/Icons/searcher_magnifyng_glass_search_locate_find_icon_123813.ico" Grid.Row="3" Grid.Column="0" Height="76" Width="76" Margin="62,104,67,90" Grid.RowSpan="2"  />
 
-        <Rectangle  MouseLeftButtonDown="ListOfMedBtn" Grid.Row="3" Grid.Column="0" Stroke="#c3e0e5"   Fill="#c3e0e5" Margin="0, 0, 10, 24" />
-        <TextBlock  MouseLeftButtonDown="ListOfMedBtn" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Top" Text="List of" FontWeight="Bold" FontSize="18" Margin="0,57,0,0"  />
-        <TextBlock  MouseLeftButtonDown="ListOfMedBtn" HorizontalAlignment="Left"  VerticalAlignment="Top"  Text="medicines" FontWeight="Bold" FontSize="18" Grid.Row="3" Width="91" Height="40" Margin="59,79,0,0" />
-        <Image  MouseLeftButtonDown="ListOfMedBtn" Source="/Icons/chemistry_icon_188058.ico" Grid.Row="3" Grid.Column="0" Height="48" Width="48" Margin="78,11,79,76" />
-
-        <Rectangle  MouseLeftButtonDown="MedVerifBtn" Grid.Row="4" Grid.Column="0" Stroke="#c3e0e5" Fill="#c3e0e5"  Margin="0, 0, 10, 15" />
-        <TextBlock  MouseLeftButtonDown="MedVerifBtn" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="Medicine" FontWeight="Bold" FontSize="18"  Grid.Row="4" Width="139" Grid.Column="0" Margin="58,74,0,0" />
-        <TextBlock  MouseLeftButtonDown="MedVerifBtn" HorizontalAlignment="Left"  Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"  Text="verification" FontWeight="Bold" FontSize="18" Margin="49,93,0,0" Height="33" />
-        <Image  MouseLeftButtonDown="MedVerifBtn" Source="/Icons/searcher_magnifyng_glass_search_locate_find_icon_123813.ico" Grid.Row="4" Grid.Column="0" Height="48" Width="48" Margin="80,20,77,67"  />
-
-        <Rectangle  MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="5" Grid.Column="0" Stroke="#c3e0e5"  Fill="#c3e0e5" Margin="0, 15, 10, 0"/>
+        <Rectangle  MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="4" Grid.Column="0" Stroke="#c3e0e5"  Fill="#c3e0e5" Margin="0,134,10,-2" Height="165" Grid.RowSpan="2"/>
         <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="5" HorizontalAlignment="Center"   VerticalAlignment="Top"  Text="Create" FontWeight="Bold" FontSize="18" Margin="0,82,0,0"  />
         <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="5" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="absence" FontWeight="Bold" FontSize="18"  Width="107" Margin="69,105,0,0"  />
         <TextBlock  MouseLeftButtonDown="AbsenceReqBtn" HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Top"  Text="request" FontWeight="Bold" FontSize="18" Margin="0,127,0,0"  />
-        <Image Source="/Icons/note_pen_icon_174377.ico"  Grid.Row="5" Grid.Column="0" Width="48" Height="48" Margin="78,29,79,86"  />
+        <Image Source="/Icons/note_pen_icon_174377.ico"  Grid.Row="5" Grid.Column="0" Width="76" Height="76" Margin="64,12,65,75"  />
         <Button  Click="addReport" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Margin="105,133,10,75" Background="#ffd966" BorderBrush="Black" BorderThickness="2.5" Grid.RowSpan="2" >
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Icons/plussign_83738.ico"  Width="24" Height="24" />
@@ -113,7 +109,7 @@
             </StackPanel>
 
         </Button>
-        <Button Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Margin="107,11,10,62" Background="#9fc5f8" BorderBrush="Black" BorderThickness="2.5" >
+        <Button  Click="addAllergen" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Margin="107,11,10,62" Background="#9fc5f8" BorderBrush="Black" BorderThickness="2.5" >
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Icons/plussign_83738.ico"  Width="24" Height="24" />
                 <TextBlock Text="Add allergen" FontWeight="Bold" FontSize="17" Foreground="Black" Margin="12,0,0,0" Width="115"/>

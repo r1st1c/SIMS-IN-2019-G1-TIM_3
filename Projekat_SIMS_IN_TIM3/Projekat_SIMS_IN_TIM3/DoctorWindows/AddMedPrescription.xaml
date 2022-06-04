@@ -7,8 +7,8 @@
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="AddMedPrescription" Height="417" Width="450">
-    <Grid>
+        Title="AddMedPrescription" Height="480" Width="520">
+    <Grid Width="515" Height="478" >
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -26,7 +26,10 @@
 
         </Grid.ColumnDefinitions>
 
-        <Label  x:Name="labelPatientId" Grid.Row="0" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="9,5,117,18" RenderTransformOrigin="0.5,0.5"  >
+        <Label FontWeight="Bold" FontSize="18" Margin="9,14,80,10" Content="Doctor:"/>
+        <Label FontWeight="Bold" FontSize="18" Margin="115,14,102,10" Content="ID:"/>
+        <Label Grid.Row="0" Content="{Binding DoctorNameAndSurname}" Grid.ColumnSpan="2" Margin="232,16,11,15" FontSize="18" />
+        <Label  x:Name="labelPatientId" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="156,12,20,12" RenderTransformOrigin="0.5,0.5"  >
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
@@ -37,22 +40,36 @@
             </Label.RenderTransform>
         </Label>
 
-        <xctk:DateTimePicker   Height="30" Grid.Row="1" x:Name="startTime1" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="238" Margin="202,47,0,0" Grid.ColumnSpan="2" MaxWidth="340" Grid.RowSpan="2"/>
+        <xctk:DateTimePicker   Height="34" Grid.Row="2" x:Name="startTime1" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="272" Margin="232,9,0,0" Grid.ColumnSpan="2" MaxWidth="340"/>
 
-        <Label  Grid.Row="0" Content="Patient" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="" Margin="6,39,0,0" Foreground="Black" FontWeight="Bold" FontSize="18" Grid.Column="0" Grid.RowSpan="2"/>
-        <ComboBox  Grid.Row="0" x:Name="patientCb" MaxWidth="340" Margin="202,40,10,43" MaxHeight="30" 
-                  ItemsSource="{Binding Path=Patients}"  Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <Label  Grid.Row="2" Grid.Column="0" Content="Medicines" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Margin="5,55,0,0" FontSize="18" Grid.RowSpan="2"/>
-        <ComboBox Name="medicinesCb" Grid.Row="3" Grid.ColumnSpan="2"  MaxWidth="340" Margin="202,0,10,27" Height="30"
+        <Label  Grid.Row="1" Content="Patient" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="" Margin="6,7,0,0" Foreground="Black" FontWeight="Bold" FontSize="18" Grid.Column="0"/>
+        <Label Content="{Binding PatientNameAndSurname}" Grid.Row="1" Margin="232,12,7,28" Grid.ColumnSpan="2" FontSize="18" />
+        <Label FontWeight="Bold" FontSize="18" Margin="116,7,102,17" Content="ID:" Grid.Row="1"/>
+        <Label x:Name="ptntId" Content="{Binding PatientsId}" FontSize="18" FontWeight="Bold" />
+        <Label  Grid.Row="3" Grid.Column="0" Content="Medicine" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Margin="6,9,0,0" FontSize="18"/>
+        <ComboBox Name="medicinesCb" Grid.Row="3" Grid.ColumnSpan="2"  MaxWidth="340" Margin="232,6,11,20"
                   ItemsSource="{Binding Path=Medicines}" />
-        <Label  Grid.Row="1" Grid.Column="0"  Foreground="Black" FontSize="18" Content="StartTime" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Margin="6,43,0,0" Grid.RowSpan="2"/>
-        <Label  Grid.Row="4" FontSize="18"  Foreground="Black" Content="Duration of use" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="1,54,0,0" FontWeight="Bold" Width="214" Grid.Column="0" Grid.RowSpan="2"/>
-        <TextBox x:Name="duration"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="202,56,10,29" Grid.Row="4" Grid.ColumnSpan="2" Height="30" Grid.RowSpan="2"/>
+        <Label  Grid.Row="2" Grid.Column="0"  Foreground="Black" FontSize="18" Content="StartTime" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Margin="7,9,0,0"/>
+        <Label  Grid.Row="4" FontSize="18"  Foreground="Black" Content="Duration of use" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="9,66,0,0" FontWeight="Bold" Width="214" Grid.Column="0" Grid.RowSpan="2"/>
+        <TextBox x:Name="duration"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="232,6,10,34" Grid.Row="5" Grid.ColumnSpan="2"/>
 
-        <Button   Click="Create" Grid.Row="6"  Content="Save" Background="#FF89E461"  VerticalAlignment="Center" AutomationProperties.Name="create1"    FontWeight="Bold" FontSize="14" Margin="67,0,53,0" Height="36"/>
-        <Button Click="Cancel" Grid.Row="6"  Content="Cancel" Height ="36" Background="Red"  VerticalAlignment="Center" AutomationProperties.Name="create1"  FontWeight="Bold" FontSize="14" Margin="71,0,51,0" Grid.Column="1" Width="105"/>
-        <Label  Grid.Row="3" FontSize="18"  Foreground="Black" Content="Frequency of use" HorizontalAlignment="Center"  VerticalAlignment="Top" FontWeight="Bold" Width="214" Margin="0,55,0,0" Grid.RowSpan="2"/>
-        <TextBox x:Name="fOfUse"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="202,57,10,27" Grid.Row="3" Grid.ColumnSpan="2" Height="30" Grid.RowSpan="2"/>
+        <Button  Click="Create"  Grid.Row="5" Grid.Column="0"  BorderBrush="Black" BorderThickness="2.5" Background="#009e0f" Margin="45,62,44,23" Grid.RowSpan="2" >
+            <StackPanel  Orientation="Horizontal">
+                <Image Source="/Icons/plus-32.ico"  Width="24" Height="24" ></Image>
+                <TextBlock Margin="12,0,0,0" Text="Save" Foreground="White" FontSize="18" FontWeight="Bold" ></TextBlock>
+            </StackPanel>
+
+        </Button>
+        <Label  Grid.Row="4" FontSize="18"  Foreground="Black" Content="Frequency of use" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Width="214" Margin="8,5,0,0"/>
+        <TextBox x:Name="fOfUse"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="232,9,10,29" Grid.Row="4" Grid.ColumnSpan="2" Height="30"/>
+        <Button  Click="Cancel"  Grid.Row="5" Grid.Column="1"  BorderBrush="Black" BorderThickness="2.5" Background="#cf2a27" Margin="44,62,45,23" Grid.RowSpan="2" >
+            <StackPanel  Orientation="Horizontal">
+                <Image Source="/Icons/x-mark-32.ico"   Width="24" Height="24" />
+                <TextBlock Margin="12,0,0,0" Text="Cancel" Foreground="White" FontSize="18" FontWeight="Bold" />
+            </StackPanel>
+
+        </Button>
+
 
     </Grid>
 </Window>

@@ -96,15 +96,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
-            Notifications notifications = new Notifications();
+            Notifications notifications = new Notifications(DoctorId);
             notifications.Show();
-            this.Close();
-        }
-
-        private void ListOfMedBtn(object sender, RoutedEventArgs e)
-        {
-            ListOfMedicines listOfMedicines = new ListOfMedicines();
-            listOfMedicines.Show();
             this.Close();
         }
 

@@ -22,13 +22,15 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     /// </summary>
     public partial class Notifications : Window
     {
+        public int DoctorId { get; set; }
         public static ObservableCollection<OperationNotification> NotificationList { get; set; }
         OperationNotificationController notificationController = new OperationNotificationController();
-        public Notifications()
+        public Notifications(int doctorsId)
         {
             InitializeComponent();
             this.DataContext = this;
-            NotificationList = new ObservableCollection<OperationNotification>(notificationController.GetAll());
+            DoctorId = doctorsId;
+            
         }
 
         private void HomeBtn(object sender, RoutedEventArgs e)
@@ -36,7 +38,6 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             MainPage mainPage = new MainPage(0);
             mainPage.Show();
         }
-
 
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
@@ -47,15 +48,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
-            Notifications notifications = new Notifications();
+            Notifications notifications = new Notifications(DoctorId);
             notifications.Show();
-            this.Close();
-        }
-
-        private void ListOfMedBtn(object sender, RoutedEventArgs e)
-        {
-            ListOfMedicines listOfMedicines = new ListOfMedicines();
-            listOfMedicines.Show();
             this.Close();
         }
 
@@ -70,6 +64,27 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq(0);
             createAbsenceReq.Show();
+            this.Close();
+        }
+
+        private void operationNotificationBtn(object sender, RoutedEventArgs e)
+        {
+            OperationNotifications notification = new OperationNotifications(DoctorId);
+            notification.Show();
+            this.Close();
+        }
+
+        private void absenceRequestNoticificationBtn(object sender, RoutedEventArgs e)
+        {
+            AbsenceRequestNotifications notifications = new AbsenceRequestNotifications(DoctorId);
+            notifications.Show();
+            this.Close();
+        }
+
+        private void appointmentNotificationBtn(object sender, RoutedEventArgs e)
+        {
+            AppointmentsNotification notification = new AppointmentsNotification(DoctorId);
+            notification.Show();
             this.Close();
         }
     }

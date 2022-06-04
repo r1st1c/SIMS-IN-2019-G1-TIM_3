@@ -63,12 +63,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         public int getIdByUsername(string usname)
         {
             readJson();
-            int id = int.MinValue;
-            foreach(Doctor doctor in doctors)
-            {
-                id = doctors.FindIndex(obj => obj.User.Username == usname);
-            }
-            return id;
+            return doctors.Find(obj => obj.User.Username == usname).User.Id;
         }
 
         public bool saveAndUpdate(Doctor doctor)
