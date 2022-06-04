@@ -42,7 +42,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             DoctorId = DoctorId;
             Duration = dur;
             AppType = at;
-            Operations = new ObservableCollection<Operation>(operationController.getAll());
+            Operations = new ObservableCollection<Operation>(operationController.GetAll());
         }
 
         public void chooseAppointment(object sender, RoutedEventArgs e)
@@ -57,11 +57,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
             Operations.Remove(operation);
 
-            this.operationController.create(operation);
+            this.operationController.Create(operation);
 
             OperationNotification notification = new OperationNotification(
                 0, StartTime, PatientId, AppType, Duration);
-            operationNotificationController.create(notification);
+            operationNotificationController.Create(notification);
 
             MessageBox.Show("You have successfully created new operation term!", "Creation of new operation term");
 

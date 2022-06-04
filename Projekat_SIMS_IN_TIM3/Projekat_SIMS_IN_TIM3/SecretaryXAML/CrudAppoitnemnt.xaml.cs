@@ -54,7 +54,7 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
             var newAppointment = new Appointment(maxId, (DateTime)startTime1.Value, Convert.ToInt32(txtDuration.Text), (AppointmentType)Convert.ToInt32(txtType.Text), Convert.ToInt32(txtPatientnId.Text), Convert.ToInt32(txtDoctorId.Text));
 
 
-            application.appointmentController.CreateAppointment(newAppointment);
+            application.appointmentController.Create(newAppointment);
             MessageBox.Show("Successfully created appointment.");
 
             txtDoctorId.Text = "";
@@ -69,7 +69,7 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
         {
             
            
-            application.appointmentController.DeleteAppointment(selectedAppointment.Id);
+            application.appointmentController.Delete(selectedAppointment.Id);
             MessageBox.Show("Successfully deleted appointment");
             startTime1.Value = default(DateTime);
 
@@ -82,12 +82,12 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
 
 
             int appointmentId = selectedAppointment.Id;
-            application.appointmentController.DeleteAppointment(appointmentId);
+            application.appointmentController.Delete(appointmentId);
             var newAppointment = new Appointment(appointmentId, (DateTime)startTime1.Value, selectedAppointment.DurationInMinutes,
                 selectedAppointment.Type, selectedAppointment.DoctorId, selectedAppointment.PatientId);
 
 
-            application.appointmentController.CreateAppointment(newAppointment);
+            application.appointmentController.Create(newAppointment);
             MessageBox.Show("You have successfully updated appointment details!");
 
             Show();

@@ -15,20 +15,14 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         public List<MedicinePrescription> prescriptions { get; set; } = new List<MedicinePrescription>();
 
 
-        public MedicinePrescriptionRepository() { readJson();  }
+        public MedicinePrescriptionRepository() { ReadJson();  }
 
 
-        public int getNextId()
+        public int GetNextId()
         {
-            int lastId = int.MinValue;
-            readJson();
-            foreach (MedicinePrescription prescription in prescriptions)
-            {
-                lastId = prescriptions.Last().Id;
-            }
-            return lastId;
+            return prescriptions.Count != 0 ? prescriptions.Max(x => x.Id) + 1 : 0;
         }
-        public void readJson()
+        public void ReadJson()
         {
             if (!File.Exists(fileLocation))
             {
@@ -51,43 +45,42 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public void create(MedicinePrescription mp)
+        public void Create(MedicinePrescription mp)
         {
             prescriptions.Add(mp);
             WriteToJson();
         }
 
-        public void update(MedicinePrescription mp)
+        public void Update(MedicinePrescription mp)
         {
-            readJson();
+            ReadJson();
             int idx = prescriptions.FindIndex(obj => obj.Id == mp.Id);
             prescriptions[idx] = mp;
             WriteToJson();
         }
 
-        public List<MedicinePrescription> getAll()
+        public List<MedicinePrescription> GetAll()
         {
-            readJson();
+            ReadJson();
             return prescriptions;
         }
 
-        public void delete(int pId)
+        public void Delete(int id)
         {
-            readJson();
-            int index = prescriptions.FindIndex(obj => obj.Id == pId);
-            prescriptions.RemoveAt(index);
+            ReadJson();
+            prescriptions.RemoveAt(prescriptions.FindIndex(obj => obj.Id == id));
             WriteToJson();
         }
 
-        public List<MedicinePrescription> getAllById(int id)
+        public List<MedicinePrescription> GetAllById(int id)
         {
-            readJson();
+            ReadJson();
             return prescriptions.FindAll(obj => obj.PatientId == id);
         }
 
-        public MedicinePrescription getById(int id)
+        public MedicinePrescription GetById(int id)
         {
-            readJson();
+            ReadJson();
             return prescriptions.Find(obj => obj.Id == id);
         }
     }

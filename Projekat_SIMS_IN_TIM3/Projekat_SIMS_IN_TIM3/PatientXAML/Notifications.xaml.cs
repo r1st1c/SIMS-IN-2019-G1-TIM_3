@@ -34,7 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
             application = Application.Current as App;
 
-            prescriptions = application.medPrescriptionController.getAll();
+            prescriptions = application.medPrescriptionController.GetAll();
             List<Patient> patients = application.patientController.GetAll();
 
             Patient patient = null;

@@ -39,13 +39,13 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public List<Operation> getAll()
+        public List<Operation> GetAll()
         {
             ReadJson();
             return operations;
         }
 
-        public void create(Operation operation)
+        public void Create(Operation operation)
         {
             operations.Add(operation);
             WriteToJson();

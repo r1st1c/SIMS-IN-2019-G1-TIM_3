@@ -55,7 +55,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             DoctorId = doctorId;
             app = Application.Current as App;
             appointments = app.appointmentController.GetAll();
-            Doctors = new ObservableCollection<string>(doctorController.nameSurnameSpec());
+            Doctors = new ObservableCollection<string>(doctorController.NameSurnameSpec());
             Patients = new ObservableCollection<string>(patientController.nameSurname());
           
             AppTypes = new ObservableCollection<AppointmentType>(Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList());
@@ -81,7 +81,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             string docspec = strings1[2];
 
             int patientId = patientController.getIdByNameAndSurname(patname, patsurname);
-            int doctorsId = doctorController.getIdByNameAndSurname(docname, docsurname);
+            int doctorsId = doctorController.GetIdByNameAndSurname(docname, docsurname);
             int dur = Convert.ToInt32(duration.Text);
 
             if(dt < DateTime.Now)
@@ -102,7 +102,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
-                lastId = appointmentController.getNextId(); 
+                lastId = appointmentController.GetNextId(); 
                 var newApp = new Appointment(
                         lastId,
                         dt,
@@ -110,7 +110,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                         at,
                         Convert.ToInt32(DoctorId), Convert.ToInt32(patientId));
 
-                app.appointmentController.CreateAppointment(newApp);
+                app.appointmentController.Create(newApp);
 
                MessageBoxResult result = MessageBox.Show("You have successfully scheduled new appointment! \n Check calendar to see all scheduled appointments!", "Scheduled appointment", MessageBoxButton.OK);
                switch(result)

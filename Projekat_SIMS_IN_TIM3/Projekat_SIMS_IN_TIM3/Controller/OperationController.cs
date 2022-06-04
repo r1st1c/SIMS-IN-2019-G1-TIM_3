@@ -12,14 +12,14 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         private OperationService service = new OperationService();
 
-        public List<Operation> getAll()
+        public List<Operation> GetAll()
         {
-            return service.getAll();
+            return service.GetAll();
         }
 
-        public void create(Operation operation)
+        public void Create(Operation operation)
         {
-            service.create(operation);
+            service.Create(operation);
         }
 
     }

@@ -32,7 +32,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.DataContext = this;
             PatientId = id;
             DoctorId = id1;
-            Prescriptions = new ObservableCollection<MedicinePrescription>(pc.getAllById(PatientId));
+            Prescriptions = new ObservableCollection<MedicinePrescription>(pc.GetAllById(PatientId));
         
         }
 
@@ -49,7 +49,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             MedicinePrescription mp = (MedicinePrescription)((Button)e.Source).DataContext;
             Prescriptions.Remove(mp);
-            this.pc.delete(mp.Id);
+            this.pc.Delete(mp.Id);
         }
 
         private void HomeBtn(object sender, RoutedEventArgs e)

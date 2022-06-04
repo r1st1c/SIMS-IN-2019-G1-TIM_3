@@ -16,10 +16,10 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public DoctorRepository()
         {
-            readJson();
+            ReadJson();
         }
 
-        public void readJson()
+        public void ReadJson()
         {
             if(!File.Exists(fileLocation))
             {
@@ -34,7 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             }
         }
 
-        public void writeToJson()
+        public void WriteToJson()
         {
             string jsonData = JsonConvert.SerializeObject(doctors);
             File.WriteAllText(fileLocation, jsonData);
@@ -42,50 +42,50 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public List<Doctor> GetAll()
         {
-            readJson();
+            ReadJson();
             return doctors;
         }
 
-        public Doctor getById(int id)
+        public Doctor GetById(int id)
         {
-            readJson();
+            ReadJson();
             return doctors.Find(x => x.User.Id == id);
         }
 
-        public int getIdByNameAndSurname(string name, string surname)
+        public int GetIdByNameAndSurname(string name, string surname)
         {
-            readJson();
+            ReadJson();
             int id = int.MinValue;
             id = doctors.FindIndex(obj => obj.User.Name == name && obj.User.Surname == surname);
             return id;
         }
 
-        public int getIdByUsername(string usname)
+        public int GetIdByUsername(string usname)
         {
-            readJson();
+            ReadJson();
             return doctors.Find(obj => obj.User.Username == usname).User.Id;
         }
 
-        public bool saveAndUpdate(Doctor doctor)
+        public bool SaveAndUpdate(Doctor d)
         {
-            doctors.Add(doctor);
-            writeToJson();
+            doctors.Add(d);
+            WriteToJson();
             return true;
         }
 
-        public bool delete(int id)
+        public bool Delete(int id)
         {
-            readJson();
+            ReadJson();
             int idx = doctors.FindIndex(x => x.User.Id == id);
             doctors.RemoveAt(idx);
-            writeToJson();
+            WriteToJson();
 
             return true;
         }
 
-        public List<string> nameSurnameSpec()
+        public List<string> NameSurnameSpec()
         {
-            readJson();
+            ReadJson();
             List<string> spec = new List<string>();
 
            foreach (Doctor doctor in doctors)

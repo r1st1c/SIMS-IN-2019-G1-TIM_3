@@ -49,7 +49,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
-                rmnc.createNotification(notification);
+                rmnc.Create(notification);
                 MessageBox.Show("You have successfully sent rejecting explanation to a manager!");
                 this.Close();
             }

@@ -41,7 +41,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             var newAppointment = new Appointment(maxId, (DateTime)startTime1.Value, Convert.ToInt32(tb1.Text), (AppointmentType)Convert.ToInt32(tb2.Text), Convert.ToInt32(tb3.Text), Convert.ToInt32(tb4.Text)); 
             
             
-            application.appointmentController.CreateAppointment(newAppointment);
+            application.appointmentController.Create(newAppointment);
             MessageBox.Show("Successfully created appointment.");
 
             tb1.Text = "";

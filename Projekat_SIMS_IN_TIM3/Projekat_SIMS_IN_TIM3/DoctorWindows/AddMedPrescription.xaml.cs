@@ -53,7 +53,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             PatientsId = PatientId;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
 
-            Medicines = new ObservableCollection<string>(medicineController.getAllVerified());
+            Medicines = new ObservableCollection<string>(medicineController.GetVerified());
             PatientNameAndSurname = patientController.GetById(PatientId).User.Name.ToString() + " " + patientController.GetById(PatientId).User.Surname.ToString();
             DoctorNameAndSurname = doctorController.GetById(doctorsId).User.Name.ToString() + " " + doctorController.GetById(doctorsId).User.Surname.ToString();    
 
@@ -88,7 +88,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
-                maxId = prescriptionController.getNextId();
+                maxId = prescriptionController.GetNextId();
                 maxId++;
                 var newMedPrescription = new MedicinePrescription(
                     maxId,
@@ -100,7 +100,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                     true,
                     TimeSpan.FromMinutes(freq));
 
-                prescriptionController.create(newMedPrescription);
+                prescriptionController.Create(newMedPrescription);
 
                 MessageBox.Show("You have successfully added new prescription! \n Check patient's medical record to see all prescriptions!", "Added new prescriptions");
                 

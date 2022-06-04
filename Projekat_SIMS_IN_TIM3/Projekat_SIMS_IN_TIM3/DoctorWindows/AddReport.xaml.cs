@@ -69,7 +69,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
-                lastId = reportController.getNextId();
+                lastId = reportController.GetNextId();
                 lastId++;
                 var newReport = new Report(
                     lastId,
@@ -81,7 +81,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                     cl
                     );
 
-                reportController.create(newReport);
+                reportController.Create(newReport);
                 MessageBox.Show("You have successfully added new report! \n Check patient's medical record to see all medical reports!", "Added medical report");
                 this.Close();
             }

@@ -13,8 +13,6 @@ namespace Projekat_SIMS_IN_TIM3.Repository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\absenceRequests.json";
         public List<AbsenceRequest> requests { get; set; } = new List<AbsenceRequest>();
-        
-
         public DoctorRepository doctorRepository = new DoctorRepository();
         public AppointmentRepository appointmentRepository = new AppointmentRepository();
 
@@ -43,23 +41,12 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public int getNextId()
+        public int GetNextId()
         {
-            int lastId = int.MinValue;
-            ReadJson();
-            foreach(AbsenceRequest request in requests)
-            {
-                if(requests == null)
-                {
-                    lastId = 0;
-                } else
-
-                lastId = requests.Last().Id;
-            }
-            return lastId;
+            return requests.Count!=0 ? requests.Max(x => x.Id)+1 : 0;
         }
 
-        public void createAbsenceRequest(AbsenceRequest request)
+        public void Create(AbsenceRequest request)
         {
             ReadJson();
             // inicijalno svi su na cekanju
@@ -74,7 +61,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         }
 
         // da li je pocetak odmora zakazan bar za 2 dana posle danasnjeg dana
-        public bool checkTimeOfSendingRequest(DateTime startDate)
+        public bool CheckTimeOfSendingRequest(DateTime startDate)
         {
             DateTime now = DateTime.Now;
             TimeSpan timeSpan = startDate - now;
@@ -94,7 +81,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
             foreach (var request in requests)
             {
-                string SpecializationInRequests = doctorRepository.getById(request.DoctorId).specializationType;
+                string SpecializationInRequests = doctorRepository.GetById(request.DoctorId).specializationType;
 
                 if (SpecializationInRequests == specialization)
                 {
@@ -111,7 +98,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return requestBySameSpecialization;
         }
 
-        public bool isThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
+        public bool IsThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
         {
             int numOfAlreadySentReqs = CheckDoctorSpecialization(specialization, start, end); 
                 if(numOfAlreadySentReqs != 0)
@@ -122,16 +109,16 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         }
  
   
-        public List<AbsenceRequest> getAll()
+        public List<AbsenceRequest> GetAll()
         {
             ReadJson();
             return requests;
         }
 
-        public List<AbsenceRequest> getAllByDoctorsId(int doctorsId)
+        public List<AbsenceRequest> GetRequestsByDoctorsId(int id)
         {
             ReadJson();
-            return requests.FindAll(obj => obj.DoctorId == doctorsId);
+            return requests.FindAll(obj => obj.DoctorId == id);
         }
 
         

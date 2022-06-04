@@ -12,19 +12,19 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         private RejectedMedicineNotificationRepository repo = new RejectedMedicineNotificationRepository();
 
-        public List<RejectedMedicineNotification> getAll()
+        public List<RejectedMedicineNotification> GetAll()
         {
-            return repo.getAll();
+            return repo.GetAll();
         }
 
-        public void createNotification(RejectedMedicineNotification notification)
+        public void Create(RejectedMedicineNotification notification)
         {
-            repo.createNotification(notification);
+            repo.Create(notification);
         }
 
-        public void deleteNotification(int notificationId)
+        public void Delete(int notificationId)
         {
-            repo.deleteNotification(notificationId);
+            repo.Delete(notificationId);
         }
     }
 }

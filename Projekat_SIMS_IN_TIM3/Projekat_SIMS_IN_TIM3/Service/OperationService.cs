@@ -12,14 +12,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         private OperationRepository repo = new OperationRepository();
 
-        public List<Operation> getAll()
+        public List<Operation> GetAll()
         {
-            return repo.getAll();
+            return repo.GetAll();
         }
 
-        public void create(Operation operation)
+        public void Create(Operation operation)
         {
-            repo.create(operation);
+            repo.Create(operation);
 
         }
     }

@@ -16,10 +16,10 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public MedicalRecordRepository()
         {
-            readJson();
+            ReadJson();
         }
 
-        public void readJson()
+        public void ReadJson()
         {
             if(!File.Exists(fileLocation))
             {
@@ -36,42 +36,30 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             }
         }
 
-        public void writeToJson()
+        public void WriteToJson()
         {
             string json = JsonConvert.SerializeObject(medicalRecords);
             File.WriteAllText(fileLocation, json);
         }
 
-        public void createMedicalRecord(Model.MedicalRecord medicalRecord)
+        public void Create(MedicalRecord mr) => medicalRecords.Add(mr);
+
+        public void Delete(int id)
         {
-            medicalRecords.Add(medicalRecord);
+            ReadJson();
+            medicalRecords.RemoveAt(medicalRecords.FindIndex(m => m.Id == id));
+            WriteToJson();
         }
 
-        public void updateMedicalRecord(Model.MedicalRecord medicalRecord)
+        public List<MedicalRecord> GetAll()
         {
-            // to do
-            return;
-
-            
-        }
-
-        public void deleteMedicalRecord(int id)
-        {
-            readJson();
-            int idx = medicalRecords.FindIndex(m => m.Id == id);
-            medicalRecords.RemoveAt(idx);
-            writeToJson();
-        }
-
-        public List<MedicalRecord> getAll()
-        {
-            readJson();
+            ReadJson();
             return medicalRecords;
         }
 
-        public MedicalRecord getByPatientId(int id)
+        public MedicalRecord GetByPatientId(int id)
         {
-            readJson();
+            ReadJson();
             return medicalRecords.Find(m => m.Id == id);
         }
     }

@@ -67,7 +67,7 @@ namespace Projekat_SIMS_IN_TIM3.SecretaryXAML
             List<Allergen> allergenList = new List<Allergen>();
             foreach(Allergen allergen in allergens)
             {
-                if(allergen.patietId == patientId)
+                if(allergen.PatientId == patientId)
                 {
                     allergenList.Add(allergen);
                 }

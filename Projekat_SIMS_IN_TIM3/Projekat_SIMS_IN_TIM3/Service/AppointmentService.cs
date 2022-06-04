@@ -11,24 +11,24 @@ namespace Projekat_SIMS_IN_TIM3.Service
     public class AppointmentService
     {
 
-        public int getNextId()
+        public int GetNextId()
         {
-            return appointmentRepository.getNextId();
+            return appointmentRepository.GetNextId();
         }
 
-        public void CreateAppointment(Model.Appointment appointment)
+        public void Create(Appointment appointment)
         {
-            this.appointmentRepository.CreateAppointment(appointment);
+            this.appointmentRepository.Create(appointment);
         }
 
-        public void UpdateAppointment(int id, DateTime newStartTime, DateTime newFinishTime, DateTime newDuration)
+        public void Update(Appointment appointment)
         {
-            this.appointmentRepository.UpdateAppointment(id, newStartTime, newFinishTime, newDuration);
+            this.appointmentRepository.Update(appointment);
         }
 
-        public void DeleteAppointment(int appointmentId)
+        public void Delete(int appointmentId)
         {
-            this.appointmentRepository.DeleteAppointment(appointmentId);
+            this.appointmentRepository.Delete(appointmentId);
         }
 
         public List<Appointment> GetAll()
@@ -36,38 +36,38 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.appointmentRepository.GetAll();
         }
 
-        public List<Appointment> GetByDoctorsId(int doctorId)
+        public List<Appointment> GetByDoctorsId(int id)
         {
-            return this.appointmentRepository.GetByDoctorsId((int)doctorId);
+            return this.appointmentRepository.GetByDoctorsId((int)id);
         }
 
-        public List<Appointment> GetByPatientsId(int patientId)
+        public List<Appointment> GetByPatientsId(int id)
         {
-            return this.appointmentRepository.GetByPatientsId((int)patientId);
+            return this.appointmentRepository.GetByPatientsId((int)id);
         }
 
-        public Appointment GetById(int appointmentId)
+        public Appointment GetById(int id)
         {
-            return this.appointmentRepository.GetById((int)appointmentId);
+            return this.appointmentRepository.GetById((int)id);
         }
 
-        public int numOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
+        public int NumOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
         {
-            return appointmentRepository.numOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
+            return appointmentRepository.NumOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
         }
 
 
-        public bool isDoctorFree(int doctorId, DateTime start, DateTime end)
+        public bool IsDoctorFree(int doctorId, DateTime start, DateTime end)
         {
-            return appointmentRepository.isDoctorFree(doctorId, start, end);
+            return appointmentRepository.IsDoctorFree(doctorId, start, end);
         }
 
-        public Boolean cancelAppointment(int patientId, int appointmentId)
+        public Boolean Cancel(int patientId, int appointmentId)
         {
-            if (canCancelAppointment(patientId))
+            if (CanCancelAppointment(patientId))
             {
-                freeAppointment(appointmentId);
-                addCancellationDate(patientId);
+                FreeAppointment(appointmentId);
+                AddCancellationDate(patientId);
                 return true;
             }
             else
@@ -77,7 +77,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             }
         }
 
-        public void addCancellationDate(int patientId)
+        public void AddCancellationDate(int patientId)
         {
             Patient patient = patientService.GetById(patientId);
             patient.CancellationDates.Add(DateTime.Now);
@@ -85,26 +85,26 @@ namespace Projekat_SIMS_IN_TIM3.Service
             patientService.Save(patient);
         }
 
-        public void freeAppointment(int appointmentId)
+        public void FreeAppointment(int appointmentId)
         {
             Appointment appointment = appointmentRepository.GetById(appointmentId);
 
-            appointmentRepository.DeleteAppointment(appointmentId);
+            appointmentRepository.Delete(appointmentId);
 
             appointment.PatientId = -1;
 
-            appointmentRepository.CreateAppointment(appointment);
+            appointmentRepository.Create(appointment);
         }
 
-        public Boolean canCancelAppointment(int patientId)
+        public Boolean CanCancelAppointment(int patientId)
         {
             Patient patient = patientService.GetById(patientId);
 
-            return cancellationTresholdReached(patient) ? false : true;
+            return CancellationTresholdReached(patient) ? false : true;
 
         }
 
-        public Boolean cancellationTresholdReached(Patient patient)
+        public Boolean CancellationTresholdReached(Patient patient)
         {
             List<DateTime> cancellationDates = patient.CancellationDates;
             int cancellationsCount = cancellationDates.Count();
@@ -114,13 +114,13 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 return false;
             }
 
-            TimeSpan timeDifference = getTimeDifference(cancellationDates);
+            TimeSpan timeDifference = GetTimeDifference(cancellationDates);
 
             return timeDifference.TotalDays <= 30;
 
         }
 
-        public TimeSpan getTimeDifference(List<DateTime> cancellationDates)
+        public TimeSpan GetTimeDifference(List<DateTime> cancellationDates)
         {
             int cancellationsCount = cancellationDates.Count();
             DateTime fifthLastCancellation = cancellationDates[cancellationsCount - 5];

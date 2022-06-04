@@ -114,7 +114,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             Appointment appointment = (Appointment)((Button)e.Source).DataContext;
             Appointments.Remove(appointment);
-            this.c.DeleteAppointment(appointment.Id);
+            this.c.Delete(appointment.Id);
             
         }
 
