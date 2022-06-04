@@ -25,11 +25,13 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     {
 
         PatientController patientController = new PatientController();
+        DoctorController doctorController = new DoctorController();
+        MedicineController medicineController = new MedicineController();
         MedicinePrescriptionController prescriptionController = new MedicinePrescriptionController();
+        
         public ObservableCollection<string> Patients { get; set; }
         private string PatientSelected;
 
-        MedicineController medicineController = new MedicineController();
         public ObservableCollection<string> Medicines { get; set; }
         private string MedicineSelected;
 
@@ -37,17 +39,22 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         List<Patient> patients = new List<Patient>();
         public int DoctorId { get; set; }
+        public int PatientsId { get; set; }
+        public string PatientNameAndSurname { get; set; }
+        public string DoctorNameAndSurname { get; set; }
 
-      
+
+
         public AddMedPrescription(int PatientId, int doctorsId)
         {
             InitializeComponent();
             this.DataContext = this;
             DoctorId = doctorsId;
+            PatientsId = PatientId;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
             Medicines = new ObservableCollection<string>(medicineController.getAllVerified());
-
-            patients = patientController.GetAll();
+            PatientNameAndSurname = patientController.GetById(PatientId).User.Name.ToString() + " " + patientController.GetById(PatientId).User.Surname.ToString();
+            DoctorNameAndSurname = doctorController.GetById(doctorsId).User.Name.ToString() + " " + doctorController.GetById(doctorsId).User.Surname.ToString();    
         }
 
         public void Create(object sender, RoutedEventArgs e)
@@ -56,13 +63,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             DateTime dt = (DateTime)startTime1.Value;
             int dur = Convert.ToInt32(duration.Text);
             int freq = Convert.ToInt32(fOfUse.Text);
-
-            string pat = patientCb.SelectedItem.ToString();
-            string[]? strings = pat.Split(" ");
-            string patname = strings[0];
-            string patsurname = strings[1];
-            int patId = patientController.getIdByNameAndSurname(patname, patsurname);
             int docId = DoctorId;
+            int patid = PatientsId;
 
             string medName = medicinesCb.SelectedItem.ToString();
             int medId = medicineController.getIdByName(medName);
@@ -78,19 +80,18 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             }
 
-            if(dt == null || dur == null || freq == null || patId == null || docId == null || medId == null)
+            if(dt == null || dur == null || freq == null ||  patid == null || docId == null || medId == null)
             {
                 MessageBox.Show("All fields are necessary!");
                 return;
             } else
             {
-
                 maxId = prescriptionController.getNextId();
                 maxId++;
                 var newMedPrescription = new MedicinePrescription(
                     maxId,
                     medId,
-                    patId,
+                    patid,
                     docId,
                     dt,
                     TimeSpan.FromMinutes(dur),

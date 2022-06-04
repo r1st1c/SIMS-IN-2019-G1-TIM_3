@@ -24,28 +24,27 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         MedicalRecordController mcnt = new MedicalRecordController();
         
         PatientController pc = new PatientController();
+        DoctorController doctorController = new DoctorController();
         public int PatientId { get; set; }
         public int DoctorId     { get; set; }
-       
-      
+
+        public String DoctorsNameAndSurname { get; set; }
         public MedicalRecord(int patid, int doctorId)
         {
             InitializeComponent();
             this.DataContext = this;
             PatientId = patid;
             DoctorId = doctorId;
-            pname.Content = pc.getName(PatientId);
-            surname.Content = pc.getSurname(PatientId);
-            jmbg.Content = pc.getJMBG(PatientId);
-            DateOfBirth.Content = pc.getDateOfBirth(PatientId);
-            Address.Content = pc.getAddress(PatientId);
-            Email.Content = pc.getEmail(PatientId);
-            TelephoneNumber.Content = pc.getTelNumber(PatientId);
-            
+            pname.Content = pc.GetById(PatientId).User.Name.ToString();
+            surname.Content = pc.GetById(PatientId).User.Surname.ToString();
+            jmbg.Content = pc.GetById(PatientId).User.Jmbg.ToString();
+            DateOfBirth.Content = (DateTime)pc.GetById(PatientId).User.DateOfBirth;
+            Address.Content = pc.GetById(PatientId).User.Address.ToString();
+            Email.Content = pc.GetById(PatientId).User.Email.ToString();
+            TelephoneNumber.Content = pc.GetById(PatientId).User.Phone.ToString();
+
+            DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
         }
-
-
-      
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage(DoctorId);
@@ -61,15 +60,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
-            Notifications notifications = new Notifications();
+            Notifications notifications = new Notifications(DoctorId);
             notifications.Show();
-            this.Close();
-        }
-
-        private void ListOfMedBtn(object sender, RoutedEventArgs e)
-        {
-            ListOfMedicines listOfMedicines = new ListOfMedicines();
-            listOfMedicines.Show();
             this.Close();
         }
 
@@ -95,8 +87,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         public void addReport(object sender, RoutedEventArgs e)
         {
-            AddReport addReport = new AddReport(DoctorId);
+            AddReport addReport = new AddReport(DoctorId, PatientId);
             addReport.Show();
+        }
+
+        public void addAllergen(object sender, RoutedEventArgs e)
+        {
+            AddAllergen addAllergen = new AddAllergen(PatientId, DoctorId);
+            addAllergen.Show();
         }
 
         public void seeMoreLink(object sender, RoutedEventArgs e)

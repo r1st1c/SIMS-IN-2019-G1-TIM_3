@@ -1,5 +1,4 @@
 ﻿using Projekat_SIMS_IN_TIM3.Controller;
-using Projekat_SIMS_IN_TIM3.MainWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,27 +16,28 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    /// Interaction logic for DoctorsProfile.xaml
     /// </summary>
-    /// 
-    
-
-    public partial class MainPage : Window
+    public partial class DoctorsProfile : Window
     {
-
-        public String DoctorsNameAndSurname { get; set; }
         DoctorController doctorController = new DoctorController();
-        public String WelcomeMessage { get; set; }
-
         public int DoctorId { get; set; }
-        public MainPage(int doctorsId)
+        public string DoctorName { get; set; }
+
+        public DoctorsProfile(int doctorsId)
         {
             InitializeComponent();
             this.DataContext = this;
             DoctorId = doctorsId;
-            WelcomeMessage = "Welcome back, " + doctorController.GetById(doctorsId).User.Name.ToString() + "!";
-            DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
-    }
+            pname.Content = doctorController.GetById(DoctorId).User.Name.ToString();
+            surname.Content = doctorController.GetById(DoctorId).User.Surname.ToString();   
+            jmbg.Content = doctorController.GetById(DoctorId).User.Jmbg.ToString();
+            DateOfBirth.Content = Convert.ToDateTime(doctorController.GetById(DoctorId).User.DateOfBirth);
+            Address.Content = doctorController.GetById(DoctorId).User.Address.ToString();
+            Email.Content = doctorController.GetById(DoctorId).User.Email.ToString();
+            TelephoneNumber.Content = doctorController.GetById(DoctorId).User.Phone.ToString();
+            specialization.Content = doctorController.GetById(DoctorId).specializationType.ToString();
+        }
 
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
@@ -59,7 +59,6 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.Close();
         }
 
-
         private void MedVerifBtn(object sender, RoutedEventArgs e)
         {
             MedVerif medVerif = new MedVerif(DoctorId);
@@ -74,18 +73,6 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.Close();
         }
 
-        private void signOutBtn(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            DoctorSignIn doctorSign = new DoctorSignIn();
-            doctorSign.Show();  
-        }
 
-        private void myProfileBtn(object sender, RoutedEventArgs e)
-        {
-            DoctorsProfile doctorsProfile = new DoctorsProfile(DoctorId);
-            doctorsProfile.Show();
-            this.Close();
-        }
     }
 }

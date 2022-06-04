@@ -7,9 +7,11 @@
           xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="NewOperation" Height="400" Width="550">
-    <Grid>
+        Title="NewOperation" Height="600" Width="550">
+    <Grid Margin="0,0,0,-6">
         <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
@@ -26,33 +28,29 @@
 
         </Grid.ColumnDefinitions>
 
-        <Label  x:Name="labelDoctorId" Grid.Row="5" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="229,55,10,10" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" Grid.Column="1"  >
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <xctk:DateTimePicker   Height="30" Grid.Row="2" x:Name="startTime1" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="338" Margin="202,41,0,0" Grid.ColumnSpan="2" MaxWidth="340" Grid.RowSpan="2"/>
 
-        <Label  Grid.Row="0" Content="Patient" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="" Margin="2,18,0,0" Foreground="Black" FontWeight="Bold" FontSize="18" Grid.Column="0"/>
-        <ComboBox  Grid.Row="0" x:Name="patientCb" MaxWidth="340" Margin="202,18,10,7" MaxHeight="30" 
+        <Label Grid.Row="0" Grid.Column="0" FontSize="18" Margin="12,13,91,52" FontWeight="Normal" FontStyle="Italic" Grid.RowSpan="2"  >Doctor scheduling:</Label>
+        <Label Content="{Binding DoctorsNameAndSurname}"  Grid.Row="0" FontWeight="Bold" FontSize="18" Margin="184,10,141,55" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <Label FontWeight="Normal" FontSize="18" Margin="168,11,59,9" Grid.Column="1">ID:</Label>
+        <Label  x:Name="labelDoctorId" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="221,7,10,55" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.RowSpan="2"  ></Label>
+
+        <xctk:DateTimePicker   Height="30" Grid.Row="4" x:Name="startTime1" HorizontalAlignment="Left"  VerticalAlignment="Center" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="338" Margin="202,0,0,0" Grid.ColumnSpan="2" MaxWidth="340"/>
+
+        <Label  Grid.Row="1" Content="Patient" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="" Margin="16,12,0,0" Foreground="Black" FontWeight="Bold" FontSize="18" Grid.Column="0"/>
+        <ComboBox  Grid.Row="1" x:Name="patientCb" MaxWidth="340" Margin="202,10,10,14" MaxHeight="30" 
                   ItemsSource="{Binding Path=Patients}" Grid.ColumnSpan="2"/>
-        <Label  Grid.Row="1" Content="AppointmentType" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="1,6,0,0" FontWeight="Bold" Foreground="Black" FontSize="18" Width="171" Grid.Column="0"/>
-        <ComboBox Name="apptype" Grid.Row="1" MaxWidth="340" Margin="202,10,10,15" Height="30"
+        <Label  Grid.Row="2" Content="AppointmentType" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="15,13,0,0" FontWeight="Bold" Foreground="Black" FontSize="18" Width="171" Grid.Column="0"/>
+        <ComboBox Name="apptype" Grid.Row="2" MaxWidth="340" Margin="202,18,10,18" Height="30"
                   ItemsSource="{Binding Path= AppTypes}" SelectedValue="{Binding Path=AppTypeSelected}" Grid.ColumnSpan="2"/>
-        <Label  Grid.Row="1" Grid.Column="0" Content="Doctor" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Margin="2,50,0,0" FontSize="18" Grid.RowSpan="2"/>
-        <ComboBox Name="doctorCb" Grid.Row="1"  MaxWidth="340" Margin="202,54,10,26" Height="30"
-                  ItemsSource="{Binding Path=Doctors}" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-        <Label  Grid.Row="2" Grid.Column="0"  Foreground="Black" FontSize="18" Content="StartTime" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Margin="1,41,0,0" Grid.RowSpan="2"/>
-        <Label  Grid.Row="4" FontSize="18"  Foreground="Black" Content="Duration(in minutes)" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="1,0,0,0" FontWeight="Bold" Width="214" Grid.Column="0"/>
-        <TextBox x:Name="duration"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="202,13,0,12" Grid.Row="4" Height="30" HorizontalAlignment="Left" Width="338" Grid.ColumnSpan="2"/>
+        <Label  Grid.Row="3" Grid.Column="0" Content="Doctor" HorizontalAlignment="Left"  VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" Margin="14,0,0,0" FontSize="18"/>
+        <ComboBox Name="doctorCb" Grid.Row="3"  MaxWidth="340" Margin="202,17,10,18" Height="30"
+                  ItemsSource="{Binding Path=Doctors}" Grid.ColumnSpan="2" />
+        <Label  Grid.Row="4" Grid.Column="0"  Foreground="Black" FontSize="18" Content="StartTime" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Margin="11,14,0,0"/>
+        <Label  Grid.Row="6" FontSize="18"  Foreground="Black" Content="Duration(in minutes)" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="9,18,0,0" FontWeight="Bold" Width="214" Grid.Column="0"/>
+        <TextBox x:Name="duration"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="202,19,0,17" Grid.Row="6" Height="30" HorizontalAlignment="Left" Width="338" Grid.ColumnSpan="2"/>
 
-        <Label Grid.Row="5" Grid.Column="0" Content="Priority" Foreground="Black" FontSize="18" FontWeight="Bold" ></Label>
-        <ComboBox Grid.Row="5" Margin="202,1,13,19" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" >
+        <Label Grid.Row="7" Grid.Column="0" Content="Priority" Foreground="Black" FontSize="18" FontWeight="Bold" Margin="11,8,162,10" />
+        <ComboBox Grid.Row="7" Margin="202,17,13,19" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" >
             <ComboBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -65,11 +63,11 @@
             <ComboBoxItem>Date</ComboBoxItem>
         </ComboBox>
 
-        <Button  Click="showOperations" Content="Show available" Grid.Row="5" Margin="161,55,196,15" Grid.RowSpan="2" Grid.ColumnSpan="2" ></Button>
+        <Button  Click="showOperations" Content="Show available" Grid.Row="8" Margin="161,14,196,23" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="18" />
 
 
-        <Label  Grid.Row="3" Grid.Column="0"  Foreground="Black" FontSize="18" Content="FinishTime" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Margin="1,22,0,0" Grid.RowSpan="2"/>
-        <xctk:DateTimePicker   Height="30" Grid.Row="3" x:Name="finishTime" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="338" Margin="202,22,0,0" Grid.ColumnSpan="2" MaxWidth="340"/>
+        <Label  Grid.Row="5" Grid.Column="0"  Foreground="Black" FontSize="18" Content="FinishTime" HorizontalAlignment="Left"  VerticalAlignment="Center" FontWeight="Bold" Margin="11,0,0,0"/>
+        <xctk:DateTimePicker   Height="30" Grid.Row="5" x:Name="finishTime" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="338" Margin="202,14,0,0" Grid.ColumnSpan="2" MaxWidth="340"/>
 
     </Grid>
 </Window>

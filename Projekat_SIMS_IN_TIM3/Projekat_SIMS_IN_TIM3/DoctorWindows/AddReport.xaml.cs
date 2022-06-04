@@ -27,15 +27,23 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         int lastId = int.MinValue;
         ReportController reportController = new ReportController();
         PatientController patientController = new PatientController();
-        public ObservableCollection<string> Patients { get; set; }
+        DoctorController doctorController = new DoctorController();
+        
         public int DoctorId { get; set; }
+        public int PatientId { get; set; }
 
-        public AddReport(int doctorsId)
+        public string PatientNameAndSurname { get; set; }
+        public string DoctorNameAndSurname { get; set; }
+
+        public AddReport(int doctorsId, int patientId)
         {
             InitializeComponent();
             this.DataContext = this;
             DoctorId = doctorsId;
-            Patients = new ObservableCollection<string>(patientController.nameSurname());
+            PatientId = patientId;
+            PatientNameAndSurname = patientController.GetById(patientId).User.Name.ToString() + " " + patientController.GetById(patientId).User.Surname.ToString();
+            DoctorNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
+           
             AppTypes = new ObservableCollection<AppointmentType>(Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList());
         }
 
@@ -46,12 +54,9 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             AppointmentType at = AppTypeSelected;
             string pc = perceived.Text;
             string cl = conclusion.Text;
-            string pat = patientCb.SelectedItem.ToString();
-            string[]? strings = pat.Split(" ");
-            string patname = strings[0];
-            string patsurname = strings[1];
-            int patId = patientController.getIdByNameAndSurname(patname, patsurname);
-
+            int patId = PatientId;
+            
+          
             if (dt < DateTime.Now)
             {
                 MessageBox.Show("Wrong date and time! Enter new values for it!");
@@ -81,6 +86,23 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 this.Close();
             }
 
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to cancel adding report for patient " + PatientNameAndSurname + "?", "Cancelation of adding new report", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    MedicalRecord medicalRecord = new MedicalRecord(PatientId, DoctorId);
+                    medicalRecord.Show();
+                    return;
+                    break;
+
+                case MessageBoxResult.No:
+                    return;
+                    break;
+            }
         }
     }
 }

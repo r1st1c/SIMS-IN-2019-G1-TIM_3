@@ -93,49 +93,8 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                 return ls;
         }
 
-        public string getName(int id)
-        {
-            ReadJson();
-            return patients.Find(obj => obj.User.Id == id).User.Name;   
-        }
+        
 
-        public string getSurname(int id)
-        {
-            ReadJson();
-            return patients.Find(obj => obj.User.Id ==id).User.Surname;
-        }
-
-        public DateTime getDateOfBirth(int id)
-        {
-            ReadJson();
-            return patients.Find(obj => obj.User.Id ==id).User.DateOfBirth;
-        }
-
-        public string getJMBG(int id)
-        {
-            ReadJson();
-            return patients.Find(obj => obj.User.Id == id).User.Jmbg;
-        }
-
-        public string getAddress(int id)
-        {
-            ReadJson();
-            return patients.Find(obj => obj.User.Id == id).User.Address;
-        }
-
-        public string getEmail(int id)
-        {
-            ReadJson();
-            return patients.Find(obj => obj.User.Id == id).User.Email;
-        }
-
-        public string getTelNumber(int id)
-        {
-            ReadJson();
-            return patients.Find(obj => obj.User.Id == id).User.Phone;
-        }
-
-      
-
+     
     }
 }

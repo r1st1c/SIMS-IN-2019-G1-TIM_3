@@ -61,7 +61,7 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
                 }
                 if (type == 1)
                 {
-                    int doctorsId = doctorController.getIdByUsername(Username);
+                    int doctorsId =  Convert.ToInt32(doctorController.getIdByUsername(username.Text.ToString()));
                     MainPage doctorMainWindow = new MainPage(doctorsId);
                     doctorMainWindow.Show();
                 }

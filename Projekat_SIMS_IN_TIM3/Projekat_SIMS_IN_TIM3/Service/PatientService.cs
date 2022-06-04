@@ -37,40 +37,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return patientRepository.nameSurname();
         }
 
-        public string getName(int id)
-        {
-            return patientRepository.getName(id);
-        }
-
-        public string getSurname(int id)
-        {
-            return patientRepository.getSurname(id);
-        }
-
-        public DateTime getDateOfBirth(int id)
-        {
-            return patientRepository.getDateOfBirth(id);    
-        }
-
-        public string getJMBG(int id)
-        {
-            return patientRepository.getJMBG(id);   
-        }
-
-        public string getAddress(int id)
-        {
-            return patientRepository.getAddress(id);
-        }
-
-        public string getEmail(int id)
-        {
-            return patientRepository.getEmail(id);
-        }
-
-        public string getTelNumber(int id)
-        {
-            return patientRepository.getTelNumber(id);
-        }
+        
 
         public int getIdByNameAndSurname(string name, string surname)
         {

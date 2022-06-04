@@ -1,14 +1,13 @@
-﻿<Window x:Class="Projekat_SIMS_IN_TIM3.DoctorWindows.Calendar"
-        
+﻿<Window x:Class="Projekat_SIMS_IN_TIM3.DoctorWindows.DoctorsProfile"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
-        Title="Calendar" Height="900" Width="1100"
-         WindowStartupLocation="CenterScreen">
-    <Grid Height="768" Width="1024">
+        WindowStartupLocation="CenterScreen"
+        Title="DoctorsProfile" Height="900" Width="1100">
+    <Grid Height="768" Width="1024" >
         <Grid.RowDefinitions>
             <RowDefinition Height="65" />
             <RowDefinition Height="135" />
@@ -17,7 +16,6 @@
             <RowDefinition Height="135"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition  />
             <ColumnDefinition />
@@ -26,46 +24,11 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Label  Grid.Row="0" Grid.Column="2" Margin="162,10,10,5" FontWeight="Bold" FontSize="18" >ID:</Label>
-        <Label  x:Name="labelPatientId" Grid.Row="0" Grid.Column="3" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="10,0,131,0"  />
-
-        <DataGrid Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Appointments, Mode=TwoWay}" IsReadOnly="True"
-                  SelectionMode="Single" Grid.ColumnSpan="4" Margin="0,44,10,0" Grid.RowSpan="4"
-                  AutoGenerateColumns="False" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Date and time" Binding="{Binding StartTime}" Width="160" />
-                <DataGridTextColumn Header="Duration" Binding="{Binding DurationInMinutes}"  Width="57" />
-                <DataGridTextColumn Header="Room" Binding="{Binding RoomNumber}" Width="45" />
-                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="75" />
-                <DataGridTextColumn Header="Patient" Binding="{Binding PatientId}" Width="*" />
-                <DataGridTemplateColumn Header="Medical record" Width="*" >
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button x:Name="medRecordBtn" Content="Medical record" Click="medRecordBtn" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Header="Edit" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button x:Name="editApp" Content="Edit" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Header="Cancel" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button x:Name="cancelApp" Content="Cancel" Click="cancelBtn" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-            </DataGrid.Columns>
 
 
-        </DataGrid>
+        <Label Grid.Row="0" Grid.Column="2" FontSize="16" FontWeight="Bold" Margin="168,15,0,5" >ID:</Label>
+        <Label  Content="{Binding DoctorsNameAndSurname}" Grid.Row="0" Grid.Column="3" FontStyle="Normal" FontSize="20"  HorizontalAlignment="Left" Width="214" FontWeight="Bold" Margin="117,20,0,10" Grid.ColumnSpan="2"  />
+        <Label  x:Name="labelDoctorId" Grid.Column="3" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="5,0,163,0" Height="36" VerticalAlignment="Center"  />
 
         <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
         <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />
@@ -73,50 +36,36 @@
 
         <Image Source="/Icons/user_icon_195366.ico" Grid.Row="0" Grid.Column="3" Width="48" Height="48" RenderTransformOrigin="1.104,0.532" Margin="79,6,78,11"  />
         <TextBlock  Grid.Row="0" Grid.Column="3" FontStyle="Italic" FontSize="18" HorizontalAlignment="Left" Margin="148,1,0,32" Grid.ColumnSpan="2"><Run Text="You are signed in as:" Foreground="#555555"/></TextBlock>
-        <Label  Content="{Binding DoctorsNameAndSurname}" Grid.Row="0" Grid.Column="3" FontStyle="Normal" FontSize="20"  HorizontalAlignment="Right" Width="214" FontWeight="Bold" Margin="0,25,48,5" Grid.ColumnSpan="2"  />
-
-
-        <Button  Click="createNewApp" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,81,10,10" Background="#009e0f"  BorderBrush="Black" BorderThickness="2.5">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/Icons/plus-32.ico"  Width="30" Height="30" Margin="0,0,0,0" />
-                <TextBlock Text="Schedule new appointment" FontWeight="Bold" FontSize="17" Foreground="White" Margin="20,0,0,0" Width="229"/>
-            </StackPanel>
-        </Button>
-
-        <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5,130,5,96" Background="#f6b26b" BorderBrush="Black" BorderThickness="2.5" Grid.RowSpan="2" >
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/Icons/pdf-file-outlined-interface-symbol_icon-icons.com_57528.ico"  Width="30" Height="30" />
-                <TextBlock Text="Generate a list of scheduled appointments" FontWeight="Bold" FontSize="17" Foreground="Black" Margin="12,0,0,0" Width="342"/>
-
-            </StackPanel>
-
-        </Button>
 
         <Menu Grid.Row="0" Grid.Column="4" Width="64"  x:Name="menuProfileSignOut" Margin="131,0,10,134" Grid.RowSpan="2" Background="White" >
-            <MenuItem>
-                <MenuItem.Header>
-                    <Image Source="/Icons/lines_menu_burger_icon_123889.ico" Width="64" Height="78"  ></Image>
-                </MenuItem.Header>
-
-                <Button  Height="62" Width="290" BorderBrush="#c3e0e5" BorderThickness="2.5" Background="#c3e0e5" Click="signOutBtn" >
-                    <StackPanel>
-                        <Image   Width="24" Height="24"  Source="/Icons/gui_sign_out_icon_157587.ico" ></Image>
-                        <TextBlock Margin="25, 0, 0, 0" >Sign out</TextBlock>
-                    </StackPanel>
-                </Button>
-
-                <Button  Height="62" Width="290" Background="red" BorderBrush="Red" BorderThickness="2.5" Click="myProfileBtn" >
-                    <StackPanel>
-                        <Image  Width="24" Height="24"  Source="/Icons/user_icon_195366.ico"  Margin="0,0,0,0"></Image>
-                        <TextBlock Margin="25, 0,0,0" >My profile</TextBlock>
-                    </StackPanel>
-                </Button>
-
+            <MenuItem Height="58" Width="60" Background="White">
+                <MenuItem.Icon>
+                    <Image Source="/Icons/lines_menu_burger_icon_123889.ico" Margin="0,-28,-38,-22"  ></Image>
+                </MenuItem.Icon>
             </MenuItem>
+
+            <MenuItem>
+                <Button Background="#c3e0e5" >
+                    <StackPanel>
+                        <Image Source="/Icons/user_icon_195366.ico"  Margin="0,0,0,0" ></Image>
+                        <TextBlock  Text="My profile" />
+                    </StackPanel>
+                </Button>
+            </MenuItem>
+            <MenuItem>
+                <Button>
+                    <StackPanel>
+                        <Image Source="/Icons/gui_sign_out_icon_157587.ico" Margin="0,0,0,0"></Image>
+                        <TextBlock  Text="Sign out" Margin="25,0,0,0" />
+                    </StackPanel>
+                </Button>
+            </MenuItem>
+
+
 
         </Menu>
         <Rectangle  Grid.Row="1" Grid.ColumnSpan="4"  Stroke="#FFE5D9C3"  Fill="#e5d9c3" Grid.Column="1" Margin="0,0,0,64"  />
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1"  Text="Calendar" FontWeight="Bold" FontStyle="Normal" FontSize="36" Margin="10,17,0,74"  Grid.Column="1" Grid.ColumnSpan="2" Width="311"/>
+        <TextBlock HorizontalAlignment="Left" Grid.Row="1"  Text="My profile" FontWeight="Bold" FontStyle="Normal" FontSize="36" Margin="10,11,0,60"  Grid.Column="1" Grid.ColumnSpan="2" Width="311"/>
 
         <Rectangle   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0"  Fill="#c3e0e5" Stroke="#c3e0e5" Margin="0,2,10,103" Height="165" Grid.RowSpan="2"    />
         <TextBlock   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top"  Text="Calendar" FontWeight="Bold" Margin="59,118,63,0" Height="30" FontSize="20" Grid.RowSpan="2"  />
@@ -136,17 +85,28 @@
         <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="5" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="absence" FontWeight="Bold" FontSize="18"  Width="107" Margin="69,105,0,0"  />
         <TextBlock  MouseLeftButtonDown="AbsenceReqBtn" HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Top"  Text="request" FontWeight="Bold" FontSize="18" Margin="0,127,0,0"  />
         <Image Source="/Icons/note_pen_icon_174377.ico"  Grid.Row="5" Grid.Column="0" Width="76" Height="76" Margin="64,12,65,75"  />
-        <Button  Click="createNewOp" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Margin="5,81,5,10" Background="#009e0f"  BorderBrush="Black" BorderThickness="2.5">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/Icons/plus-32.ico"  Width="30" Height="30" Margin="0,0,0,0" />
-                <TextBlock Text="Schedule new operation" FontWeight="Bold" FontSize="17" Foreground="White" Margin="20,0,0,0" Width="229"/>
 
-            </StackPanel>
+        <!--  Medical record - information, labels&data -->
+        <Label  Foreground="Black" Grid.Row="2" Grid.Column="1" FontSize="22" FontWeight="Bold" Margin="10,19,40,73">Name</Label>
+        <Label  x:Name="pname"  BorderBrush="Black"  BorderThickness="2" Content=""   Grid.Row="2" Grid.Column="2" Margin="10,19,10,71" Grid.ColumnSpan="3" FontSize="22" />
+        <Label  Foreground="Black"   Grid.Row="3" Grid.Column="1" FontSize="22" FontWeight="Bold" Margin="11,90,204,133" Grid.ColumnSpan="2" Content="JMBG" Grid.RowSpan="2"/>
+        <Label  Foreground="Black"  Grid.Row="2" Grid.Column="1" FontSize="22" FontWeight="Bold" Margin="8,86,1,7" Content="Surname"/>
+        <Label  Foreground="Black"  Grid.Row="3" Grid.Column="1" FontSize="22" FontWeight="Bold" Margin="8,23,1,70" Content="Specialization"  />
+        <Label  Foreground="Black"  Grid.Row="4" Grid.Column="1" FontSize="22" FontWeight="Bold" Margin="8,16,3,74" Content="Date of birth"/>
+        <Label  Foreground="Black"  Grid.Row="4" Grid.Column="1" FontSize="22" FontWeight="Bold" Margin="5,78,6,12" Content="Address" Height="45"/>
+        <Label  Foreground="Black"  Grid.Row="5" FontSize="22" FontWeight="Bold" Margin="5,67,193,38" Content="Telephone number" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Label  Foreground="Black"  Grid.Row="5" Grid.Column="1" FontSize="22" FontWeight="Bold" Margin="5,9,6,109" Content="Email" Height="45"/>
+        <Label x:Name="jmbg" Content=""  BorderThickness="2" BorderBrush="Black" Grid.Row="3" Grid.Column="2" Height="45" Margin="10,84,10,6" Grid.ColumnSpan="3" FontSize="22" />
+        <Label x:Name="surname" Content=""  BorderThickness="2" BorderBrush="Black" Grid.Row="2" Grid.Column="2" Height="45" Margin="10,80,10,10" Grid.ColumnSpan="3" FontSize="22" />
+        <Label x:Name="specialization" Content=""  BorderThickness="2" BorderBrush="Black" Grid.Row="3" Grid.Column="2" Height="45" Margin="10,21,10,69" Grid.ColumnSpan="3" FontSize="22" />
 
-        </Button>
-
+        <Label x:Name="DateOfBirth"  Content="" BorderThickness="2" BorderBrush="Black" Grid.Row="4" Grid.Column="2" Height="45" Margin="10,17,10,73" Grid.ColumnSpan="3" FontSize="22" />
+        <Label  x:Name="Address"  Content="" BorderThickness="2" BorderBrush="Black" Grid.Row="4" Grid.Column="2" Height="45" Margin="10,80,10,10" Grid.ColumnSpan="3" FontSize="22" />
+        <Label  Name="Email"  Content="" BorderThickness="2" BorderBrush="Black" Grid.Row="5" Grid.Column="2" Height="45" Margin="10,5,10,113" Grid.ColumnSpan="3" FontSize="22" />
+        <Label   x:Name="TelephoneNumber" Content="" BorderThickness="2" BorderBrush="Black" Grid.Row="5" Grid.Column="2" Height="48" Margin="10,62,10,53" Grid.ColumnSpan="3" FontSize="22" />
+        <Rectangle  Grid.Row="1" Grid.ColumnSpan="4"  Stroke="#c3e0e5"  Fill="#c3e0e5" Grid.Column="1" Margin="0,84,0,24" Height="27"  />
+        <TextBlock HorizontalAlignment="Left" Grid.Row="1"  Text="PERSONAL INFORMATION" FontWeight="Bold" FontStyle="Normal" FontSize="18" Margin="11,86,0,25"  Grid.Column="1" Width="225" Grid.ColumnSpan="2"/>
 
 
     </Grid>
-
 </Window>

@@ -26,12 +26,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         AbsenceRequestController absenceRequestController = new AbsenceRequestController();
         AppointmentController appointmentController = new AppointmentController();
         DoctorController doctorController = new DoctorController();
+        public String DoctorsNameAndSurname { get; set; }
 
         public CreateAbsenceReq(int doctorsId)
         {
             
             InitializeComponent();
             DoctorId = doctorsId;
+            DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
         }
 
         private void HomeBtn(object sender, RoutedEventArgs e)
@@ -49,15 +51,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
-            Notifications notifications = new Notifications();
+            Notifications notifications = new Notifications(DoctorId);
             notifications.Show();
-            this.Close();
-        }
-
-        private void ListOfMedBtn(object sender, RoutedEventArgs e)
-        {
-            ListOfMedicines listOfMedicines = new ListOfMedicines();
-            listOfMedicines.Show();
             this.Close();
         }
 

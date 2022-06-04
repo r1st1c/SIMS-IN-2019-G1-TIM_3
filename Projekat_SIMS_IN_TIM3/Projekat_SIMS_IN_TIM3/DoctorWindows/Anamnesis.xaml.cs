@@ -55,10 +55,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             
         }
 
-        
-
-    
-        private void HomeBtn(object sender, RoutedEventArgs e)
+       
+         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage(DoctorId);
             mainPage.Show();
@@ -80,15 +78,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
-            Notifications notifications = new Notifications();
+            Notifications notifications = new Notifications(DoctorId);
             notifications.Show();
-            this.Close();
-        }
-
-        private void ListOfMedBtn(object sender, RoutedEventArgs e)
-        {
-            ListOfMedicines listOfMedicines = new ListOfMedicines();
-            listOfMedicines.Show();
             this.Close();
         }
 

@@ -1,13 +1,12 @@
-﻿<Window x:Class="Projekat_SIMS_IN_TIM3.DoctorWindows.MedVerif"
+﻿<Window x:Class="Projekat_SIMS_IN_TIM3.DoctorWindows.AbsenceRequestNotifications"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
-         WindowStartupLocation="CenterScreen"
-        Title="MedVerif" Height="900" Width="1100">
-    <Grid Height="768" Width="1024" >
+        Title="AbsenceRequestNotifications" Height="900" Width="1100">
+    <Grid  Height="768" Width="1024">
         <Grid.RowDefinitions>
             <RowDefinition Height="65" />
             <RowDefinition Height="135" />
@@ -15,6 +14,7 @@
             <RowDefinition Height="135"/>
             <RowDefinition Height="135"/>
             <RowDefinition />
+
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -27,80 +27,24 @@
 
         </Grid.ColumnDefinitions>
 
-        <Label  Grid.Row="0" Grid.Column="2" Margin="162,10,10,5" FontWeight="Bold" FontSize="18" >ID:</Label>
-        <Label  x:Name="labelPatientId" Grid.Row="0" Grid.Column="3" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="10,0,131,0"  />
 
-        <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5"
-                  IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False"
-                  ItemsSource="{Binding UnverifiedMedicines, Mode=TwoWay}" Margin="0,91,0,0">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="NAME" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
-                <DataGridTemplateColumn Header="INGREDIENTS" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ComboBox  ItemsSource="{Binding Ingredients}" IsEditable="False"  IsReadOnly="True"></ComboBox>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="VERIFY" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button x:Name="verifBtn" Content="VERIFY" Click="verifyClick"></Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Header="REJECT" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button x:Name="rejectBtn" Click="rejectClick" Content="REJECT"></Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-
-                </DataGridTemplateColumn>
-
-            </DataGrid.Columns>
-
-        </DataGrid>
+        <Label Grid.Row="1" Grid.Column="1" FontWeight="Bold" FontSize="20" Margin="300,13,77,13" Grid.ColumnSpan="2" >Identification number:
+        </Label>
+        <Label  x:Name="labelPatientId" Grid.Row="1" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="20" FontWeight="Bold" Margin="275,10,18,11"  />
 
         <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
         <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />
         <TextBlock  MouseLeftButtonDown="HomeBtn" FontStyle="Italic" FontSize="18" Height="40" HorizontalAlignment="Left"  Text="A leader in innovation, at the service of the patient" Grid.ColumnSpan="3" Margin="78,34,0,126" Grid.RowSpan="2" Width="461" />
 
+        <Label Grid.Column="2" FontWeight="Bold" FontSize="20" Margin="149,14,0,19" >ID:</Label>
+        <Label  x:Name="PatientId" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="20" FontWeight="Bold" Margin="193,13,147,7" Grid.ColumnSpan="2"  />
+
         <Image Source="/Icons/user_icon_195366.ico" Grid.Row="0" Grid.Column="3" Width="48" Height="48" RenderTransformOrigin="1.104,0.532" Margin="79,6,78,11"  />
         <TextBlock  Grid.Row="0" Grid.Column="3" FontStyle="Italic" FontSize="18" HorizontalAlignment="Left" Margin="148,1,0,32" Grid.ColumnSpan="2"><Run Text="You are signed in as:" Foreground="#555555"/></TextBlock>
         <Label  Content="{Binding DoctorsNameAndSurname}" Grid.Row="0" Grid.Column="3" FontStyle="Normal" FontSize="20"  HorizontalAlignment="Right" Width="214" FontWeight="Bold" Margin="0,25,48,5" Grid.ColumnSpan="2"  />
 
-        <Menu Grid.Row="0" Grid.Column="4" Width="64"  x:Name="menuProfileSignOut" Margin="131,0,10,134" Grid.RowSpan="2" Background="White" >
-            <MenuItem Height="58" Width="60" Background="White">
-                <MenuItem.Icon>
-                    <Image Source="/Icons/lines_menu_burger_icon_123889.ico" Margin="0,-28,-38,-22"  ></Image>
-                </MenuItem.Icon>
-            </MenuItem>
-
-            <MenuItem>
-                <Button Background="#c3e0e5" >
-                    <StackPanel>
-                        <Image Source="/Icons/user_icon_195366.ico"  Margin="0,0,0,0" ></Image>
-                        <TextBlock  Text="My profile" />
-                    </StackPanel>
-                </Button>
-            </MenuItem>
-            <MenuItem>
-                <Button>
-                    <StackPanel>
-                        <Image Source="/Icons/gui_sign_out_icon_157587.ico" Margin="0,0,0,0"></Image>
-                        <TextBlock  Text="Sign out" Margin="25,0,0,0" />
-                    </StackPanel>
-                </Button>
-            </MenuItem>
-
-
-
-        </Menu>
         <Rectangle  Grid.Row="1" Grid.ColumnSpan="4"  Stroke="#FFE5D9C3"  Fill="#e5d9c3" Grid.Column="1" Margin="0,0,0,64"  />
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1"  Text="Medicine verification" FontWeight="Bold" FontStyle="Normal" FontSize="36" Margin="10,17,0,74"  Grid.Column="1" Grid.ColumnSpan="2" Width="372"/>
+        <TextBlock HorizontalAlignment="Left" Grid.Row="1" FontWeight="Bold" FontStyle="Normal" FontSize="36" Margin="10,17,0,74"  Grid.Column="1" Width="594" Grid.ColumnSpan="3"><Run Text="Absence requests notifications"/><LineBreak/><Run/></TextBlock>
 
         <Rectangle   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0"  Fill="#c3e0e5" Stroke="#c3e0e5" Margin="0,2,10,103" Height="165" Grid.RowSpan="2"    />
         <TextBlock   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top"  Text="Calendar" FontWeight="Bold" Margin="59,118,63,0" Height="30" FontSize="20" Grid.RowSpan="2"  />
@@ -120,10 +64,5 @@
         <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="5" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="absence" FontWeight="Bold" FontSize="18"  Width="107" Margin="69,105,0,0"  />
         <TextBlock  MouseLeftButtonDown="AbsenceReqBtn" HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Top"  Text="request" FontWeight="Bold" FontSize="18" Margin="0,127,0,0"  />
         <Image Source="/Icons/note_pen_icon_174377.ico"  Grid.Row="5" Grid.Column="0" Width="76" Height="76" Margin="64,12,65,75"  />
-
-
-
-
-
     </Grid>
 </Window>
