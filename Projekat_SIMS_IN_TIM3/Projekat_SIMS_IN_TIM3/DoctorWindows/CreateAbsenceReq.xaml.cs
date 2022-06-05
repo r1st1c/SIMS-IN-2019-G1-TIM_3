@@ -106,19 +106,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 doctorController.GetById(DoctorId).specializationType,
                 start,
                 end);
-    /*
-            if (isThereDoctor == true)
-            {
-                MessageBox.Show("At least one doctor with same specialization has already sent absence request at this period of time!");
-                return;
-            }
-
-            if (isFree == false)
-            {
-                MessageBox.Show("You have scheduled appointments during chosen period of absence!");
-                return;
-            }
-    */
+  
             if (twoDaysRule == false)
             {
                 MessageBox.Show("Your first day of request absence must be at least 2 days from today's day!");
@@ -154,13 +142,6 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 }
             }
 
-
-
-            // check if doctors has scheduled operations during chosen interval of time
-
-          
-
-
         }
 
         public bool isUrgent()
@@ -191,7 +172,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             }
         }
 
-
+        private void StartDemoButtonClick(object sender, RoutedEventArgs e)
+        {
+            DemoAbsenceRequest demo = new DemoAbsenceRequest(DoctorId);
+            demo.Show();
+        }
 
     }
 }

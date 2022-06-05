@@ -16,10 +16,17 @@ namespace Projekat_SIMS_IN_TIM3.Model
 
         public int DoctorId { get; set; }
         public RequestStatus requestStatus { get; set; }
+        public string RejectionExplanation { get; set; }
         public enum RequestStatus{
             OnHold,
             Accepted,
             Rejected
+        }
+
+        public AbsenceRequest(int id, DateTime startDate, DateTime endDate, string additionalExplanation, bool isUrgent, int doctorId, RequestStatus requestStatus, string rejectionExplanation) : this(id, startDate, endDate, additionalExplanation, isUrgent, doctorId, requestStatus)
+        {
+          
+            RejectionExplanation = rejectionExplanation;
         }
 
         public AbsenceRequest(int id, DateTime startDate, DateTime endDate, string additionalExplanation, bool isUrgent, int doctorId)

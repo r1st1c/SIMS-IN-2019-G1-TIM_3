@@ -32,6 +32,7 @@
         <TextBlock  Grid.Row="0" Grid.Column="2" FontStyle="Italic" FontSize="18" HorizontalAlignment="Left" Margin="0,0,0,33"><Run Text="You are signed in as:" Foreground="#555555"/></TextBlock>
         <Label  Content="{Binding DoctorsNameAndSurname}" Grid.Row="0" Grid.Column="2" FontStyle="Normal" FontSize="20"  HorizontalAlignment="Right" Width="214" FontWeight="Bold" Margin="0,26,123,4"  />
 
+       
 
         <Menu Grid.Row="0" Grid.Column="2" Width="64" HorizontalAlignment="Left" x:Name="menuProfileSignOut" Background="White" Margin="267,0,0,8" >
             <MenuItem >

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Projekat_SIMS_IN_TIM3.Interfaces;
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class AbsenceRequestRepository
+    public class AbsenceRequestRepository : IAbsenceRequestNotificationRepository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\absenceRequests.json";
         public List<AbsenceRequest> requests { get; set; } = new List<AbsenceRequest>();

@@ -39,6 +39,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
     }
 
+       
+
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage(DoctorId);
