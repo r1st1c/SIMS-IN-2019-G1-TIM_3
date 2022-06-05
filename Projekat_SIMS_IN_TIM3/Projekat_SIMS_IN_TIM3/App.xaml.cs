@@ -24,6 +24,7 @@ namespace Projekat_SIMS_IN_TIM3
         public readonly MedicinePrescriptionController medPrescriptionController = new MedicinePrescriptionController();
         public readonly MedicineController medicineController = new MedicineController();
         public readonly HospitalController hospitalController = new HospitalController();
+        public readonly NoteController noteController = new NoteController();
         public string id;
         internal object doctorController;
     }

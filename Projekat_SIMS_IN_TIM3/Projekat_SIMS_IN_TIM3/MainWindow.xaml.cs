@@ -74,8 +74,10 @@ namespace Projekat_SIMS_IN_TIM3
                 }
                 if (type == 3)
                 {
-                    PatientMainWindow patientMainWindow = new PatientMainWindow(Username);
-                    patientMainWindow.Show();
+                    /*PatientMainWindow patientMainWindow = new PatientMainWindow(Username);
+                    patientMainWindow.Show();*/
+                    MainWindowPatient mainWindowPatient = new MainWindowPatient(Username);
+                    mainWindowPatient.Show();
                 }
                 this.Close();
             }

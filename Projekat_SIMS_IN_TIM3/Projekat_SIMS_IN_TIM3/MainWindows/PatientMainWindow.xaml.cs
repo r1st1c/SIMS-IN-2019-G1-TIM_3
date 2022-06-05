@@ -49,11 +49,11 @@ namespace Projekat_SIMS_IN_TIM3
             searchAppointments.Show();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        /*private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Notifications notifications = new Notifications(Username);
+            PatientXaml.Notifications notifications = new PatientXaml.Notifications(Username);
             notifications.Show();
-        }
+        }*/
 
         private void GradeHosp_Click(object sender, RoutedEventArgs e)
         {
