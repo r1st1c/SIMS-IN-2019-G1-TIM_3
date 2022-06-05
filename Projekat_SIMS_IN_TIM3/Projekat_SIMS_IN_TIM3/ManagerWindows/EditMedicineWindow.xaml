@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
         mc:Ignorable="d"
-        Title="AddMedicine" Height="400" Width="350">
+        Title="AddMedicine" Height="400" Width="350"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1.1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.6*" />
@@ -20,13 +22,14 @@
             <RowDefinition Height="1.6*" />
         </Grid.RowDefinitions>
         <TextBlock Text="Editing Rejected Medicine" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="28" Margin="0,10,0,0"/>
-        <TextBlock FontWeight="Bold" Text="*Note ALL fields are necessary" Foreground="Red" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Margin="0,0,0,10"/>
+        <TextBlock FontWeight="Bold" Text="!!!Note ALL fields are necessary!!!" Foreground="Red" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
         <TextBlock Text="Medicine Name:" FontSize="16" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="33,0,0,0"/>
         <TextBox x:Name="medName" TextWrapping="Wrap" FontSize="16" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Left" Width="128"/>
 
         <TextBlock Text="Replacement:" FontSize="16" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="33,0,0,0"/>
-        <ComboBox x:Name="repMed" FontSize="16" ItemsSource="{Binding Path=MedicineList}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,47,0"/>
+        <ComboBox x:Name="repMed" Height="28" FontSize="16" ItemsSource="{Binding Path=MedicineList}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,47,0"/>
+        <Button Grid.Column="1" Content="Clear" Margin="133,0,5,0" Grid.Row="2" VerticalAlignment="Center" Click="Clear_Click" Height="28"/>
 
         <TextBlock Text="Ingredients:" FontSize="16" Grid.Row="3" VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="33,0,0,0"/>
         <ListBox x:Name="selIngr" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,47,0"  ItemsSource="{Binding Path=Ingredients}" SelectionMode="Multiple" >
@@ -41,6 +44,5 @@
 
         <Button Content="Confirm" Background="Lime" FontWeight="Bold" Click="Confirm_Button" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" Width="100"  Height="32" Margin="32,0,0,0"/>
         <Button Content="Cancel" Background="Red" FontWeight="Bold" Click="Cancel_Button" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Right"  Width="100"  Height="32" Margin="0,0,32,0"/>
-
     </Grid>
 </Window>

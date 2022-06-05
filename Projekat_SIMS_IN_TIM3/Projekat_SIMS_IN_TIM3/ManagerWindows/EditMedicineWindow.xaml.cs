@@ -103,5 +103,10 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             Close();
         }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            this.repMed.SelectedIndex = -1;
+        }
     }
 }

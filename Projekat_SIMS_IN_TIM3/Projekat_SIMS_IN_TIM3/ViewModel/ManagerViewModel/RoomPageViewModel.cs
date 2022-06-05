@@ -1,28 +1,22 @@
-﻿using Projekat_SIMS_IN_TIM3.Controller;
-using Projekat_SIMS_IN_TIM3.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Projekat_SIMS_IN_TIM3.Commands;
+using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.ManagerWindows;
+using Projekat_SIMS_IN_TIM3.Model;
 
-namespace Projekat_SIMS_IN_TIM3.ManagerWindows
+namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
 {
-    /// <summary>
-    /// Interaction logic for RoomPage.xaml
-    /// </summary>
-    public partial class RoomPage : Page
+    public class RoomPageViewModel
     {
+        #region Fields
         public RoomController roomController = new RoomController();
         public RenovationTermController renovationTermController = new();
 
@@ -30,36 +24,52 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public SplitTermController SplitTermController { get; set; } = new SplitTermController();
         public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public static ObservableCollection<Room> Rooms { get; set; }
+        public RelayCommand AddCommand { get; set; }
+        public RelayCommand EditCommand { get; set; }
+        public RelayCommand DeleteCommand { get; set; }
+        public RelayCommand BasicCommand { get; set; }
+        public RelayCommand MergeCommand { get; set; }
+        public RelayCommand SplitCommand { get; set; }
+        #endregion
 
-        public RoomPage()
+        #region Constructor
+
+        public RoomPageViewModel()
         {
-            InitializeComponent();
             this.renovationTermController.DisableRenovatingRooms();
             this.MergeTermController.DisableMergingRooms();
             this.MergeTermController.ExecuteMerging();
             this.SplitTermController.DisableSplittingRooms();
             this.SplitTermController.ExecuteSplitting();
-            this.DataContext = this;
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
+            DeleteCommand = new RelayCommand(DeleteRoom);
+            EditCommand = new RelayCommand(EditRoom);
+            MergeCommand = new RelayCommand(MergeRoom);
+            SplitCommand = new RelayCommand(SplitRoom);
+            AddCommand = new RelayCommand(AddRoom);
+            BasicCommand = new RelayCommand(BasicRoom);
         }
+        #endregion
 
-        private void Add_Room_Click(object sender, RoutedEventArgs e)
+        #region Methods
+
+        public void AddRoom(object parameter)
         {
             var addRoom = new AddRoom();
             addRoom.ShowDialog();
         }
 
-        private void Edit_Room_Click(object sender, RoutedEventArgs e)
+        public void EditRoom(object parameter)
         {
-            Room room = (Room)((Button)e.Source).DataContext;
+            Room room = this.roomController.GetById((int)parameter);
             int id = room.Id;
             var change = new EditRoomWindow(id);
             change.ShowDialog();
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        public void DeleteRoom(object parameter)
         {
-            Room room = (Room)((Button)e.Source).DataContext;
+            Room room = this.roomController.GetById((int)parameter);
             if (room.Id == 0)
             {
                 MessageBox.Show("Default storage room cant be deleted!");
@@ -69,25 +79,27 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             Rooms.Remove(room);
             this.roomController.DeleteById(room.Id);
         }
-
-        private void Basic_Click(object sender, RoutedEventArgs e)
+        private void BasicRoom(object parameter)
         {
-            Room room = (Room)((Button)e.Source).DataContext;
+            Room room = this.roomController.GetById((int)parameter);
             var basic = new BasicRenovationWindow(room);
             basic.ShowDialog();
         }
 
-        private void Merge_Click(object sender, RoutedEventArgs e)
+        private void MergeRoom(object parameter)
         {
             var merge = new MergeRoomsWindow();
             merge.ShowDialog();
         }
 
-        private void Split_Click(object sender, RoutedEventArgs e)
+        private void SplitRoom(object parameter)
         {
-            Room room = (Room)((Button)e.Source).DataContext;
+            Room room = this.roomController.GetById((int)parameter);
             var split = new SplitRoomWindow(room);
             split.ShowDialog();
         }
+
+
+        #endregion
     }
 }

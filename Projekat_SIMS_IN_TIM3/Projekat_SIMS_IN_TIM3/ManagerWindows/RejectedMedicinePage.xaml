@@ -21,7 +21,7 @@
             <RowDefinition Height="6*"/>
     </Grid.RowDefinitions>
 
-        <DataGrid  Grid.ColumnSpan="6" x:Name="RejectedMedicine" Grid.Row="1" ItemsSource="{Binding RejectedMedicines}" IsReadOnly="True" 
+        <DataGrid  Grid.ColumnSpan="6" x:Name="RejectedMedicine" Grid.Row="1" ItemsSource="{Binding Rejected}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
         <DataGrid.Columns>
             <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.15*"/>

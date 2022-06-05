@@ -18,6 +18,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Projekat_SIMS_IN_TIM3.View.ManagerView;
+using Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
@@ -115,7 +117,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             if (succWritten)
             {
                 Debug.Write("Room successfully written in csv");
-                RoomPage.Rooms.Add(room);
+                RoomPageViewModel.Rooms.Add(room);
                 Close();
             }
         }

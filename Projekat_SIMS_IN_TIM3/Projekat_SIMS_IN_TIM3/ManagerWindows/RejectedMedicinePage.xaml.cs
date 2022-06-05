@@ -23,18 +23,18 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class RejectedMedicinePage : Page
     {
-        public ObservableCollection<Medicine> RejectedMedicines { get; set; } = new ObservableCollection<Medicine>();
+        public ObservableCollection<Medicine> Rejected { get; set; } = new ObservableCollection<Medicine>();
         public MedicineController medicineController = new MedicineController();
         public RejectedMedicinePage()
         {
             InitializeComponent();
             this.DataContext = this;
-            RejectedMedicines = new ObservableCollection<Medicine>(this.medicineController.GetRejected());
+            this.Rejected = new ObservableCollection<Medicine>(medicineController.GetRejected());
         }
         private void Edit_Medicine_Click(object sender, RoutedEventArgs e)
         {
             Medicine selected = (Medicine)((Button)e.Source).DataContext;
-            var change = new EditMedicineWindow(selected,this.RejectedMedicines);
+            var change = new EditMedicineWindow(selected,this.Rejected);
             change.ShowDialog();
         }
     }

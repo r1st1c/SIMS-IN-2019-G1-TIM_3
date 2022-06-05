@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Medicine = Projekat_SIMS_IN_TIM3.Model.Medicine;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
@@ -24,24 +25,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class UnapprovedMedicinePage : Page
     {
-        public ObservableCollection<Medicine> all { get; set; } = new ObservableCollection<Medicine>();
-        public MedicineController medicineController = new MedicineController();
-        public UnapprovedMedicinePage()
+        public ObservableCollection<Medicine> Unapproved { get; set; } = new ObservableCollection<Medicine>();
+        public UnapprovedMedicinePage(ObservableCollection<Medicine> unapproved)
         {
-            /*List<MedicineIngredient> brufenIngredients = new List<MedicineIngredient>();
-            brufenIngredients.Add(new MedicineIngredient("Ibuprofen"));
-            Medicine toAdd = new Medicine(0, "Brufen", brufenIngredients,true,null);
-            this.medicineController.Create(toAdd);*/
             InitializeComponent();
             this.DataContext = this;
-            var list = this.medicineController.GetUnverified();
-            all = new ObservableCollection<Medicine>(list);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var add = new AddMedicineWindow(all);
-            add.ShowDialog();
+            this.Unapproved = unapproved;
         }
     }
 }

@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.View.ManagerView;
+using Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
@@ -78,7 +80,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             MergeRenovationTerm rt = (MergeRenovationTerm)((Button)e.Source).DataContext;
             this.MergeTermController.ScheduleMerge(rt);
-            foreach (var room in RoomPage.Rooms)
+            foreach (var room in RoomPageViewModel.Rooms)
             {
                 if (RoomWasFound(room, rt) && StartDatePassed(rt) && EndDayHasntPassed(rt))
                 {

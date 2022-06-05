@@ -16,6 +16,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Projekat_SIMS_IN_TIM3.View.ManagerView;
+using Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
@@ -93,7 +95,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                     return;
                 }
             }
-            List<Room> roomList = RoomPage.Rooms.ToList();
+            List<Room> roomList = RoomPageViewModel.Rooms.ToList();
             foreach (var room in roomList.Where(x => x.Id == toUpdate.Id))
             {
                 room.Name = NewRoomName;

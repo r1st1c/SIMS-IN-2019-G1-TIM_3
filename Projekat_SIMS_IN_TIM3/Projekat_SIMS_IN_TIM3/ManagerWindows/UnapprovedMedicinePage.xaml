@@ -18,11 +18,10 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.4*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid  Grid.ColumnSpan="6" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding all}" IsReadOnly="True" 
+        <DataGrid  Grid.ColumnSpan="6" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding Unapproved}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.15*"/>
@@ -32,22 +31,11 @@
                 <DataGridTemplateColumn Header="Ingredients" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding Ingredients}" IsEditable="False" Text="Ingredients" IsReadOnly="True"/> 
+                            <ComboBox ItemsSource="{Binding Ingredients}" IsEditable="False" Text="Ingredients" IsReadOnly="True"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-
-        <Button Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click">
-            <Button.ContentTemplate>
-                <DataTemplate>
-                    <Viewbox MaxHeight="55">
-                        <TextBlock>Add Medicine</TextBlock>
-                    </Viewbox>
-                </DataTemplate>
-            </Button.ContentTemplate>
-        </Button>
     </Grid>
 </Page>

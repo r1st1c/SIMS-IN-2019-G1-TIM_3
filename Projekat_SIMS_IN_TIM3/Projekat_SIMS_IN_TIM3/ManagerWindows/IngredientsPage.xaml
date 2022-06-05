@@ -20,12 +20,13 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.025*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="ingredientName" FontSize="16" Grid.Column="2" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Center" Width="252"  adorners:Watermark.Text="New Ingredient Name" adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused" Margin="5,0,0,0"/>
-
-        <Button Grid.Row="0" Grid.Column="3"  Click="Add_Ingredient_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <TextBox x:Name="ingredientName" FontSize="20" Grid.Column="2"  TextWrapping="Wrap" VerticalAlignment="Center"  Height="30" adorners:Watermark.Text="New Ingredient Name..." adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused" Margin="5,0,10,0"/>
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="7" Fill="Black"></Rectangle>
+        <Button Grid.Column="3"  Click="Add_Ingredient_Click" Margin="10,0,0,0" FontSize="20" HorizontalAlignment="Left" Width="132" Height="30" VerticalAlignment="Center">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
@@ -35,13 +36,13 @@
             </Button.ContentTemplate>
         </Button>
 
-        <DataGrid  Grid.ColumnSpan="7" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding Ingredients}" IsReadOnly="True" 
+        <DataGrid  Grid.ColumnSpan="7" x:Name="dataRoom" Grid.Row="2" ItemsSource="{Binding Ingredients}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.1*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Add New Ingredient:" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Add New Ingredient:" VerticalAlignment="Center" FontSize="20"/>
     </Grid>
 </Page>

@@ -35,11 +35,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Add_Ingredient_Click(object sender, RoutedEventArgs e)
         {
-            MedicineIngredient added = this.medicineIngredientController.Create(new MedicineIngredient(ingredientName.Text));
-            if(added != null)
+            if(String.IsNullOrWhiteSpace(ingredientName.Text))
             {
-                Ingredients.Add(added);
+                MessageBox.Show("Ingredient name can not be null!");
+                return;
             }
+            Ingredients.Add(this.medicineIngredientController.Create(new MedicineIngredient(ingredientName.Text)));
         }
     }
 }
