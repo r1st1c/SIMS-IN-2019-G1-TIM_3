@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
+using Projekat_SIMS_IN_TIM3.Commands;
 using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.Model;
 
@@ -29,32 +30,33 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         public DoctorController doctorController = new DoctorController();
         public ObservableCollection<Doctor> Doctors { get; set; } = new ObservableCollection<Doctor>();
-        public List<HospitalGradeDTO> HospitalGrades { get; set; } = new List<HospitalGradeDTO>();
+        public List<HospitalGrade> HospitalGrades { get; set; } = new List<HospitalGrade>();
         public SeriesCollection DoctorAverageGrades { get; set; }
+        public SeriesCollection HospitalGradesCount { get; set; }
 
         public HospitalGradeController hospitalGradeController;
 
         public DoctorGradeController doctorGradeController;
-
-        /*public ObservableValue DoctorKnowledge { get; set; }
-        public ObservableValue DoctorHelpfulness { get; set; }
-        public ObservableValue DoctorPunctuality { get; set; }
-        public ObservableValue DoctorPleasantness { get; set; }*/
-        public string[] Labels { get; set; } = new[] { "Knowledge", "Helpfulness", "Punctuality", "Pleasantness" };
-
+        public RelayCommand HospitalGradeChange { get; set; }
+        public string[] DoctorLabels { get; set; } = new[] { "Knowledge", "Helpfulness", "Punctuality", "Pleasantness" };
+        public string[] HospitalLabels { get; set; } = new[] { "Room", "Staff", "Hospitality", "Location", "Cleanliness" };
 
         public PollPage()
         {
             var app = Application.Current as App;
             this.hospitalGradeController = app.hospitalGradeController;
             this.doctorGradeController = app.doctorGradeController;
+            HospitalGradeChange = new RelayCommand(HospitalGradeChanged);
             InitializeComponent();
             DoctorAverageGrades = new SeriesCollection
             {
             };
-
-            this.DataContext = this;
+            HospitalGradesCount = new SeriesCollection
+            {
+            };
+            this.HospitalGrades = this.hospitalGradeController.GetAll();
             this.Doctors = new ObservableCollection<Doctor>(this.doctorController.GetAll());
+            this.DataContext = this;
         }
 
         private void Show_Stats_Click(object sender, RoutedEventArgs e)
@@ -97,6 +99,73 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Clear_Doctor_Chart_Click(object sender, RoutedEventArgs e)
         {
             this.DoctorGradeChart.Series.Clear();
+        }
+
+        private void HospitalGradeChanged(object parameter)
+        {
+            this.PieHospitalGrades.Series.Clear();
+            int selectedGrade = Int32.Parse((string)parameter);
+            HospitalGrade grades = new HospitalGrade(0, 0, 0, 0, 0);
+            foreach (var grade in HospitalGrades)
+            {
+                if (grade.RoomGrade == selectedGrade)
+                {
+                    grades.RoomGrade++;
+                }
+                if (grade.StaffGrade == selectedGrade)
+                {
+                    grades.StaffGrade++;
+                }
+                if (grade.HospitalityGrade == selectedGrade)
+                {
+                    grades.HospitalityGrade++;
+                }
+                if (grade.LocationGrade == selectedGrade)
+                {
+                    grades.LocationGrade++;
+                }
+                if (grade.CleanlinessGrade == selectedGrade)
+                {
+                    grades.CleanlinessGrade++;
+                }
+            }
+            var toAdd = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title= "Room Grade",
+                    Values = new ChartValues<ObservableValue> {new ObservableValue(grades.RoomGrade)},
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                Title= "Staff Grade",
+                Values = new ChartValues<ObservableValue> {new ObservableValue(grades.StaffGrade) },
+                DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title= "Hospitality Grade",
+                    Values = new ChartValues<ObservableValue> {new ObservableValue(grades.HospitalityGrade) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title= "Location Grade",
+                    Values = new ChartValues<ObservableValue> {new ObservableValue(grades.LocationGrade) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title= "Cleanliness Grade",
+                    Values = new ChartValues<ObservableValue> {new ObservableValue(grades.CleanlinessGrade) },
+                    DataLabels = true
+                }
+            };
+            foreach (var ps in toAdd)
+            {
+                this.PieHospitalGrades.Series.Add(ps);
+            }
         }
     }
 }

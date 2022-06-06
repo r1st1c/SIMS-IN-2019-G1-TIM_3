@@ -38,21 +38,21 @@
         <Button Content="Clear Chart" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" FontSize="16" Click="Clear_Doctor_Chart_Click"/>
 
 
-        <lvc:CartesianChart x:Name="PieHospitalGrades" Grid.Row="0" Grid.Column="1" Margin="28,10,28,49">
+        <lvc:PieChart x:Name="PieHospitalGrades" LegendLocation="Bottom" Series="{Binding HospitalGradesCount}" Grid.Row="0" Grid.Column="1" Margin="28,10,28,49">
 
-        </lvc:CartesianChart>
-        <Button Grid.Row="0"  Content="1" HorizontalAlignment="Left" Margin="330,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Grid.Row="0"  Content="2" HorizontalAlignment="Left" Margin="359,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Grid.Row="0"  Content="3" HorizontalAlignment="Center" Margin="0,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Grid.Row="0"  Content="4" HorizontalAlignment="Left" Margin="417,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Grid.Row="0"  Content="5" HorizontalAlignment="Left" Margin="446,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </lvc:PieChart>
+        <Button Grid.Row="0"  Content="1" HorizontalAlignment="Center" Margin="-100,413,0,0" VerticalAlignment="Top" FontSize="16" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding HospitalGradeChange}" CommandParameter="{Binding Path=Content, RelativeSource={RelativeSource Self}}"/>
+        <Button Grid.Row="0"  Content="2" HorizontalAlignment="Center" Margin="-50,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding HospitalGradeChange}" CommandParameter="{Binding Path=Content, RelativeSource={RelativeSource Self}}"/>
+        <Button Grid.Row="0"  Content="3" HorizontalAlignment="Center" Margin="0,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding HospitalGradeChange}" CommandParameter="{Binding Path=Content, RelativeSource={RelativeSource Self}}"/>
+        <Button Grid.Row="0"  Content="4" HorizontalAlignment="Center" Margin="50,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding HospitalGradeChange}" CommandParameter="{Binding Path=Content, RelativeSource={RelativeSource Self}}"/>
+        <Button Grid.Row="0"  Content="5" HorizontalAlignment="Center" Margin="100,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding HospitalGradeChange}" CommandParameter="{Binding Path=Content, RelativeSource={RelativeSource Self}}"/>
 
         <lvc:CartesianChart x:Name="DoctorGradeChart" Grid.Column="0" Grid.Row="1" Margin="10" Series="{Binding DoctorAverageGrades}" LegendLocation="Bottom">
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Title="Average Grade"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Grade Types" Labels="{Binding Labels}"></lvc:Axis>
+                <lvc:Axis Title="Grade Types" Labels="{Binding DoctorLabels}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>
 
