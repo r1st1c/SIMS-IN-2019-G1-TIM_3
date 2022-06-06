@@ -1,5 +1,6 @@
 ﻿using System;
 using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.PatientHCIWindows;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +29,12 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
 
         public MainWindowPatient(string Username)
         {
-            this.Username = Username;
             InitializeComponent();
+            this.DataContext = this;
+            this.Username = Username;
+            this.Notif.Visibility = Visibility.Visible;
+            this.Notif.Content = new Profile(Username);
+            
         }
 
         public void Notifications_Click(object sender, RoutedEventArgs e)
@@ -46,13 +51,15 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
         public void Profile_Click(object sender, RoutedEventArgs e)
         {
             this.Navbar.Visibility = Visibility.Visible;
-            this.Notif.Visibility = Visibility.Collapsed;
+            this.Notif.Content = new Profile(Username);
+            this.Notif.Visibility = Visibility.Visible;
         }
 
         public void Appointments_Click(object sender, RoutedEventArgs e)
         {
             this.Navbar.Visibility = Visibility.Visible;
-            this.Notif.Visibility = Visibility.Collapsed;
+            this.Notif.Content = new Appointments(Username);
+            this.Notif.Visibility = Visibility.Visible;
         }
 
 

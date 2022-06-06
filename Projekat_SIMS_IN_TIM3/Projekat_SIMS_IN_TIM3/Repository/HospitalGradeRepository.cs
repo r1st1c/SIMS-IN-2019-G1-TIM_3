@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class DoctorGradeRepository
+    public class HospitalGradeRepository
     {
-        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\doctorgrades.json";
-        private List<DoctorGrade> doctorGrades = new List<DoctorGrade>();
+        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\hospitalgrades.json";
+        private List<HospitalGrade> hospitalGrades = new List<HospitalGrade>();
 
-        public DoctorGradeRepository()
+        public HospitalGradeRepository()
         {
             readJson();
         }
@@ -30,34 +30,29 @@ namespace Projekat_SIMS_IN_TIM3.Repository
                 string jsonData = stream.ReadToEnd();
                 if (jsonData != "")
                 {
-                    doctorGrades = JsonConvert.DeserializeObject<List<DoctorGrade>>(jsonData);
+                    hospitalGrades = JsonConvert.DeserializeObject<List<HospitalGrade>>(jsonData);
                 }
             }
         }
 
         public void writeToJson()
         {
-            string jsonData = JsonConvert.SerializeObject(doctorGrades);
+            string jsonData = JsonConvert.SerializeObject(hospitalGrades);
             File.WriteAllText(fileLocation, jsonData);
         }
 
-        public List<DoctorGrade> GetAll()
+        public List<HospitalGrade> GetAll()
         {
             readJson();
-            return doctorGrades;
+            return hospitalGrades;
         }
 
-        public DoctorGrade GetByDoctorId(int doctorId)
+        
+        public void Create(HospitalGrade hospitalGrade)
         {
-            readJson();
-            return doctorGrades.Find(x => x.doctorId == doctorId);
-        }
-
-        public void Create(DoctorGrade doctorGrade)
-        {
-            doctorGrades.Add(doctorGrade);
+            hospitalGrades.Add(hospitalGrade);
             writeToJson();
         }
- 
+
     }
 }
