@@ -37,7 +37,8 @@
         </DataGrid>
         <Button Content="Clear Chart" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" FontSize="16" Click="Clear_Doctor_Chart_Click"/>
 
-
+        <TextBlock Grid.Column="1"   FontSize="20" HorizontalAlignment="Left" Margin="31,8,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Hospital average grade:" VerticalAlignment="Top" Height="28"/>
+        <Label Grid.Column="1"  x:Name="TotalAverageHospital" HorizontalAlignment="Left" Margin="239,3,0,0" Grid.Row="0" VerticalAlignment="Top" FontSize="20" Height="38" Width="43" FontWeight="Bold"/>
         <lvc:PieChart x:Name="PieHospitalGrades" LegendLocation="Bottom" Series="{Binding HospitalGradesCount}" Grid.Row="0" Grid.Column="1" Margin="28,10,28,49">
 
         </lvc:PieChart>

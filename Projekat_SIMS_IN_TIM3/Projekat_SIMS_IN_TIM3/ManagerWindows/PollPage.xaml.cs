@@ -56,6 +56,15 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             };
             this.HospitalGrades = this.hospitalGradeController.GetAll();
             this.Doctors = new ObservableCollection<Doctor>(this.doctorController.GetAll());
+            float sum = 0;
+            List<HospitalGrade> allHospitalGrades = this.hospitalGradeController.GetAll();
+            int i;
+            for (i = 0; i < allHospitalGrades.Count; i++)
+            {
+                sum += allHospitalGrades[i].StaffGrade+ allHospitalGrades[i].CleanlinessGrade+ allHospitalGrades[i].HospitalityGrade+ allHospitalGrades[i].LocationGrade+ allHospitalGrades[i].RoomGrade;
+            }
+
+            this.TotalAverageHospital.Content = Math.Round(sum / i / 5,1);
             this.DataContext = this;
         }
 
