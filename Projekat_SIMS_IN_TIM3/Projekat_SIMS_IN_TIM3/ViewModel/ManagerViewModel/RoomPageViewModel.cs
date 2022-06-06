@@ -17,10 +17,9 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
     public class RoomPageViewModel
     {
         #region Fields
+
         public RoomController roomController = new RoomController();
         public RenovationTermController renovationTermController = new();
-
-        public AppointmentController appointmentController = new AppointmentController();
         public SplitTermController SplitTermController { get; set; } = new SplitTermController();
         public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public ObservableCollection<Room> Rooms { get; set; }
@@ -30,18 +29,29 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
         public RelayCommand BasicCommand { get; set; }
         public RelayCommand MergeCommand { get; set; }
         public RelayCommand SplitCommand { get; set; }
+
         #endregion
 
         #region Constructor
 
         public RoomPageViewModel()
         {
+            UpdateRenovatingFields();
+            InstantiateCommands();
+            Rooms = new ObservableCollection<Room>(roomController.GetAll());
+        }
+
+        private void UpdateRenovatingFields()
+        {
             this.renovationTermController.DisableRenovatingRooms();
             this.MergeTermController.DisableMergingRooms();
             this.MergeTermController.ExecuteMerging();
             this.SplitTermController.DisableSplittingRooms();
             this.SplitTermController.ExecuteSplitting();
-            Rooms = new ObservableCollection<Room>(roomController.GetAll());
+        }
+
+        private void InstantiateCommands()
+        {
             DeleteCommand = new RelayCommand(DeleteRoom);
             EditCommand = new RelayCommand(EditRoom);
             MergeCommand = new RelayCommand(MergeRoom);
@@ -49,9 +59,10 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
             AddCommand = new RelayCommand(AddRoom);
             BasicCommand = new RelayCommand(BasicRoom);
         }
+
         #endregion
 
-        #region Methods
+        #region Commands
 
         public void AddRoom(object parameter)
         {
@@ -79,6 +90,7 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
             Rooms.Remove(room);
             this.roomController.DeleteById(room.Id);
         }
+
         private void BasicRoom(object parameter)
         {
             Room room = this.roomController.GetById((int)parameter);
@@ -98,7 +110,6 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
             var split = new SplitRoomWindow(room, Rooms);
             split.ShowDialog();
         }
-
 
         #endregion
     }

@@ -9,7 +9,7 @@
       d:DesignHeight="900" d:DesignWidth="1600"
       Title="PollPage">
 
-    <Grid>
+    <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -35,12 +35,17 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Clear Chart" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" FontSize="16" Click="Clear_Doctor_Chart_Click"/>
 
 
-        <lvc:CartesianChart Grid.Row="0" Grid.Column="1" Margin="10">
+        <lvc:CartesianChart x:Name="PieHospitalGrades" Grid.Row="0" Grid.Column="1" Margin="28,10,28,49">
 
         </lvc:CartesianChart>
-
+        <Button Grid.Row="0"  Content="1" HorizontalAlignment="Left" Margin="330,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Grid.Row="0"  Content="2" HorizontalAlignment="Left" Margin="359,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Grid.Row="0"  Content="3" HorizontalAlignment="Center" Margin="0,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Grid.Row="0"  Content="4" HorizontalAlignment="Left" Margin="417,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Grid.Row="0"  Content="5" HorizontalAlignment="Left" Margin="446,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
         <lvc:CartesianChart x:Name="DoctorGradeChart" Grid.Column="0" Grid.Row="1" Margin="10" Series="{Binding DoctorAverageGrades}" LegendLocation="Bottom">
             <lvc:CartesianChart.AxisY>
@@ -55,6 +60,8 @@
         <lvc:CartesianChart Grid.Row="1" Grid.Column="1" Margin="10">
 
         </lvc:CartesianChart>
-        <Button Content="Clear Chart" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" FontSize="16" Click="Clear_Doctor_Chart_Click"/>
+
+
+        
     </Grid>
 </Page>

@@ -30,7 +30,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public DoctorController doctorController = new DoctorController();
         public ObservableCollection<Doctor> Doctors { get; set; } = new ObservableCollection<Doctor>();
         public List<DoctorGrade> DoctorGrades { get; set; } = new List<DoctorGrade>();
-
+        public List<HospitalGradeDTO> HospitalGrades { get; set; } = new List<HospitalGradeDTO>();
         public SeriesCollection DoctorAverageGrades { get; set; }
 
         /*public ObservableValue DoctorKnowledge { get; set; }
@@ -49,6 +49,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             DoctorGrades.Add(new DoctorGrade(0, 2, 3, 1, 5));
             DoctorGrades.Add(new DoctorGrade(0, 5, 4, 3, 5));
             DoctorGrades.Add(new DoctorGrade(0, 1, 5, 5, 5));
+            HospitalGrades.Add(new HospitalGradeDTO(2, 1, 5, 3, 2));
+            HospitalGrades.Add(new HospitalGradeDTO(1, 2, 4, 5, 2));
+            HospitalGrades.Add(new HospitalGradeDTO(3, 3, 3, 1, 2));
+            HospitalGrades.Add(new HospitalGradeDTO(4, 4, 2, 1, 5));
+            HospitalGrades.Add(new HospitalGradeDTO(5, 5, 1, 2, 5));
             /*this.DoctorKnowledge = new ObservableValue(0);
             this.DoctorHelpfulness = new ObservableValue(0);
             this.DoctorPunctuality = new ObservableValue(0);

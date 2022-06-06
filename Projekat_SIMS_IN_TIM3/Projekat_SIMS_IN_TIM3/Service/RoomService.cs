@@ -12,7 +12,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class RoomService
     {
-        public int getMaxId()
+        public int GetMaxId()
         {
             return this.roomRepository.NextId();
         }
