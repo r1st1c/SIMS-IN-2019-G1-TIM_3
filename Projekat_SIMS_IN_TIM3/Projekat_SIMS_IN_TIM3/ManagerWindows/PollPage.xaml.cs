@@ -78,22 +78,25 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("Doctor doesn't have any grades!");
                 return;
             }
-            averageDoctorGrade.knowledgeGrade = averageDoctorGrade.knowledgeGrade /= i;
-            averageDoctorGrade.helpfulnessGrade = averageDoctorGrade.helpfulnessGrade /= i;
-            averageDoctorGrade.punctualityGrade = averageDoctorGrade.punctualityGrade /= i;
-            averageDoctorGrade.pleasantnessGrade = averageDoctorGrade.pleasantnessGrade /= i;
+            float knowledgeGrade = averageDoctorGrade.knowledgeGrade /= i;
+            float helpfulnessGrade = averageDoctorGrade.helpfulnessGrade /= i;
+            float punctualityGrade = averageDoctorGrade.punctualityGrade /= i;
+            float pleasantnessGrade = averageDoctorGrade.pleasantnessGrade /= i;
             var add = new ColumnSeries
             {
                 Title = doctor.User.Name,
                 Values = new ChartValues<ObservableValue>
                 {
-                    new ObservableValue(averageDoctorGrade.knowledgeGrade),
-                    new ObservableValue(averageDoctorGrade.helpfulnessGrade),
-                    new ObservableValue(averageDoctorGrade.punctualityGrade),
-                    new ObservableValue(averageDoctorGrade.pleasantnessGrade)
+                    new ObservableValue(knowledgeGrade),
+                    new ObservableValue(helpfulnessGrade),
+                    new ObservableValue(punctualityGrade),
+                    new ObservableValue(pleasantnessGrade)
                 }
             };
             this.DoctorGradeChart.Series.Add(add);
+            this.TotalAverageDoctor.Content = (knowledgeGrade + helpfulnessGrade +
+                                               punctualityGrade +
+                                               pleasantnessGrade) / 4;
         }
 
         private void Clear_Doctor_Chart_Click(object sender, RoutedEventArgs e)

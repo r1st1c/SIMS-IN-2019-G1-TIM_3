@@ -47,7 +47,7 @@
         <Button Grid.Row="0"  Content="4" HorizontalAlignment="Center" Margin="50,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding HospitalGradeChange}" CommandParameter="{Binding Path=Content, RelativeSource={RelativeSource Self}}"/>
         <Button Grid.Row="0"  Content="5" HorizontalAlignment="Center" Margin="100,413,0,0" VerticalAlignment="Top" FontSize="16" Click="Clear_Doctor_Chart_Click" Grid.Column="1" Width="24" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding HospitalGradeChange}" CommandParameter="{Binding Path=Content, RelativeSource={RelativeSource Self}}"/>
 
-        <lvc:CartesianChart x:Name="DoctorGradeChart" Grid.Column="0" Grid.Row="1" Margin="10" Series="{Binding DoctorAverageGrades}" LegendLocation="Bottom">
+        <lvc:CartesianChart x:Name="DoctorGradeChart" Grid.Column="0" Grid.Row="1" Margin="10,46,10,10" Series="{Binding DoctorAverageGrades}" LegendLocation="Bottom">
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Title="Average Grade"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
@@ -60,8 +60,10 @@
         <lvc:CartesianChart Grid.Row="1" Grid.Column="1" Margin="10">
 
         </lvc:CartesianChart>
+        <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="31,8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Selected doctor grade:" VerticalAlignment="Top" Height="28"/>
+        <Label  x:Name="TotalAverageDoctor" HorizontalAlignment="Left" Margin="231,3,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="38" Width="43" FontWeight="Bold"/>
 
 
-        
+
     </Grid>
 </Page>
