@@ -31,7 +31,8 @@ namespace Projekat_SIMS_IN_TIM3
         public readonly NoteController noteController = new NoteController();
         public string id;
         internal object doctorController;
-
+        public readonly HospitalGradeController hospitalGradeController = new HospitalGradeController();
+        public readonly DoctorGradeController doctorGradeController = new DoctorGradeController();
         public static AppointmentRepository appointmentRepository = new();
 
         #region Manager

@@ -12,6 +12,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         public HospitalGradeRepository HospitalGradeRepository = new HospitalGradeRepository();
 
+        public void Create(HospitalGrade hospitalGrade)
+        {
+            this.HospitalGradeRepository.Create(hospitalGrade);
+        }
         public List<HospitalGrade> GetAll()
         {
             return HospitalGradeRepository.GetAll();
