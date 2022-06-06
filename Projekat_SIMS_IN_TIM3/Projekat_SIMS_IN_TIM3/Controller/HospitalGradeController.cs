@@ -13,6 +13,10 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         public HospitalGradeService HospitalGradeService = new HospitalGradeService();
 
+        public void Create(HospitalGrade hospitalGrade)
+        {
+            this.HospitalGradeService.Create(hospitalGrade);
+        }
         public List<HospitalGrade> GetAll()
         {
             return HospitalGradeService.GetAll();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -25,15 +26,20 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class MergeRoomsWindow : Window
     {
         public List<string> RoomNames { get; set; }
-        public RoomController roomController { get; set; } = new RoomController();
+        public RoomController roomController;
         public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public List<RoomType> RoomTypes { get; set; }
-        public MergeRoomsWindow()
+        private ObservableCollection<Room> Rooms { get; set; }
+
+        public MergeRoomsWindow(ObservableCollection<Room> Rooms)
         {
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
             InitializeComponent();
             this.DataContext = this;
             RoomNames = new List<string>();
             RoomTypes = Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList();
+            this.Rooms = Rooms;
             foreach (var room in this.roomController.GetAll())
             {
                 this.RoomNames.Add(room.Name);
@@ -80,7 +86,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             MergeRenovationTerm rt = (MergeRenovationTerm)((Button)e.Source).DataContext;
             this.MergeTermController.ScheduleMerge(rt);
-            foreach (var room in RoomPageViewModel.Rooms)
+            foreach (var room in this.Rooms)
             {
                 if (RoomWasFound(room, rt) && StartDatePassed(rt) && EndDayHasntPassed(rt))
                 {

@@ -3,6 +3,7 @@ using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,16 +25,21 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class SplitRoomWindow : Window
     {
-        public RoomController roomController { get; set; } = new RoomController();
-        public SplitTermController SplitTermController { get; set; } = new SplitTermController();
+        private ObservableCollection<Room> Rooms { get; set; }
+        public RoomController roomController;
+        public SplitTermController SplitTermController;
         public Room Room { get; set; }
         public List<RoomType> RoomTypes { get; set; }
-        public SplitRoomWindow(Room room)
+        public SplitRoomWindow(Room room, ObservableCollection<Room> Rooms)
         {
             InitializeComponent();
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
+            this.SplitTermController = app.splitTermController;
             this.selected.Content = room.Name;
             this.Room = room;
             RoomTypes = Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList();
+            this.Rooms = Rooms;
             this.DataContext = this;
         }
 
@@ -59,7 +65,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             SplitRenovationTerm rt = (SplitRenovationTerm)((Button)e.Source).DataContext;
             this.SplitTermController.ScheduleSplit(rt);
-            foreach (var room in RoomPageViewModel.Rooms)
+            foreach (var room in this.Rooms)
             {
                 if (RoomWasFound(room, rt) && StartDatePassed(rt) && EndDayHasntPassed(rt))
                 {

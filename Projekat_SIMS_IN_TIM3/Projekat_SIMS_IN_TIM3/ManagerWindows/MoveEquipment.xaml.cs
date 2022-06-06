@@ -23,8 +23,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class MoveEquipment : Window
     {
-        public EquipmentController equipmentController = new EquipmentController();
-        public RoomController roomController = new RoomController();
+        public EquipmentController equipmentController;
+        public RoomController roomController;
         public RenovationTermController renovationTermController = new RenovationTermController();
         ObservableCollection<Equipment> Equipment_All { get; set; }
 
@@ -35,6 +35,9 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public List<string> RoomNames { get; set; } = new List<string>();
         public MoveEquipment(Equipment equipment, ObservableCollection<Equipment> equipment_All)
         {
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
+            this.equipmentController = app.equipmentController;
             InitializeComponent();
             this.Equipment_All = equipment_All;
             this.DataContext = this;

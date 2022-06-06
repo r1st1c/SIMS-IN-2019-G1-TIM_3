@@ -12,7 +12,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class RoomService
     {
-        public int getMaxId()
+        public int GetMaxId()
         {
             return this.roomRepository.NextId();
         }
@@ -81,20 +81,13 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.DeleteById(id);
         }
 
-        /// CRUD
-        /// 
-        ///////////////////////////////////////////////////////////////////////////////// 
-        /// 
-        /// BASIC RENOVATION
-        
+        private RoomRepository roomRepository;
+        private EquipmentRepository equipmentRepository;
 
-        /// BASIC RENOVATION
-        /// 
-        ///////////////////////////////////////////////////////////////////////////////// 
-        
-
-        public RoomRepository roomRepository = new RoomRepository();
-        public AppointmentRepository appointmentRepository = new AppointmentRepository();
-        public EquipmentRepository equipmentRepository = new EquipmentRepository();
+        public RoomService(RoomRepository roomRepository, EquipmentRepository equipmentRepository)
+        {
+            this.roomRepository = roomRepository;
+            this.equipmentRepository = equipmentRepository;
+        }
     }
 }

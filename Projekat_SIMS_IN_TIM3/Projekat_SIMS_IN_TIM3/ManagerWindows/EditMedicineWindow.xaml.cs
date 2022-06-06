@@ -41,7 +41,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             this.DataContext = this;
             this.RejectedMedicineList = rejected;
             this.selected = selected;
-            this.MedicineList = new ObservableCollection<Medicine>(this.MedicineController.GetAll());
+            this.MedicineList = new ObservableCollection<Medicine>(this.MedicineController.GetVerified());
             this.Ingredients = new ObservableCollection<MedicineIngredient>(this.MedicineIngredientController.GetAll());
 
             this.medName.Text = selected.Name;
