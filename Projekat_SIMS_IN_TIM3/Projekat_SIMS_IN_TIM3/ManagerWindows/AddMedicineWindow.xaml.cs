@@ -34,7 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             InitializeComponent();
             this.DataContext = this;
             Ingredients = new ObservableCollection<MedicineIngredient>(this.medicineIngredientController.GetAll());
-            Medicines = new ObservableCollection<Medicine>(this.medicineController.GetAll());
+            Medicines = new ObservableCollection<Medicine>(this.medicineController.GetVerified());
             MedicinePageList = medicinePageList;
         }
 

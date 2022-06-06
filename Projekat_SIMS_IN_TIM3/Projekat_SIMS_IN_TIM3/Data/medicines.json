@@ -4,11 +4,11 @@
     "Name": "Parac",
     "Ingredients": [
       {
-        "Name": "paracetamol",
-        "Id": 0
+        "Id": 0,
+        "Name": "paracetamol"
       }
     ],
-    "IsVerified": 0,
+    "IsVerified": 1,
     "ReasonOfRejection": null,
     "Replacement": null
   },
@@ -17,12 +17,25 @@
     "Name": "Diclofenac Duo",
     "Ingredients": [
       {
-        "Name": "diclofenac",
-        "Id": 1
+        "Id": 1,
+        "Name": "diclofenac"
       }
     ],
     "IsVerified": 2,
     "ReasonOfRejection": "Invalid replacement",
+    "Replacement": "Parac"
+  },
+  {
+    "Id": 2,
+    "Name": "pr",
+    "Ingredients": [
+      {
+        "Id": 0,
+        "Name": "paracetamol"
+      }
+    ],
+    "IsVerified": 0,
+    "ReasonOfRejection": null,
     "Replacement": "Parac"
   }
 ]

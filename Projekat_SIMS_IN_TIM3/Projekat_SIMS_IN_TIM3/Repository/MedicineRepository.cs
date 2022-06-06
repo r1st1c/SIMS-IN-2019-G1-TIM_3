@@ -80,8 +80,22 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             medicines.RemoveAt(idx);
             WriteToJson();
         }
+        public List<Medicine> GetVerified()
+        {
+            readJson();
+            List<Medicine> list = new List<Medicine>();
 
-        public List<String> GetVerified()
+            foreach (Medicine medicine in medicines)
+            {
+                if (medicine.IsVerified == MedicineStatus.approved)
+                {
+                    list.Add(medicine);
+                }
+            }
+
+            return list;
+        }
+        public List<String> GetVerifiedNames()
         {
             readJson();
             List<String> list = new List<String>();
