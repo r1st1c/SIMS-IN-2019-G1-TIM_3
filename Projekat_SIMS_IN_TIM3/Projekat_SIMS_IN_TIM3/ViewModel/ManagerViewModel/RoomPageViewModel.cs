@@ -23,7 +23,7 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
         public AppointmentController appointmentController = new AppointmentController();
         public SplitTermController SplitTermController { get; set; } = new SplitTermController();
         public MergeTermController MergeTermController { get; set; } = new MergeTermController();
-        public static ObservableCollection<Room> Rooms { get; set; }
+        public ObservableCollection<Room> Rooms { get; set; }
         public RelayCommand AddCommand { get; set; }
         public RelayCommand EditCommand { get; set; }
         public RelayCommand DeleteCommand { get; set; }
@@ -55,7 +55,7 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
 
         public void AddRoom(object parameter)
         {
-            var addRoom = new AddRoom();
+            var addRoom = new AddRoom(Rooms);
             addRoom.ShowDialog();
         }
 
@@ -63,7 +63,7 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
         {
             Room room = this.roomController.GetById((int)parameter);
             int id = room.Id;
-            var change = new EditRoomWindow(id);
+            var change = new EditRoomWindow(id, Rooms);
             change.ShowDialog();
         }
 
@@ -82,20 +82,20 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
         private void BasicRoom(object parameter)
         {
             Room room = this.roomController.GetById((int)parameter);
-            var basic = new BasicRenovationWindow(room);
+            var basic = new BasicRenovationWindow(room, Rooms);
             basic.ShowDialog();
         }
 
         private void MergeRoom(object parameter)
         {
-            var merge = new MergeRoomsWindow();
+            var merge = new MergeRoomsWindow(Rooms);
             merge.ShowDialog();
         }
 
         private void SplitRoom(object parameter)
         {
             Room room = this.roomController.GetById((int)parameter);
-            var split = new SplitRoomWindow(room);
+            var split = new SplitRoomWindow(room, Rooms);
             split.ShowDialog();
         }
 

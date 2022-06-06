@@ -28,6 +28,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         RoomController roomController = new RoomController();
         private RoomType roomTypeSelected;
+        private ObservableCollection<Room> Rooms { get; set; }
         public string NewRoomName
         {
             get; set;
@@ -60,7 +61,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
         }
 
-        public EditRoomWindow(int roomId)
+        public EditRoomWindow(int roomId, ObservableCollection<Room> Rooms)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -70,6 +71,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             NewRoomName = selectedRoom.Name;
             NewDescription = selectedRoom.Description;
             RoomTypeSelected = selectedRoom.RoomType;
+            this.Rooms = Rooms;
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
@@ -95,7 +97,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                     return;
                 }
             }
-            List<Room> roomList = RoomPageViewModel.Rooms.ToList();
+            List<Room> roomList = this.Rooms.ToList();
             foreach (var room in roomList.Where(x => x.Id == toUpdate.Id))
             {
                 room.Name = NewRoomName;

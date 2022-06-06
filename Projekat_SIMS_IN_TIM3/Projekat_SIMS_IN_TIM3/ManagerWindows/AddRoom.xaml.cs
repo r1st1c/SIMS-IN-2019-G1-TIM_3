@@ -33,6 +33,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private string description;
         private RoomType roomTypeSelected;
         RoomController roomController = new RoomController();
+        public ObservableCollection<Room> Rooms { get; set; }
+
 
         public ObservableCollection<RoomType> RoomTypes
         {
@@ -87,12 +89,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             }
         }
 
-        public AddRoom()
+        public AddRoom(ObservableCollection<Room> Rooms)
         {
             InitializeComponent();
             this.DataContext = this;
             RoomTypes = new ObservableCollection<RoomType>(Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList());
-            
+            this.Rooms = Rooms;
+
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
@@ -117,7 +120,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             if (succWritten)
             {
                 Debug.Write("Room successfully written in csv");
-                RoomPageViewModel.Rooms.Add(room);
+                this.Rooms.Add(room);
                 Close();
             }
         }

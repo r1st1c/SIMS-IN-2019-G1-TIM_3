@@ -26,6 +26,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class BasicRenovationWindow : Window
     {
+        private ObservableCollection<Room> Rooms { get; set; }
         public Room Room { get; set; }
         public RoomController roomController = new RoomController();
         public RenovationTermController renovationTermController = new();
@@ -33,10 +34,11 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         public string Description { set; get; }
 
-        public BasicRenovationWindow(Room room)
+        public BasicRenovationWindow(Room room, ObservableCollection<Room> Rooms)
         {
             Room = room;
             this.DataContext = this;
+            this.Rooms = Rooms;
             InitializeComponent();
         }
 
@@ -75,7 +77,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             RenovationTerm selected = (RenovationTerm)((Button)e.Source).DataContext;
             this.renovationTermController.ScheduleRenovation(new RenovationTerm(selected.RoomId, selected.Range.Start,
  selected.Range.End, Description));
-            foreach (var room in RoomPageViewModel.Rooms)
+            foreach (var room in this.Rooms)
             {
                 if (room.Id == Room.Id && DateTime.Now >= selected.Range.Start &&
                     DateTime.Now <= DateRange.GetLastMoment(selected.Range.End))
