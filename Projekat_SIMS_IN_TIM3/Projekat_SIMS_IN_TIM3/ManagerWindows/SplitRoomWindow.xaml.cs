@@ -26,13 +26,16 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class SplitRoomWindow : Window
     {
         private ObservableCollection<Room> Rooms { get; set; }
-        public RoomController roomController { get; set; } = new RoomController();
-        public SplitTermController SplitTermController { get; set; } = new SplitTermController();
+        public RoomController roomController;
+        public SplitTermController SplitTermController;
         public Room Room { get; set; }
         public List<RoomType> RoomTypes { get; set; }
         public SplitRoomWindow(Room room, ObservableCollection<Room> Rooms)
         {
             InitializeComponent();
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
+            this.SplitTermController = app.splitTermController;
             this.selected.Content = room.Name;
             this.Room = room;
             RoomTypes = Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList();

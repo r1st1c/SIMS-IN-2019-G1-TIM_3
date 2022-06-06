@@ -10,7 +10,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class RoomController
     {
-        public int getMaxId()
+        public int GetMaxId()
         {
             return this.roomService.GetMaxId();
         }
@@ -51,6 +51,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         }
 
 
-        public RoomService roomService = new RoomService();
+        private RoomService roomService;
+
+        public RoomController(RoomService roomService)
+        {
+            this.roomService=roomService;
+        }
     }
 }

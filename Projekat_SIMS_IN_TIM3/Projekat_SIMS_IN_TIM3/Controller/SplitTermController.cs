@@ -6,8 +6,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller;
 
 public class SplitTermController
 {
-    public SplitTermService SplitTermService { get; set; } = new SplitTermService();
+    public SplitTermService SplitTermService;
 
+    public SplitTermController(SplitTermService splitTermService)
+    {
+        this.SplitTermService = splitTermService;
+    }
     public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery)
     {
         return this.SplitTermService.GetSplitRenovationAvailableTerms(splitRenovationQuery);

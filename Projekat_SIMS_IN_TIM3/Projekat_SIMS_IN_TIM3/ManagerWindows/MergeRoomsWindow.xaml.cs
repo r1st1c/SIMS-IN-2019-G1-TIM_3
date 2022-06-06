@@ -26,13 +26,15 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class MergeRoomsWindow : Window
     {
         public List<string> RoomNames { get; set; }
-        public RoomController roomController { get; set; } = new RoomController();
+        public RoomController roomController;
         public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public List<RoomType> RoomTypes { get; set; }
         private ObservableCollection<Room> Rooms { get; set; }
 
         public MergeRoomsWindow(ObservableCollection<Room> Rooms)
         {
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
             InitializeComponent();
             this.DataContext = this;
             RoomNames = new List<string>();

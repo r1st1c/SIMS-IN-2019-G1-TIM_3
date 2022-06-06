@@ -48,7 +48,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             this.equipmentService.MoveFromMoveOrderList();
         }
         public EquipmentService equipmentService = new EquipmentService();
-        public RoomService roomService = new RoomService();
+        public RoomService roomService;
+
+        public EquipmentController(RoomService roomService)
+        {
+            this.roomService = roomService;
+        }
 
     }
 }

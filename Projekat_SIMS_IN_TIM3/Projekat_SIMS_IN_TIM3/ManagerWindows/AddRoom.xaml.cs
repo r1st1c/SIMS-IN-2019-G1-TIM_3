@@ -32,7 +32,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private int floor;
         private string description;
         private RoomType roomTypeSelected;
-        RoomController roomController = new RoomController();
+        RoomController roomController;
         public ObservableCollection<Room> Rooms { get; set; }
 
 
@@ -91,6 +91,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         public AddRoom(ObservableCollection<Room> Rooms)
         {
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
             InitializeComponent();
             this.DataContext = this;
             RoomTypes = new ObservableCollection<RoomType>(Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList());
@@ -127,7 +129,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private Room CreateRoom()
         {
-            return new Room(this.roomController.getMaxId(), name, roomTypeSelected, (uint) floor, description,"No");
+            return new Room(this.roomController.GetMaxId(), name, roomTypeSelected, (uint) floor, description,"No");
         }
 
         private void Cancel_Button(object sender, RoutedEventArgs e)

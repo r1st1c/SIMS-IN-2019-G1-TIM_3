@@ -6,6 +6,10 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Windows.ApplicationModel;
+using Projekat_SIMS_IN_TIM3.Repository;
+using Projekat_SIMS_IN_TIM3.Service;
+using Xceed.Wpf.Toolkit.Core.Converters;
 
 namespace Projekat_SIMS_IN_TIM3
 {
@@ -27,5 +31,24 @@ namespace Projekat_SIMS_IN_TIM3
         public readonly NoteController noteController = new NoteController();
         public string id;
         internal object doctorController;
+
+        public static AppointmentRepository appointmentRepository = new();
+
+        #region Manager
+        public static RoomRepository roomRepository = new ();
+        public static SplitTermRepository splitTermRepository = new ();
+        public static EquipmentRepository equipmentRepository = new();
+
+        public static RoomService roomService = new RoomService(roomRepository, equipmentRepository);
+
+        public static SplitTermService splitTermService =
+            new SplitTermService(splitTermRepository, appointmentRepository, roomRepository);
+
+        public readonly RoomController roomController = new RoomController(roomService);
+        public readonly SplitTermController splitTermController = new SplitTermController(splitTermService);
+        public readonly EquipmentController equipmentController = new EquipmentController(roomService);
+
+
+        #endregion
     }
 }

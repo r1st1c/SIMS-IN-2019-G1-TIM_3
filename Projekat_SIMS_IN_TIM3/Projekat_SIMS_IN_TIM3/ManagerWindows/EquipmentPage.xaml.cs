@@ -52,10 +52,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         }
         public List<string> FilterTypesList { get; set; } = new List<string>(){"All","Static","Dynamic"};
 
-        public static EquipmentController equipmentController = new EquipmentController();
+        public EquipmentController equipmentController;
         public static List<Equipment> Equipment_Backup { get; set; }
         public EquipmentPage()
         {
+            var app = Application.Current as App;
+            this.equipmentController = app.equipmentController;
             InitializeComponent();
             this.DataContext = this;
             equipmentController.MoveFromMoveOrderList();

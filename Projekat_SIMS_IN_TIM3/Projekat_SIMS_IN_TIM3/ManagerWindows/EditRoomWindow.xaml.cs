@@ -26,28 +26,16 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class EditRoomWindow : Window
     {
-        RoomController roomController = new RoomController();
+        public RoomController roomController;
         private RoomType roomTypeSelected;
         private ObservableCollection<Room> Rooms { get; set; }
-        public string NewRoomName
-        {
-            get; set;
-        }
+        public string NewRoomName { get; set; }
 
-        public string NewDescription
-        {
-            get;set;
-        }
+        public string NewDescription { get; set; }
 
-        public int SelectedRoomId
-        {
-            get;set;
-        }
-        
-        public ObservableCollection<RoomType> RoomTypes
-        {
-            get; set;
-        }
+        public int SelectedRoomId { get; set; }
+
+        public ObservableCollection<RoomType> RoomTypes { get; set; }
 
         public RoomType RoomTypeSelected
         {
@@ -63,6 +51,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         public EditRoomWindow(int roomId, ObservableCollection<Room> Rooms)
         {
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
             InitializeComponent();
             this.DataContext = this;
             RoomTypes = new ObservableCollection<RoomType>(Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList());
@@ -76,11 +66,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            if (NewRoomName == null || NewDescription == null || NewDescription == "" || NewRoomName == "")
+            if (String.IsNullOrWhiteSpace(NewRoomName) || String.IsNullOrWhiteSpace(NewDescription))
             {
                 MessageBox.Show("All fields are necessary");
                 return;
             }
+
             Room toUpdate = this.roomController.GetById(SelectedRoomId);
             toUpdate.RoomType = RoomTypeSelected;
             toUpdate.Description = NewDescription;
@@ -97,6 +88,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                     return;
                 }
             }
+
             List<Room> roomList = this.Rooms.ToList();
             foreach (var room in roomList.Where(x => x.Id == toUpdate.Id))
             {
@@ -104,15 +96,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 room.Description = NewDescription;
                 room.RoomType = RoomTypeSelected;
             }
-            /*foreach (var equipment in EquipmentPage.Equipment_All)
-            {
-                if (toUpdate.Id == equipment.RoomId)
-                {
-                    equipment.RoomName = NewRoomName;
-                }
-            }*/
-            Close();
 
+            Close();
         }
 
         private void Cancel_Button(object sender, RoutedEventArgs e)

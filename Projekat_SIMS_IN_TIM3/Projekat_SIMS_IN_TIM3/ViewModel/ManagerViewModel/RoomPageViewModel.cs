@@ -18,9 +18,9 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
     {
         #region Fields
 
-        public RoomController roomController = new RoomController();
+        public RoomController roomController;
         public RenovationTermController renovationTermController = new();
-        public SplitTermController SplitTermController { get; set; } = new SplitTermController();
+        public SplitTermController SplitTermController;
         public MergeTermController MergeTermController { get; set; } = new MergeTermController();
         public ObservableCollection<Room> Rooms { get; set; }
         public RelayCommand AddCommand { get; set; }
@@ -36,6 +36,9 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
 
         public RoomPageViewModel()
         {
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
+            this.SplitTermController = app.splitTermController;
             UpdateRenovatingFields();
             InstantiateCommands();
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
