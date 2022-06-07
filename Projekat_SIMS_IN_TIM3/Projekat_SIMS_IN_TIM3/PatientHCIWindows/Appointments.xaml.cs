@@ -45,13 +45,14 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
             getPatient(Username);
 
+            appointments.Clear();
+            appointmentsList.Clear();
+
             appointments = application.appointmentController.GetByPatientsId(patient.User.Id);
 
             makeDTOs(appointments);
 
             appointmentsCollection = new ObservableCollection<AppointmentDTO>(appointmentsList);
-
-            
 
         }
 
@@ -69,7 +70,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
             string name = doctor.User.Name + " " + doctor.User.Surname;
 
-            return new AppointmentDTO(name, Convert.ToString(appointment.StartTime));
+            return new AppointmentDTO(name, Convert.ToString(appointment.StartTime), appointment.Id);
         }
 
         public void getPatient(String Username)
@@ -96,22 +97,22 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
         public void Edit_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            /*MainWindowPatient parentWindow = Window.GetWindow(this) as MainWindowPatient;
+            MainWindowPatient parentWindow = Window.GetWindow(this) as MainWindowPatient;
 
-            Note note = (Note)((Button)e.Source).DataContext;
-            int id = note.Id;
-            
-            parentWindow.Notif.Content = new NotesEdit(id, Username, patId);*/
+            AppointmentDTO appointmentDTO = (AppointmentDTO)((Button)e.Source).DataContext;
+            int id = appointmentDTO.Id;
+
+            parentWindow.Notif.Content = new AppointmentsPostpone(id, Username);
         }
 
         public void Delete_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            /*MainWindowPatient parentWindow = Window.GetWindow(this) as MainWindowPatient;
+            MainWindowPatient parentWindow = Window.GetWindow(this) as MainWindowPatient;
 
-            Note note = (Note)((Button)e.Source).DataContext;
-            int id = note.Id;
+            AppointmentDTO appointmentDTO = (AppointmentDTO)((Button)e.Source).DataContext;
+            int id = appointmentDTO.Id;
 
-            parentWindow.Notif.Content = new NotesDelete(id, Username);*/
+            parentWindow.Notif.Content = new AppointmentsCancel(id, Username);
         }
 
 
