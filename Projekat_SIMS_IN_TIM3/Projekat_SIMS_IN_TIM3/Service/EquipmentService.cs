@@ -64,8 +64,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
         }
 
 
-        public RoomRepository roomRepository = new RoomRepository();
-        public EquipmentRepository equipmentRepository = new EquipmentRepository();
+        public RoomRepository roomRepository;
+        public EquipmentRepository equipmentRepository;
+
+        public EquipmentService(RoomRepository roomRepository, EquipmentRepository equipmentRepository)
+        {
+            this.roomRepository = roomRepository;
+            this.equipmentRepository = equipmentRepository;
+        }
 
     }
 }

@@ -44,15 +44,14 @@ namespace Projekat_SIMS_IN_TIM3
         public static RoomService roomService = new RoomService(roomRepository, equipmentRepository);
         public static SplitTermService splitTermService =
             new SplitTermService(splitTermRepository, appointmentRepository, roomRepository);
-
         public static MergeTermService mergeTermService =
             new MergeTermService(mergeTermRepository, roomRepository, appointmentRepository);
+        public static EquipmentService equipmentService = new EquipmentService(roomRepository, equipmentRepository);
 
         public readonly RoomController roomController = new RoomController(roomService);
         public readonly SplitTermController splitTermController = new SplitTermController(splitTermService);
         public readonly MergeTermController mergeTermController = new MergeTermController(mergeTermService);
-
-        public readonly EquipmentController equipmentController = new EquipmentController(roomService);
+        public readonly EquipmentController equipmentController = new EquipmentController(roomService,equipmentService);
 
 
         #endregion
