@@ -91,6 +91,7 @@
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="Microsoft.UI.Xaml" Version="2.7.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="QuestPDF" Version="2022.5.0" />
   </ItemGroup>
 
   <ItemGroup>
