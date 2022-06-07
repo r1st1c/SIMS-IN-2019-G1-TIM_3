@@ -24,7 +24,7 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="ingredientName" FontSize="20" Grid.Column="2"  TextWrapping="Wrap" VerticalAlignment="Center"  Height="30" adorners:Watermark.Text="New Ingredient Name..." adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused" Margin="5,0,10,0"/>
+        <TextBox x:Name="ingredientName" FontSize="20" Grid.Column="2"  TextWrapping="Wrap" VerticalAlignment="Center"  Height="30" adorners:Watermark.Text="New Ingredient..." adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused" Margin="5,0,10,0"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="7" Fill="Black"></Rectangle>
         <Button Grid.Column="3"  Click="Add_Ingredient_Click" Margin="10,0,0,0" FontSize="20" HorizontalAlignment="Left" Width="132" Height="30" VerticalAlignment="Center">
             <Button.ContentTemplate>
