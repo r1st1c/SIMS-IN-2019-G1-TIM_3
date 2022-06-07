@@ -8,12 +8,17 @@ namespace Projekat_SIMS_IN_TIM3.Service;
 
 public class MergeTermService
 {
-    public MergeTermRepository mergeTermRepository { get; set; } = new MergeTermRepository();
-    public RoomRepository roomRepository { get; set; } = new RoomRepository();
-    public AppointmentRepository appointmentRepository { get; set; } = new AppointmentRepository();
+    public MergeTermRepository mergeTermRepository;
+    public RoomRepository roomRepository;
+    public AppointmentRepository appointmentRepository;
 
-    /// 
-    /// MERGE
+    public MergeTermService(MergeTermRepository mergeTermRepository, RoomRepository roomRepository,
+        AppointmentRepository appointmentRepository)
+    {
+        this.mergeTermRepository = mergeTermRepository;
+        this.roomRepository = roomRepository;
+        this.appointmentRepository = appointmentRepository;
+    }
     public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
     {
         List<DateTime> intersectedAvailableDays = FindIntersectedAvailableDays(mergeRenovationQuery);

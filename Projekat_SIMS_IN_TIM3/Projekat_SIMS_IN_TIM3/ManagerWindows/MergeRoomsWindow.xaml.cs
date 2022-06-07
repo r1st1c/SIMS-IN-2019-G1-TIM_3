@@ -27,7 +27,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         public List<string> RoomNames { get; set; }
         public RoomController roomController;
-        public MergeTermController MergeTermController { get; set; } = new MergeTermController();
+        public MergeTermController MergeTermController;
         public List<RoomType> RoomTypes { get; set; }
         private ObservableCollection<Room> Rooms { get; set; }
 
@@ -35,6 +35,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             var app = Application.Current as App;
             this.roomController = app.roomController;
+            this.MergeTermController = app.mergeTermController;
             InitializeComponent();
             this.DataContext = this;
             RoomNames = new List<string>();
