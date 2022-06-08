@@ -39,6 +39,7 @@ namespace Projekat_SIMS_IN_TIM3
 
             notes = this.application.noteController.GetByPatientsId(patientId);
 
+            //refaktorisi
             foreach (Note note in notes)
             {
                 if(note.Id == Id)

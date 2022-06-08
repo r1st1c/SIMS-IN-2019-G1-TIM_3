@@ -67,6 +67,11 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
         {
             this.Notif.Content = null;
             this.Navbar.Visibility = Visibility.Collapsed;
+            
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+
             /*this.Log.Visibility = Visibility.Visible;
             this.username.Text = "";
             this.password.Password = "";*/
