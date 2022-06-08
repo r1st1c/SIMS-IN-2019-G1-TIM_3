@@ -31,6 +31,8 @@ namespace Projekat_SIMS_IN_TIM3
         public readonly NoteController noteController = new NoteController();
         public readonly AnamnesisController anamnesisController = new AnamnesisController();
 
+        public readonly AlarmController alarmController = new AlarmController();
+
         public string id;
         internal object doctorController;
         public readonly HospitalGradeController hospitalGradeController = new HospitalGradeController();

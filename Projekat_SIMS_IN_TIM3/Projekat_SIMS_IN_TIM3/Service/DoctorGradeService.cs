@@ -16,6 +16,8 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             this.DoctorGradeRepository.Create(grade);
         }
+
+        //pisao kolega branislav!!!!!!!
         public List<DoctorGrade> GetAllByDoctorId(int id)
         {
             List<DoctorGrade> retVal = new List<DoctorGrade>();
@@ -32,5 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             return DoctorGradeRepository.GetAll();
         }
+
+        
     }
 }

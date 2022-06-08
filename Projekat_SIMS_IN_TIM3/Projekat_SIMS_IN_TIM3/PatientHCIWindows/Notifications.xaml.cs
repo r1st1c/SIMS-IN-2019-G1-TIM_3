@@ -22,6 +22,12 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class Notifications : Page
     {
+        string Username;
+        public App application { get; set; }
+        public List<MedicinePrescription> prescriptions { get; set; }
+        public Patient patient { get; set; }
+        public List<Notification> notifications { get; set; }
+
         public Notifications(String Username)
         {
             InitializeComponent();
@@ -31,24 +37,11 @@ namespace Projekat_SIMS_IN_TIM3
 
             application = Application.Current as App;
 
-            prescriptions = application.medPrescriptionController.GetAll();
-            List<Patient> patients = application.patientController.GetAll();
+            getPatient(Username);
 
-
-            Patient patient = null;
-
-            //refaktorisi
-            foreach (Patient pat in patients)
-            {
-                if (pat.User.Username == Username)
-                {
-                    patient = pat;
-                    break;
-                }
-            }
-
-
-            int currTime = DateTime.Now.Hour;
+            //prescriptions = application.medPrescriptionController.GetAll();
+            
+            /*int currTime = DateTime.Now.Hour;
 
             int id = 0;
             notifications = new List<Notification>();
@@ -82,16 +75,28 @@ namespace Projekat_SIMS_IN_TIM3
                     }
                 }
             }
-
-            DataBinding1.ItemsSource = notifications;
+            
+            DataBinding1.ItemsSource = notifications;*/
 
         }
 
-        string Username;
-        public App application { get; set; }
-        public List<MedicinePrescription> prescriptions { get; set; }
-        public Patient patient { get; set; }
-        public List<Notification> notifications { get; set; }
+
+        public void getPatient(String Username)
+        {
+            List<Patient> patients = application.patientController.GetAll();
+
+            foreach (Patient pat in patients)
+            {
+                if (pat.User.Username == Username)
+                {
+                    patient = pat;
+                    
+
+                }
+            }
+        }
+
+
 
 
     }

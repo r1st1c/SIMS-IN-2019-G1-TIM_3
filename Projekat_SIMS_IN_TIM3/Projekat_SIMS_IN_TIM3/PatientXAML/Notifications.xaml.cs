@@ -19,6 +19,9 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
     /// <summary>
     /// Interaction logic for Notifications.xaml
     /// </summary>
+    /// 
+
+    /// premesteno
     public partial class Notifications : Window
     {
         public App application { get; set; }

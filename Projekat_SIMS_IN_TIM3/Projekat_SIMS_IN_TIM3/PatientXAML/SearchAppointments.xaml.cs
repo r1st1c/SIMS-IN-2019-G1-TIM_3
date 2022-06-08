@@ -17,7 +17,7 @@ using Projekat_SIMS_IN_TIM3.Controller;
 namespace Projekat_SIMS_IN_TIM3.PatientXAML
 {
    
-    
+    //premesteno
     public partial class SearchAppointments : Window
     {
         public App application { get; set; }
