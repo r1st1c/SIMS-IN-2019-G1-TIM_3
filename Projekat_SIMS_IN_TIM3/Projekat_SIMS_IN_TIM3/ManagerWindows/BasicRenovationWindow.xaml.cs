@@ -29,7 +29,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private ObservableCollection<Room> Rooms { get; set; }
         public Room Room { get; set; }
         public RoomController roomController;
-        public RenovationTermController renovationTermController = new();
+        public RenovationTermController renovationTermController;
         public int Duration { set; get; }
 
         public string Description { set; get; }
@@ -38,6 +38,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             var app = Application.Current as App;
             this.roomController = app.roomController;
+            this.renovationTermController = app.renovationTermController;
             Room = room;
             this.DataContext = this;
             this.Rooms = Rooms;

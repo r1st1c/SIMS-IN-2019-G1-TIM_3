@@ -25,7 +25,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     {
         public EquipmentController equipmentController;
         public RoomController roomController;
-        public RenovationTermController renovationTermController = new RenovationTermController();
+        public RenovationTermController renovationTermController;
         ObservableCollection<Equipment> Equipment_All { get; set; }
 
         public int equipmentId { get; set; }
@@ -38,6 +38,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             var app = Application.Current as App;
             this.roomController = app.roomController;
             this.equipmentController = app.equipmentController;
+            this.renovationTermController = app.renovationTermController;
             InitializeComponent();
             this.Equipment_All = equipment_All;
             this.DataContext = this;

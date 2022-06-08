@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 
@@ -126,8 +127,16 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.renovationTermRepository.GetRenovationSchedules();
         }
 
-        public RoomRepository roomRepository { get; set; } = new();
-        public AppointmentRepository appointmentRepository { get; set; } = new();
-        public RenovationTermRepository renovationTermRepository { get; set; } = new();
+        public RoomIRepository roomRepository;
+        public AppointmentRepository appointmentRepository;
+        public RenovationTermRepository renovationTermRepository;
+
+        public RenovationTermService(RoomIRepository roomRepository, AppointmentRepository appointmentRepository,
+            RenovationTermRepository renovationTermRepository)
+        {
+            this.roomRepository = roomRepository;
+            this.appointmentRepository = appointmentRepository;
+            this.renovationTermRepository = renovationTermRepository;
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
         #region Fields
 
         public RoomController roomController;
-        public RenovationTermController renovationTermController = new();
+        public RenovationTermController renovationTermController;
         public SplitTermController SplitTermController;
         public MergeTermController MergeTermController;
         public ObservableCollection<Room> Rooms { get; set; }
@@ -40,6 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
             this.roomController = app.roomController;
             this.SplitTermController = app.splitTermController;
             this.MergeTermController = app.mergeTermController;
+            this.renovationTermController = app.renovationTermController;
             UpdateRenovatingFields();
             InstantiateCommands();
             Rooms = new ObservableCollection<Room>(roomController.GetAll());
