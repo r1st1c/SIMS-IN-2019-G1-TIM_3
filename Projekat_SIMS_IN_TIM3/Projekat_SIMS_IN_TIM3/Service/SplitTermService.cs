@@ -8,11 +8,11 @@ namespace Projekat_SIMS_IN_TIM3.Service;
 
 public class SplitTermService
 {
-    private SplitTermRepository SplitTermRepository;
+    private SplitTermIRepository SplitTermRepository;
     private AppointmentRepository AppointmentRepository;
     private RoomIRepository RoomRepository;
 
-    public SplitTermService(SplitTermRepository splitTermRepository, AppointmentRepository appointmentRepository,
+    public SplitTermService(SplitTermIRepository splitTermRepository, AppointmentRepository appointmentRepository,
         RoomIRepository roomRepository)
     {
         this.SplitTermRepository = splitTermRepository;

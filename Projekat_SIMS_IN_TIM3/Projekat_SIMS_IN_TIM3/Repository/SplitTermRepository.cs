@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 
 namespace Projekat_SIMS_IN_TIM3.Repository;
 
-public class SplitTermRepository
+public class SplitTermRepository : SplitTermIRepository
 {
     private readonly string roomsplitpath =
         Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\room_split.csv";

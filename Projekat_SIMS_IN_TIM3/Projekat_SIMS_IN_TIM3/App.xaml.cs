@@ -39,7 +39,7 @@ namespace Projekat_SIMS_IN_TIM3
         #region Manager
         public static RoomIRepository roomRepository = new RoomRepository();
         public static RenovationTermIRepository renovationTermRepository = new RenovationTermRepository();
-        public static SplitTermRepository splitTermRepository = new ();
+        public static SplitTermIRepository splitTermRepository = new SplitTermRepository();
         public static EquipmentRepository equipmentRepository = new();
         public static MergeTermRepository mergeTermRepository = new ();
 
