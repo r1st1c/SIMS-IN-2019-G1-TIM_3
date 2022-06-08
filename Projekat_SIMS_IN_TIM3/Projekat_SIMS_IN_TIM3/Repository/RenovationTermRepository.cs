@@ -5,11 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class RenovationTermRepository
+    public class RenovationTermRepository : RenovationTermIRepository
     {
         private readonly string roombasicrenovationpath =
             Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName +

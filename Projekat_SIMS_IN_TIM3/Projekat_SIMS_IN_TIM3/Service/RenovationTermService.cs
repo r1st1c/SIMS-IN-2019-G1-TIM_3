@@ -129,10 +129,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public RoomIRepository roomRepository;
         public AppointmentRepository appointmentRepository;
-        public RenovationTermRepository renovationTermRepository;
+        public RenovationTermIRepository renovationTermRepository;
 
         public RenovationTermService(RoomIRepository roomRepository, AppointmentRepository appointmentRepository,
-            RenovationTermRepository renovationTermRepository)
+            RenovationTermIRepository renovationTermRepository)
         {
             this.roomRepository = roomRepository;
             this.appointmentRepository = appointmentRepository;
