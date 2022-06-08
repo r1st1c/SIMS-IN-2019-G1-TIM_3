@@ -10,20 +10,20 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
             <RowDefinition Height="0.025*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Button Name="UnapprovedButton" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Unapproved_Click">
+        <Button Name="UnapprovedButton" Grid.Row="0" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Unapproved_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
@@ -32,7 +32,7 @@
                 </DataTemplate>
             </Button.ContentTemplate>
         </Button>
-        <Button Name="RejectedButton" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Rejected_Click">
+        <Button Name="RejectedButton" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Rejected_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
@@ -42,11 +42,20 @@
             </Button.ContentTemplate>
         </Button>
 
-        <Button Name="AddMedicine" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Add_Med_Click">
+        <Button Name="AddMedicine" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Add_Med_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
                         <TextBlock>Add New</TextBlock>
+                    </Viewbox>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Button Name="GeneratePdf" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Generate_Click">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Viewbox MaxHeight="55">
+                        <TextBlock>Generate PDF</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
