@@ -9,11 +9,11 @@ namespace Projekat_SIMS_IN_TIM3.Service;
 
 public class MergeTermService
 {
-    public MergeTermRepository mergeTermRepository;
+    public MergeTermIRepository mergeTermRepository;
     public RoomIRepository roomRepository;
     public AppointmentRepository appointmentRepository;
 
-    public MergeTermService(MergeTermRepository mergeTermRepository, RoomIRepository roomRepository,
+    public MergeTermService(MergeTermIRepository mergeTermRepository, RoomIRepository roomRepository,
         AppointmentRepository appointmentRepository)
     {
         this.mergeTermRepository = mergeTermRepository;

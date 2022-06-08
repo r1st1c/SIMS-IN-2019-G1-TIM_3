@@ -41,7 +41,7 @@ namespace Projekat_SIMS_IN_TIM3
         public static RenovationTermIRepository renovationTermRepository = new RenovationTermRepository();
         public static SplitTermIRepository splitTermRepository = new SplitTermRepository();
         public static EquipmentIRepository equipmentRepository = new EquipmentRepository();
-        public static MergeTermRepository mergeTermRepository = new ();
+        public static MergeTermIRepository mergeTermRepository = new MergeTermRepository();
 
         public static RoomService roomService = new RoomService(roomRepository, equipmentRepository);
         public static RenovationTermService renovationTermService =
