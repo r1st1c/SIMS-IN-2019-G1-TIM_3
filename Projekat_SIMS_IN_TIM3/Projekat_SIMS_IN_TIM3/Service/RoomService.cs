@@ -83,9 +83,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
         }
 
         private RoomIRepository roomRepository;
-        private EquipmentRepository equipmentRepository;
+        private EquipmentIRepository equipmentRepository;
 
-        public RoomService(RoomIRepository roomRepository, EquipmentRepository equipmentRepository)
+        public RoomService(RoomIRepository roomRepository, EquipmentIRepository equipmentRepository)
         {
             this.roomRepository = roomRepository;
             this.equipmentRepository = equipmentRepository;

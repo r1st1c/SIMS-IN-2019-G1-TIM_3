@@ -7,11 +7,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class EquipmentRepository
-   {
+    public class EquipmentRepository : EquipmentIRepository
+    {
         private readonly string equipmentpath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\equipment.csv";
         private readonly string equipmentfuturemovepath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\equipment_future_move.csv";
 
