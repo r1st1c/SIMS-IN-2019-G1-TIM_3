@@ -76,6 +76,7 @@ namespace Projekat_SIMS_IN_TIM3
 
         }
 
+        //refaktorisi
         public void Confirm_Click(object sender, RoutedEventArgs e)
         {
             MainWindowPatient parentWindow = Window.GetWindow(this) as MainWindowPatient;

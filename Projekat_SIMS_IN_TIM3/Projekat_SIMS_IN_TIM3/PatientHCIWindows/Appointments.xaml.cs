@@ -89,10 +89,10 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
         }
         public void Add_Appointment_Click(object sender, RoutedEventArgs e)
         {
-            /*MainWindowPatient parentWindow = Window.GetWindow(this) as MainWindowPatient;
+            MainWindowPatient parentWindow = Window.GetWindow(this) as MainWindowPatient;
 
 
-            parentWindow.Notif.Content = new NotesAdd(Username, patId);*/
+            parentWindow.Notif.Content = new AppointmentsSearch(Username);
         }
 
         public void Edit_Appointment_Click(object sender, RoutedEventArgs e)

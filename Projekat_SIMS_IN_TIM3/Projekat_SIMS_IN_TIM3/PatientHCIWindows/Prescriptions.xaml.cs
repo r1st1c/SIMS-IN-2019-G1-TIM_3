@@ -49,7 +49,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
 
             
-
+            //refaktorisi
             foreach (Patient pat in patients)
             {
                 if (pat.User.Username == Username)

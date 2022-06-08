@@ -41,6 +41,8 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
             patient = null;
 
+            //refaktorisi
+
             foreach (Patient pat in patients)
             {
                 if (pat.User.Username == Username)
