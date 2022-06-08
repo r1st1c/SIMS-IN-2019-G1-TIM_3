@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Service
 {
@@ -64,10 +65,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
         }
 
 
-        public RoomRepository roomRepository;
+        public RoomIRepository roomRepository;
         public EquipmentRepository equipmentRepository;
 
-        public EquipmentService(RoomRepository roomRepository, EquipmentRepository equipmentRepository)
+        public EquipmentService(RoomIRepository roomRepository, EquipmentRepository equipmentRepository)
         {
             this.roomRepository = roomRepository;
             this.equipmentRepository = equipmentRepository;

@@ -91,8 +91,19 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
                 return;
             }
 
-            Rooms.Remove(room);
+            RemoveFromList(room);
             this.roomController.DeleteById(room.Id);
+        }
+
+        private void RemoveFromList(Room room)
+        {
+            for (int i = 0; i < Rooms.Count; i++)
+            {
+                if (Rooms[i].Id == room.Id)
+                {
+                    Rooms.RemoveAt(i);
+                }
+            }
         }
 
         private void BasicRoom(object parameter)

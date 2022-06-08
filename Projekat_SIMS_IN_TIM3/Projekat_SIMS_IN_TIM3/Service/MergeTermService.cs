@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 
@@ -9,10 +10,10 @@ namespace Projekat_SIMS_IN_TIM3.Service;
 public class MergeTermService
 {
     public MergeTermRepository mergeTermRepository;
-    public RoomRepository roomRepository;
+    public RoomIRepository roomRepository;
     public AppointmentRepository appointmentRepository;
 
-    public MergeTermService(MergeTermRepository mergeTermRepository, RoomRepository roomRepository,
+    public MergeTermService(MergeTermRepository mergeTermRepository, RoomIRepository roomRepository,
         AppointmentRepository appointmentRepository)
     {
         this.mergeTermRepository = mergeTermRepository;

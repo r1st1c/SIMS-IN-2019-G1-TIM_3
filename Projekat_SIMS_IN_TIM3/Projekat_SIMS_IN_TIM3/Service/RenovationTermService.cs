@@ -82,9 +82,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             List<RenovationTerm> renovationTerms = this.renovationTermRepository.GetRenovationSchedules();
             List<Room> roomList = this.roomRepository.GetAll();
-            foreach (Room room in roomList)
+            foreach (RenovationTerm renovationTerm in renovationTerms)
             {
-                foreach (RenovationTerm renovationTerm in renovationTerms)
+                foreach (Room room in roomList)
                 {
                     if (RoomIsFound(room, renovationTerm))
                     {
@@ -107,7 +107,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         private static bool RenovationPassed(RenovationTerm renovationTerm)
         {
-            return DateTime.Now > renovationTerm.Range.End;
+            return DateTime.Now > DateRange.GetLastMoment(renovationTerm.Range.End);
         }
 
         private static bool RenovationOccuringNow(RenovationTerm renovationTerm, Room room)

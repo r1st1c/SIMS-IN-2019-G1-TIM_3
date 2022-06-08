@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 
@@ -9,10 +10,10 @@ public class SplitTermService
 {
     private SplitTermRepository SplitTermRepository;
     private AppointmentRepository AppointmentRepository;
-    private RoomRepository RoomRepository;
+    private RoomIRepository RoomRepository;
 
     public SplitTermService(SplitTermRepository splitTermRepository, AppointmentRepository appointmentRepository,
-        RoomRepository roomRepository)
+        RoomIRepository roomRepository)
     {
         this.SplitTermRepository = splitTermRepository;
         this.AppointmentRepository = appointmentRepository;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Windows.ApplicationModel;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Repository;
 using Projekat_SIMS_IN_TIM3.Service;
 using Xceed.Wpf.Toolkit.Core.Converters;
@@ -36,7 +37,7 @@ namespace Projekat_SIMS_IN_TIM3
         public static AppointmentRepository appointmentRepository = new();
 
         #region Manager
-        public static RoomRepository roomRepository = new ();
+        public static RoomIRepository roomRepository = new RoomRepository();
         public static SplitTermRepository splitTermRepository = new ();
         public static EquipmentRepository equipmentRepository = new();
         public static MergeTermRepository mergeTermRepository = new ();
