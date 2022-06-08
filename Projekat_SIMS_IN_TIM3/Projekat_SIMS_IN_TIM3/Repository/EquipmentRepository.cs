@@ -62,7 +62,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return true;
         }
 
-        public bool scheduleFutureMove(int equipmentId, int targetRoomId, DateTime date)
+        public bool ScheduleFutureMove(int equipmentId, int targetRoomId, DateTime date)
         {
 
             string fileName = equipmentfuturemovepath;

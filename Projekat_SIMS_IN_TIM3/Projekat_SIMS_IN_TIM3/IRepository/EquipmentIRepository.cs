@@ -12,7 +12,7 @@ namespace Projekat_SIMS_IN_TIM3.IRepository
         public Equipment GetById(int id);
         public List<Equipment> GetAll();
         public bool Move(int equipmentId, int targetRoomId);
-        public bool scheduleFutureMove(int equipmentId, int targetRoomId, DateTime date);
+        public bool ScheduleFutureMove(int equipmentId, int targetRoomId, DateTime date);
         public List<EquipmentMoveOrder> GetAvailableForMoving();
         public void MoveEquipmentToDefaultRoomAfterDeletingRoom(int roomId);
 

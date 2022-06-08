@@ -41,7 +41,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         public bool Move(int equipmentId, int targetRoomId, DateTime date)
         {
             if (DateTime.Compare(date.Date, DateTime.Now.Date) > 0){
-                this.equipmentRepository.scheduleFutureMove(equipmentId, targetRoomId, date);
+                this.equipmentRepository.ScheduleFutureMove(equipmentId, targetRoomId, date);
                 return false;
             }
             else{
