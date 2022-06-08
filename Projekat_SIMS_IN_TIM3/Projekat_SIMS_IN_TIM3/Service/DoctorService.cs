@@ -47,28 +47,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         }
 
 
-        public void AddGrade(DoctorGradeDTO gradeDTO, int doctorId)
-        {
-            Doctor doctor = doctorRepository.GetById(doctorId);
-
-            //doctor = applyGrades(doctor, gradeDTO);
-
-            doctorRepository.Delete(doctorId);
-            doctorRepository.SaveAndUpdate(doctor);
-        }
-        /*
-        public Doctor applyGrades(Doctor doctor, DoctorGradeDTO gradeDTO)
-        {
-
-            doctor.KnowledgeGrades.Add(gradeDTO.KnowledgeGrade);
-            doctor.HelpfulnessGrades.Add(gradeDTO.HelpfulnessGrade);
-            doctor.PunctualityGrades.Add(gradeDTO.PunctualityGrade);
-            doctor.PleasantnessGrades.Add(gradeDTO.PleasantnessGrade);
-
-            return doctor;
-        }
-
-       */
+        
 
 
     }

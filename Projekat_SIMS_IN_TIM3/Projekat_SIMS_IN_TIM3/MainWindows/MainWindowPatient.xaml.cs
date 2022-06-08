@@ -40,7 +40,8 @@ namespace Projekat_SIMS_IN_TIM3.MainWindows
         public void Notifications_Click(object sender, RoutedEventArgs e)
         {
             this.Notif.Visibility = Visibility.Visible;
-            this.Notif.Content = new Notifications(Username);
+            //this.Notif.Content = new Notifications(Username);
+            this.Notif.Content = new Alarms(Username);
         }
 
         public void Notes_Click(object sender, RoutedEventArgs e)

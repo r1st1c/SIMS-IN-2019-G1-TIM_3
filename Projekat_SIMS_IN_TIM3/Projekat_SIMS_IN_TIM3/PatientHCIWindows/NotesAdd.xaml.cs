@@ -60,7 +60,6 @@ namespace Projekat_SIMS_IN_TIM3
 
             parentWindow.Notif.Content = new Notes(Username);
 
-
         }
 
         public void Confirm_Click(object sender, RoutedEventArgs e)

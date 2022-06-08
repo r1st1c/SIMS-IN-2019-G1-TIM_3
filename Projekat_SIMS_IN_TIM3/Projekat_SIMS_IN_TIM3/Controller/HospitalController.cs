@@ -12,9 +12,6 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         public HospitalService hospitalService = new HospitalService();
 
-        public void addGrade(HospitalGradeDTO gradeDTO)
-        {
-            this.hospitalService.addGrade(gradeDTO);
-        }
+       
     }
 }

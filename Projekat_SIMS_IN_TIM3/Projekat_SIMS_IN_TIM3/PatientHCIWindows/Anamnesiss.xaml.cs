@@ -28,6 +28,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
         string Username;
         public App application { get; set; }
+
         public Patient patient = new Patient();
         public static List<Anamnesis> anamnesis { get; set; } = new List<Anamnesis>();
         public static List<AnamnesisDTO> anamnesisList { get; set; } = new List<AnamnesisDTO>();
@@ -35,7 +36,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
         public static ObservableCollection<AnamnesisDTO> anamnesisCollection { get; set; }
         public int patId { get; set; } = 1;
 
-        UIElement parent = App.Current.MainWindow;
+
         public Anamnesiss(string Username)
         {
             InitializeComponent();
