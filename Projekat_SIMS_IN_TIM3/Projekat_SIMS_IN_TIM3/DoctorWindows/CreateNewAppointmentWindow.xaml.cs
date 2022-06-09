@@ -1,5 +1,8 @@
 ﻿using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Service;
+using Projekat_SIMS_IN_TIM3.Repository;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +30,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         List<Appointment> appointments = new List<Appointment>();
         private Appointment chosen;
 
-        AppointmentController appointmentController = new AppointmentController();
+        public static AppointmentIRepository appointmentRepository = new AppointmentRepository();
+        public static PatientService patientService = new PatientService();
+        public static AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientService);
+
+        AppointmentController appointmentController = new AppointmentController(appointmentService);
         DoctorController doctorController = new DoctorController();
         public ObservableCollection<string> Doctors { get; set; }
         private string DoctorSelected;

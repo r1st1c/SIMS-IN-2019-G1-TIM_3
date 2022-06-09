@@ -11,7 +11,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class HospitalGradeController
     {
-        public HospitalGradeService HospitalGradeService = new HospitalGradeService();
+        public HospitalGradeController(HospitalGradeService hospitalGradeService)
+        {
+            this.HospitalGradeService = hospitalGradeService;   
+        }
+
+        public HospitalGradeService HospitalGradeService;
 
         public void Create(HospitalGrade hospitalGrade)
         {

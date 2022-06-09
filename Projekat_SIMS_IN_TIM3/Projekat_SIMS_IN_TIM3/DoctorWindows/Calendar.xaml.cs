@@ -1,6 +1,9 @@
 ﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Service;
 using Projekat_SIMS_IN_TIM3.MainWindows;
 using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.IRepository;
+using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,9 +26,13 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     /// </summary>
     public partial class Calendar : Window
     {
+        public static AppointmentIRepository appointmentRepository = new AppointmentRepository();
+        public static PatientService patientService = new PatientService();
+        public static AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientService);
         public int DoctorId { get; set; }
         public String DoctorsNameAndSurname { get; set; }
-        AppointmentController c = new AppointmentController();
+
+        AppointmentController c = new AppointmentController(appointmentService);
         DoctorController doctorController = new DoctorController(); 
         public static ObservableCollection<Appointment> Appointments { get; set; }
         public Calendar(int doctorsId)

@@ -5,12 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class AlarmService
     {
-        public AlarmRepository alarmRepository = new AlarmRepository();
+        public AlarmService(AlarmIRepository alarmRepository)
+        {
+            this.alarmRepository = alarmRepository;
+        }
+
+        public AlarmIRepository alarmRepository;
 
         public List<Alarm> GetAll()
         {

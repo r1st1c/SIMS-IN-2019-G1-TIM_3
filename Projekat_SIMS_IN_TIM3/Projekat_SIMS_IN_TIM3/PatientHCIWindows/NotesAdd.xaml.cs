@@ -94,7 +94,7 @@ namespace Projekat_SIMS_IN_TIM3
 
             note = new Note(this.application.noteController.getNextId(), patientId, this.Title.Text, this.Text.Text, DateTime.Now);
 
-            this.application.noteController.CreateNote(note);
+            this.application.noteController.Create(note);
             parentWindow.Notif.Content = new Notes(Username);
 
 

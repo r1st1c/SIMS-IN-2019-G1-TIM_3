@@ -5,11 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class AppointmentService
     {
+        public AppointmentService(AppointmentIRepository appointmentRepository, PatientService patientService)
+        {
+            this.patientService = patientService;
+            this.appointmentRepository = appointmentRepository;
+        }
+
+        public AppointmentIRepository appointmentRepository;
+        public PatientService patientService;
+
 
         public int GetNextId()
         {
@@ -128,9 +138,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return DateTime.Now - fifthLastCancellation;
         }
 
-
-        public AppointmentRepository appointmentRepository = new AppointmentRepository();
-        public PatientService patientService = new PatientService();
 
     }
 }

@@ -1,5 +1,8 @@
 ﻿using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.IRepository;
+using Projekat_SIMS_IN_TIM3.Repository;
+using Projekat_SIMS_IN_TIM3.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +26,13 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     public partial class CreateAbsenceReq : Window
     {
         public int DoctorId { get; set; }
+        public static AppointmentIRepository appointmentRepository = new AppointmentRepository();
+        public static PatientService patientService = new PatientService();
+        public static AppointmentService appointmentService = new AppointmentService(appointmentRepository, patientService);
+
         AbsenceRequestController absenceRequestController = new AbsenceRequestController();
-        AppointmentController appointmentController = new AppointmentController();
+
+        AppointmentController appointmentController = new AppointmentController(appointmentService);
         DoctorController doctorController = new DoctorController();
         public String DoctorsNameAndSurname { get; set; }
 

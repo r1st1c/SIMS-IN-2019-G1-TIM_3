@@ -10,7 +10,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class AnamnesisController
     {
-        public AnamnesisService anamnesisService = new AnamnesisService();
+        public AnamnesisController(AnamnesisService anamnesisService)
+        {
+            this.anamnesisService = anamnesisService;
+        }
+        public AnamnesisService anamnesisService;
 
         public List<Anamnesis> GetAll()
         {

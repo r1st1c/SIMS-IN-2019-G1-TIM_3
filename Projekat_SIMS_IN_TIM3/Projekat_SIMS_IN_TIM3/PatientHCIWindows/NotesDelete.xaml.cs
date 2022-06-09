@@ -59,7 +59,7 @@ namespace Projekat_SIMS_IN_TIM3
 
             
 
-            this.application.noteController.DeleteNode(noteId);
+            this.application.noteController.Delete(noteId);
 
             parentWindow.Notif.Content = new Notes(Username);
 

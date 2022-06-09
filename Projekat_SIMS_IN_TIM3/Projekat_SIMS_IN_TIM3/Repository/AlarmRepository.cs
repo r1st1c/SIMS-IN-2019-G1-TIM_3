@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class AlarmRepository
+    public class AlarmRepository : AlarmIRepository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\alarms.json";
         private List<Alarm> alarms = new List<Alarm>();
