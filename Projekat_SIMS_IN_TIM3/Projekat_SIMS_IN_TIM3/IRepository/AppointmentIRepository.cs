@@ -28,9 +28,7 @@ namespace Projekat_SIMS_IN_TIM3.IRepository
 
         public Appointment GetById(int appointmentId);
 
-        public int NumOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end);
-
-        public bool IsDoctorFree(int doctorId, DateTime start, DateTime end);
+       
        
     }
 }

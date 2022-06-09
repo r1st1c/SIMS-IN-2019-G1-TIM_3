@@ -55,10 +55,6 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.appointmentService.GetById((int)appointmentId);
         }
 
-        public int NumOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
-        {
-            return appointmentService.NumOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
-        }
 
         public bool IsDoctorFree(int doctorId, DateTime start, DateTime end)
         {
