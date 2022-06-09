@@ -31,7 +31,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             InitializeComponent();
             this.DataContext = this;
             DoctorId = doctorId;
-            UnverifiedMedicines = new ObservableCollection<Medicine>(medicineController.getAllUnverified());
+            UnverifiedMedicines = new ObservableCollection<Medicine>(medicineController.GetUnverified());
         }
 
         public void verifyClick(object sender, RoutedEventArgs e)
@@ -47,8 +47,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                     updatedMed.Id = medId;
                     updatedMed.Name = medicine.Name;
                     updatedMed.Ingredients = medicine.Ingredients;
-                    updatedMed.IsVerified = true;
-                    medicineController.updateMedicine(updatedMed);
+                    updatedMed.IsVerified = MedicineStatus.approved;
+                    medicineController.Update(updatedMed);
                     MessageBox.Show("You have successfully verified " + medicine.Name);
                     break;
 
@@ -63,8 +63,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         public void rejectClick(object sender, RoutedEventArgs e)
         {
             Medicine medicine = (Medicine)((Button)e.Source).DataContext;
-            medicine.IsVerified = false;
-            medicineController.updateMedicine(medicine);
+            medicine.IsVerified = MedicineStatus.rejected;
+            medicineController.Update(medicine);
             int medId = medicine.Id;
             MessageBoxResult result1 = MessageBox.Show("Are you sure you want to reject verifying " + medicine.Name, "Reject medicine", MessageBoxButton.YesNo);
             switch (result1)
@@ -96,15 +96,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
-            Notifications notifications = new Notifications();
+            Notifications notifications = new Notifications(DoctorId);
             notifications.Show();
-            this.Close();
-        }
-
-        private void ListOfMedBtn(object sender, RoutedEventArgs e)
-        {
-            ListOfMedicines listOfMedicines = new ListOfMedicines();
-            listOfMedicines.Show();
             this.Close();
         }
 

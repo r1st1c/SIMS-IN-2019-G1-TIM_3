@@ -17,7 +17,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public RejectedMedicineNotificationRepository() { }
 
-        public void readJson()
+        public void ReadJson()
         {
             if (!File.Exists(fileLocation))
             {
@@ -40,21 +40,21 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public List<RejectedMedicineNotification> getAll()
+        public List<RejectedMedicineNotification> GetAll()
         {
-            readJson();
+            ReadJson();
             return notifications;
         }
 
-        public void createNotification(RejectedMedicineNotification notification)
+        public void Create(RejectedMedicineNotification notification)
         {
             notifications.Add(notification);
             WriteToJson();
         }
 
-        public void deleteNotification(int notificationId)
+        public void Delete(int notificationId)
         {
-            readJson();
+            ReadJson();
             int index = notifications.FindIndex(obj => obj.Id == notificationId);
             notifications.RemoveAt(index);
             WriteToJson();

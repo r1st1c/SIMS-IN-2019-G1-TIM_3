@@ -17,7 +17,7 @@ using Projekat_SIMS_IN_TIM3.Controller;
 namespace Projekat_SIMS_IN_TIM3.PatientXAML
 {
    
-    
+    //premesteno
     public partial class SearchAppointments : Window
     {
         public App application { get; set; }
@@ -37,7 +37,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
         {
             int doctorId = Convert.ToInt32(txtDoctorId.Text); //uvezati sa wpfom
             string priority = combobox.Text;
-
+            
             DateTime wantedStartTIme = (DateTime)StartTime1.SelectedDate; //unesen pocetak
             DateTime wantedEndTIme = (DateTime)EndTime1.SelectedDate; //unesen kraj
 
@@ -122,12 +122,12 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             int appointmentId = selectedAppointment.Id;
             int patientId = 1; //uvezati sa frontom
 
-            application.appointmentController.DeleteAppointment(appointmentId);
+            application.appointmentController.Delete(appointmentId);
             var newAppointment = new Appointment(appointmentId, selectedAppointment.StartTime, selectedAppointment.DurationInMinutes,
                 selectedAppointment.Type, selectedAppointment.DoctorId, 1);
 
 
-            application.appointmentController.CreateAppointment(newAppointment);
+            application.appointmentController.Create(newAppointment);
             MessageBox.Show("Successfully signed up for appointment ");
         }
 

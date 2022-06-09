@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.View.ManagerView;
+using Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
@@ -23,14 +26,21 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class MergeRoomsWindow : Window
     {
         public List<string> RoomNames { get; set; }
-        public RoomController roomController { get; set; } = new RoomController();
+        public RoomController roomController;
+        public MergeTermController MergeTermController;
         public List<RoomType> RoomTypes { get; set; }
-        public MergeRoomsWindow()
+        private ObservableCollection<Room> Rooms { get; set; }
+
+        public MergeRoomsWindow(ObservableCollection<Room> Rooms)
         {
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
+            this.MergeTermController = app.mergeTermController;
             InitializeComponent();
             this.DataContext = this;
             RoomNames = new List<string>();
             RoomTypes = Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList();
+            this.Rooms = Rooms;
             foreach (var room in this.roomController.GetAll())
             {
                 this.RoomNames.Add(room.Name);
@@ -54,7 +64,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 this.newName.Text,
                 (RoomType)Enum.Parse(typeof(RoomType),this.newType.Text)
                 );
-            renovationsGrid.ItemsSource = this.roomController.GetMergeRenovationAvailableTerms(query);
+            renovationsGrid.ItemsSource = this.MergeTermController.GetMergeRenovationAvailableTerms(query);
         }
 
         private bool AnyFieldIsEmpty()
@@ -76,8 +86,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Schedule_Click(object sender, RoutedEventArgs e)
         {
             MergeRenovationTerm rt = (MergeRenovationTerm)((Button)e.Source).DataContext;
-            this.roomController.ScheduleMerge(rt);
-            foreach (var room in RoomPage.Rooms)
+            this.MergeTermController.ScheduleMerge(rt);
+            foreach (var room in this.Rooms)
             {
                 if (RoomWasFound(room, rt) && StartDatePassed(rt) && EndDayHasntPassed(rt))
                 {

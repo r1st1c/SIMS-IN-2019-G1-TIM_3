@@ -12,9 +12,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         private OperationNotificationRepository repo = new OperationNotificationRepository();
 
-        public void create(OperationNotification notification)
+        public void Create(OperationNotification notification)
         {
-            repo.create(notification);
+            repo.Create(notification);
         }
 
         public List<OperationNotification> GetAll()

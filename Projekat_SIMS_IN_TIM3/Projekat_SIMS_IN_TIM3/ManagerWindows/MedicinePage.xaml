@@ -20,44 +20,42 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.025*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
+        <Button Name="UnapprovedButton" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Unapproved_Click">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Viewbox MaxHeight="55">
+                        <TextBlock>Unapproved</TextBlock>
+                    </Viewbox>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Button Name="RejectedButton" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Rejected_Click">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Viewbox MaxHeight="55">
+                        <TextBlock>Rejected</TextBlock>
+                    </Viewbox>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
 
-        <DataGrid  Grid.ColumnSpan="7" x:Name="dataRoom" Grid.Row="1" ItemsSource="{Binding all}" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" FontSize="16">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="0.15*"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
-                <DataGridTextColumn Header="Is Verified" Binding="{Binding IsVerified}" Width="*"/>
-                <DataGridTextColumn Header="Replacement" Binding="{Binding Replacement}" Width="*"/>
-                <DataGridTemplateColumn Header="Ingredients" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ComboBox ItemsSource="{Binding Ingredients}" IsEditable="False" Text="Ingredients" IsReadOnly="True"/> 
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        
-        <Button Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click">
+        <Button Name="AddMedicine" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Add_Med_Click">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
-                        <TextBlock>Add Medicine</TextBlock>
+                        <TextBlock>Add New</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
         </Button>
-        <Button Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button.ContentTemplate>
-                <DataTemplate>
-                    <Viewbox MaxHeight="55">
-                        <TextBlock></TextBlock>
-                    </Viewbox>
-                </DataTemplate>
-            </Button.ContentTemplate>
-        </Button>
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="7" Fill="Black"></Rectangle>
+
+        <Frame Name="MedicineFrame" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" NavigationUIVisibility="Hidden">
+
+
+        </Frame>
     </Grid>
 </Page>

@@ -24,7 +24,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     {
        
         public int DoctorId { get; set; }
-       
+        public String DoctorsNameAndSurname { get; set; }
         PatientController patientController = new PatientController();
         DoctorController doctorController = new DoctorController();
         private AppointmentType AppTypeSelected;
@@ -39,7 +39,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             DoctorId = doctorId;
             AppTypes = new ObservableCollection<AppointmentType>(Enum.GetValues(typeof(AppointmentType)).Cast<AppointmentType>().ToList());
             Patients = new ObservableCollection<string>(patientController.nameSurname());
-            Doctors = new ObservableCollection<string>(doctorController.nameSurnameSpec());
+            Doctors = new ObservableCollection<string>(doctorController.NameSurnameSpec());
+            DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
         }
 
 

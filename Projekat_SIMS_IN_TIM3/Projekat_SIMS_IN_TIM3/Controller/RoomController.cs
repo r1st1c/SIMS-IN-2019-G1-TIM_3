@@ -10,32 +10,36 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class RoomController
     {
-        public int getMaxId()
+        public int GetMaxId()
         {
-            return this.roomService.getMaxId();
+            return this.roomService.GetMaxId();
         }
 
         public Room GetById(int id)
         {
             return this.roomService.GetById(id);
         }
+
         public Room GetByName(string name)
         {
             return this.roomService.GetByName(name);
         }
+
         public List<Room> GetAll()
         {
             return this.roomService.GetAll();
         }
 
-        public (bool,bool) Create(Room room)
+        public (bool, bool) Create(Room room)
         {
             return this.roomService.Create(room);
         }
+
         public bool UpdateUsingNewName(Room room)
         {
             return this.roomService.UpdateUsingNewName(room);
         }
+
         public bool UpdateUsingSameName(Room room)
         {
             return this.roomService.UpdateUsingSameName(room);
@@ -46,62 +50,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.roomService.DeleteById(id);
         }
 
-        public List<RenovationTerm> BasicRenovation(int roomId, DateTime start, DateTime end, int duration)
-        {
-            return this.roomService.BasicRenovation(roomId, start, end, duration);
-        }
 
-        public bool ScheduleRenovation(int roomId, string start, string end, string description)
-        {
-            return this.roomService.ScheduleRenovation(roomId, start, end, description);
-        }
+        private RoomService roomService;
 
-        public void UpdateDisabledFields()
+        public RoomController(RoomService roomService)
         {
-            this.roomService.UpdateDisabledFields();
+            this.roomService=roomService;
         }
-        public List<RenovationTerm> GetRenovationSchedules()
-        {
-            return this.roomService.GetRenovationSchedules();
-        }
-
-        public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
-        {
-            return this.roomService.GetMergeRenovationAvailableTerms(mergeRenovationQuery);
-        }
-
-        public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
-        {
-            return this.roomService.ScheduleMerge(mergeRenovationTerm);
-        }
-
-        public void DisableMergingRooms()
-        {
-            this.roomService.DisableMergingRooms();
-        }
-        public void ExecuteMerging()
-        {
-            this.roomService.ExecuteMerging();
-        }
-        public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery)
-        {
-            return this.roomService.GetSplitRenovationAvailableTerms(splitRenovationQuery);
-        }
-
-        public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)
-        {
-            return this.roomService.ScheduleSplit(splitRenovationTerm);
-        }
-        public void DisableSplittingRooms()
-        {
-            this.roomService.DisableSplittingRooms();
-        }
-
-        public void ExecuteSplitting()
-        {
-            this.roomService.ExecuteSplitting();
-        }
-        public RoomService roomService = new RoomService();
-
     }
 }

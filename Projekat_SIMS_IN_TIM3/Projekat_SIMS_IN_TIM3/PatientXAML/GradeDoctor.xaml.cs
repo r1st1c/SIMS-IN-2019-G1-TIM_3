@@ -44,20 +44,19 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
         }
         public void Submit_Click(object sender, RoutedEventArgs e)
         {
-            DoctorGradeDTO gradeDTO = makeGradeDTO();
+            
 
-            this.application.docController.addGrade(gradeDTO, doctorId);
-
-        }
-
-        public DoctorGradeDTO makeGradeDTO()
-        {
-            DoctorGradeDTO gradeDTO = new DoctorGradeDTO(Convert.ToInt32(KnowledgeGrade.Text), Convert.ToInt32(HelpfulnessGrade.Text),
+            
+            DoctorGrade doctorGrade = new DoctorGrade(doctorId, Convert.ToInt32(KnowledgeGrade.Text), Convert.ToInt32(HelpfulnessGrade.Text),
                 Convert.ToInt32(PunctualityGrade.Text), Convert.ToInt32(PleasantnessGrade.Text));
+            
+            this.application.doctorGradeController.Create(doctorGrade);
 
-            return gradeDTO;
+            MessageBox.Show("Succesfully submitted grade!");
+
         }
 
+       
         
 
         public void fillDoctorsGrid(String Username)

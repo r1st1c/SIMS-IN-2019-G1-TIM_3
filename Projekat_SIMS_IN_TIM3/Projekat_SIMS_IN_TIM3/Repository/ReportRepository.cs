@@ -15,28 +15,15 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         public List<Report> reports = new List<Report>();
         public ReportRepository()
         {
-            readJson();
+            ReadJson();
         }
 
-        public int getNextId()
+        public int GetNextId()
         {
-            int lastId = int.MinValue;
-            readJson();
-            foreach(Report report in reports)
-            {
-                if(reports == null)
-                {
-                    lastId = 0;
-                } else
-                {
-                    lastId = reports.Last().Id;
-                }
-                
-            }
-            return lastId;
+            return reports.Count != 0 ? reports.Max(x => x.Id) + 1 : 0;
         }
 
-        public void readJson()
+        public void ReadJson()
         {
 
             if (!File.Exists(fileLocation))
@@ -60,43 +47,43 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public void create(Report mp)
+        public void Create(Report rp)
         {
-            reports.Add(mp);
+            reports.Add(rp);
             WriteToJson();
         }
 
-        public void update(Report mp)
+        public void Update(Report rp)
         {
-            readJson();
-            int idx = reports.FindIndex(obj => obj.Id == mp.Id);
-            reports[idx] = mp;
+            ReadJson();
+            int idx = reports.FindIndex(obj => obj.Id == rp.Id);
+            reports[idx] = rp;
             WriteToJson();
         }
 
-        public List<Report> getAll()
+        public List<Report> GetAll()
         {
-            readJson();
+            ReadJson();
             return reports;
         }
 
-        public void delete(int rId)
+        public void Delete(int id)
         {
-            readJson();
-            int index = reports.FindIndex(obj => obj.Id == rId);
+            ReadJson();
+            int index = reports.FindIndex(obj => obj.Id == id);
             reports.RemoveAt(index);
             WriteToJson();
         }
 
-        public List<Report> getAllById(int id)
+        public List<Report> GetAllById(int id)
         {
-            readJson();
+            ReadJson();
             return reports.FindAll(obj => obj.PatientId == id);
         }
 
-        public Report getById(int id)
+        public Report GetById(int id)
         {
-            readJson();
+            ReadJson();
             return reports.Find(obj => obj.Id == id);
         }
     }

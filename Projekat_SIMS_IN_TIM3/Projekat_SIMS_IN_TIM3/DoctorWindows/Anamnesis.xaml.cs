@@ -34,7 +34,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.DataContext = this;
             PatientId = id;
             DoctorId = doctorId;
-            Reports = new ObservableCollection<Report>(reportController.getAllById(PatientId));
+            Reports = new ObservableCollection<Report>(reportController.GetAllById(PatientId));
            
         }
 
@@ -51,14 +51,12 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             Report report = (Report)((Button)e.Source).DataContext;
             Reports.Remove(report);
-            this.reportController.delete(report.Id);
+            this.reportController.Delete(report.Id);
             
         }
 
-        
-
-    
-        private void HomeBtn(object sender, RoutedEventArgs e)
+       
+         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage(DoctorId);
             mainPage.Show();
@@ -80,15 +78,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
-            Notifications notifications = new Notifications();
+            Notifications notifications = new Notifications(DoctorId);
             notifications.Show();
-            this.Close();
-        }
-
-        private void ListOfMedBtn(object sender, RoutedEventArgs e)
-        {
-            ListOfMedicines listOfMedicines = new ListOfMedicines();
-            listOfMedicines.Show();
             this.Close();
         }
 

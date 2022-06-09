@@ -1,9 +1,6 @@
-﻿using Projekat_SIMS_IN_TIM3.Controller;
-using Projekat_SIMS_IN_TIM3.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.Model;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
@@ -24,23 +23,40 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class MedicinePage : Page
     {
-        public ObservableCollection<Medicine> all { get; set; } = new ObservableCollection<Medicine>();
+        public ObservableCollection<Medicine> unapproved { get; set; } = new ObservableCollection<Medicine>();
         public MedicineController medicineController = new MedicineController();
         public MedicinePage()
         {
-            /*List<MedicineIngredient> brufenIngredients = new List<MedicineIngredient>();
-            brufenIngredients.Add(new MedicineIngredient("Ibuprofen"));
-            Medicine toAdd = new Medicine(0, "Brufen", brufenIngredients,true,null);
-            this.medicineController.createMedicine(toAdd);*/
             InitializeComponent();
+            this.unapproved = new ObservableCollection<Medicine>(this.medicineController.GetUnverified());
+            MedicineFrame.Content = new UnapprovedMedicinePage(unapproved);
+            UnapprovedButton.Background = Brushes.Aqua;
+            RejectedButton.Background = (Brush)ManagerMainWindow.brushConverter.ConvertFrom("#FFDDDDDD");
+            this.AddMedicine.Visibility = Visibility.Visible;
             this.DataContext = this;
-            var list = this.medicineController.getAll();
-            all = new ObservableCollection<Medicine>(list);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Unapproved_Click(object sender, RoutedEventArgs e)
         {
-            var add = new AddMedicineWindow(all);
+            this.unapproved = new ObservableCollection<Medicine>(this.medicineController.GetUnverified());
+            this.AddMedicine.Visibility = Visibility.Visible;
+            MedicineFrame.Content = new UnapprovedMedicinePage(unapproved);
+            UnapprovedButton.Background = Brushes.Aqua;
+            RejectedButton.Background = (Brush)ManagerMainWindow.brushConverter.ConvertFrom("#FFDDDDDD");
+        }
+
+        private void Rejected_Click(object sender, RoutedEventArgs e)
+        {
+            this.AddMedicine.Visibility = Visibility.Hidden;
+            MedicineFrame.Content = new RejectedMedicinePage();
+            UnapprovedButton.Background = (Brush)ManagerMainWindow.brushConverter.ConvertFrom("#FFDDDDDD");
+            RejectedButton.Background = Brushes.Aqua;
+
+        }
+
+        private void Add_Med_Click(object sender, RoutedEventArgs e)
+        {
+            var add = new AddMedicineWindow(unapproved);
             add.ShowDialog();
         }
     }

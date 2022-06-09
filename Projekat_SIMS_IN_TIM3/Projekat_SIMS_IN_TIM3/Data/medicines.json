@@ -1,1 +1,41 @@
-[{"Id":0,"Name":"Brufen","Ingredients":[{"Id":0,"Name":"Ibuprofen"}],"IsVerified":true,"Replacement":null},{"Id":1,"Name":"Diclofenac-Duo","Ingredients":[{"Id":3,"Name":"diazepam"}],"IsVerified":false,"Replacement":{"Id":0,"Name":"Brufen","Ingredients":[{"Id":0,"Name":"Ibuprofen"}],"IsVerified":true,"Replacement":null}},{"Id":2,"Name":"Panadol Extra","Ingredients":[{"Id":0,"Name":"paracetamol"},{"Id":5,"Name":"Caffeine"}],"IsVerified":false,"Replacement":{"Id":0,"Name":"Brufen","Ingredients":[{"Id":0,"Name":"Ibuprofen"}],"IsVerified":true,"Replacement":null}}]
+[
+  {
+    "Id": 0,
+    "Name": "Parac",
+    "Ingredients": [
+      {
+        "Id": 0,
+        "Name": "paracetamol"
+      }
+    ],
+    "IsVerified": 1,
+    "ReasonOfRejection": null,
+    "Replacement": null
+  },
+  {
+    "Id": 1,
+    "Name": "Diclofenac Duo",
+    "Ingredients": [
+      {
+        "Id": 1,
+        "Name": "diclofenac"
+      }
+    ],
+    "IsVerified": 2,
+    "ReasonOfRejection": "Invalid replacement",
+    "Replacement": "Parac"
+  },
+  {
+    "Id": 2,
+    "Name": "pr",
+    "Ingredients": [
+      {
+        "Id": 0,
+        "Name": "paracetamol"
+      }
+    ],
+    "IsVerified": 0,
+    "ReasonOfRejection": null,
+    "Replacement": "Parac"
+  }
+]

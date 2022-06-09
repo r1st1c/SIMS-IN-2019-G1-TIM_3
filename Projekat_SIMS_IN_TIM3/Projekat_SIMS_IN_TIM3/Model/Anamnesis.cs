@@ -15,6 +15,16 @@ namespace Projekat_SIMS_IN_TIM3.Model
             // TODO: implement
         }
 
+
+        public int Id { get; set; }
+        public int PatientId { get; set; }
+        public int DoctorId { get; set; }
+        public int AppointmentId { get; set; }
+        public DateTime DateAndTime { get; set; }
+
+        public AppointmentType AppType { get; set; }
+        public String PerceivedDifficulties { get; set; }
+        public String GeneralConclusion { get; set; }
         public Anamnesis(int Id, int PatientId, int DoctorId, int AppointmentId, DateTime DateAndTime, AppointmentType AppType, String PercievedDifficulties, String GeneralConclusion)
         {
             this.Id = Id;
@@ -32,15 +42,6 @@ namespace Projekat_SIMS_IN_TIM3.Model
             // TODO: implement
         }
 
-        private int Id { get; set; }
-        private int PatientId { get; set; }
-        private int DoctorId { get; set; }
-        private int AppointmentId { get; set; }
-        private DateTime DateAndTime { get; set; }
-
-        private AppointmentType AppType { get; set; }
-        private String PerceivedDifficulties { get; set; }
-        private String GeneralConclusion { get; set; }
 
     }
 

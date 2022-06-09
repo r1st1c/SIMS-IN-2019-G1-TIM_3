@@ -22,34 +22,31 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return doctorService.GetById(id);
         }
 
-        public int getIdByNameAndSurname(string name, string surname)
+        public int GetIdByNameAndSurname(string name, string surname)
         {
-            return doctorService.getIdByNameAndSurname(name, surname);
+            return doctorService.GetIdByNameAndSurname(name, surname);
         }
 
-        public int getIdByUsername(string usname)
+        public int GetIdByUsername(string usname)
         {
-            return doctorService.getIdByUsername(usname);
+            return doctorService.GetIdByUsername(usname);
         }
 
-        public void saveAndUpdate(Doctor doctor)
+        public void SaveAndUpdate(Doctor doctor)
         {
-            doctorService.saveAndUpdate(doctor);
+            doctorService.SaveAndUpdate(doctor);
         }
 
-        public void delete(int jmbg)
+        public void Delete(int jmbg)
         {
-            doctorService.delete(jmbg);
+            doctorService.Delete(jmbg);
         }
 
-        public List<string> nameSurnameSpec()
+        public List<string> NameSurnameSpec()
         {
-           return doctorService.nameSurnameSpec();
+           return doctorService.NameSurnameSpec();
         }
 
-        public void addGrade(DoctorGradeDTO gradeDTO, int doctorId)
-        {
-            doctorService.addGrade(gradeDTO, doctorId);
-        }
+       
     }
 }

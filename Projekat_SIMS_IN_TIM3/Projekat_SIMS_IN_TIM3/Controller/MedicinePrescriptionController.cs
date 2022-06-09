@@ -12,39 +12,39 @@ namespace Projekat_SIMS_IN_TIM3.Controller
     {
         public MedicinePrescriptionService service = new MedicinePrescriptionService();
 
-        public int getNextId()
+        public int GetNextId()
         {
-            return service.getNextId();
+            return service.GetNextId();
         }
-        public void create(MedicinePrescription mp) {
-            service.create(mp); 
-        }
-
-        public void update(MedicinePrescription mp)
-        {
-            service.update(mp);
+        public void Create(MedicinePrescription mp) {
+            service.Create(mp); 
         }
 
-        public List<MedicinePrescription> getAll()
+        public void Update(MedicinePrescription mp)
+        {
+            service.Update(mp);
+        }
+
+        public List<MedicinePrescription> GetAll()
         {
 
-             return this.service.getAll();
+             return this.service.GetAll();
          
         }
 
-        public void delete(int rId)
+        public void Delete(int rId)
         {
-            service.delete(rId);
+            service.Delete(rId);
         }
 
-        public List<MedicinePrescription> getAllById(int it)
+        public List<MedicinePrescription> GetAllById(int it)
         {
-            return service.getAllById(it);
+            return service.GetAllById(it);
         }
 
-        public MedicinePrescription getById(int id)
+        public MedicinePrescription GetById(int id)
         {
-            return service.getById(id);
+            return service.GetById(id);
 
           
         }

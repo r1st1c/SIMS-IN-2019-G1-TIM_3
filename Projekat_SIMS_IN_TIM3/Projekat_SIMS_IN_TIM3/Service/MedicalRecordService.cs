@@ -14,22 +14,22 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
 
 
-        public void createMedicalRecord(Model.MedicalRecord medicalRecord)
+        public void Create(MedicalRecord mr)
         {
-            this.mr.createMedicalRecord(medicalRecord);
+            this.mr.Create(mr);
         }
-        public void deleteMedicalRecord(int id)
+        public void Delete(int id)
         {
-            this.mr.deleteMedicalRecord(id);
+            this.mr.Delete(id);
         }
 
         public List<MedicalRecord> getAll()
         {
-            return this.mr.getAll();
+            return this.mr.GetAll();
         }
         public MedicalRecord getByPatientId(int id)
         {
-            return this.mr.getByPatientId((int)id);
+            return this.mr.GetByPatientId((int)id);
         }
     }
 }

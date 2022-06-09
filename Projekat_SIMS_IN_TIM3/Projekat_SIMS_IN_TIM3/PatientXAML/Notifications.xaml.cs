@@ -19,6 +19,9 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
     /// <summary>
     /// Interaction logic for Notifications.xaml
     /// </summary>
+    /// 
+
+    /// premesteno
     public partial class Notifications : Window
     {
         public App application { get; set; }
@@ -34,7 +37,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
             application = Application.Current as App;
 
-            prescriptions = application.medPrescriptionController.getAll();
+            prescriptions = application.medPrescriptionController.GetAll();
             List<Patient> patients = application.patientController.GetAll();
 
             Patient patient = null;

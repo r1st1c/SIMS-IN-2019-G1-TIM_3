@@ -21,7 +21,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
     /// <summary>
     /// Interaction logic for UpdateAndDeleteAppointment.xaml
     /// </summary>
-   
+   //premesteno
     public partial class UpdateAndDeleteAppointment : Window
     {
 
@@ -66,7 +66,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
 
         public void Cancel(object sender, RoutedEventArgs e)
         {
-            Boolean canceledAppointment = application.patientController.cancelAppointment(patientId, selectedAppointment.Id);
+            Boolean canceledAppointment = application.appointmentController.Cancel(patientId, selectedAppointment.Id);
 
             if(canceledAppointment)
             {
@@ -132,16 +132,15 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
             {
                 Cancel(sender, e);
 
-                if (toBlock)
+                if (!toBlock)
                 {
-
-                    application.appointmentController.DeleteAppointment(appointmentId);
+                    application.appointmentController.Delete(appointmentId);
                     var newAppointment = new Appointment(appointmentId, (DateTime)startTime1.Value, selectedAppointment.DurationInMinutes,
                         selectedAppointment.Type, selectedAppointment.DoctorId, selectedAppointment.PatientId);
 
 
-                    application.appointmentController.CreateAppointment(newAppointment);
-                }    
+                    application.appointmentController.Create(newAppointment);
+                } 
             }
         }
     }

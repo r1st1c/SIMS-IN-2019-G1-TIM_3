@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="ADD MEDICAL REPORT" Height="449" Width="450">
+        Title="ADD MEDICAL REPORT" Height="550" Width="550">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -26,32 +26,44 @@
 
         </Grid.ColumnDefinitions>
 
-        <Label  x:Name="labelPatientId" Grid.Row="5" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="22,25,164,0" RenderTransformOrigin="0.5,0.5"  >
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
 
-        <xctk:DateTimePicker   Height="30" Grid.Row="1" x:Name="startTime1" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="238" Margin="202,23,0,0" Grid.ColumnSpan="2" MaxWidth="340"/>
 
-        <Label  Grid.Row="0" Content="Patient" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="" Margin="6,20,0,0" Foreground="Black" FontWeight="Bold" FontSize="18" Grid.Column="0"/>
-        <ComboBox  Grid.Row="0" x:Name="patientCb" MaxWidth="340" Margin="202,21,10,4" MaxHeight="30" 
-                  ItemsSource="{Binding Path=Patients}"  Grid.ColumnSpan="2"/>
-        <Label  Grid.Row="2" Grid.Column="0" Content="Appointment type" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Margin="5,23,0,0" FontSize="18" Grid.RowSpan="2"/>
-        <ComboBox Name="appTypeCb" Grid.Row="2" Grid.ColumnSpan="2"  MaxWidth="340" Margin="202,22,10,10" Height="30"
-                  ItemsSource="{Binding Path=AppTypes}"  SelectedValue="{Binding Path=AppTypeSelected}" />
-        <Label  Grid.Row="1" Grid.Column="0"  Foreground="Black" FontSize="18" Content="Date and time" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Margin="6,23,0,0"/>
-        <Label  Grid.Row="4" FontSize="18"  Foreground="Black" Content="GeneralConclusion" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="1,43,0,0" FontWeight="Bold" Width="214" Grid.Column="0" Grid.RowSpan="2"/>
+
+
+        <xctk:DateTimePicker   Height="30" Grid.Row="2" x:Name="startTime1" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="startTime1" RenderTransformOrigin="1.122,-0.988" Width="338" Margin="202,9,0,0" Grid.ColumnSpan="2" MaxWidth="340"/>
+
+        <Label  Grid.Row="1" Content="Patient" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="" Margin="10,24,0,0" Foreground="Black" FontWeight="Bold" FontSize="18" Grid.Column="0"/>
+        <Label Content="{Binding PatientNameAndSurname}" Grid.Row="1" Margin="239,21,10,23" FontSize="18" Grid.ColumnSpan="2" />
+
+        <Label  Grid.Row="2" Grid.Column="0" Content="Appointment type" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Margin="10,58,0,0" FontSize="18" Grid.RowSpan="2"/>
+        <ComboBox Name="appTypeCb" Grid.Row="2" Grid.ColumnSpan="2"  MaxWidth="340" Margin="202,60,10,62" Height="30"
+                  ItemsSource="{Binding Path=AppTypes}"  SelectedValue="{Binding Path=AppTypeSelected}" Grid.RowSpan="2" />
+        <Label  Grid.Row="2" Grid.Column="0"  Foreground="Black" FontSize="18" Content="Date and time" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Margin="8,4,0,0"/>
+        <Label  Grid.Row="4" FontSize="18"  Foreground="Black" Content="General conclusion" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10,56,0,0" FontWeight="Bold" Width="214" Grid.Column="0" Grid.RowSpan="2"/>
         <TextBox x:Name="conclusion"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="202,42,10,7" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="75"/>
 
-        <Button   Click="createReport" Grid.Row="6"  Content="Save" Background="#FF89E461"  VerticalAlignment="Center" AutomationProperties.Name="create1"    FontWeight="Bold" FontSize="14" Margin="67,0,53,0" Height="36"/>
-        <Button  Grid.Row="6"  Content="Cancel" Height ="36" Background="#FF89E461"  VerticalAlignment="Center" AutomationProperties.Name="create1"  FontWeight="Bold" FontSize="14" Margin="71,0,51,0" Grid.Column="1" Width="105"/>
-        <Label  Grid.Row="3" FontSize="18"  Foreground="Black" Content="Perceived difficulties" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Width="206" Margin="6,18,0,0"/>
+        <Button  Click="createReport"  Grid.Row="6" Grid.Column="0"  BorderBrush="Black" BorderThickness="2.5" Background="#009e0f" Margin="58,7,58,10" >
+            <StackPanel  Orientation="Horizontal">
+                <Image Source="/Icons/plus-32.ico"  Width="24" Height="24" ></Image>
+                <TextBlock Margin="12,0,0,0" Text="Save" Foreground="White" FontSize="18" FontWeight="Bold" ></TextBlock>
+            </StackPanel>
+
+        </Button>
+        <Label  Grid.Row="3" FontSize="18"  Foreground="Black" Content="Perceived difficulties" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Width="206" Margin="6,32,0,0"/>
         <TextBox x:Name="perceived"   TextWrapping="Wrap" MaxWidth="340"  AutomationProperties.Name="tb1" Margin="202,16,10,32" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="75"/>
+        <Button  Click="Cancel"  Grid.Row="6" Grid.Column="1"  BorderBrush="Black" BorderThickness="2.5" Background="#cf2a27" Margin="68,1,48,16" >
+            <StackPanel  Orientation="Horizontal">
+                <Image Source="/Icons/x-mark-32.ico"  Width="24" Height="24" />
+                <TextBlock Margin="12,0,0,0" Text="Save" Foreground="White" FontSize="18" FontWeight="Bold" />
+            </StackPanel>
+
+        </Button>
+        <Label FontSize="18" Margin="117,22,113,17" Grid.Row="1" FontWeight="Bold">ID:</Label>
+        <Label  x:Name="labelPatientId_Copy" Content="{Binding PatientId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="170,18,41,14" RenderTransformOrigin="0.5,0.5" Grid.Row="1"  />
+        <Label Content="Doctor" HorizontalAlignment="Left"  VerticalAlignment="Top" AutomationProperties.Name="" Margin="10,26,0,0" Foreground="Black" FontWeight="Bold" FontSize="18" Grid.Column="0"/>
+        <Label FontSize="18" Margin="115,24,115,14" FontWeight="Bold" Content="ID:"/>
+        <Label  x:Name="labelPatientId_Copy1" Content="{Binding DoctorId}" Foreground="Black"  FontSize="18" FontWeight="Bold" Margin="170,20,41,12" RenderTransformOrigin="0.5,0.5"  />
+        <Label Content="{Binding DoctorNameAndSurname}" Margin="239,22,10,22" FontSize="18" Grid.ColumnSpan="2" />
+
     </Grid>
 </Window>

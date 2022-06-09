@@ -40,14 +40,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             InitializeComponent();
             this.DataContext = this;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
-            Medicines = new ObservableCollection<string>(medicineController.getAllVerified());
+            Medicines = new ObservableCollection<string>(medicineController.GetVerifiedNames());
             SelectedPresId = editId;
             patients = patientController.GetAll();
         }
 
         public void Create(object sender, RoutedEventArgs e)
         {
-            MedicinePrescription newPrescription = this.prescriptionController.getById(SelectedPresId);
+            MedicinePrescription newPrescription = this.prescriptionController.GetById(SelectedPresId);
             
             DateTime dt = (DateTime)startTime1.Value;
             int dur = Convert.ToInt32(duration.Text);
@@ -98,7 +98,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 prescription.MedicineId = medId;
             }
 
-                prescriptionController.update(newPrescription);
+                prescriptionController.Update(newPrescription);
 
                 MessageBox.Show("You have successfully added new prescription! \n Check patient's medical record to see all prescriptions!", "Added new prescriptions");
 

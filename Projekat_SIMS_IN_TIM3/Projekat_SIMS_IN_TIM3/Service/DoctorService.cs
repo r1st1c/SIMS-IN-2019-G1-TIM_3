@@ -1,4 +1,4 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
@@ -18,54 +18,36 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public Doctor GetById(int id)
         {
-            return doctorRepository.getById(id);
+            return doctorRepository.GetById(id);
         }
 
-        public int getIdByNameAndSurname(string name, string surname)
+        public int GetIdByNameAndSurname(string name, string surname)
         {
-            return doctorRepository.getIdByNameAndSurname(name, surname);
+            return doctorRepository.GetIdByNameAndSurname(name, surname);
         }
 
-        public int getIdByUsername(string usname)
+        public int GetIdByUsername(string usname)
         {
-            return doctorRepository.getIdByUsername(usname);
+            return doctorRepository.GetIdByUsername(usname);
         }
 
-        public bool saveAndUpdate(Doctor doctor)
+        public bool SaveAndUpdate(Doctor doctor)
         {
-            return doctorRepository.saveAndUpdate(doctor);
+            return doctorRepository.SaveAndUpdate(doctor);
         }
 
-        public bool delete(int id)
+        public bool Delete(int id)
         {
-            return doctorRepository.delete(id);
+            return doctorRepository.Delete(id);
         }
 
-        public List<string> nameSurnameSpec()
+        public List<string> NameSurnameSpec()
         {
-            return doctorRepository.nameSurnameSpec();
+            return doctorRepository.NameSurnameSpec();
         }
 
-        public void addGrade(DoctorGradeDTO gradeDTO, int doctorId)
-        {
-            Doctor doctor = doctorRepository.getById(doctorId);
 
-            doctor = applyGrades(doctor, gradeDTO);
-
-            doctorRepository.delete(doctorId);
-            doctorRepository.saveAndUpdate(doctor);
-        }
-
-        public Doctor applyGrades(Doctor doctor, DoctorGradeDTO gradeDTO)
-        {
-
-            doctor.KnowledgeGrades.Add(gradeDTO.KnowledgeGrade);
-            doctor.HelpfulnessGrades.Add(gradeDTO.HelpfulnessGrade);
-            doctor.PunctualityGrades.Add(gradeDTO.PunctualityGrade);
-            doctor.PleasantnessGrades.Add(gradeDTO.PleasantnessGrade);
-
-            return doctor;
-        }
+        
 
 
     }

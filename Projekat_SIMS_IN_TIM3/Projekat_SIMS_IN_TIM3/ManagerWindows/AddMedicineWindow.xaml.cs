@@ -34,12 +34,17 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             InitializeComponent();
             this.DataContext = this;
             Ingredients = new ObservableCollection<MedicineIngredient>(this.medicineIngredientController.GetAll());
-            Medicines = new ObservableCollection<Medicine>(this.medicineController.getAll());
+            Medicines = new ObservableCollection<Medicine>(this.medicineController.GetVerified());
             MedicinePageList = medicinePageList;
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
+            if (String.IsNullOrWhiteSpace(this.medName.Text))
+            {
+                MessageBox.Show("You must enter name!");
+                return;
+            }
             if (NoIngredientsAreSelected())
             {
                 MessageBox.Show("You must chose at least one ingredient");
@@ -52,19 +57,34 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 selected.Add(this.medicineIngredientController.GetByName(ingredientname.ToString()));
             }
 
+            string replacement;
+            if (ReplacementIsSelected())
+            {
+                replacement = this.medicineController.GetByName(repMed.SelectedValue.ToString()).Name;
+            }
+            else
+            {
+                replacement = null;
+            }
             Medicine toCreate = new Medicine(
                 this.medicineController.GetNextId(), 
                 medName.Text, 
                 selected, 
-                false, 
-                this.medicineController.GetByName(repMed.SelectedValue.ToString())
+                MedicineStatus.unapproved,
+                replacement,
+                null
                 );
 
-            this.medicineController.createMedicine(toCreate);
+            this.medicineController.Create(toCreate);
 
             MedicinePageList.Add(toCreate);
 
             Close();
+        }
+
+        private bool ReplacementIsSelected()
+        {
+            return repMed.SelectedIndex != -1;
         }
 
         private bool NoIngredientsAreSelected()

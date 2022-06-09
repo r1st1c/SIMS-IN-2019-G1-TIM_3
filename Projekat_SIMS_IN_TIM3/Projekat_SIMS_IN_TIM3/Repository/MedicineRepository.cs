@@ -21,7 +21,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public int GetNextId()
         {
-            return medicines.Max(x => x.Id)+1;
+            return medicines.Count!=0 ? medicines.Max(x => x.Id)+1 : 0;
         }
 
         public void readJson()
@@ -47,7 +47,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public List<Medicine> getAll()
+        public List<Medicine> GetAll()
         {
             readJson();
             return medicines;
@@ -58,13 +58,13 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             readJson();
             return medicines.Find(obj => obj.Id == id);
         }
-        public void createMedicine(Medicine medicine)
+        public void Create(Medicine medicine)
         {
             medicines.Add(medicine);
             WriteToJson();
         }
 
-        public void updateMedicine(Medicine medicine)
+        public void Update(Medicine medicine)
         {
             readJson();
             int idx = medicines.FindIndex(obj => obj.Id == medicine.Id);
@@ -73,22 +73,36 @@ namespace Projekat_SIMS_IN_TIM3.Repository
            
         }
 
-        public void delete(int medId)
+        public void DeleteById(int medId)
         {
             readJson();
             int idx = medicines.FindIndex(obj => obj.Id == medId);
             medicines.RemoveAt(idx);
             WriteToJson();
         }
+        public List<Medicine> GetVerified()
+        {
+            readJson();
+            List<Medicine> list = new List<Medicine>();
 
-        public List<String> getAllVerified()
+            foreach (Medicine medicine in medicines)
+            {
+                if (medicine.IsVerified == MedicineStatus.approved)
+                {
+                    list.Add(medicine);
+                }
+            }
+
+            return list;
+        }
+        public List<String> GetVerifiedNames()
         {
             readJson();
             List<String> list = new List<String>();
 
                 foreach (Medicine medicine in medicines)
             {
-                if(medicine.IsVerified == true)
+                if(medicine.IsVerified == MedicineStatus.approved)
                 {
                     string retVal = medicine.Name;
                     list.Add(retVal);
@@ -97,10 +111,15 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return list;
         }
 
-        public List<Medicine> getAllUnverified()
+        public List<Medicine> GetUnverified()
         {
             readJson();
-            return medicines.FindAll(a => a.IsVerified == false);
+            return medicines.FindAll(a => a.IsVerified == MedicineStatus.unapproved);
+        }
+        public List<Medicine> GetRejected()
+        {
+            readJson();
+            return medicines.FindAll(a => a.IsVerified == MedicineStatus.rejected);
         }
 
         public int getIdByName(string name)

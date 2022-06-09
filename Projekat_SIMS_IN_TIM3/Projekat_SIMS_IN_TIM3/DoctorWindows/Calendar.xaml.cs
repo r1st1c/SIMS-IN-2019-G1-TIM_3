@@ -1,4 +1,5 @@
 ﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.MainWindows;
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
@@ -23,14 +24,17 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     public partial class Calendar : Window
     {
         public int DoctorId { get; set; }
+        public String DoctorsNameAndSurname { get; set; }
         AppointmentController c = new AppointmentController();
+        DoctorController doctorController = new DoctorController(); 
         public static ObservableCollection<Appointment> Appointments { get; set; }
         public Calendar(int doctorsId)
         {
             InitializeComponent();
             this.DataContext = this;
             this.DoctorId = doctorsId;
-            
+
+            DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
             Appointments = new ObservableCollection<Appointment>(c.GetByDoctorsId(Convert.ToInt32(DoctorId)));
         }
 
@@ -63,15 +67,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void NotifBtn(object sender, RoutedEventArgs e)
         {
-            Notifications notifications = new Notifications();
+            Notifications notifications = new Notifications(DoctorId);
             notifications.Show();
-            this.Close();
-        }
-
-        private void ListOfMedBtn(object sender, RoutedEventArgs e)
-        {
-            ListOfMedicines listOfMedicines = new ListOfMedicines();
-            listOfMedicines.Show();
             this.Close();
         }
 
@@ -92,6 +89,20 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.Close();
         }
 
+        private void signOutBtn(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            DoctorSignIn doctorSign = new DoctorSignIn();
+            doctorSign.Show();
+        }
+
+        private void myProfileBtn(object sender, RoutedEventArgs e)
+        {
+            DoctorsProfile doctorsProfile = new DoctorsProfile(DoctorId);
+            doctorsProfile.Show();
+            this.Close();
+        }
+
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
             CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq(DoctorId);
@@ -103,7 +114,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             Appointment appointment = (Appointment)((Button)e.Source).DataContext;
             Appointments.Remove(appointment);
-            this.c.DeleteAppointment(appointment.Id);
+            this.c.Delete(appointment.Id);
             
         }
 

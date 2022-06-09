@@ -3,6 +3,7 @@ using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Projekat_SIMS_IN_TIM3.View.ManagerView;
+using Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel;
 
 namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 {
@@ -22,21 +25,27 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class SplitRoomWindow : Window
     {
-        public RoomController roomController { get; set; } = new RoomController();
+        private ObservableCollection<Room> Rooms { get; set; }
+        public RoomController roomController;
+        public SplitTermController SplitTermController;
         public Room Room { get; set; }
         public List<RoomType> RoomTypes { get; set; }
-        public SplitRoomWindow(Room room)
+        public SplitRoomWindow(Room room, ObservableCollection<Room> Rooms)
         {
             InitializeComponent();
+            var app = Application.Current as App;
+            this.roomController = app.roomController;
+            this.SplitTermController = app.splitTermController;
             this.selected.Content = room.Name;
             this.Room = room;
             RoomTypes = Enum.GetValues(typeof(RoomType)).Cast<RoomType>().ToList();
+            this.Rooms = Rooms;
             this.DataContext = this;
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            this.splitGrid.ItemsSource = this.roomController.GetSplitRenovationAvailableTerms(new SplitRenovationTerm(
+            this.splitGrid.ItemsSource = this.SplitTermController.GetSplitRenovationAvailableTerms(new SplitRenovationTerm(
                 DateTime.Parse(this.StartDate.Text),
                 DateTime.Parse(this.EndDate.Text),
                 this.Room.Id,
@@ -55,8 +64,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Schedule_Click(object sender, RoutedEventArgs e)
         {
             SplitRenovationTerm rt = (SplitRenovationTerm)((Button)e.Source).DataContext;
-            this.roomController.ScheduleSplit(rt);
-            foreach (var room in RoomPage.Rooms)
+            this.SplitTermController.ScheduleSplit(rt);
+            foreach (var room in this.Rooms)
             {
                 if (RoomWasFound(room, rt) && StartDatePassed(rt) && EndDayHasntPassed(rt))
                 {

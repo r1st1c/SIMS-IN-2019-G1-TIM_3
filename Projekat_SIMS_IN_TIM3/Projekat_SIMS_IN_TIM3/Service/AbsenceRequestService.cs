@@ -13,28 +13,28 @@ namespace Projekat_SIMS_IN_TIM3.Service
         private AbsenceRequestRepository repository = new AbsenceRequestRepository();
 
 
-        public int getNextId()
+        public int GetNextId()
         {
-            return repository.getNextId();
+            return repository.GetNextId();
         }
-        public void createAbsenceRequest(AbsenceRequest request)
+        public void Create(AbsenceRequest request)
         {
-            repository.createAbsenceRequest(request);
-        }
-
-        public List<AbsenceRequest> getAll()
-        {
-            return repository.getAll();
+            repository.Create(request);
         }
 
-        public List<AbsenceRequest> getAllByDoctorsId(int doctorsId)
+        public List<AbsenceRequest> GetAll()
         {
-            return repository.getAllByDoctorsId(doctorsId);
+            return repository.GetAll();
         }
 
-        public bool checkTimeOfSendingRequest(DateTime startDate)
+        public List<AbsenceRequest> GetAllByDoctorsId(int id)
         {
-            return repository.checkTimeOfSendingRequest(startDate);
+            return repository.GetRequestsByDoctorsId(id);
+        }
+
+        public bool CheckTimeOfSendingRequest(DateTime startDate)
+        {
+            return repository.CheckTimeOfSendingRequest(startDate);
         }
 
         public int CheckDoctorSpecialization(String specialization, DateTime start, DateTime end)
@@ -42,9 +42,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return repository.CheckDoctorSpecialization(specialization, start, end);
         }
 
-        public bool isThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
+        public bool IsThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
         {
-            return repository.isThereDoctorWithSameSpecialization(specialization, start, end);
+            return repository.IsThereDoctorWithSameSpecialization(specialization, start, end);
         }
 
 

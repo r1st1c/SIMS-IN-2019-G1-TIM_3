@@ -18,9 +18,9 @@ namespace Projekat_SIMS_IN_TIM3.Controller
            return  service.GetAll();
         }
 
-        public void create(OperationNotification notification)
+        public void Create(OperationNotification notification)
         {
-            service.create(notification);
+            service.Create(notification);
         }
 
     }

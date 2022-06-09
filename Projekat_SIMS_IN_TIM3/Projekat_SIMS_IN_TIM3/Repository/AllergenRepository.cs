@@ -57,18 +57,18 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             WriteToJson();
         }
 
-        public void Delete(int allergen)
+        public void Delete(int id)
         {
             ReadJson();
-            int index = allergens.FindIndex(obj => obj.Id == allergen);
+            int index = allergens.FindIndex(obj => obj.Id == id);
             allergens.RemoveAt(index);
             WriteToJson();
         }
 
-        public List<Allergen> GetByPatientsId(int patientId)
+        public List<Allergen> GetByPatientsId(int id)
         {
             ReadJson();
-            return allergens.FindAll(obj => obj.patietId == patientId);
+            return allergens.FindAll(obj => obj.PatientId == id);
 
         }
 
