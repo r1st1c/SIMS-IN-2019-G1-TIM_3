@@ -5,26 +5,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Service
     {
         public class NoteService
         {
+            public NoteService(NoteIRepository noteRepository)
+            {
+            this.noteRepository = noteRepository;
+            }
 
+            public NoteIRepository noteRepository;
             public int getNextId()
             {
                 return noteRepository.getNextId();
             }
 
-            public void CreateNote(Model.Note note)
+            public void Create(Model.Note note)
             {
-                this.noteRepository.CreateNote(note);
+                this.noteRepository.Create(note);
             }
 
 
-            public void DeleteNote(int noteId)
+            public void Delete(int noteId)
             {
-                this.noteRepository.DeleteNote(noteId);
+                this.noteRepository.Delete(noteId);
             }
 
             public List<Note> GetByPatientsId(int patientId)
@@ -37,7 +43,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 return this.noteRepository.GetById((int)noteId);
             }
 
-            public NoteRepository noteRepository = new NoteRepository();
+           
 
         }
 }

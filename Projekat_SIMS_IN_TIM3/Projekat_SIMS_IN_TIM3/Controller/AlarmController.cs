@@ -10,8 +10,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class AlarmController
     {
+        public AlarmController(AlarmService alarmService)
+        {
+            this.alarmService = alarmService;
+        }
 
-        public AlarmService alarmService = new AlarmService();
+        public AlarmService alarmService;
 
         public List<Alarm> GetAll()
         {
