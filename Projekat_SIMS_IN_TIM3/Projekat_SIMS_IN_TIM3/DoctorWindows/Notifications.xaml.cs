@@ -23,7 +23,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     public partial class Notifications : Window
     {
         public int DoctorId { get; set; }
-        public static ObservableCollection<OperationNotification> NotificationList { get; set; }
+        
         OperationNotificationController notificationController = new OperationNotificationController();
         public Notifications(int doctorsId)
         {
@@ -35,13 +35,13 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage(0);
+            MainPage mainPage = new MainPage(DoctorId);
             mainPage.Show();
         }
 
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
-            Calendar calendar = new Calendar(0);
+            Calendar calendar = new Calendar(DoctorId);
             calendar.Show();
             this.Close();
         }
@@ -55,14 +55,14 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         private void MedVerifBtn(object sender, RoutedEventArgs e)
         {
-            MedVerif medVerif = new MedVerif(0);
+            MedVerif medVerif = new MedVerif(DoctorId);
             medVerif.Show();
             this.Close();
         }
 
         private void AbsenceReqBtn(object sender, RoutedEventArgs e)
         {
-            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq(0);
+            CreateAbsenceReq createAbsenceReq = new CreateAbsenceReq(DoctorId);
             createAbsenceReq.Show();
             this.Close();
         }

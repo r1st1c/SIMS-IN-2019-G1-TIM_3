@@ -1,7 +1,12 @@
 ﻿using Projekat_SIMS_IN_TIM3.Controller;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.MainWindows;
+using Projekat_SIMS_IN_TIM3.Model;
+using Projekat_SIMS_IN_TIM3.Repository;
+using Projekat_SIMS_IN_TIM3.Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,13 +28,23 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     {
         public String DoctorsNameAndSurname { get; set; }
         DoctorController doctorController = new DoctorController();
+        AbsenceNotificationsController AbsenceNotificationsController;
+        public static ObservableCollection<AbsenceNotification> Notifications { get; set; }
+
         public int DoctorId { get; set; }
         public AbsenceRequestNotifications(int doctorsId)
         {
             InitializeComponent();
             this.DataContext = this;
             DoctorId = doctorsId;
-            DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
+
+            AbsenceNotificationsIRepository notificationsIRepository = new AbsenceNotificationsRepository();
+            AbsenceNotificationsService absenceNotificationsService = new AbsenceNotificationsService(notificationsIRepository);
+            AbsenceNotificationsController = new AbsenceNotificationsController(absenceNotificationsService);
+
+
+            Notifications = new ObservableCollection<AbsenceNotification>(AbsenceNotificationsController.GetByDoctorsId(doctorsId));
+            DoctorsNameAndSurname = doctorController.GetById(Convert.ToInt32(DoctorId)).User.Name.ToString() + " " + doctorController.GetById(Convert.ToInt32(DoctorId)).User.Surname.ToString();
         }
 
         private void HomeBtn(object sender, RoutedEventArgs e)
@@ -80,20 +95,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.Close();
         }
 
-        private void operationNotificationBtn(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void absenceRequestNoticificationBtn(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void appointmentNotificationBtn(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
 
     }

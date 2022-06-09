@@ -19,10 +19,23 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class App : Application
     {
+        #region Doctor
+        public static DoctorService doctorService = new DoctorService();
+
+        public static AbsenceRequestIRepository AbsenceRequestIRepository = new AbsenceRequestRepository();
+        public static AbsenceRequestService AbsenceRequestService = new AbsenceRequestService(AbsenceRequestIRepository, doctorService);
+        public readonly AbsenceRequestController absenceRequestController = new AbsenceRequestController(AbsenceRequestService);
+
+        public static AbsenceNotificationsIRepository AbsenceNotificationsIRepository = new AbsenceNotificationsRepository();
+        public static AbsenceNotificationsService AbsenceNotificationsService = new AbsenceNotificationsService(AbsenceNotificationsIRepository);
+        public readonly AbsenceNotificationsController AbsenceNotificationsController = new AbsenceNotificationsController(AbsenceNotificationsService);
+       
+        #endregion
         public readonly UserController userController = new UserController();
         public readonly UserLoginController userLoginController = new UserLoginController();
         public readonly PatientController patientController = new PatientController();
         public readonly GuestController guestController = new GuestController();
+        
         
         public readonly DoctorController docController = new DoctorController();
         public readonly AllergenController allergenController = new AllergenController();
@@ -31,7 +44,7 @@ namespace Projekat_SIMS_IN_TIM3
         public readonly HospitalController hospitalController = new HospitalController();
         
         public string id;
-        internal object doctorController;
+        
 
         #region Patient
         public static NoteIRepository noteRepository = new NoteRepository();
