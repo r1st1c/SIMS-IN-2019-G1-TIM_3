@@ -6,10 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class HospitalGradeRepository
+    public class HospitalGradeRepository : HospitalGradeIRepository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\hospitalgrades.json";
         private List<HospitalGrade> hospitalGrades = new List<HospitalGrade>();

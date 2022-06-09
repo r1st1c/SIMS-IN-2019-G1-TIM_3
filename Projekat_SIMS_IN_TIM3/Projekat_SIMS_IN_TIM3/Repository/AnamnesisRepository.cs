@@ -6,10 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class AnamnesisRepository
+    public class AnamnesisRepository : AnamnesisIRepository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\anamnesis.json";//Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\doctors.json";
         private List<Anamnesis> anamnesis = new List<Anamnesis>();

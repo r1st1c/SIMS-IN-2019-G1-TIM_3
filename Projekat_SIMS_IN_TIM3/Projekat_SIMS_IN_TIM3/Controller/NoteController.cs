@@ -10,20 +10,30 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class NoteController
     {
+
+        public NoteController(NoteService noteService)
+        {
+            this.noteService = noteService;
+        }
+
+
+        public NoteService noteService;
+
+
         public int getNextId()
         {
             return noteService.getNextId();
         }
 
-        public void CreateNote(Model.Note note)
+        public void Create(Model.Note note)
         {
-            this.noteService.CreateNote(note);
+            this.noteService.Create(note);
         }
 
 
-        public void DeleteNode(int noteId)
+        public void Delete(int noteId)
         {
-            this.noteService.DeleteNote(noteId);
+            this.noteService.Delete(noteId);
         }
 
         public List<Note> GetByPatientsId(int patientId)
@@ -36,7 +46,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.noteService.GetById((int)noteId);
         }
 
-        public NoteService noteService = new NoteService();
+        
     }
 }
 

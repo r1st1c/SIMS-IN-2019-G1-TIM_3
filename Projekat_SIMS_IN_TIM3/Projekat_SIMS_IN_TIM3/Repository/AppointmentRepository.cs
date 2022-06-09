@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Projekat_SIMS_IN_TIM3.Model;
 using System.IO;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class AppointmentRepository
+    public class AppointmentRepository : AppointmentIRepository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\appointments.json";
         public List<Appointment> appointments { get; set; } = new List<Appointment>();
