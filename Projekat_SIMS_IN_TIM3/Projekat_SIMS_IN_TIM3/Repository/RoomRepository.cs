@@ -7,17 +7,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class RoomRepository
+    public class RoomRepository : RoomIRepository
     {
         private readonly string roomspath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName +
                                             "\\Data\\rooms.csv";
-
-        private readonly string roombasicrenovationpath =
-            Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName +
-            "\\Data\\room_basic_renovation.csv";
+        
 
         /// PATHS
         /// 

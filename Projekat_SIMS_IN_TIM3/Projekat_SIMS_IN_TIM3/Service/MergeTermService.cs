@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 
@@ -8,12 +9,17 @@ namespace Projekat_SIMS_IN_TIM3.Service;
 
 public class MergeTermService
 {
-    public MergeTermRepository mergeTermRepository { get; set; } = new MergeTermRepository();
-    public RoomRepository roomRepository { get; set; } = new RoomRepository();
-    public AppointmentRepository appointmentRepository { get; set; } = new AppointmentRepository();
+    public MergeTermIRepository mergeTermRepository;
+    public RoomIRepository roomRepository;
+    public AppointmentRepository appointmentRepository;
 
-    /// 
-    /// MERGE
+    public MergeTermService(MergeTermIRepository mergeTermRepository, RoomIRepository roomRepository,
+        AppointmentRepository appointmentRepository)
+    {
+        this.mergeTermRepository = mergeTermRepository;
+        this.roomRepository = roomRepository;
+        this.appointmentRepository = appointmentRepository;
+    }
     public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
     {
         List<DateTime> intersectedAvailableDays = FindIntersectedAvailableDays(mergeRenovationQuery);

@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Service
 {
@@ -81,10 +82,10 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.roomRepository.DeleteById(id);
         }
 
-        private RoomRepository roomRepository;
-        private EquipmentRepository equipmentRepository;
+        private RoomIRepository roomRepository;
+        private EquipmentIRepository equipmentRepository;
 
-        public RoomService(RoomRepository roomRepository, EquipmentRepository equipmentRepository)
+        public RoomService(RoomIRepository roomRepository, EquipmentIRepository equipmentRepository)
         {
             this.roomRepository = roomRepository;
             this.equipmentRepository = equipmentRepository;

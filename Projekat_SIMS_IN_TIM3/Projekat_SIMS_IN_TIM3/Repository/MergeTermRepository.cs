@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 
 namespace Projekat_SIMS_IN_TIM3.Repository;
 
-public class MergeTermRepository
+public class MergeTermRepository : MergeTermIRepository
 {
     private readonly string roommergepath =
         Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\room_merge.csv";

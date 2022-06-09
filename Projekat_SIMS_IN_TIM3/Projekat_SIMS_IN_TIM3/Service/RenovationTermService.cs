@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 
@@ -82,9 +83,9 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             List<RenovationTerm> renovationTerms = this.renovationTermRepository.GetRenovationSchedules();
             List<Room> roomList = this.roomRepository.GetAll();
-            foreach (Room room in roomList)
+            foreach (RenovationTerm renovationTerm in renovationTerms)
             {
-                foreach (RenovationTerm renovationTerm in renovationTerms)
+                foreach (Room room in roomList)
                 {
                     if (RoomIsFound(room, renovationTerm))
                     {
@@ -107,7 +108,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         private static bool RenovationPassed(RenovationTerm renovationTerm)
         {
-            return DateTime.Now > renovationTerm.Range.End;
+            return DateTime.Now > DateRange.GetLastMoment(renovationTerm.Range.End);
         }
 
         private static bool RenovationOccuringNow(RenovationTerm renovationTerm, Room room)
@@ -126,8 +127,16 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.renovationTermRepository.GetRenovationSchedules();
         }
 
-        public RoomRepository roomRepository { get; set; } = new();
-        public AppointmentRepository appointmentRepository { get; set; } = new();
-        public RenovationTermRepository renovationTermRepository { get; set; } = new();
+        public RoomIRepository roomRepository;
+        public AppointmentRepository appointmentRepository;
+        public RenovationTermIRepository renovationTermRepository;
+
+        public RenovationTermService(RoomIRepository roomRepository, AppointmentRepository appointmentRepository,
+            RenovationTermIRepository renovationTermRepository)
+        {
+            this.roomRepository = roomRepository;
+            this.appointmentRepository = appointmentRepository;
+            this.renovationTermRepository = renovationTermRepository;
+        }
     }
 }
