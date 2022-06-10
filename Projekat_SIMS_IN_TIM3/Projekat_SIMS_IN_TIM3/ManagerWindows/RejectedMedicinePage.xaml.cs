@@ -24,10 +24,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class RejectedMedicinePage : Page
     {
         public ObservableCollection<Medicine> Rejected { get; set; } = new ObservableCollection<Medicine>();
-        public MedicineController medicineController = new MedicineController();
+        public MedicineController medicineController;
         public RejectedMedicinePage()
         {
             InitializeComponent();
+            var app = Application.Current as App;
+            this.medicineController = app.medicineController;
             this.DataContext = this;
             this.Rejected = new ObservableCollection<Medicine>(medicineController.GetRejected());
         }

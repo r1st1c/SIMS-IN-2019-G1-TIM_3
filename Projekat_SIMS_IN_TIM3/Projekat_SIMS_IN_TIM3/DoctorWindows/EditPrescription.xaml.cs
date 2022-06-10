@@ -23,15 +23,15 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     public partial class EditPrescription : Window
     {
         PatientController patientController = new PatientController();
-        MedicinePrescriptionController prescriptionController = new MedicinePrescriptionController();
+        MedicinePrescriptionController prescriptionController;
         public ObservableCollection<string> Patients { get; set; }
         private string PatientSelected;
 
-        MedicineController medicineController = new MedicineController();
+        MedicineController medicineController;
         public ObservableCollection<string> Medicines { get; set; }
         private string MedicineSelected;
 
-        int maxId = int.MinValue;
+       
         public int SelectedPresId { get; set; }
 
         List<Patient> patients = new List<Patient>();
@@ -39,6 +39,10 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            this.medicineController = app.medicineController;
+            this.patientController = app.patientController;
+            this.prescriptionController = app.medPrescriptionController;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
             Medicines = new ObservableCollection<string>(medicineController.GetVerifiedNames());
             SelectedPresId = editId;

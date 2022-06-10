@@ -24,7 +24,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     public partial class MedicinePage : Page
     {
         public ObservableCollection<Medicine> unapproved { get; set; } = new ObservableCollection<Medicine>();
-        public MedicineController medicineController = new MedicineController();
+        public MedicineController medicineController;
         public MedicinePage()
         {
             InitializeComponent();

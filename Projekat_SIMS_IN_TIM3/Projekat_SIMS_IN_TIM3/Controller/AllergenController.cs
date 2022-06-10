@@ -10,8 +10,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class AllergenController
     {
-        private AllergenService allergenService = new AllergenService();
+        public AllergenService allergenService;
 
+        public AllergenController(AllergenService allergenService)
+        {
+            this.allergenService = allergenService;
+        }
 
         public List<Allergen> GetAll()
         {
@@ -41,6 +45,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         public List<Allergen> GetByPatientsId(int patientId)
         {
             return this.allergenService.GetByPatientsId(patientId);
+        }
+
+        public int GetNextId()
+        {
+            return allergenService.GetNextId();
         }
     }
 }

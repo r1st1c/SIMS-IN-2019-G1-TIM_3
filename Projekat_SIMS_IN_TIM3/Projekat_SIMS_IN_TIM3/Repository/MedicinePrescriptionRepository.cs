@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class MedicinePrescriptionRepository
+    public class MedicinePrescriptionRepository: MedicinePrescriptionIRepository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\medPrescriptions.json";
         public List<MedicinePrescription> prescriptions { get; set; } = new List<MedicinePrescription>();

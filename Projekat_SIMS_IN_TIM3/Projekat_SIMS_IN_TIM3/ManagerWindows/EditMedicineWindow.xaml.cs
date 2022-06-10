@@ -30,7 +30,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         public ObservableCollection<Medicine> RejectedMedicineList { get; set; } = new ObservableCollection<Medicine>();
         public ObservableCollection<Medicine> MedicineList { get; set; } = new ObservableCollection<Medicine>();
-        public MedicineController MedicineController { get; set; } = new MedicineController();
+        public MedicineController MedicineController;
 
         public MedicineIngredientController MedicineIngredientController { get; set; } =
             new MedicineIngredientController();
@@ -39,6 +39,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            this.MedicineController = app.medicineController;
             this.RejectedMedicineList = rejected;
             this.selected = selected;
             this.MedicineList = new ObservableCollection<Medicine>(this.MedicineController.GetVerified());
