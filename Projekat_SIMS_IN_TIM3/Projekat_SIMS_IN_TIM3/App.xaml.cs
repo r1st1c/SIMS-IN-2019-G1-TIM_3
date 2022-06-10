@@ -34,6 +34,10 @@ namespace Projekat_SIMS_IN_TIM3
         public static AllergenService AllergenService = new AllergenService(AllergenIRepository);
         public readonly AllergenController allergenController = new AllergenController(AllergenService);
 
+        public static MedicinePrescriptionIRepository MedicinePrescriptionIRepository = new MedicinePrescriptionRepository();
+        public static MedicinePrescriptionService prescriptionService = new MedicinePrescriptionService(MedicinePrescriptionIRepository, medicineIRepository, AllergenIRepository);
+        public readonly MedicinePrescriptionController medPrescriptionController = new MedicinePrescriptionController(prescriptionService);
+
         #endregion
         public readonly UserController userController = new UserController();
         public readonly UserLoginController userLoginController = new UserLoginController();
@@ -43,8 +47,9 @@ namespace Projekat_SIMS_IN_TIM3
         
         public readonly DoctorController docController = new DoctorController();
      
-        public readonly MedicinePrescriptionController medPrescriptionController = new MedicinePrescriptionController();
-        public readonly MedicineController medicineController = new MedicineController();
+        public static MedicineIRepository medicineIRepository= new MedicineRepository();
+        public static MedicineService medicineService = new MedicineService(medicineIRepository);
+        public readonly MedicineController medicineController = new MedicineController(medicineService);
         public readonly HospitalController hospitalController = new HospitalController();
         
         public string id;

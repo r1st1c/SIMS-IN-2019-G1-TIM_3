@@ -1,4 +1,5 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+﻿using Projekat_SIMS_IN_TIM3.IRepository;
+using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,12 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class MedicineService
     {
-        private MedicineRepository medicineRepository = new MedicineRepository();
+        private MedicineIRepository medicineRepository;
+
+        public MedicineService(MedicineIRepository medicineIRepository)
+        {
+            this.medicineRepository = medicineIRepository;
+        }
 
         public int GetNextId()
         {
@@ -39,7 +45,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 
         public void Delete(int medId)
         {
-            medicineRepository.DeleteById(medId);
+            medicineRepository.Delete(medId);
         }
 
         public List<Medicine> GetVerified()
@@ -71,5 +77,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         {
             return medicineRepository.GetByName(name);
         }
+
+        
     }
 }

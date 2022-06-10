@@ -24,13 +24,15 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         public int MedicineId { get; set; } 
         public string MedicineName { get; set; }
 
-        MedicineController medicineController = new MedicineController();
+        MedicineController medicineController;
         RejectedMedicineNotificationController rmnc = new RejectedMedicineNotificationController();
 
         public RejectMedForm(int medId)
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            this.medicineController = app.medicineController;
             MedicineId = medId;
             MedicineName = medicineController.GetById(medId).Name;
         }

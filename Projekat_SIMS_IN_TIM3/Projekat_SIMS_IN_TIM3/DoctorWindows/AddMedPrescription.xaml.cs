@@ -26,8 +26,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
         PatientController patientController = new PatientController();
         DoctorController doctorController = new DoctorController();
-        MedicineController medicineController = new MedicineController();
-        MedicinePrescriptionController prescriptionController = new MedicinePrescriptionController();
+        MedicineController medicineController;
+        MedicinePrescriptionController prescriptionController;
         
         public ObservableCollection<string> Patients { get; set; }
         private string PatientSelected;
@@ -35,7 +35,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         public ObservableCollection<string> Medicines { get; set; }
         private string MedicineSelected;
 
-        int maxId = int.MinValue;
+        
 
         List<Patient> patients = new List<Patient>();
         public int DoctorId { get; set; }
@@ -49,6 +49,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            this.doctorController = app.docController;
+            this.patientController = app.patientController;
+            this.medicineController = app.medicineController;
+            this.prescriptionController = app.medPrescriptionController;
             DoctorId = doctorsId;
             PatientsId = PatientId;
             Patients = new ObservableCollection<string>(patientController.nameSurname());
@@ -70,8 +75,19 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 
             string medName = medicinesCb.SelectedItem.ToString();
             int medId = medicineController.getIdByName(medName);
+            Medicine medicine = medicineController.GetById(medId);
+            // check if chosen medicine has some of patient's allergens
+            bool isAllergic = prescriptionController.IsAllergicToMedicine(patid, medicine);
+            
+            if(isAllergic == true)
+            {
+                MessageBox.Show("Allergic!");
+                return;
+            }
+             
+            
 
-            if(dt < DateTime.Now)
+            if (dt < DateTime.Now)
             {
                 MessageBox.Show("Wrong date and time! Enter new values for it!");
                 return;
@@ -81,6 +97,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 MessageBox.Show("Duration cannot be negative number");
                 return;
             }
+            
 
             if(dt == null || dur == null || freq == null ||  patid == null || docId == null || medId == null)
             {
@@ -88,8 +105,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
                 return;
             } else
             {
-                maxId = prescriptionController.GetNextId();
-                maxId++;
+                int maxId = (prescriptionController.GetAll() == null) ? 0: prescriptionController.GetNextId();
+
+              
+                
+                
                 var newMedPrescription = new MedicinePrescription(
                     maxId,
                     medId,
