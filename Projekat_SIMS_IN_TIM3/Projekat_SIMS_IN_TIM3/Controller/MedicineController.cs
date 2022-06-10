@@ -10,7 +10,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class MedicineController
     {
-        private MedicineService medicineService = new MedicineService();
+        private MedicineService medicineService;
+
+        public MedicineController(MedicineService service)
+        {
+            this.medicineService = service;
+        }
 
         public int GetNextId()
         {

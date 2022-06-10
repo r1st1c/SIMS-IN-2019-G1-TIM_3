@@ -24,11 +24,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
     /// </summary>
     public partial class IngredientsPage : Page
     {
-        public MedicineIngredientController medicineIngredientController { get; set; } = new MedicineIngredientController();
+        public MedicineIngredientController medicineIngredientController;
         public ObservableCollection<MedicineIngredient> Ingredients { get; set; }
         public IngredientsPage()
         {
             InitializeComponent();
+            var app = Application.Current as App;
+            this.medicineIngredientController = app.medicineIngredientController;
             Ingredients = new ObservableCollection<MedicineIngredient>(this.medicineIngredientController.GetAll());
             this.DataContext = this;
         }

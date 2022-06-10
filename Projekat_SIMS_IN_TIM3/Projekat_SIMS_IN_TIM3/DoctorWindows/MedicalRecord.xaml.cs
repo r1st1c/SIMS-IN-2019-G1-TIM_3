@@ -97,6 +97,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             addAllergen.Show();
         }
 
+        public void listOfAllergens(object sender, RoutedEventArgs e) {
+            AllergensOfPatient allergensOfPatient = new AllergensOfPatient(PatientId, DoctorId);
+            allergensOfPatient.Show();
+        }
+
         public void seeMoreLink(object sender, RoutedEventArgs e)
         {
             int id = (int)labelPatientId.Content;

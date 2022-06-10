@@ -22,7 +22,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     /// </summary>
     public partial class MedVerif : Window
     {
-        MedicineController medicineController = new MedicineController();
+        MedicineController medicineController;
         public static ObservableCollection<Medicine> UnverifiedMedicines { get; set; }
 
         public int DoctorId { get; set; }
@@ -30,6 +30,8 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            this.medicineController = app.medicineController;
             DoctorId = doctorId;
             UnverifiedMedicines = new ObservableCollection<Medicine>(medicineController.GetUnverified());
         }

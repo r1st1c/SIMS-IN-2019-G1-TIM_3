@@ -94,31 +94,6 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return appointments.Find(obj => obj.Id == appointmentId);
         }
 
-        public int NumOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
-        {
-            ReadJson();
-            List<Appointment> appointments1 = GetByDoctorsId(doctorId);
-            int scheduledAppointments = 0;
-
-                foreach(Appointment appointment in appointments1)
-            {
-                if(appointment.StartTime.Date >= start.Date && appointment.StartTime.Date <= end)
-                {
-                    scheduledAppointments++;
-                }
-            }
-            return scheduledAppointments;
-        }
-
-        public bool IsDoctorFree(int doctorId, DateTime start, DateTime end)
-        {
-            int numOfScheduledAppointments = NumOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
-            if (numOfScheduledAppointments > 0)
-            {
-                return false;
-            }
-            else
-                return true;
-        }
+        
     }
 }

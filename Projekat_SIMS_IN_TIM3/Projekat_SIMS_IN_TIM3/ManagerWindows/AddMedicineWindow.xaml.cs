@@ -26,13 +26,16 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public ObservableCollection<MedicineIngredient> Ingredients { get; set; } = new ObservableCollection<MedicineIngredient>();
         public ObservableCollection<Medicine> Medicines { get; set; } = new ObservableCollection<Medicine>();
         public ObservableCollection<Medicine> MedicinePageList { get; set; } = new ObservableCollection<Medicine>();
-        public MedicineController medicineController { get; set; } = new MedicineController();
-        public MedicineIngredientController medicineIngredientController { get; set; } = new MedicineIngredientController();
+        public MedicineController medicineController;
+        public MedicineIngredientController medicineIngredientController;
 
         public AddMedicineWindow(ObservableCollection<Medicine> medicinePageList)
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            this.medicineController = app.medicineController;
+            this.medicineIngredientController = app.medicineIngredientController;
             Ingredients = new ObservableCollection<MedicineIngredient>(this.medicineIngredientController.GetAll());
             Medicines = new ObservableCollection<Medicine>(this.medicineController.GetVerified());
             MedicinePageList = medicinePageList;

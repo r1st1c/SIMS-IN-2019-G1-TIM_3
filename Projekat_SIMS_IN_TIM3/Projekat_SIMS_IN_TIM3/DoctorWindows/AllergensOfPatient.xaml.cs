@@ -18,50 +18,43 @@ using System.Windows.Shapes;
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows
 {
     /// <summary>
-    /// Interaction logic for anamnesisPrescriptions.xaml
+    /// Interaction logic for AllergensOfPatient.xaml
     /// </summary>
-    public partial class anamnesisPrescriptions : Window
+    public partial class AllergensOfPatient : Window
     {
-        MedicinePrescriptionController pc;
-        public int PatientId { get; set; }
+        
+        
+        public String DoctorsNameAndSurname { get; set; }
+        DoctorController doctorController = new DoctorController();
+        PatientController patientController = new PatientController();
+        AllergenController allergenController;
         public int DoctorId { get; set; }
-        public static ObservableCollection<MedicinePrescription> Prescriptions { get; set; }
-        public anamnesisPrescriptions(int id, int id1)
+        public int PatientId { get; set; }
+
+        public static ObservableCollection<Allergen> Allergens { get; set; }
+
+        public AllergensOfPatient(int patientsId, int doctorId)
         {
             InitializeComponent();
             this.DataContext = this;
             var app = Application.Current as App;
-            this.pc = app.medPrescriptionController;
-            PatientId = id;
-            DoctorId = id1;
-            Prescriptions = new ObservableCollection<MedicinePrescription>(pc.GetAllById(Convert.ToInt32(PatientId)));
-        
-        }
 
-        public void editPre(object sender, RoutedEventArgs e)
-        {
-            MedicinePrescription prescription = (MedicinePrescription)((Button)e.Source).DataContext;
-            int editId = prescription.Id;
-            EditPrescription editPrescription = new EditPrescription(editId);
-            editPrescription.Show();
+            this.doctorController = app.docController;
+            this.patientController = app.patientController;
+            this.allergenController = app.allergenController;
 
-        }
-
-        public void deletePre(object sender, RoutedEventArgs e)
-        {
-            MedicinePrescription mp = (MedicinePrescription)((Button)e.Source).DataContext;
-            Prescriptions.Remove(mp);
-            this.pc.Delete(mp.Id);
+            PatientId = patientsId;
+            DoctorId = doctorId;
+            DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
+            Allergens = new ObservableCollection<Allergen>(allergenController.GetByPatientsId(patientsId));
         }
 
         private void HomeBtn(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage(DoctorId);
             mainPage.Show();
-            this.Close();
         }
 
-      
         private void CalendarPageBtn(object sender, RoutedEventArgs e)
         {
             Calendar calendar = new Calendar(DoctorId);

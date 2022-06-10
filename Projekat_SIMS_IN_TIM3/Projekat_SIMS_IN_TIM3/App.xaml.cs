@@ -19,19 +19,41 @@ namespace Projekat_SIMS_IN_TIM3
     /// </summary>
     public partial class App : Application
     {
+        #region Doctor
+        public static DoctorService doctorService = new DoctorService();
+
+        public static AbsenceRequestIRepository AbsenceRequestIRepository = new AbsenceRequestRepository();
+        public static AbsenceRequestService AbsenceRequestService = new AbsenceRequestService(AbsenceRequestIRepository, doctorService);
+        public readonly AbsenceRequestController absenceRequestController = new AbsenceRequestController(AbsenceRequestService);
+
+        public static AbsenceNotificationsIRepository AbsenceNotificationsIRepository = new AbsenceNotificationsRepository();
+        public static AbsenceNotificationsService AbsenceNotificationsService = new AbsenceNotificationsService(AbsenceNotificationsIRepository);
+        public readonly AbsenceNotificationsController AbsenceNotificationsController = new AbsenceNotificationsController(AbsenceNotificationsService);
+       
+        public static AllergenIRepository AllergenIRepository = new AllergenRepository();
+        public static AllergenService AllergenService = new AllergenService(AllergenIRepository);
+        public readonly AllergenController allergenController = new AllergenController(AllergenService);
+
+        public static MedicinePrescriptionIRepository MedicinePrescriptionIRepository = new MedicinePrescriptionRepository();
+        public static MedicinePrescriptionService prescriptionService = new MedicinePrescriptionService(MedicinePrescriptionIRepository, medicineIRepository, AllergenIRepository);
+        public readonly MedicinePrescriptionController medPrescriptionController = new MedicinePrescriptionController(prescriptionService);
+
+        #endregion
         public readonly UserController userController = new UserController();
         public readonly UserLoginController userLoginController = new UserLoginController();
         public readonly PatientController patientController = new PatientController();
         public readonly GuestController guestController = new GuestController();
         
+        
         public readonly DoctorController docController = new DoctorController();
-        public readonly AllergenController allergenController = new AllergenController();
-        public readonly MedicinePrescriptionController medPrescriptionController = new MedicinePrescriptionController();
-        public readonly MedicineController medicineController = new MedicineController();
+     
+        public static MedicineIRepository medicineIRepository= new MedicineRepository();
+        public static MedicineService medicineService = new MedicineService(medicineIRepository);
+        public readonly MedicineController medicineController = new MedicineController(medicineService);
         public readonly HospitalController hospitalController = new HospitalController();
         
         public string id;
-        internal object doctorController;
+        
 
         #region Patient
         public static NoteIRepository noteRepository = new NoteRepository();
@@ -66,6 +88,7 @@ namespace Projekat_SIMS_IN_TIM3
         public static EquipmentIRepository equipmentRepository = new EquipmentRepository();
         public static MergeTermIRepository mergeTermRepository = new MergeTermRepository();
         public static AppointmentRepository appointmentRepository = new AppointmentRepository();
+        public static MedicineIngredientRepository medicineIngredientRepository = new MedicineIngredientRepository();
 
         public static RoomService roomService = new RoomService(roomRepository, equipmentRepository);
         public static RenovationTermService renovationTermService =
@@ -76,15 +99,20 @@ namespace Projekat_SIMS_IN_TIM3
             new MergeTermService(mergeTermRepository, roomRepository, appointmentRepository);
         public static EquipmentService equipmentService = new EquipmentService(roomRepository, equipmentRepository);
 
+        public static MedicineIngredientService medicineIngredientService =
+            new MedicineIngredientService(medicineIngredientRepository);
+
         public readonly RoomController roomController = new RoomController(roomService);
         public readonly RenovationTermController renovationTermController = new RenovationTermController(renovationTermService);
         public readonly SplitTermController splitTermController = new SplitTermController(splitTermService);
         public readonly MergeTermController mergeTermController = new MergeTermController(mergeTermService);
         public readonly EquipmentController equipmentController = new EquipmentController(roomService,equipmentService);
 
+        public readonly MedicineIngredientController medicineIngredientController =
+            new MedicineIngredientController(medicineIngredientService);
 
         #endregion
 
-       
+
     }
 }

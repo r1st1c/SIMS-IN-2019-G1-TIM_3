@@ -41,7 +41,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
             this.DataContext = this;
             this.DoctorId = doctorsId;
 
-            DoctorsNameAndSurname = doctorController.GetById(DoctorId).User.Name.ToString() + " " + doctorController.GetById(DoctorId).User.Surname.ToString();
+            DoctorsNameAndSurname = doctorController.GetById(Convert.ToInt32(DoctorId)).User.Name.ToString() + " " + doctorController.GetById(Convert.ToInt32(DoctorId)).User.Surname.ToString();
             Appointments = new ObservableCollection<Appointment>(c.GetByDoctorsId(Convert.ToInt32(DoctorId)));
         }
 

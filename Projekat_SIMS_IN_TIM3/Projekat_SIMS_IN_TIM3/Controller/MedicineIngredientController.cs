@@ -10,7 +10,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class MedicineIngredientController
     {
-        public MedicineIngredientService medicineIngredientService { get; set; } = new MedicineIngredientService();
+        public MedicineIngredientService medicineIngredientService;
         public MedicineIngredient GetById(int id)
         {
             return this.medicineIngredientService.GetById(id);
@@ -28,6 +28,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         public MedicineIngredient GetByName(string name)
         {
             return this.medicineIngredientService.GetByName(name);
+        }
+
+        public MedicineIngredientController(MedicineIngredientService medicineIngredientService)
+        {
+            this.medicineIngredientService = medicineIngredientService;
         }
     }
 }
