@@ -28,6 +28,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         public MedicinePage()
         {
             InitializeComponent();
+            var app = Application.Current as App;
+            this.medicineController = app.medicineController;
             this.unapproved = new ObservableCollection<Medicine>(this.medicineController.GetUnverified());
             MedicineFrame.Content = new UnapprovedMedicinePage(unapproved);
             UnapprovedButton.Background = Brushes.Aqua;

@@ -88,6 +88,7 @@ namespace Projekat_SIMS_IN_TIM3
         public static EquipmentIRepository equipmentRepository = new EquipmentRepository();
         public static MergeTermIRepository mergeTermRepository = new MergeTermRepository();
         public static AppointmentRepository appointmentRepository = new AppointmentRepository();
+        public static MedicineIngredientRepository medicineIngredientRepository = new MedicineIngredientRepository();
 
         public static RoomService roomService = new RoomService(roomRepository, equipmentRepository);
         public static RenovationTermService renovationTermService =
@@ -98,15 +99,20 @@ namespace Projekat_SIMS_IN_TIM3
             new MergeTermService(mergeTermRepository, roomRepository, appointmentRepository);
         public static EquipmentService equipmentService = new EquipmentService(roomRepository, equipmentRepository);
 
+        public static MedicineIngredientService medicineIngredientService =
+            new MedicineIngredientService(medicineIngredientRepository);
+
         public readonly RoomController roomController = new RoomController(roomService);
         public readonly RenovationTermController renovationTermController = new RenovationTermController(renovationTermService);
         public readonly SplitTermController splitTermController = new SplitTermController(splitTermService);
         public readonly MergeTermController mergeTermController = new MergeTermController(mergeTermService);
         public readonly EquipmentController equipmentController = new EquipmentController(roomService,equipmentService);
 
+        public readonly MedicineIngredientController medicineIngredientController =
+            new MedicineIngredientController(medicineIngredientService);
 
         #endregion
 
-       
+
     }
 }
