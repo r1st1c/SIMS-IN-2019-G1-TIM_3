@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="ADD ALLERGEN" Height="450" Width="550">
+        Title="ADD ALLERGEN" Height="507" Width="577">
     <Grid Height="445" Width="545">
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -47,9 +47,9 @@
 
         </Button>
         <Label FontWeight="Bold" FontSize="18" Margin="99,30,136,22" Content="ID:"/>
-        <Label FontWeight="Bold" FontSize="18" Margin="136,30,96,22"  Content="{Binding DoctorId}"  />
+        <Label FontWeight="Bold" FontSize="18" Margin="140,30,88,22"  Content="{Binding DoctorId}"  />
         <Label FontWeight="Bold" FontSize="18" Margin="99,10,136,42" Content="ID:" Grid.Row="1"/>
-        <Label FontWeight="Bold" FontSize="18" Margin="136,12,96,40"  Content="{Binding PatientId}" Grid.Row="1"  />
+        <Label FontWeight="Bold" FontSize="18" Margin="141,12,86,40"  Content="{Binding PatientId}" Grid.Row="1"  />
 
     </Grid>
 </Window>

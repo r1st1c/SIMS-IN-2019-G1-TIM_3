@@ -1,16 +1,18 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
-using Projekat_SIMS_IN_TIM3.Repository;
-using System;
+﻿using Projekat_SIMS_IN_TIM3.IRepository;
+using Projekat_SIMS_IN_TIM3.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class AllergenService
     {
-        public AllergenRepository allergenRepository = new AllergenRepository();
+        private AllergenIRepository allergenRepository;
+
+        public AllergenService(AllergenIRepository allergenRepository)
+        {
+            this.allergenRepository = allergenRepository;
+        }
 
         public List<Allergen> GetAll()
         {
@@ -40,6 +42,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
         public List<Allergen> GetByPatientsId(int patientId)
         {
             return this.allergenRepository.GetByPatientsId((int)patientId);
+        }
+
+        public int GetNextId()
+        {
+            return allergenRepository.GetNextId();
         }
     }
 }

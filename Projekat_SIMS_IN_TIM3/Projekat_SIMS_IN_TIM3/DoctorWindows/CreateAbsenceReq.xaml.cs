@@ -1,21 +1,8 @@
 ﻿using Projekat_SIMS_IN_TIM3.Controller;
 using Projekat_SIMS_IN_TIM3.Model;
-using Projekat_SIMS_IN_TIM3.IRepository;
-using Projekat_SIMS_IN_TIM3.Repository;
-using Projekat_SIMS_IN_TIM3.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 using static Projekat_SIMS_IN_TIM3.Model.AbsenceRequest;
 
 namespace Projekat_SIMS_IN_TIM3.DoctorWindows

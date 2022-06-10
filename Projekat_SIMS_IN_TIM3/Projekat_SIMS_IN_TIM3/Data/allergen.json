@@ -1,1 +1,1 @@
-[{"Id":2,"patietId":2,"Name":"probiotik","Details":"qwe"},{"Id":3,"patietId":1,"Name":"probiotik","Details":"asdfff"}]
+[{"Id":2,"PatientId":0,"Name":"probiotik","Details":"qwe"},{"Id":3,"PatientId":0,"Name":"probiotik","Details":"asdfff"},{"Id":4,"PatientId":1,"Name":"alergen11","Details":"detalji o alergenu11"},{"Id":5,"PatientId":1,"Name":"alergen2","Details":"novi detalji o alergenu2"}]

@@ -30,6 +30,10 @@ namespace Projekat_SIMS_IN_TIM3
         public static AbsenceNotificationsService AbsenceNotificationsService = new AbsenceNotificationsService(AbsenceNotificationsIRepository);
         public readonly AbsenceNotificationsController AbsenceNotificationsController = new AbsenceNotificationsController(AbsenceNotificationsService);
        
+        public static AllergenIRepository AllergenIRepository = new AllergenRepository();
+        public static AllergenService AllergenService = new AllergenService(AllergenIRepository);
+        public readonly AllergenController allergenController = new AllergenController(AllergenService);
+
         #endregion
         public readonly UserController userController = new UserController();
         public readonly UserLoginController userLoginController = new UserLoginController();
@@ -38,7 +42,7 @@ namespace Projekat_SIMS_IN_TIM3
         
         
         public readonly DoctorController docController = new DoctorController();
-        public readonly AllergenController allergenController = new AllergenController();
+     
         public readonly MedicinePrescriptionController medPrescriptionController = new MedicinePrescriptionController();
         public readonly MedicineController medicineController = new MedicineController();
         public readonly HospitalController hospitalController = new HospitalController();
