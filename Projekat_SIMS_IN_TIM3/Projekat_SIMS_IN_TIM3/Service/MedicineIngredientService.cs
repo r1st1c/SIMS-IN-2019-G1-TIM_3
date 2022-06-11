@@ -12,6 +12,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         public MedicineIngredientRepository medicineIngredientRepository;
 
+        public MedicineIngredientService(MedicineIngredientRepository medicineIngredientRepository)
+        {
+            this.medicineIngredientRepository = medicineIngredientRepository;
+        }
+
         public MedicineIngredient GetById(int id)
         {
             return this.medicineIngredientRepository.GetById(id);
@@ -35,9 +40,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return null;
         }
 
-        public MedicineIngredientService(MedicineIngredientRepository medicineIngredientRepository)
-        {
-            this.medicineIngredientRepository = medicineIngredientRepository;
-        }
+    
     }
 }

@@ -8,6 +8,12 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class MedicalRecord
     {
+        public int Id;
+        public int PatientId { get; set; }
+        public List<MedicinePrescription> PrescriptionList { get; set; }
+        public List<Anamnesis> AnamnesisList { get; set; }
+        public List<Allergen> AllergenList { get; set; }
+
         public MedicalRecord()
         {
 
@@ -26,11 +32,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
         ~MedicalRecord()
         { }
 
-        public int Id;
-        public int PatientId { get; set; }
-        public List<MedicinePrescription> PrescriptionList { get; set; }
-        public List<Anamnesis> AnamnesisList { get; set; }
-        public List<Allergen> AllergenList { get; set; }
+        
 
     }
 }
