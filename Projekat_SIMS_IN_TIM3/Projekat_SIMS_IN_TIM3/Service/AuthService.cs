@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Service
 {
-    public class UserLoginService
+    public class AuthService
     {
         private UserLoginRepository user1 = new UserLoginRepository();
 

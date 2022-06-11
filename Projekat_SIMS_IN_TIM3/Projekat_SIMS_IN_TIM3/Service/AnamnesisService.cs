@@ -11,12 +11,12 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class AnamnesisService
     {
+        public AnamnesisIRepository anamnesisRepository;
         public AnamnesisService(AnamnesisIRepository anamnesisRepository)
         {
             this.anamnesisRepository = anamnesisRepository;
         }
 
-        public AnamnesisIRepository anamnesisRepository;
 
         public List<Anamnesis> GetAll()
         {

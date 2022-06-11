@@ -8,6 +8,13 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class Allergen
     {
+        public int Id { get; set; }
+
+        public int PatientId { get; set; }
+
+        public String Name { get; set; }
+        public String Details { get; set; }
+
         public Allergen()
         {
             // TODO: implement
@@ -33,12 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
             // TODO: implement
         }
 
-        public int Id { get; set; }
-
-        public int PatientId { get; set; }
-
-        public String Name { get; set; }
-        public String Details { get; set; }
+       
 
     }
 }

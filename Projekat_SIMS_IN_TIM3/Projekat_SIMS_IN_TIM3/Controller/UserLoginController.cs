@@ -10,7 +10,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class UserLoginController
     {
-        private UserLoginService user1 = new UserLoginService();
+        private AuthService user1 = new AuthService();
         public (Boolean,int) ValidLogin(UserLogin user)
         {
             return user1.ValidLogin(user);

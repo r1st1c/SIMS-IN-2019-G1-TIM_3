@@ -11,12 +11,12 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class AlarmService
     {
+        public AlarmIRepository alarmRepository;
         public AlarmService(AlarmIRepository alarmRepository)
         {
             this.alarmRepository = alarmRepository;
         }
 
-        public AlarmIRepository alarmRepository;
 
         public List<Alarm> GetAll()
         {

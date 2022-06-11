@@ -11,15 +11,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class AppointmentService
     {
+        public AppointmentIRepository appointmentRepository;
+        public PatientService patientService;
+
         public AppointmentService(AppointmentIRepository appointmentRepository, PatientService patientService)
         {
             this.patientService = patientService;
             this.appointmentRepository = appointmentRepository;
         }
-
-        public AppointmentIRepository appointmentRepository;
-        public PatientService patientService;
-
 
         public int GetNextId()
         {

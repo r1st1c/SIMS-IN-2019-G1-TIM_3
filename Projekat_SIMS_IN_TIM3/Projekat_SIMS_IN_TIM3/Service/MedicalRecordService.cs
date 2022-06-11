@@ -13,7 +13,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
         public MedicalRecordRepository mr = new MedicalRecordRepository();
 
 
-
         public void Create(MedicalRecord mr)
         {
             this.mr.Create(mr);

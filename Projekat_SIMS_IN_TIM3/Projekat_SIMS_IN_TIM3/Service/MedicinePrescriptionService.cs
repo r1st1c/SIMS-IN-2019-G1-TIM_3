@@ -60,7 +60,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
         public bool IsAllergicToMedicine(int patientId, Medicine medicine)
         {
            
-       
             var allergens = allergenRepository.GetByPatientsId(patientId);
             foreach(var allergen in allergens)
             {

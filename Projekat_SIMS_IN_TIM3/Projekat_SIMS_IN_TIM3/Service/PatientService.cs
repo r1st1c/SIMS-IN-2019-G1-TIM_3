@@ -11,7 +11,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
     public class PatientService
     {
         private PatientRepository patientRepository = new PatientRepository();
-        private AppointmentRepository appointmentRepository = new AppointmentRepository();
+        
         public List<Patient> GetAll()
         {
             return patientRepository.GetAll();
@@ -38,7 +38,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
         }
 
         
-
         public int getIdByNameAndSurname(string name, string surname)
         {
             return patientRepository.getIdByNameAndSurname(name, surname);
