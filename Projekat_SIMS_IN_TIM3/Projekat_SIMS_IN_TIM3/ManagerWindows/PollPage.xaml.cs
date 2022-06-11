@@ -62,6 +62,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             };
             this.HospitalGrades = this.hospitalGradeController.GetAll();
             this.Doctors = new ObservableCollection<Doctor>(this.doctorController.GetAll());
+
+
             float sum = 0;
             List<HospitalGrade> allHospitalGrades = this.hospitalGradeController.GetAll();
             int i;
