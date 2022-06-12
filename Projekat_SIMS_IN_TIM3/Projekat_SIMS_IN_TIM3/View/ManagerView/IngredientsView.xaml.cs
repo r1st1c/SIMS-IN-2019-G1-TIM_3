@@ -11,9 +11,9 @@ namespace Projekat_SIMS_IN_TIM3.View.ManagerView
     /// <summary>
     /// Interaction logic for IngredientsPage.xaml
     /// </summary>
-    public partial class IngredientsPage : Page
+    public partial class IngredientsView : Page
     {
-        public IngredientsPage()
+        public IngredientsView()
         {
             InitializeComponent();
             this.DataContext = new IngredientsPageViewModel();

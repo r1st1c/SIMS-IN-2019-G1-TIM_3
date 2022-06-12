@@ -72,7 +72,7 @@ namespace Projekat_SIMS_IN_TIM3
             pollsBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
             ingredientsBtn.Background = Brushes.Aqua;
             medicineBtn.Background = (Brush)brushConverter.ConvertFrom("#FFDDDDDD");
-            MainFrame.Content = new IngredientsPage();
+            MainFrame.Content = new IngredientsView();
         }
 
         private void pollsBtn_Click(object sender, RoutedEventArgs e)
