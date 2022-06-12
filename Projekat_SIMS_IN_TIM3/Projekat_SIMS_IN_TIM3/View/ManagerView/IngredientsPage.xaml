@@ -1,10 +1,12 @@
-﻿<Page x:Class="Projekat_SIMS_IN_TIM3.ManagerWindows.IngredientsPage"
+﻿<Page x:Class="Projekat_SIMS_IN_TIM3.View.ManagerView.IngredientsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.ManagerWindows"
       xmlns:adorners="http://gu.se/Adorners"
+      xmlns:viewmodels="clr-namespace:Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel" 
+      d:DataContext="{d:DesignInstance Type=viewmodels:IngredientsPageViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1600"
       Title="IngredientsPage">
@@ -24,9 +26,9 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="ingredientName" FontSize="20" Grid.Column="2"  TextWrapping="Wrap" VerticalAlignment="Center"  Height="30" adorners:Watermark.Text="New Ingredient..." adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused" Margin="5,0,10,0"/>
+        <TextBox x:Name="ingredientName" Text="{Binding IngredientName}" FontSize="20" Grid.Column="2"  TextWrapping="Wrap" VerticalAlignment="Center"  Height="30" adorners:Watermark.Text="New Ingredient..." adorners:Watermark.VisibleWhen="EmptyAndNotKeyboardFocused" Margin="5,0,10,0"/>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="7" Fill="Black"></Rectangle>
-        <Button Grid.Column="3"  Click="Add_Ingredient_Click" Margin="10,0,0,0" FontSize="20" HorizontalAlignment="Left" Width="132" Height="30" VerticalAlignment="Center">
+        <Button Grid.Column="3"  Command="{Binding AddCommand}" Margin="10,0,0,0" FontSize="20" HorizontalAlignment="Left" Width="132" Height="30" VerticalAlignment="Center">
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
