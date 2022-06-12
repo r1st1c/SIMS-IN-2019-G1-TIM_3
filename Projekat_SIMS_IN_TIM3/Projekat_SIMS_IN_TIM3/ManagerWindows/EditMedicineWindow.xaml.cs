@@ -74,7 +74,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            this.RejectedMedicineList.Remove(selected);
+            this.RejectedMedicineList.Remove(RejectedMedicineList.FirstOrDefault(med => med.Id==selected.Id));
             this.selected.Name = this.medName.Text;
             List<MedicineIngredient> selectedIngredients = new List<MedicineIngredient>();
             foreach (var ingredientname in this.selIngr.SelectedItems)
