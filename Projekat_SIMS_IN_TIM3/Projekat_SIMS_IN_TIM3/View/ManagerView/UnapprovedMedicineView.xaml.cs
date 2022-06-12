@@ -8,9 +8,9 @@ namespace Projekat_SIMS_IN_TIM3.View.ManagerView
     /// <summary>
     /// Interaction logic for MedicinePage.xaml
     /// </summary>
-    public partial class UnapprovedMedicinePage : Page
+    public partial class UnapprovedMedicineView : Page
     {
-        public UnapprovedMedicinePage(ObservableCollection<Medicine> unapproved)
+        public UnapprovedMedicineView(ObservableCollection<Medicine> unapproved)
         {
             InitializeComponent();
             this.DataContext = new UnapprovedViewModel(unapproved);

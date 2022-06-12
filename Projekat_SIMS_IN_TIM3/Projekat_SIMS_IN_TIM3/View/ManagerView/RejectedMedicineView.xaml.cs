@@ -9,14 +9,16 @@ using Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel;
 namespace Projekat_SIMS_IN_TIM3.View.ManagerView
 {
     /// <summary>
-    /// Interaction logic for RoomPage.xaml
+    /// Interaction logic for RejectedMedicinePage.xaml
     /// </summary>
-    public partial class RoomPage : Page
+    public partial class RejectedMedicineView : Page
     {
-        public RoomPage()
+        
+        public RejectedMedicineView()
         {
             InitializeComponent();
-            this.DataContext = new RoomPageViewModel();
+            this.DataContext = new RejectedViewModel();
         }
+        
     }
 }

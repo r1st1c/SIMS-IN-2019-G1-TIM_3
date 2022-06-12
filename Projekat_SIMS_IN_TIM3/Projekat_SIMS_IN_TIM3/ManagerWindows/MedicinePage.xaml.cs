@@ -32,7 +32,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             var app = Application.Current as App;
             this.medicineController = app.medicineController;
             this.unapproved = new ObservableCollection<Medicine>(this.medicineController.GetUnverified());
-            MedicineFrame.Content = new UnapprovedMedicinePage(unapproved);
+            MedicineFrame.Content = new UnapprovedMedicineView(unapproved);
             UnapprovedButton.Background = Brushes.Aqua;
             RejectedButton.Background = (Brush)ManagerMainWindow.brushConverter.ConvertFrom("#FFDDDDDD");
             this.AddMedicine.Visibility = Visibility.Visible;
@@ -43,7 +43,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             this.unapproved = new ObservableCollection<Medicine>(this.medicineController.GetUnverified());
             this.AddMedicine.Visibility = Visibility.Visible;
-            MedicineFrame.Content = new UnapprovedMedicinePage(unapproved);
+            MedicineFrame.Content = new UnapprovedMedicineView(unapproved);
             UnapprovedButton.Background = Brushes.Aqua;
             RejectedButton.Background = (Brush)ManagerMainWindow.brushConverter.ConvertFrom("#FFDDDDDD");
         }
@@ -51,7 +51,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         private void Rejected_Click(object sender, RoutedEventArgs e)
         {
             this.AddMedicine.Visibility = Visibility.Hidden;
-            MedicineFrame.Content = new RejectedMedicinePage();
+            MedicineFrame.Content = new RejectedMedicineView();
             UnapprovedButton.Background = (Brush)ManagerMainWindow.brushConverter.ConvertFrom("#FFDDDDDD");
             RejectedButton.Background = Brushes.Aqua;
 
