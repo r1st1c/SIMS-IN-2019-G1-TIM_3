@@ -1,0 +1,93 @@
+﻿<Window x:Class="Projekat_SIMS_IN_TIM3.DoctorWindows.AllergensOfPatient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="AllergensOfPatient" 
+         Height="900" Width="1100">
+    <Grid  Height="768" Width="1024">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65" />
+            <RowDefinition Height="135" />
+            <RowDefinition Height="135"/>
+            <RowDefinition Height="135"/>
+            <RowDefinition Height="135"/>
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+
+
+        </Grid.ColumnDefinitions>
+
+
+     
+        <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
+        <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />
+        <TextBlock  MouseLeftButtonDown="HomeBtn" FontStyle="Italic" FontSize="18" Height="40" HorizontalAlignment="Left"  Text="A leader in innovation, at the service of the patient" Grid.ColumnSpan="3" Margin="78,34,0,126" Grid.RowSpan="2" Width="461" />
+
+        <Label Grid.Column="2" FontWeight="Bold" FontSize="20" Margin="149,14,0,19" >ID:</Label>
+        <Label  x:Name="docId" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="20" FontWeight="Bold" Margin="193,9,147,11" Grid.ColumnSpan="2"  />
+
+        <Image Source="/Icons/user_icon_195366.ico" Grid.Row="0" Grid.Column="3" Width="48" Height="48" RenderTransformOrigin="1.104,0.532" Margin="79,6,78,11"  />
+        <TextBlock  Grid.Row="0" Grid.Column="3" FontStyle="Italic" FontSize="18" HorizontalAlignment="Left" Margin="148,1,0,32" Grid.ColumnSpan="2"><Run Text="You are signed in as:" Foreground="#555555"/></TextBlock>
+        <Label  Content="{Binding DoctorsNameAndSurname}" Grid.Row="0" Grid.Column="3" FontStyle="Normal" FontSize="20"  HorizontalAlignment="Right" Width="214" FontWeight="Bold" Margin="0,25,48,5" Grid.ColumnSpan="2"  />
+
+        <Rectangle  Grid.Row="1" Grid.ColumnSpan="4"  Stroke="#FFE5D9C3"  Fill="#e5d9c3" Grid.Column="1" Margin="0,0,0,64"  />
+        <TextBlock HorizontalAlignment="Left" Grid.Row="1" FontWeight="Bold" FontStyle="Normal" FontSize="36" Margin="10,5,0,74"  Grid.Column="1" Width="594" Text="Patient's allergens" Grid.ColumnSpan="3"/>
+
+        <Rectangle   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0"  Fill="#c3e0e5" Stroke="#c3e0e5" Margin="0,2,10,103" Height="165" Grid.RowSpan="2"    />
+        <TextBlock   MouseLeftButtonDown="CalendarPageBtn" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top"  Text="Calendar" FontWeight="Bold" Margin="59,118,63,0" Height="30" FontSize="20" Grid.RowSpan="2"  />
+        <Image  MouseLeftButtonDown="CalendarPageBtn" Source="/Icons/calendar-with-spring-binder-and-date-blocks_icon-icons.com_73645.ico"  Grid.Row="1" Grid.Column="0" Margin="51,35,52,24"  />
+
+        <Rectangle  MouseLeftButtonDown="NotifBtn" Stroke="#c3e0e5" Grid.Row="2" Grid.Column="0" Fill="#c3e0e5"  Margin="0,44,10,61" Height="165" Grid.RowSpan="2"/>
+        <TextBlock  MouseLeftButtonDown="NotifBtn"  HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Top"  Text="Notifications" FontWeight="Bold" FontSize="20" Margin="0,27,0,0"  />
+        <Image  MouseLeftButtonDown="NotifBtn"  Source="/Icons/musical-bell-outline_icon-icons.com_73481.ico" Grid.Row="2" Grid.Column="0" Margin="64,74,65,121" Grid.RowSpan="2" Width="76" Height="75"  />
+
+        <Rectangle  MouseLeftButtonDown="MedVerifBtn" Grid.Row="3" Grid.Column="0" Stroke="#c3e0e5" Fill="#c3e0e5"  Margin="-1,85,11,20" Grid.RowSpan="2" Height="165" />
+        <TextBlock  MouseLeftButtonDown="MedVerifBtn" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="Medicine" FontWeight="Bold" FontSize="18"  Grid.Row="4" Width="139" Grid.Column="0" Margin="59,59,0,0" />
+        <TextBlock  MouseLeftButtonDown="MedVerifBtn" HorizontalAlignment="Left"  Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"  Text="verification" FontWeight="Bold" FontSize="18" Margin="52,83,0,0" Height="32" />
+        <Image  MouseLeftButtonDown="MedVerifBtn" Source="/Icons/searcher_magnifyng_glass_search_locate_find_icon_123813.ico" Grid.Row="3" Grid.Column="0" Height="76" Width="76" Margin="62,104,67,90" Grid.RowSpan="2"  />
+
+        <Rectangle  MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="4" Grid.Column="0" Stroke="#c3e0e5"  Fill="#c3e0e5" Margin="0,134,10,-2" Height="165" Grid.RowSpan="2"/>
+        <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="5" HorizontalAlignment="Center"   VerticalAlignment="Top"  Text="Create" FontWeight="Bold" FontSize="18" Margin="0,82,0,0"  />
+        <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="5" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="absence" FontWeight="Bold" FontSize="18"  Width="107" Margin="69,105,0,0"  />
+        <TextBlock  MouseLeftButtonDown="AbsenceReqBtn" HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Top"  Text="request" FontWeight="Bold" FontSize="18" Margin="0,127,0,0"  />
+        <Image Source="/Icons/note_pen_icon_174377.ico"  Grid.Row="5" Grid.Column="0" Width="76" Height="76" Margin="64,12,65,75"  />
+
+        <DataGrid  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Allergens, Mode=TwoWay}" IsReadOnly="True"
+                   SelectionMode="Single" AutoGenerateColumns="False" Grid.ColumnSpan="4" Margin="10,84,10,12" Grid.RowSpan="5"
+                   AlternatingRowBackground="#c27ba0">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="1 1 1 1"/>
+                    <Setter Property="Margin" Value="-1,-1,0,0" />
+                    <Setter Property="Height" Value="28" />
+                    <Setter Property="Width" Value="auto"/>
+                    <Setter Property="FontFamily" Value="Calibri" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="ID" Binding="{Binding Id}" Width="*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Allergen name" Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Details" Binding="{Binding Details}" Width="*" ></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

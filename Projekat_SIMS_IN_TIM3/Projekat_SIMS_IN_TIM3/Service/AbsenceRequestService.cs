@@ -1,4 +1,5 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+﻿using Projekat_SIMS_IN_TIM3.IRepository;
+using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class AbsenceRequestService
     {
-        private AbsenceRequestRepository repository = new AbsenceRequestRepository();
+        private AbsenceRequestIRepository repository;
+        private DoctorService doctorService;
 
+        public AbsenceRequestService(AbsenceRequestIRepository requestIRepository, DoctorService doctorService)
+        {
+            this.repository = requestIRepository;
+            this.doctorService = doctorService;
+        }
 
         public int GetNextId()
         {
@@ -32,19 +39,84 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return repository.GetRequestsByDoctorsId(id);
         }
 
-        public bool CheckTimeOfSendingRequest(DateTime startDate)
+      
+        public bool CheckSameSpecialization(String specializationForCheck, String specializationExisting)
         {
-            return repository.CheckTimeOfSendingRequest(startDate);
+            return specializationForCheck.Equals(specializationExisting) ? true : false;
+        }
+        public bool EqualRanges(DateTime startDateForCheck, DateTime endDateForCheck, String specializationForCheck)
+        {
+            var requests = GetAll();
+            bool retVal = false;
+            bool sameSpecialization = false;
+            foreach (var request in requests)
+            {
+                TimeSpan existingSpan = request.EndDate.Date - startDateForCheck.Date;
+                retVal = existingSpan.Equals((TimeSpan)(endDateForCheck - startDateForCheck));
+                sameSpecialization = CheckSameSpecialization(specializationForCheck, doctorService.GetById(request.DoctorId).specializationType);
+            }
+            return ((retVal == true) || (sameSpecialization == true)) ? true : false;
         }
 
-        public int CheckDoctorSpecialization(String specialization, DateTime start, DateTime end)
+       
+
+        public bool ContainedInRange(DateTime startDateForCheck, DateTime endDateForCheck,String specializationForCheck)
         {
-            return repository.CheckDoctorSpecialization(specialization, start, end);
+            var requests = GetAll();
+            bool retVal = false;
+            bool sameSpecialization = false;
+            foreach (var request in requests)
+            {
+                TimeSpan existingSpan = request.EndDate.Date - request.StartDate.Date;
+                retVal = ((startDateForCheck >= request.StartDate.Date && startDateForCheck <= request.EndDate.Date) && (endDateForCheck >= request.StartDate.Date && endDateForCheck <= request.EndDate.Date));
+                sameSpecialization = CheckSameSpecialization(specializationForCheck, doctorService.GetById(request.DoctorId).specializationType);
+            }
+            return ((retVal == true) || (sameSpecialization == true)) ? true : false;
         }
 
-        public bool IsThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
+        public bool StartsInRange(DateTime startDateToCheck, String specializationForCheck)
         {
-            return repository.IsThereDoctorWithSameSpecialization(specialization, start, end);
+            var requests = GetAll();
+            bool retVal = false;
+            bool sameSpecialization = false;
+                foreach(var request in requests)
+            {
+                retVal = (startDateToCheck >= request.StartDate.Date) && (startDateToCheck <= request.EndDate.Date);
+                sameSpecialization = CheckSameSpecialization(specializationForCheck, doctorService.GetById(request.DoctorId).specializationType);
+            }
+           return ((retVal == true) || (sameSpecialization == true)) ? true : false;
+        }
+
+        public bool EndsInRange(DateTime endDateForCheck, String specializationForCheck)
+        {
+            var requests = GetAll();
+            bool retVal = false;
+            bool sameSpecialization = false;
+            foreach (var request in requests)
+            {
+                retVal = (endDateForCheck >= request.StartDate.Date) && (endDateForCheck <= request.EndDate.Date);
+                sameSpecialization = CheckSameSpecialization(specializationForCheck, doctorService.GetById(request.DoctorId).specializationType);
+            }
+            return ((retVal == true) || (sameSpecialization == true)) ? true : false;
+           
+        }
+
+        public bool ContainsRange(DateTime startDateToCheck, DateTime endDateToCheck, String specializationForCheck)
+        {
+
+            var requests = GetAll();
+            bool startInRange = false;
+            bool endInRange = false;
+            bool sameSpecialization = false;
+            foreach (var request in requests)
+            {
+                startInRange = (startDateToCheck >= request.StartDate.Date) && (startDateToCheck <= request.EndDate.Date) ? true : false;
+                endInRange = (endDateToCheck >= request.StartDate.Date) && (endDateToCheck <= request.EndDate.Date) ? true : false;
+                sameSpecialization = CheckSameSpecialization(specializationForCheck, doctorService.GetById(request.DoctorId).specializationType);
+            }
+            
+
+            return (startInRange == true) || (endInRange == true) || (endInRange == true) ? true : false;
         }
 
 

@@ -76,6 +76,7 @@ namespace Projekat_SIMS_IN_TIM3
 
         }
 
+        //refaktorisi
         public void Confirm_Click(object sender, RoutedEventArgs e)
         {
             MainWindowPatient parentWindow = Window.GetWindow(this) as MainWindowPatient;
@@ -107,8 +108,8 @@ namespace Projekat_SIMS_IN_TIM3
 
             note = new Note(noteId, patientId, this.Title.Text, this.Text.Text, DateTime.Now);
 
-            this.application.noteController.DeleteNode(noteId);
-            this.application.noteController.CreateNote(note);
+            this.application.noteController.Delete(noteId);
+            this.application.noteController.Create(note);
             parentWindow.Notif.Content = new Notes(Username);
 
 

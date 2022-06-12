@@ -1,0 +1,26 @@
+﻿<Page x:Class="Projekat_SIMS_IN_TIM3.PatientHCIWindows.AnamnesisView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.PatientHCIWindows"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AppointmentsView">
+
+    <Grid>
+        <Border BorderThickness="1" BorderBrush="Black">
+            <TextBlock Name="Doctor" FontSize="22"  TextAlignment="Center" Margin="270,62,240,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="290" Height="34"/>
+        </Border>
+        <TextBlock Name="Anamnesis" FontSize="22" TextAlignment="Center" Height="170" Margin="270,201,240,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="290" />
+
+
+        <Button FontWeight="Bold" Content="Back" FontSize="22" Margin="368,383,338,0" VerticalAlignment="Top" Width="94" Height="34" Click="Back_Click"/>
+        <TextBlock Name="Time" TextAlignment="Center" FontSize="22"  Margin="270,125,240,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="290" Height="34"/>
+
+        <TextBlock FontWeight="Bold"  Height="25" FontSize="22" Margin="307,28,297,397" TextWrapping="Wrap"  Text="Doctor"  Width="196" TextAlignment="Center"/>
+        <TextBlock FontWeight="Bold" Height="25" FontSize="22" Margin="334,95,324,330" TextWrapping="Wrap" Text="Time created"  Width="143" TextAlignment="Center"/>
+        <TextBlock FontWeight="Bold" Height="25" FontSize="22" Margin="344,164,334,261" TextWrapping="Wrap" Text="Anamnesis" Width="122" TextAlignment="Center"/>
+
+    </Grid>
+</Page>

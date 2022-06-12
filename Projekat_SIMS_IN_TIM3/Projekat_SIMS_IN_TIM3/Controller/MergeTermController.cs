@@ -6,25 +6,30 @@ namespace Projekat_SIMS_IN_TIM3.Controller;
 
 public class MergeTermController
 {
-    public MergeTermService MergeTermService { get; set; } = new MergeTermService();
+    public MergeTermService mergeTermService;
+
+    public MergeTermController(MergeTermService mergeTermService)
+    {
+        this.mergeTermService = mergeTermService;
+    }
 
     public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
     {
-        return this.MergeTermService.GetMergeRenovationAvailableTerms(mergeRenovationQuery);
+        return this.mergeTermService.GetMergeRenovationAvailableTerms(mergeRenovationQuery);
     }
 
     public bool ScheduleMerge(MergeRenovationTerm mergeRenovationTerm)
     {
-        return this.MergeTermService.ScheduleMerge(mergeRenovationTerm);
+        return this.mergeTermService.ScheduleMerge(mergeRenovationTerm);
     }
 
     public void DisableMergingRooms()
     {
-        this.MergeTermService.DisableMergingRooms();
+        this.mergeTermService.DisableMergingRooms();
     }
 
     public void ExecuteMerging()
     {
-        this.MergeTermService.ExecuteMerging();
+        this.mergeTermService.ExecuteMerging();
     }
 }

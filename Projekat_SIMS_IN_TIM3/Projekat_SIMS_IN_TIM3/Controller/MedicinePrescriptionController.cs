@@ -10,7 +10,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class MedicinePrescriptionController
     {
-        public MedicinePrescriptionService service = new MedicinePrescriptionService();
+        public MedicinePrescriptionService service;
+
+        public MedicinePrescriptionController(MedicinePrescriptionService prescriptionService)
+        {
+            this.service = prescriptionService;
+        }
 
         public int GetNextId()
         {
@@ -48,5 +53,13 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 
           
         }
+
+        public bool IsAllergicToMedicine(int patientId, Medicine medicine)
+        {
+            return service.IsAllergicToMedicine(patientId, medicine);
+        }
+
+
+
     }
 }

@@ -13,8 +13,8 @@
                   SelectionMode="Single" AutoGenerateColumns="False" 
                   Height="270" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="21">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Doctor" Binding="{Binding DoctorName}" Width="1*"/>
-                <DataGridTextColumn Header="Time" Binding="{Binding DateAndTime}" Width="1*"/>
+                <DataGridTextColumn Header="Doctor" Binding="{Binding DoctorName}" Width="2*"/>
+                <DataGridTextColumn Header="Time" Binding="{Binding DateAndTime}" Width="2*"/>
                 <DataGridTemplateColumn  Width="*" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -31,6 +31,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button FontSize="22" FontWeight="DemiBold" Content="Add Appointment" Height="30" Margin="604,45,10,375" Click="Add_Appointment_Click"/>
+        <Button FontSize="22" FontWeight="DemiBold" Content="Add Appointment" Height="30" Margin="610,45,29,375" Click="Add_Appointment_Click"/>
     </Grid>
 </Page>

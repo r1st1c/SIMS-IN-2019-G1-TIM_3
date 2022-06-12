@@ -21,7 +21,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
     /// <summary>
     /// Interaction logic for UpdateAndDeleteAppointment.xaml
     /// </summary>
-   
+   //premesteno
     public partial class UpdateAndDeleteAppointment : Window
     {
 

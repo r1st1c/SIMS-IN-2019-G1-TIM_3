@@ -1,4 +1,5 @@
-﻿using Projekat_SIMS_IN_TIM3.Model;
+﻿using Projekat_SIMS_IN_TIM3.IRepository;
+using Projekat_SIMS_IN_TIM3.Model;
 using Projekat_SIMS_IN_TIM3.Repository;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,16 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class MedicinePrescriptionService
     {
-        public MedicinePrescriptionRepository repository = new MedicinePrescriptionRepository();
+        public MedicinePrescriptionIRepository repository;
+        public MedicineIRepository medicineRepository;
+        public AllergenIRepository allergenRepository;
+
+        public MedicinePrescriptionService(MedicinePrescriptionIRepository iRepository, MedicineIRepository medicineRepository, AllergenIRepository allergenRepository)
+        {
+            this.repository = iRepository;
+            this.medicineRepository = medicineRepository;
+            this.allergenRepository = allergenRepository;
+        }
 
         public int GetNextId()
         {
@@ -46,5 +56,22 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return repository.GetById(id);
 
         }
+
+        public bool IsAllergicToMedicine(int patientId, Medicine medicine)
+        {
+           
+       
+            var allergens = allergenRepository.GetByPatientsId(patientId);
+            foreach(var allergen in allergens)
+            {
+                if (allergen.Name.Equals(medicine.Name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        
     }
 }

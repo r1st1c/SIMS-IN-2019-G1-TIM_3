@@ -17,7 +17,7 @@ using Projekat_SIMS_IN_TIM3.Controller;
 namespace Projekat_SIMS_IN_TIM3.PatientXAML
 {
    
-    
+    //premesteno
     public partial class SearchAppointments : Window
     {
         public App application { get; set; }
@@ -37,7 +37,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientXAML
         {
             int doctorId = Convert.ToInt32(txtDoctorId.Text); //uvezati sa wpfom
             string priority = combobox.Text;
-
+            
             DateTime wantedStartTIme = (DateTime)StartTime1.SelectedDate; //unesen pocetak
             DateTime wantedEndTIme = (DateTime)EndTime1.SelectedDate; //unesen kraj
 

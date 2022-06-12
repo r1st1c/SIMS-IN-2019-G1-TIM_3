@@ -12,11 +12,11 @@ namespace Projekat_SIMS_IN_TIM3.Model
         public string DoctorName { get; set; }
         public string DateAndTime { get; set; }
 
-        public AppointmentDTO(string DoctorName, string DateAndTime)
+        public AppointmentDTO(string DoctorName, string DateAndTime, int Id)
         {
             this.DoctorName = DoctorName;
             this.DateAndTime = DateAndTime;
-            this.Id = 1;
+            this.Id = Id;
         }
         
     }

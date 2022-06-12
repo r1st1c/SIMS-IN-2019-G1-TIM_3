@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
@@ -9,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class MedicineRepository
+    public class MedicineRepository: MedicineIRepository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\medicines.json";
         public List<Medicine> medicines { get; set; } = new List<Medicine>();
 
         public MedicineRepository()
         {
-            readJson();
+            ReadJson();
         }
 
         public int GetNextId()
@@ -24,7 +25,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             return medicines.Count!=0 ? medicines.Max(x => x.Id)+1 : 0;
         }
 
-        public void readJson()
+        public void ReadJson()
         {
             if (!File.Exists(fileLocation))
             {
@@ -49,13 +50,13 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public List<Medicine> GetAll()
         {
-            readJson();
+            ReadJson();
             return medicines;
         }
 
         public Medicine GetById(int id)
         {
-            readJson();
+            ReadJson();
             return medicines.Find(obj => obj.Id == id);
         }
         public void Create(Medicine medicine)
@@ -66,23 +67,23 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public void Update(Medicine medicine)
         {
-            readJson();
+            ReadJson();
             int idx = medicines.FindIndex(obj => obj.Id == medicine.Id);
             medicines[idx] = medicine;
             WriteToJson();
            
         }
 
-        public void DeleteById(int medId)
+        public void Delete(int id)
         {
-            readJson();
-            int idx = medicines.FindIndex(obj => obj.Id == medId);
+            ReadJson();
+            int idx = medicines.FindIndex(obj => obj.Id == id);
             medicines.RemoveAt(idx);
             WriteToJson();
         }
         public List<Medicine> GetVerified()
         {
-            readJson();
+            ReadJson();
             List<Medicine> list = new List<Medicine>();
 
             foreach (Medicine medicine in medicines)
@@ -97,7 +98,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         }
         public List<String> GetVerifiedNames()
         {
-            readJson();
+            ReadJson();
             List<String> list = new List<String>();
 
                 foreach (Medicine medicine in medicines)
@@ -113,18 +114,18 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public List<Medicine> GetUnverified()
         {
-            readJson();
+            ReadJson();
             return medicines.FindAll(a => a.IsVerified == MedicineStatus.unapproved);
         }
         public List<Medicine> GetRejected()
         {
-            readJson();
+            ReadJson();
             return medicines.FindAll(a => a.IsVerified == MedicineStatus.rejected);
         }
 
         public int getIdByName(string name)
         {
-            readJson();
+            ReadJson();
             int id = int.MinValue;
             id = medicines.FindIndex(obj => obj.Name == name);
             return id;
@@ -132,7 +133,7 @@ namespace Projekat_SIMS_IN_TIM3.Repository
 
         public Medicine GetByName(string name)
         {
-            readJson();
+            ReadJson();
             return medicines.Find(obj => obj.Name.Equals(name));
         }
     }

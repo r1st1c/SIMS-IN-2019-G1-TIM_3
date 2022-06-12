@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Projekat_SIMS_IN_TIM3.Model;
 using System.IO;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class NoteRepository
+    public class NoteRepository : NoteIRepository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\notes.json";
         public List<Note> notes { get; set; } = new List<Note>();
@@ -54,14 +55,14 @@ namespace Projekat_SIMS_IN_TIM3.Repository
             File.WriteAllText(fileLocation, json);
         }
 
-        public void CreateNote(Model.Note note)
+        public void Create(Model.Note note)
         {
             notes.Add(note);
             WriteToJson();
         }
 
 
-        public void DeleteNote(int noteId)
+        public void Delete(int noteId)
         {
             ReadJson();
             int index = notes.FindIndex(obj => obj.Id == noteId);

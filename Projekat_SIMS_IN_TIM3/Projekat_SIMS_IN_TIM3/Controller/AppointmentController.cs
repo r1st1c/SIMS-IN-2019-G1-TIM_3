@@ -10,6 +10,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class AppointmentController
     {
+        public AppointmentController(AppointmentService appointmentService)
+        {
+            this.appointmentService = appointmentService;
+        }
+        public AppointmentService appointmentService;
         public int GetNextId()
         {
             return appointmentService.GetNextId();
@@ -50,10 +55,6 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.appointmentService.GetById((int)appointmentId);
         }
 
-        public int NumOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
-        {
-            return appointmentService.NumOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
-        }
 
         public bool IsDoctorFree(int doctorId, DateTime start, DateTime end)
         {
@@ -64,7 +65,7 @@ namespace Projekat_SIMS_IN_TIM3.Controller
         {
             return appointmentService.Cancel(patientId, appointmentId);
         }
-        public AppointmentService appointmentService = new AppointmentService();
+       
     }
 }
 

@@ -32,7 +32,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
         public App application { get; set; }
         public Patient patient = new Patient();
         public static List<PrescriptionDTO> prescriptions { get; set; } = new List<PrescriptionDTO>();
-        public static List<MedicinePrescription> prescriptionsList{ get; set; }
+        public static List<MedicinePrescription> prescriptionsList { get; set; } = new List<MedicinePrescription>();
 
         public int patId { get; set; } = 1;
         UIElement parent = App.Current.MainWindow;
@@ -49,7 +49,7 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
 
             
-
+            //refaktorisi
             foreach (Patient pat in patients)
             {
                 if (pat.User.Username == Username)
@@ -59,7 +59,8 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
                 }
             }
-
+            prescriptionsList.Clear();
+            prescriptions.Clear();
             prescriptionsList = application.medPrescriptionController.GetAllById(patient.User.Id);
 
             makeDTOs(prescriptionsList);

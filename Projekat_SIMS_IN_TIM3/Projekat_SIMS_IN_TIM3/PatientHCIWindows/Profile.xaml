@@ -23,7 +23,9 @@
         <TextBlock Name="address" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"  Height="40" Margin="451,264,232,146" FontSize="18" />
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="Birthday:" FontWeight="DemiBold" Height="40" Margin="258,325,447,85" FontSize="18" />
         <TextBlock Name="birthday" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"  Height="40" Margin="451,325,232,85" FontSize="18" />
-        <Button Content="Prescriptions" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="474,377,0,0" VerticalAlignment="Top" Height="30" Width="115" Click="Prescriptions_Click"/>
+        <Button Content="Prescriptions" FontSize="18" FontWeight="DemiBold"    Height="30" Width="114" Click="Prescriptions_Click" Margin="476,370,210,50" />
+        <Button Content="Anamnesis" FontSize="18" FontWeight="DemiBold"    Height="30" Width="114" Click="Anamnesis_Click" Margin="224,370,462,50" />
+        
 
 
     </Grid>

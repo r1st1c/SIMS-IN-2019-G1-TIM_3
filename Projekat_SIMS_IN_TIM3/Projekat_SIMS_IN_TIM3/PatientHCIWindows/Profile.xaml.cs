@@ -41,6 +41,8 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
             patient = null;
 
+            //refaktorisi
+
             foreach (Patient pat in patients)
             {
                 if (pat.User.Username == Username)
@@ -64,6 +66,14 @@ namespace Projekat_SIMS_IN_TIM3.PatientHCIWindows
 
 
             parentWindow.Notif.Content = new Prescriptions(Username);
+        }
+
+        public void Anamnesis_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindowPatient parentWindow = Window.GetWindow(this) as MainWindowPatient;
+
+
+            parentWindow.Notif.Content = new Anamnesiss(Username);
         }
 
     }

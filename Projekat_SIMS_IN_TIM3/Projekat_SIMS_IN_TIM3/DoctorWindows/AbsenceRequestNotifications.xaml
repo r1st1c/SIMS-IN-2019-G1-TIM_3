@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="AbsenceRequestNotifications" Height="900" Width="1100">
     <Grid  Height="768" Width="1024">
         <Grid.RowDefinitions>
@@ -30,14 +31,14 @@
 
         <Label Grid.Row="1" Grid.Column="1" FontWeight="Bold" FontSize="20" Margin="300,13,77,13" Grid.ColumnSpan="2" >Identification number:
         </Label>
-        <Label  x:Name="labelPatientId" Grid.Row="1" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="20" FontWeight="Bold" Margin="275,10,18,11"  />
+
 
         <Image  MouseLeftButtonDown="HomeBtn" Source="/Icons/hospital_building_icon_135495.ico" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  />
         <TextBlock   MouseLeftButtonDown="HomeBtn" Text="Bolnica ZDRAVO" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" Width="362" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="80,0,0,0"  />
         <TextBlock  MouseLeftButtonDown="HomeBtn" FontStyle="Italic" FontSize="18" Height="40" HorizontalAlignment="Left"  Text="A leader in innovation, at the service of the patient" Grid.ColumnSpan="3" Margin="78,34,0,126" Grid.RowSpan="2" Width="461" />
 
         <Label Grid.Column="2" FontWeight="Bold" FontSize="20" Margin="149,14,0,19" >ID:</Label>
-        <Label  x:Name="PatientId" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="20" FontWeight="Bold" Margin="193,13,147,7" Grid.ColumnSpan="2"  />
+        <Label  x:Name="PatientId" Grid.Column="2" Content="{Binding DoctorId}" Foreground="Black"  FontSize="20" FontWeight="Bold" Margin="193,9,147,11" Grid.ColumnSpan="2"  />
 
         <Image Source="/Icons/user_icon_195366.ico" Grid.Row="0" Grid.Column="3" Width="48" Height="48" RenderTransformOrigin="1.104,0.532" Margin="79,6,78,11"  />
         <TextBlock  Grid.Row="0" Grid.Column="3" FontStyle="Italic" FontSize="18" HorizontalAlignment="Left" Margin="148,1,0,32" Grid.ColumnSpan="2"><Run Text="You are signed in as:" Foreground="#555555"/></TextBlock>
@@ -64,5 +65,34 @@
         <TextBlock   MouseLeftButtonDown="AbsenceReqBtn" Grid.Row="5" HorizontalAlignment="Left"   VerticalAlignment="Top"  Text="absence" FontWeight="Bold" FontSize="18"  Width="107" Margin="69,105,0,0"  />
         <TextBlock  MouseLeftButtonDown="AbsenceReqBtn" HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Top"  Text="request" FontWeight="Bold" FontSize="18" Margin="0,127,0,0"  />
         <Image Source="/Icons/note_pen_icon_174377.ico"  Grid.Row="5" Grid.Column="0" Width="76" Height="76" Margin="64,12,65,75"  />
+
+        <DataGrid  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Notifications, Mode=TwoWay}" IsReadOnly="True"
+                   SelectionMode="Single" AutoGenerateColumns="False" Grid.ColumnSpan="4" Margin="10,84,10,12" Grid.RowSpan="5"
+                   AlternatingRowBackground="#c27ba0">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="1 1 1 1"/>
+                    <Setter Property="Margin" Value="-1,-1,0,0" />
+                    <Setter Property="Height" Value="28" />
+                    <Setter Property="Width" Value="auto"/>
+                    <Setter Property="FontFamily" Value="Calibri" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.Resources>
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="ID" Binding="{Binding Id}" Width="35" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Start date" Binding="{Binding AbsenceRequest.StartDate.Date}" Width="140"></DataGridTextColumn>
+                <DataGridTextColumn Header="End date" Binding="{Binding AbsenceRequest.EndDate.Date}" Width="140" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Additional explanation" Binding="{Binding AbsenceRequest.AdditionalExplanation}" Width="190"></DataGridTextColumn>
+                <DataGridTextColumn Header="Urgent" Binding="{Binding AbsenceRequest.IsUrgent}" Width="70"></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" Binding="{Binding AbsenceRequest.requestStatus}" Width="70" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Rejection explanation" Binding="{Binding RejectionExplanation}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>

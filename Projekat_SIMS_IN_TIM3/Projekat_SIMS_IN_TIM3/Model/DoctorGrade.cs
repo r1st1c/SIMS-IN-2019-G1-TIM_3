@@ -8,7 +8,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
 {
     public class DoctorGrade
     {
-        public int id { get; set; }
+    
         public int doctorId { get; set; }
 
         public int knowledgeGrade { get; set; }

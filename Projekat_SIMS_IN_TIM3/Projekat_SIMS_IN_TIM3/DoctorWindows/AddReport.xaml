@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Projekat_SIMS_IN_TIM3.DoctorWindows"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="ADD MEDICAL REPORT" Height="550" Width="550">
+        Title="ADD MEDICAL REPORT" Height="551" Width="556">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />

@@ -11,9 +11,9 @@ namespace Projekat_SIMS_IN_TIM3.View.ManagerView
     /// <summary>
     /// Interaction logic for RoomPage.xaml
     /// </summary>
-    public partial class RoomPage : Page
+    public partial class RoomView : Page
     {
-        public RoomPage()
+        public RoomView()
         {
             InitializeComponent();
             this.DataContext = new RoomPageViewModel();

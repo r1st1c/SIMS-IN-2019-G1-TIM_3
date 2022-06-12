@@ -22,7 +22,7 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
     /// </summary>
     public partial class anamnesisPrescriptions : Window
     {
-        MedicinePrescriptionController pc = new MedicinePrescriptionController();
+        MedicinePrescriptionController pc;
         public int PatientId { get; set; }
         public int DoctorId { get; set; }
         public static ObservableCollection<MedicinePrescription> Prescriptions { get; set; }
@@ -30,9 +30,11 @@ namespace Projekat_SIMS_IN_TIM3.DoctorWindows
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            this.pc = app.medPrescriptionController;
             PatientId = id;
             DoctorId = id1;
-            Prescriptions = new ObservableCollection<MedicinePrescription>(pc.GetAllById(PatientId));
+            Prescriptions = new ObservableCollection<MedicinePrescription>(pc.GetAllById(Convert.ToInt32(PatientId)));
         
         }
 

@@ -5,11 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class AppointmentService
     {
+        public AppointmentService(AppointmentIRepository appointmentRepository, PatientService patientService)
+        {
+            this.patientService = patientService;
+            this.appointmentRepository = appointmentRepository;
+        }
+
+        public AppointmentIRepository appointmentRepository;
+        public PatientService patientService;
+
 
         public int GetNextId()
         {
@@ -51,16 +61,28 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.appointmentRepository.GetById((int)id);
         }
 
+
         public int NumOfScheduledAppointmentsDuringPeriod(int doctorId, DateTime start, DateTime end)
         {
-            return appointmentRepository.NumOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
-        }
+            
+            List<Appointment> appointmentsByDoctor = GetByDoctorsId(doctorId);
+            int scheduledAppointments = 0;
 
+            foreach (Appointment appointment in appointmentsByDoctor)
+            {
+                scheduledAppointments = (appointment.StartTime.Date >= start.Date && appointment.StartTime.Date <= end) ? scheduledAppointments++ : 0;  
+            }
+            return scheduledAppointments;
+        }
 
         public bool IsDoctorFree(int doctorId, DateTime start, DateTime end)
         {
-            return appointmentRepository.IsDoctorFree(doctorId, start, end);
+            int numOfScheduledAppointments = NumOfScheduledAppointmentsDuringPeriod(doctorId, start, end);
+           
+            return (numOfScheduledAppointments > 0) ? false : true;
         }
+
+       
 
         public Boolean Cancel(int patientId, int appointmentId)
         {
@@ -128,9 +150,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return DateTime.Now - fifthLastCancellation;
         }
 
-
-        public AppointmentRepository appointmentRepository = new AppointmentRepository();
-        public PatientService patientService = new PatientService();
 
     }
 }

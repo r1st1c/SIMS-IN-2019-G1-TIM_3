@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekat_SIMS_IN_TIM3.IRepository;
 
 namespace Projekat_SIMS_IN_TIM3.Service
 {
@@ -40,7 +41,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
         public bool Move(int equipmentId, int targetRoomId, DateTime date)
         {
             if (DateTime.Compare(date.Date, DateTime.Now.Date) > 0){
-                this.equipmentRepository.scheduleFutureMove(equipmentId, targetRoomId, date);
+                this.equipmentRepository.ScheduleFutureMove(equipmentId, targetRoomId, date);
                 return false;
             }
             else{
@@ -64,8 +65,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
         }
 
 
-        public RoomRepository roomRepository = new RoomRepository();
-        public EquipmentRepository equipmentRepository = new EquipmentRepository();
+        public RoomIRepository roomRepository;
+        public EquipmentIRepository equipmentRepository;
+
+        public EquipmentService(RoomIRepository roomRepository, EquipmentIRepository equipmentRepository)
+        {
+            this.roomRepository = roomRepository;
+            this.equipmentRepository = equipmentRepository;
+        }
 
     }
 }

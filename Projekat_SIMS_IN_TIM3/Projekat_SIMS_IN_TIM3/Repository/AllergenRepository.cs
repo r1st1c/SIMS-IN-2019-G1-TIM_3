@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Projekat_SIMS_IN_TIM3.IRepository;
 using Projekat_SIMS_IN_TIM3.Model;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Projekat_SIMS_IN_TIM3.Repository
 {
-    public class AllergenRepository
+    public class AllergenRepository: AllergenIRepository
     {
         private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\allergen.json";//Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\doctors.json";
-        private List<Allergen> allergens = new List<Allergen>();
+        private List<Allergen> allergens { get; set;  } = new List<Allergen>();
 
         public AllergenRepository()
         {
@@ -81,6 +82,11 @@ namespace Projekat_SIMS_IN_TIM3.Repository
         {
             ReadJson();
             return allergens;
+        }
+
+        public int GetNextId()
+        {
+            return allergens.Count != 0 ? allergens.Max(x => x.Id) + 1 : 0;
         }
     }
 }

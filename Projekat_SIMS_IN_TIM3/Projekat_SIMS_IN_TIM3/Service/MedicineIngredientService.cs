@@ -10,7 +10,7 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class MedicineIngredientService
     {
-        public MedicineIngredientRepository medicineIngredientRepository { get; set; } = new MedicineIngredientRepository();
+        public MedicineIngredientRepository medicineIngredientRepository;
 
         public MedicineIngredient GetById(int id)
         {
@@ -33,6 +33,11 @@ namespace Projekat_SIMS_IN_TIM3.Service
                 if(ingredient.Name == name) return ingredient;
             }
             return null;
+        }
+
+        public MedicineIngredientService(MedicineIngredientRepository medicineIngredientRepository)
+        {
+            this.medicineIngredientRepository = medicineIngredientRepository;
         }
     }
 }

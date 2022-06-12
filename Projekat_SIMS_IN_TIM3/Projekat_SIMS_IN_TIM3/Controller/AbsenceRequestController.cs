@@ -10,7 +10,12 @@ namespace Projekat_SIMS_IN_TIM3.Controller
 {
     public class AbsenceRequestController
     {
-        private AbsenceRequestService service = new AbsenceRequestService();
+        public  AbsenceRequestService service;
+
+        public AbsenceRequestController(AbsenceRequestService requestService)
+        {
+            this.service = requestService;
+        }
 
         public int GetNextId()
         {
@@ -31,19 +36,39 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return service.GetAllByDoctorsId(doctorsId);
         }
 
-        public bool CheckTimeOfSendingRequest(DateTime startDate)
+        public bool CheckSameSpecialization(String specializationForCheck, String specializationExisting)
         {
-            return service.CheckTimeOfSendingRequest(startDate);
+            return service.CheckSameSpecialization(specializationForCheck, specializationExisting);
         }
 
-        public bool IsThereDoctorWithSameSpecialization(String specialization, DateTime start, DateTime end)
+        public bool EqualRanges(DateTime startDateForCheck, DateTime endDateForCheck, String specializationForCheck)
         {
-            return service.IsThereDoctorWithSameSpecialization(specialization, start, end); 
+            return service.EqualRanges(startDateForCheck, endDateForCheck, specializationForCheck);
         }
 
-        public int CheckDoctorSpecialization(String specialization, DateTime start, DateTime end)
+        public bool ContainedInRange(DateTime startDateForCheck, DateTime endDateForCheck, String specializationForCheck)
         {
-            return service.CheckDoctorSpecialization(specialization, start, end);
+            return service.ContainedInRange(startDateForCheck, endDateForCheck, specializationForCheck);
         }
+
+        public bool StartsInRange(DateTime startDateToCheck, String specializationForCheck)
+        {
+            return service.StartsInRange(startDateToCheck, specializationForCheck);
+        }
+
+        public bool EndsInRange(DateTime endDateForCheck, String specializationForCheck)
+        {
+            return service.EndsInRange(endDateForCheck, specializationForCheck);
+        }
+
+        public bool ContainsRange(DateTime startDateToCheck, DateTime endDateToCheck, String specializationForCheck)
+        {
+            return service.ContainsRange(startDateToCheck, endDateToCheck, specializationForCheck);
+        }
+
+
+
+
+
     }
 }

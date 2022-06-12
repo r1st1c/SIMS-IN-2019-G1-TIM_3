@@ -30,6 +30,11 @@ namespace Projekat_SIMS_IN_TIM3.Controller
             return this.renovationTermService.GetRenovationSchedules();
         }
 
-        public RenovationTermService renovationTermService { get; set; } = new();
+        public RenovationTermService renovationTermService;
+
+        public RenovationTermController(RenovationTermService renovationTermService)
+        {
+            this.renovationTermService = renovationTermService;
+        }
     }
 }
