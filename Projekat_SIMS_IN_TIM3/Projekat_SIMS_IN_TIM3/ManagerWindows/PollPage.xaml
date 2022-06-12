@@ -38,7 +38,7 @@
         <Button Content="Clear Chart" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" FontSize="16" Click="Clear_Doctor_Chart_Click"/>
 
         <TextBlock Grid.Column="1"   FontSize="20" HorizontalAlignment="Left" Margin="31,8,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Hospital average grade:" VerticalAlignment="Top" Height="28"/>
-        <Label Grid.Column="1" Grid.Row="0"  x:Name="TotalAverageHospital" HorizontalAlignment="Left" Margin="239,3,0,0"  VerticalAlignment="Top" FontSize="20" Height="38" Width="43" FontWeight="Bold"/>
+        <Label Grid.Column="1" Grid.Row="0"  x:Name="TotalAverageHospital" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="239,3,0,0"  VerticalAlignment="Top" FontSize="20" Height="38" Width="76" FontWeight="Bold"/>
         <lvc:PieChart x:Name="PieHospitalGrades" LegendLocation="Bottom" Series="{Binding HospitalGradesCount}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="101,112,101,112" FontSize="16">
             <lvc:PieChart.ChartLegend>
                 <lvc:DefaultLegend BulletSize="30"></lvc:DefaultLegend>
@@ -64,7 +64,7 @@
         </lvc:CartesianChart>
 
         <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="31,8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Selected doctor grade:" VerticalAlignment="Top" Height="28"/>
-        <Label  x:Name="TotalAverageDoctor" HorizontalAlignment="Left" Margin="231,3,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="38" Width="43" FontWeight="Bold"/>
+        <Label   x:Name="TotalAverageDoctor" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="231,2,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Height="38" Width="60" FontWeight="Bold"/>
         <TextBlock Grid.Column="1"   FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,65" Grid.Row="1"  TextWrapping="Wrap" Text="Select grade:"/>
 
 
