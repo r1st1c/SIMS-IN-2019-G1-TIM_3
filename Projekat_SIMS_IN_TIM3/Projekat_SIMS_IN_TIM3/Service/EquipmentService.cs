@@ -12,6 +12,15 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class EquipmentService
     {
+        public RoomIRepository roomRepository;
+        public EquipmentIRepository equipmentRepository;
+
+        public EquipmentService(RoomIRepository roomRepository, EquipmentIRepository equipmentRepository)
+        {
+            this.roomRepository = roomRepository;
+            this.equipmentRepository = equipmentRepository;
+        }
+
         public Equipment GetById(int id)
         {
             return this.equipmentRepository.GetById(id);
@@ -64,15 +73,6 @@ namespace Projekat_SIMS_IN_TIM3.Service
             return this.GetAll().Where(x => x.Equipmenttype == query).ToList();
         }
 
-
-        public RoomIRepository roomRepository;
-        public EquipmentIRepository equipmentRepository;
-
-        public EquipmentService(RoomIRepository roomRepository, EquipmentIRepository equipmentRepository)
-        {
-            this.roomRepository = roomRepository;
-            this.equipmentRepository = equipmentRepository;
-        }
 
     }
 }

@@ -11,13 +11,13 @@ namespace Projekat_SIMS_IN_TIM3.Service
 {
     public class HospitalGradeService
     {
+        public HospitalGradeIRepository HospitalGradeRepository;
         public HospitalGradeService(HospitalGradeIRepository hospitalGradeRepository)
         {
             this.HospitalGradeRepository = hospitalGradeRepository;
         }
 
-        public HospitalGradeIRepository HospitalGradeRepository;
-
+      
         public void Create(HospitalGrade hospitalGrade)
         {
             this.HospitalGradeRepository.Create(hospitalGrade);

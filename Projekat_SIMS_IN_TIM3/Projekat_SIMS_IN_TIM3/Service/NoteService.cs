@@ -11,12 +11,14 @@ namespace Projekat_SIMS_IN_TIM3.Service
     {
         public class NoteService
         {
-            public NoteService(NoteIRepository noteRepository)
+        public NoteIRepository noteRepository;
+
+        public NoteService(NoteIRepository noteRepository)
             {
             this.noteRepository = noteRepository;
             }
 
-            public NoteIRepository noteRepository;
+           
             public int getNextId()
             {
                 return noteRepository.getNextId();
