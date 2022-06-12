@@ -40,7 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         public DoctorGradeController doctorGradeController;
         public RelayCommand HospitalGradeChange { get; set; }
-
+        Func<double, string> formatBar = (x) => string.Format("{0:0.000}", x);
         public string[] DoctorLabels { get; set; } =
             new[] { "Knowledge", "Helpfulness", "Punctuality", "Pleasantness" };
 
@@ -74,7 +74,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                        allHospitalGrades[i].RoomGrade;
             }
 
-            this.TotalAverageHospital.Content = Math.Round(sum / i / 5, 1);
+            this.TotalAverageHospital.Content = Math.Round(sum / i / 5, 2);
             this.DataContext = this;
         }
 
