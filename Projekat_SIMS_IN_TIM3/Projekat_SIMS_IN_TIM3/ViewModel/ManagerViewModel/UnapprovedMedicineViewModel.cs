@@ -8,10 +8,10 @@ using Projekat_SIMS_IN_TIM3.Model;
 
 namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
 {
-    public class UnapprovedViewModel
+    public class UnapprovedMedicineViewModel
     {
         public ObservableCollection<Medicine> Unapproved { get; set; } = new ObservableCollection<Medicine>();
-        public UnapprovedViewModel(ObservableCollection<Medicine> unapproved)
+        public UnapprovedMedicineViewModel(ObservableCollection<Medicine> unapproved)
         {
 
             this.Unapproved = unapproved;

@@ -17,7 +17,7 @@ namespace Projekat_SIMS_IN_TIM3.View.ManagerView
         public RejectedMedicineView()
         {
             InitializeComponent();
-            this.DataContext = new RejectedViewModel();
+            this.DataContext = new RejectedMedicineViewModel();
         }
         
     }

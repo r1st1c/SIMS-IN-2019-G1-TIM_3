@@ -13,13 +13,13 @@ using Projekat_SIMS_IN_TIM3.Model;
 
 namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
 {
-    public class RejectedViewModel
+    public class RejectedMedicineViewModel
     {
         
         public ObservableCollection<Medicine> Rejected { get; set; }
         public MedicineController medicineController;
         public RelayCommand EditCommand { get; set; }
-        public RejectedViewModel()
+        public RejectedMedicineViewModel()
         {
             var app = Application.Current as App;
             this.medicineController = app.medicineController;

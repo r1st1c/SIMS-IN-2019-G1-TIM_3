@@ -13,7 +13,7 @@ namespace Projekat_SIMS_IN_TIM3.View.ManagerView
         public UnapprovedMedicineView(ObservableCollection<Medicine> unapproved)
         {
             InitializeComponent();
-            this.DataContext = new UnapprovedViewModel(unapproved);
+            this.DataContext = new UnapprovedMedicineViewModel(unapproved);
         }
     }
 }
