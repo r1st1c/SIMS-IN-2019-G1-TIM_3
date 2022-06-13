@@ -74,6 +74,14 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
+            if (this.selected.Name != this.medName.Text)
+            {
+                if (this.MedicineController.GetByName(this.medName.Text) != null)
+                {
+                    MessageBox.Show("Medicine names must be unique!");
+                    return;
+                }
+            }
             this.RejectedMedicineList.Remove(RejectedMedicineList.FirstOrDefault(med => med.Id==selected.Id));
             this.selected.Name = this.medName.Text;
             List<MedicineIngredient> selectedIngredients = new List<MedicineIngredient>();

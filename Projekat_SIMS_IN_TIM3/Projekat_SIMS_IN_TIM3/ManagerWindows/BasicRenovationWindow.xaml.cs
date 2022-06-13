@@ -65,6 +65,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 return;
             }
 
+            if (DateTime.Parse(StartDate.Text) > DateTime.Parse(EndDate.Text))
+            {
+                MessageBox.Show("End date must be after start!");
+                return;
+            }
+
             renovationsGrid.ItemsSource = new ObservableCollection<RenovationTerm>(
                 this.renovationTermController.BasicRenovation(new RenovationTerm(Room.Id,
                     DateTime.Parse(StartDate.Text), DateTime.Parse(EndDate.Text), Duration, Description)));
