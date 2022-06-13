@@ -28,6 +28,11 @@ namespace Projekat_SIMS_IN_TIM3.ViewModel.ManagerViewModel
 
         public void Add_Ingredient(object parameter)
         {
+            if(this.medicineIngredientController.GetByName(IngredientName)!=null)
+            {
+                MessageBox.Show("Ingredient already exists!");
+                return;
+            }
             if (String.IsNullOrWhiteSpace(IngredientName))
             {
                 MessageBox.Show("Ingredient name can not be null!");
