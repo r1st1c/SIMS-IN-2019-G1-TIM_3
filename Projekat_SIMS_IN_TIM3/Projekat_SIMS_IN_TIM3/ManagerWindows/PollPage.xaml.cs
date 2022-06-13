@@ -111,13 +111,20 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             var add = new ColumnSeries
             {
                 Title = doctor.User.Name,
-                Values = new ChartValues<ObservableValue>
+                Values = new ChartValues<float>
                 {
-                    new ObservableValue(knowledgeGrade),
-                    new ObservableValue(helpfulnessGrade),
-                    new ObservableValue(punctualityGrade),
-                    new ObservableValue(pleasantnessGrade)
+                    knowledgeGrade,
+                    helpfulnessGrade,
+                    punctualityGrade,
+                    pleasantnessGrade
                 }
+                /*Values = new ChartValues<ObservableValue>
+                {
+                new ObservableValue(knowledgeGrade),
+                new ObservableValue(helpfulnessGrade),
+                new ObservableValue(punctualityGrade),
+                new ObservableValue(pleasantnessGrade)
+            }*/
             };
             this.DoctorGradeChart.Series.Add(add);
             this.TotalAverageDoctor.Content = (knowledgeGrade + helpfulnessGrade +

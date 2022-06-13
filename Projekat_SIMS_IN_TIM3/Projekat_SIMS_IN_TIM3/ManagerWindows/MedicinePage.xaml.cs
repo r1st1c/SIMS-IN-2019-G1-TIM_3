@@ -134,7 +134,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                             x.CurrentPageNumber();
                         });
                 });
-            }).GeneratePdf("out.pdf");
+            }).GeneratePdf("report.pdf");
+            MessageBox.Show("Pdf successfully generated!");
         }
     }
 }
