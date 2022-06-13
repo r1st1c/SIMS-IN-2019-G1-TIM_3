@@ -48,6 +48,13 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                 MessageBox.Show("You must enter name!");
                 return;
             }
+
+            if (this.medicineController.GetByName(this.medName.Text)!=null)
+            {
+                MessageBox.Show("Name must be unique!");
+                return;
+            }
+
             if (NoIngredientsAreSelected())
             {
                 MessageBox.Show("You must chose at least one ingredient");
