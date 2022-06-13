@@ -40,7 +40,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
 
         public DoctorGradeController doctorGradeController;
         public RelayCommand HospitalGradeChange { get; set; }
-
+        Func<double, string> formatBar = (x) => string.Format("{0:0.000}", x);
         public string[] DoctorLabels { get; set; } =
             new[] { "Knowledge", "Helpfulness", "Punctuality", "Pleasantness" };
 
@@ -62,6 +62,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             };
             this.HospitalGrades = this.hospitalGradeController.GetAll();
             this.Doctors = new ObservableCollection<Doctor>(this.doctorController.GetAll());
+
+
             float sum = 0;
             List<HospitalGrade> allHospitalGrades = this.hospitalGradeController.GetAll();
             int i;
@@ -72,7 +74,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                        allHospitalGrades[i].RoomGrade;
             }
 
-            this.TotalAverageHospital.Content = Math.Round(sum / i / 5, 1);
+            this.TotalAverageHospital.Content = Math.Round(sum / i / 5, 2);
             this.DataContext = this;
         }
 
@@ -109,13 +111,20 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
             var add = new ColumnSeries
             {
                 Title = doctor.User.Name,
-                Values = new ChartValues<ObservableValue>
+                Values = new ChartValues<float>
                 {
-                    new ObservableValue(knowledgeGrade),
-                    new ObservableValue(helpfulnessGrade),
-                    new ObservableValue(punctualityGrade),
-                    new ObservableValue(pleasantnessGrade)
+                    knowledgeGrade,
+                    helpfulnessGrade,
+                    punctualityGrade,
+                    pleasantnessGrade
                 }
+                /*Values = new ChartValues<ObservableValue>
+                {
+                new ObservableValue(knowledgeGrade),
+                new ObservableValue(helpfulnessGrade),
+                new ObservableValue(punctualityGrade),
+                new ObservableValue(pleasantnessGrade)
+            }*/
             };
             this.DoctorGradeChart.Series.Add(add);
             this.TotalAverageDoctor.Content = (knowledgeGrade + helpfulnessGrade +

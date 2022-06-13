@@ -1,1 +1,73 @@
-[{"RoomGrade":2,"StaffGrade":1,"HospitalityGrade":5,"LocationGrade":3,"CleanlinessGrade":5},{"RoomGrade":2,"StaffGrade":4,"HospitalityGrade":2,"LocationGrade":3,"CleanlinessGrade":5},{"RoomGrade":5,"StaffGrade":2,"HospitalityGrade":3,"LocationGrade":1,"CleanlinessGrade":5},{"RoomGrade":1,"StaffGrade":2,"HospitalityGrade":4,"LocationGrade":5,"CleanlinessGrade":2},{"RoomGrade":3,"StaffGrade":1,"HospitalityGrade":5,"LocationGrade":5,"CleanlinessGrade":5}]
+[
+  {
+    "RoomGrade": 2,
+    "StaffGrade": 1,
+    "HospitalityGrade": 5,
+    "LocationGrade": 4,
+    "CleanlinessGrade": 5
+  },
+  {
+    "RoomGrade": 2,
+    "StaffGrade": 4,
+    "HospitalityGrade": 2,
+    "LocationGrade": 3,
+    "CleanlinessGrade": 4
+  },
+  {
+    "RoomGrade": 5,
+    "StaffGrade": 2,
+    "HospitalityGrade": 3,
+    "LocationGrade": 1,
+    "CleanlinessGrade": 3
+  },
+  {
+    "RoomGrade": 1,
+    "StaffGrade": 2,
+    "HospitalityGrade": 4,
+    "LocationGrade": 5,
+    "CleanlinessGrade": 2
+  },
+  {
+    "RoomGrade": 3,
+    "StaffGrade": 5,
+    "HospitalityGrade": 1,
+    "LocationGrade": 2,
+    "CleanlinessGrade": 5
+  },
+
+  {
+    "RoomGrade": 2,
+    "StaffGrade": 3,
+    "HospitalityGrade": 4,
+    "LocationGrade": 5,
+    "CleanlinessGrade": 1
+  },
+  {
+    "RoomGrade": 2,
+    "StaffGrade": 3,
+    "HospitalityGrade": 2,
+    "LocationGrade": 1,
+    "CleanlinessGrade": 5
+  },
+  {
+    "RoomGrade": 4,
+    "StaffGrade": 2,
+    "HospitalityGrade": 3,
+    "LocationGrade": 3,
+    "CleanlinessGrade": 5
+  },
+  {
+    "RoomGrade": 1,
+    "StaffGrade": 1,
+    "HospitalityGrade": 4,
+    "LocationGrade": 5,
+    "CleanlinessGrade": 4
+  },
+  {
+    "RoomGrade": 3,
+    "StaffGrade": 1,
+    "HospitalityGrade": 1,
+    "LocationGrade": 5,
+    "CleanlinessGrade": 5
+  }
+]

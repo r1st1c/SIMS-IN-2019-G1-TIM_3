@@ -51,7 +51,12 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
         {
             if (AnyFieldIsEmpty())
             {
-                MessageBox.Show("ALL FIELDS ARE NECESSARY!");
+                MessageBox.Show("All fields are neccessary!");
+                return;
+            }
+            if (DateTime.Parse(StartDate.Text) > DateTime.Parse(EndDate.Text))
+            {
+                MessageBox.Show("End date must be after start!");
                 return;
             }
             var query = new MergeRenovationTerm(
