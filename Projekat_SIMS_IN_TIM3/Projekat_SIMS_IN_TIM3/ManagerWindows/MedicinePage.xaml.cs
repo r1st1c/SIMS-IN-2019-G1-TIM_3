@@ -94,8 +94,8 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                     page.DefaultTextStyle(x => x.FontSize(16));
 
                     page.Header()
-                        .Text("Medicine review!")
-                        .SemiBold().FontSize(36).FontColor(QuestPDF.Helpers.Colors.Blue.Medium);
+                        .Text("Izveštaj stanja aktivnih lekova - Bolnica Zdravo")
+                        .SemiBold().FontSize(24).FontColor(QuestPDF.Helpers.Colors.Blue.Medium);
 
                     page.Content()
                         .PaddingVertical(25)
