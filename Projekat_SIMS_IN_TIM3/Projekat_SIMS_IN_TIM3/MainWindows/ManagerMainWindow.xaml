@@ -19,6 +19,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="0.030*"></RowDefinition>
             <RowDefinition Height="7*"></RowDefinition>
+            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
         <Button x:Name="medicineBtn" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Medicine_Click">
             <Button.ContentTemplate>
@@ -79,5 +80,6 @@
 
 
         </Frame>
+        <Label Grid.Column="0" Grid.ColumnSpan="6" FontSize="40" FontWeight="Bold" Content="Hospital Zdravo - Logged in as Manager" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </Window>
