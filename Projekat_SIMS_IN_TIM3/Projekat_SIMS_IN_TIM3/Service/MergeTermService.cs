@@ -171,7 +171,7 @@ public class MergeTermService
         {
             foreach (var room in existing)
             {
-                if (EndingDatePassed(renovationTerm) && RoomFound(room, renovationTerm))
+                if (DateRange.EndingDateHasPassed(renovationTerm.Range.Start) && RoomFound(room, renovationTerm))
                 {
                     CreateRoomAndAddToCreationList(toCreateList, renovationTerm, room);
                     DeleteRoomAndItsMergeScheduling(room, renovationTerm);
@@ -214,11 +214,5 @@ public class MergeTermService
     private static bool RoomFound(Room room, MergeRenovationTerm renovationTerm)
     {
         return (room.Id == renovationTerm.RoomId1 || room.Id == renovationTerm.RoomId2);
-    }
-
-    private static bool EndingDatePassed(MergeRenovationTerm renovationTerm)
-    {
-        return DateTime.Now >
-               DateRange.GetLastMoment(renovationTerm.Range.End);
     }
 }

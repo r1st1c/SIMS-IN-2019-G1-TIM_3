@@ -37,5 +37,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
         {
             return DateTime.Now >= start;
         }
+        public static bool EndingDateHasPassed(DateTime end)
+        {
+            return DateTime.Now >
+                   DateRange.GetLastMoment(end);
+        }
     }
 }

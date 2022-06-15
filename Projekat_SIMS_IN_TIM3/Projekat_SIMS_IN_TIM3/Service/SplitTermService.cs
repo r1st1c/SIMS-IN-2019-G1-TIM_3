@@ -149,7 +149,7 @@ public class SplitTermService
         {
             foreach (var room in existing)
             {
-                if (EndingDateHasPassed(renovationTerm) && RoomFound(room, renovationTerm))
+                if (DateRange.EndingDateHasPassed(renovationTerm.Range.Start) && RoomFound(room, renovationTerm))
                 {
                     CreateNewRooms(renovationTerm, room);
                     DeleteRoomAndItsSchedule(room, renovationTerm);
@@ -172,9 +172,4 @@ public class SplitTermService
             renovationTerm.NewRoomType2, room.Floor, renovationTerm.NewRoomDescription2, "No"));
     }
 
-    private static bool EndingDateHasPassed(SplitRenovationTerm renovationTerm)
-    {
-        return DateTime.Now >
-               DateRange.GetLastMoment(renovationTerm.Range.End);
-    }
 }
