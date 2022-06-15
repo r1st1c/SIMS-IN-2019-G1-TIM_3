@@ -148,7 +148,7 @@ public class MergeTermService
         {
             foreach (var renovationTerm in mergeRenovations)
             {
-                if (StartingDatePassed(renovationTerm) && RoomFound(room, renovationTerm))
+                if (DateRange.StartingDayPassed(renovationTerm.Range.Start) && RoomFound(room, renovationTerm))
                 {
                     DisableAndUpdateMergingRoom(room);
                 }
@@ -160,11 +160,6 @@ public class MergeTermService
     {
         room.Disabled = 2;
         roomRepository.Update(room);
-    }
-
-    private static bool StartingDatePassed(MergeRenovationTerm renovationTerm)
-    {
-        return DateTime.Now >= renovationTerm.Range.Start;
     }
 
     public void ExecuteMerging()

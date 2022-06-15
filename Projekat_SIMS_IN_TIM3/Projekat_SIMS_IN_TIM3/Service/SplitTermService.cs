@@ -120,7 +120,7 @@ public class SplitTermService
         {
             foreach (var renovationTerm in splitRenovations)
             {
-                if (StartingDayPassed(renovationTerm) && RoomFound(room, renovationTerm))
+                if (DateRange.StartingDayPassed(renovationTerm.Range.Start) && RoomFound(room, renovationTerm))
                 {
                     DisableAndUpdateSplittingRoom(room);
                 }
@@ -139,10 +139,7 @@ public class SplitTermService
         return room.Id == renovationTerm.RoomToSplitId;
     }
 
-    private static bool StartingDayPassed(SplitRenovationTerm renovationTerm)
-    {
-        return DateTime.Now >= renovationTerm.Range.Start;
-    }
+    
 
     public void ExecuteSplitting()// 4/4 Main Function
     {

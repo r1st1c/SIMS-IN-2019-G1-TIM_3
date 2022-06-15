@@ -33,5 +33,9 @@ namespace Projekat_SIMS_IN_TIM3.Model
             return DateTime.Now >= start
                    && DateTime.Now <= DateRange.GetLastMoment(end);
         }
+        public static bool StartingDayPassed(DateTime start)
+        {
+            return DateTime.Now >= start;
+        }
     }
 }
