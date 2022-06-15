@@ -19,7 +19,9 @@ public class SplitTermService
         this.AppointmentRepository = appointmentRepository;
         this.RoomRepository = roomRepository;
     }
-    public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery)// 1/4 Main Function
+
+    public List<SplitRenovationTerm>
+        GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery) // 1/4 Main Function
     {
         var dates = new List<DateTime>();
 
@@ -83,7 +85,7 @@ public class SplitTermService
             }
         }
     }
-    
+
 
     private static void FillInAllDays(SplitRenovationTerm splitRenovationQuery, List<DateTime> dates)
     {
@@ -100,19 +102,20 @@ public class SplitTermService
                splitRenovationQuery.RoomToSplitId == appointment.RoomNumber;
     }
 
-    public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)// 2/4 Main Function
+    public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm) // 2/4 Main Function
     {
         var room = RoomRepository.GetById(splitRenovationTerm.RoomToSplitId);
-        if (DateRange.DateIsBetweenStartAndEnd(splitRenovationTerm.Range.Start,splitRenovationTerm.Range.End))
+        if (DateRange.DateIsBetweenStartAndEnd(splitRenovationTerm.Range.Start, splitRenovationTerm.Range.End))
         {
             room.Disabled = 3;
             RoomRepository.Update(room);
         }
+
         return SplitTermRepository.ScheduleSplit(splitRenovationTerm);
     }
 
 
-    public void DisableSplittingRooms()// 3/4 Main Function
+    public void DisableSplittingRooms() // 3/4 Main Function
     {
         List<SplitRenovationTerm> splitRenovations = SplitTermRepository.GetSplitSchedules();
         List<Room> existing = RoomRepository.GetAll();
@@ -139,9 +142,8 @@ public class SplitTermService
         return room.Id == renovationTerm.RoomToSplitId;
     }
 
-    
 
-    public void ExecuteSplitting()// 4/4 Main Function
+    public void ExecuteSplitting() // 4/4 Main Function
     {
         List<SplitRenovationTerm> splitRenovationTerms = SplitTermRepository.GetSplitSchedules();
         List<Room> existing = RoomRepository.GetAll();
@@ -171,5 +173,4 @@ public class SplitTermService
         RoomRepository.Create(new Room(RoomRepository.NextId(), renovationTerm.NewRoomName2,
             renovationTerm.NewRoomType2, room.Floor, renovationTerm.NewRoomDescription2, "No"));
     }
-
 }

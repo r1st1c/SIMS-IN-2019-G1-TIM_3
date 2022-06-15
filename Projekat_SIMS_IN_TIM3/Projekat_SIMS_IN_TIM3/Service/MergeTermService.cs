@@ -20,6 +20,7 @@ public class MergeTermService
         this.roomRepository = roomRepository;
         this.appointmentRepository = appointmentRepository;
     }
+
     public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
     {
         List<DateTime> intersectedAvailableDays = FindIntersectedAvailableDays(mergeRenovationQuery);
@@ -40,7 +41,7 @@ public class MergeTermService
 
         for (int i = 0; i < intersectedAvailableDays.Count - mergeRenovationQuery.Duration; i++)
         {
-            if (DateRange.StartDayPlusDurationIsEndDay(mergeRenovationQuery.Duration, intersectedAvailableDays,i))
+            if (DateRange.StartDayPlusDurationIsEndDay(mergeRenovationQuery.Duration, intersectedAvailableDays, i))
             {
                 renovationId =
                     AddAsAvailableTerm(mergeRenovationQuery, available, renovationId, intersectedAvailableDays, i);
@@ -137,6 +138,7 @@ public class MergeTermService
             roomRepository.Update(room1);
             roomRepository.Update(room2);
         }
+
         return mergeTermRepository.ScheduleMerge(mergeRenovationTerm);
     }
 
