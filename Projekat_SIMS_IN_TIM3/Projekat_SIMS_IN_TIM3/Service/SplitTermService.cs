@@ -103,7 +103,7 @@ public class SplitTermService
     public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)// 2/4 Main Function
     {
         var room = RoomRepository.GetById(splitRenovationTerm.RoomToSplitId);
-        if (DateIsBetweenStartAndEnd(splitRenovationTerm))
+        if (DateRange.DateIsBetweenStartAndEnd(splitRenovationTerm.Range.Start,splitRenovationTerm.Range.End))
         {
             room.Disabled = 3;
             RoomRepository.Update(room);
@@ -111,11 +111,6 @@ public class SplitTermService
         return SplitTermRepository.ScheduleSplit(splitRenovationTerm);
     }
 
-    private static bool DateIsBetweenStartAndEnd(SplitRenovationTerm splitRenovationTerm)
-    {
-        return DateTime.Now >= splitRenovationTerm.Range.Start
-               && DateTime.Now <= DateRange.GetLastMoment(splitRenovationTerm.Range.End);
-    }
 
     public void DisableSplittingRooms()// 3/4 Main Function
     {

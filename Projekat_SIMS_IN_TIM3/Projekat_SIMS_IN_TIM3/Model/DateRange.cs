@@ -27,5 +27,11 @@ namespace Projekat_SIMS_IN_TIM3.Model
             return intersectedAvailableDays[i].AddDays(duration) ==
                    intersectedAvailableDays[i + duration];
         }
+
+        public static bool DateIsBetweenStartAndEnd(DateTime start, DateTime end)
+        {
+            return DateTime.Now >= start
+                   && DateTime.Now <= DateRange.GetLastMoment(end);
+        }
     }
 }

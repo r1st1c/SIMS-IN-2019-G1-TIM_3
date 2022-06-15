@@ -130,7 +130,7 @@ public class MergeTermService
     {
         var room1 = roomRepository.GetById(mergeRenovationTerm.RoomId1);
         var room2 = roomRepository.GetById(mergeRenovationTerm.RoomId2);
-        if (DateIsBetweenStartAndEnd(mergeRenovationTerm))
+        if (DateRange.DateIsBetweenStartAndEnd(mergeRenovationTerm.Range.Start, mergeRenovationTerm.Range.End))
         {
             room1.Disabled = 2;
             room2.Disabled = 2;
@@ -138,12 +138,6 @@ public class MergeTermService
             roomRepository.Update(room2);
         }
         return mergeTermRepository.ScheduleMerge(mergeRenovationTerm);
-    }
-
-    private static bool DateIsBetweenStartAndEnd(MergeRenovationTerm mergeRenovationTerm)
-    {
-        return DateTime.Now >= mergeRenovationTerm.Range.Start
-               && DateTime.Now <= DateRange.GetLastMoment(mergeRenovationTerm.Range.End);
     }
 
     public void DisableMergingRooms()
