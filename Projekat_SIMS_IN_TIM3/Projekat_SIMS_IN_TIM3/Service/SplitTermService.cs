@@ -43,7 +43,7 @@ public class SplitTermService
 
         for (int i = 0; i < dates.Count - splitRenovationQuery.Duration; i++)
         {
-            if (StartDayPlusDurationIsEndDay(splitRenovationQuery, dates, i))
+            if (DateRange.StartDayPlusDurationIsEndDay(splitRenovationQuery.Duration, dates, i))
             {
                 renovationId = AddAvailableTerm(splitRenovationQuery, dates, available, renovationId, i);
             }
@@ -83,12 +83,7 @@ public class SplitTermService
             }
         }
     }
-
-    private static bool StartDayPlusDurationIsEndDay(SplitRenovationTerm splitRenovationQuery,
-        List<DateTime> dates, int i)
-    {
-        return dates[i].AddDays(splitRenovationQuery.Duration) == dates[i + splitRenovationQuery.Duration];
-    }
+    
 
     private static void FillInAllDays(SplitRenovationTerm splitRenovationQuery, List<DateTime> dates)
     {

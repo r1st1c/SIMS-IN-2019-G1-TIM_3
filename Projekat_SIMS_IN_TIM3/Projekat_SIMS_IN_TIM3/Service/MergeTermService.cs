@@ -40,7 +40,7 @@ public class MergeTermService
 
         for (int i = 0; i < intersectedAvailableDays.Count - mergeRenovationQuery.Duration; i++)
         {
-            if (StartDayPlusDurationIsEndDay(mergeRenovationQuery, intersectedAvailableDays, i))
+            if (DateRange.StartDayPlusDurationIsEndDay(mergeRenovationQuery.Duration, intersectedAvailableDays,i))
             {
                 renovationId =
                     AddAsAvailableTerm(mergeRenovationQuery, available, renovationId, intersectedAvailableDays, i);
@@ -61,13 +61,6 @@ public class MergeTermService
             mergeRenovationQuery.Name,
             mergeRenovationQuery.RoomType));
         return renovationId;
-    }
-
-    private static bool StartDayPlusDurationIsEndDay(MergeRenovationTerm mergeRenovationQuery,
-        List<DateTime> intersectedAvailableDays, int i)
-    {
-        return intersectedAvailableDays[i].AddDays(mergeRenovationQuery.Duration) ==
-               intersectedAvailableDays[i + mergeRenovationQuery.Duration];
     }
 
     private List<DateTime> FindIntersectedAvailableDays(MergeRenovationTerm mergeRenovationQuery)
