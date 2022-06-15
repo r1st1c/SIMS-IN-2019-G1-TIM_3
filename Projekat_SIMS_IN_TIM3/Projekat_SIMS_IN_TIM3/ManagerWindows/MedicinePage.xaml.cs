@@ -94,7 +94,7 @@ namespace Projekat_SIMS_IN_TIM3.ManagerWindows
                     page.DefaultTextStyle(x => x.FontSize(16));
 
                     page.Header()
-                        .Text("Izveštaj stanja aktivnih lekova - Bolnica Zdravo")
+                        .Text("Izveštaj stanja aktivnih lekova - Bolnica Zdravo" + "\n" + "Datum: " + DateTime.Now.ToShortDateString())
                         .SemiBold().FontSize(24).FontColor(QuestPDF.Helpers.Colors.Blue.Medium);
 
                     page.Content()
