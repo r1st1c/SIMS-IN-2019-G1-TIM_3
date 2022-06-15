@@ -58,7 +58,7 @@
             <Button.ContentTemplate>
                 <DataTemplate>
                     <Viewbox MaxHeight="55">
-                        <TextBlock>Report</TextBlock>
+                        <TextBlock>PDF Report</TextBlock>
                     </Viewbox>
                 </DataTemplate>
             </Button.ContentTemplate>
