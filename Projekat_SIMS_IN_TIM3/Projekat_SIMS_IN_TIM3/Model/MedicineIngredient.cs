@@ -10,6 +10,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
     public class MedicineIngredient : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -17,29 +18,32 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        private int _id;
+        private string _name;
+
         public MedicineIngredient(int id, string name)
         {
             Id = id;
             Name = name;
         }
+
         public MedicineIngredient(string name)
         {
             Name = name;
         }
+
         public MedicineIngredient()
         {
-
         }
+
         ~MedicineIngredient()
         {
-
         }
-        private int _id;
-        private string _name;
+
         public int Id
         {
-            get
-            { return _id; }
+            get { return _id; }
             set
             {
                 if (value != _id)
@@ -49,10 +53,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
+
         public string Name
         {
-            get
-            { return _name; }
+            get { return _name; }
             set
             {
                 if (value != _name)
