@@ -21,5 +21,26 @@ namespace Projekat_SIMS_IN_TIM3.Model
         {
             return end.AddHours(23).AddMinutes(59).AddSeconds(59);
         }
+        public static bool StartDayPlusDurationIsEndDay(int duration,
+            List<DateTime> intersectedAvailableDays, int i)
+        {
+            return intersectedAvailableDays[i].AddDays(duration) ==
+                   intersectedAvailableDays[i + duration];
+        }
+
+        public static bool DateIsBetweenStartAndEnd(DateTime start, DateTime end)
+        {
+            return DateTime.Now >= start
+                   && DateTime.Now <= DateRange.GetLastMoment(end);
+        }
+        public static bool StartingDayPassed(DateTime start)
+        {
+            return DateTime.Now >= start;
+        }
+        public static bool EndingDateHasPassed(DateTime end)
+        {
+            return DateTime.Now >
+                   DateRange.GetLastMoment(end);
+        }
     }
 }

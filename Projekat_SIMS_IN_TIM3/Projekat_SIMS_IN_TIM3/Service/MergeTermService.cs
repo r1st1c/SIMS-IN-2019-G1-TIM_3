@@ -20,6 +20,7 @@ public class MergeTermService
         this.roomRepository = roomRepository;
         this.appointmentRepository = appointmentRepository;
     }
+
     public List<MergeRenovationTerm> GetMergeRenovationAvailableTerms(MergeRenovationTerm mergeRenovationQuery)
     {
         List<DateTime> intersectedAvailableDays = FindIntersectedAvailableDays(mergeRenovationQuery);
@@ -40,7 +41,7 @@ public class MergeTermService
 
         for (int i = 0; i < intersectedAvailableDays.Count - mergeRenovationQuery.Duration; i++)
         {
-            if (StartDayPlusDurationIsEndDay(mergeRenovationQuery, intersectedAvailableDays, i))
+            if (DateRange.StartDayPlusDurationIsEndDay(mergeRenovationQuery.Duration, intersectedAvailableDays, i))
             {
                 renovationId =
                     AddAsAvailableTerm(mergeRenovationQuery, available, renovationId, intersectedAvailableDays, i);
@@ -61,13 +62,6 @@ public class MergeTermService
             mergeRenovationQuery.Name,
             mergeRenovationQuery.RoomType));
         return renovationId;
-    }
-
-    private static bool StartDayPlusDurationIsEndDay(MergeRenovationTerm mergeRenovationQuery,
-        List<DateTime> intersectedAvailableDays, int i)
-    {
-        return intersectedAvailableDays[i].AddDays(mergeRenovationQuery.Duration) ==
-               intersectedAvailableDays[i + mergeRenovationQuery.Duration];
     }
 
     private List<DateTime> FindIntersectedAvailableDays(MergeRenovationTerm mergeRenovationQuery)
@@ -137,20 +131,15 @@ public class MergeTermService
     {
         var room1 = roomRepository.GetById(mergeRenovationTerm.RoomId1);
         var room2 = roomRepository.GetById(mergeRenovationTerm.RoomId2);
-        if (DateIsBetweenStartAndEnd(mergeRenovationTerm))
+        if (DateRange.DateIsBetweenStartAndEnd(mergeRenovationTerm.Range.Start, mergeRenovationTerm.Range.End))
         {
             room1.Disabled = 2;
             room2.Disabled = 2;
             roomRepository.Update(room1);
             roomRepository.Update(room2);
         }
-        return mergeTermRepository.ScheduleMerge(mergeRenovationTerm);
-    }
 
-    private static bool DateIsBetweenStartAndEnd(MergeRenovationTerm mergeRenovationTerm)
-    {
-        return DateTime.Now >= mergeRenovationTerm.Range.Start
-               && DateTime.Now <= DateRange.GetLastMoment(mergeRenovationTerm.Range.End);
+        return mergeTermRepository.ScheduleMerge(mergeRenovationTerm);
     }
 
     public void DisableMergingRooms()
@@ -161,7 +150,7 @@ public class MergeTermService
         {
             foreach (var renovationTerm in mergeRenovations)
             {
-                if (StartingDatePassed(renovationTerm) && RoomFound(room, renovationTerm))
+                if (DateRange.StartingDayPassed(renovationTerm.Range.Start) && RoomFound(room, renovationTerm))
                 {
                     DisableAndUpdateMergingRoom(room);
                 }
@@ -175,11 +164,6 @@ public class MergeTermService
         roomRepository.Update(room);
     }
 
-    private static bool StartingDatePassed(MergeRenovationTerm renovationTerm)
-    {
-        return DateTime.Now >= renovationTerm.Range.Start;
-    }
-
     public void ExecuteMerging()
     {
         List<MergeRenovationTerm> mergeRenovations = mergeTermRepository.GetMergeSchedules();
@@ -189,7 +173,7 @@ public class MergeTermService
         {
             foreach (var room in existing)
             {
-                if (EndingDatePassed(renovationTerm) && RoomFound(room, renovationTerm))
+                if (DateRange.EndingDateHasPassed(renovationTerm.Range.Start) && RoomFound(room, renovationTerm))
                 {
                     CreateRoomAndAddToCreationList(toCreateList, renovationTerm, room);
                     DeleteRoomAndItsMergeScheduling(room, renovationTerm);
@@ -232,11 +216,5 @@ public class MergeTermService
     private static bool RoomFound(Room room, MergeRenovationTerm renovationTerm)
     {
         return (room.Id == renovationTerm.RoomId1 || room.Id == renovationTerm.RoomId2);
-    }
-
-    private static bool EndingDatePassed(MergeRenovationTerm renovationTerm)
-    {
-        return DateTime.Now >
-               DateRange.GetLastMoment(renovationTerm.Range.End);
     }
 }

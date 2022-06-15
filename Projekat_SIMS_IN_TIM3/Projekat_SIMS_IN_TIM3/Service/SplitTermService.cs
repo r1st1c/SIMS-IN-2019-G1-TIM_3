@@ -19,7 +19,9 @@ public class SplitTermService
         this.AppointmentRepository = appointmentRepository;
         this.RoomRepository = roomRepository;
     }
-    public List<SplitRenovationTerm> GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery)// 1/4 Main Function
+
+    public List<SplitRenovationTerm>
+        GetSplitRenovationAvailableTerms(SplitRenovationTerm splitRenovationQuery) // 1/4 Main Function
     {
         var dates = new List<DateTime>();
 
@@ -43,7 +45,7 @@ public class SplitTermService
 
         for (int i = 0; i < dates.Count - splitRenovationQuery.Duration; i++)
         {
-            if (StartDayPlusDurationIsEndDay(splitRenovationQuery, dates, i))
+            if (DateRange.StartDayPlusDurationIsEndDay(splitRenovationQuery.Duration, dates, i))
             {
                 renovationId = AddAvailableTerm(splitRenovationQuery, dates, available, renovationId, i);
             }
@@ -84,11 +86,6 @@ public class SplitTermService
         }
     }
 
-    private static bool StartDayPlusDurationIsEndDay(SplitRenovationTerm splitRenovationQuery,
-        List<DateTime> dates, int i)
-    {
-        return dates[i].AddDays(splitRenovationQuery.Duration) == dates[i + splitRenovationQuery.Duration];
-    }
 
     private static void FillInAllDays(SplitRenovationTerm splitRenovationQuery, List<DateTime> dates)
     {
@@ -105,24 +102,20 @@ public class SplitTermService
                splitRenovationQuery.RoomToSplitId == appointment.RoomNumber;
     }
 
-    public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm)// 2/4 Main Function
+    public bool ScheduleSplit(SplitRenovationTerm splitRenovationTerm) // 2/4 Main Function
     {
         var room = RoomRepository.GetById(splitRenovationTerm.RoomToSplitId);
-        if (DateIsBetweenStartAndEnd(splitRenovationTerm))
+        if (DateRange.DateIsBetweenStartAndEnd(splitRenovationTerm.Range.Start, splitRenovationTerm.Range.End))
         {
             room.Disabled = 3;
             RoomRepository.Update(room);
         }
+
         return SplitTermRepository.ScheduleSplit(splitRenovationTerm);
     }
 
-    private static bool DateIsBetweenStartAndEnd(SplitRenovationTerm splitRenovationTerm)
-    {
-        return DateTime.Now >= splitRenovationTerm.Range.Start
-               && DateTime.Now <= DateRange.GetLastMoment(splitRenovationTerm.Range.End);
-    }
 
-    public void DisableSplittingRooms()// 3/4 Main Function
+    public void DisableSplittingRooms() // 3/4 Main Function
     {
         List<SplitRenovationTerm> splitRenovations = SplitTermRepository.GetSplitSchedules();
         List<Room> existing = RoomRepository.GetAll();
@@ -130,7 +123,7 @@ public class SplitTermService
         {
             foreach (var renovationTerm in splitRenovations)
             {
-                if (StartingDayPassed(renovationTerm) && RoomFound(room, renovationTerm))
+                if (DateRange.StartingDayPassed(renovationTerm.Range.Start) && RoomFound(room, renovationTerm))
                 {
                     DisableAndUpdateSplittingRoom(room);
                 }
@@ -149,12 +142,8 @@ public class SplitTermService
         return room.Id == renovationTerm.RoomToSplitId;
     }
 
-    private static bool StartingDayPassed(SplitRenovationTerm renovationTerm)
-    {
-        return DateTime.Now >= renovationTerm.Range.Start;
-    }
 
-    public void ExecuteSplitting()// 4/4 Main Function
+    public void ExecuteSplitting() // 4/4 Main Function
     {
         List<SplitRenovationTerm> splitRenovationTerms = SplitTermRepository.GetSplitSchedules();
         List<Room> existing = RoomRepository.GetAll();
@@ -162,7 +151,7 @@ public class SplitTermService
         {
             foreach (var room in existing)
             {
-                if (EndingDateHasPassed(renovationTerm) && RoomFound(room, renovationTerm))
+                if (DateRange.EndingDateHasPassed(renovationTerm.Range.Start) && RoomFound(room, renovationTerm))
                 {
                     CreateNewRooms(renovationTerm, room);
                     DeleteRoomAndItsSchedule(room, renovationTerm);
@@ -183,11 +172,5 @@ public class SplitTermService
             renovationTerm.NewRoomType1, room.Floor, renovationTerm.NewRoomDescription1, "No"));
         RoomRepository.Create(new Room(RoomRepository.NextId(), renovationTerm.NewRoomName2,
             renovationTerm.NewRoomType2, room.Floor, renovationTerm.NewRoomDescription2, "No"));
-    }
-
-    private static bool EndingDateHasPassed(SplitRenovationTerm renovationTerm)
-    {
-        return DateTime.Now >
-               DateRange.GetLastMoment(renovationTerm.Range.End);
     }
 }

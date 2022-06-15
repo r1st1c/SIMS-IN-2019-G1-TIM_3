@@ -17,6 +17,7 @@ namespace Projekat_SIMS_IN_TIM3.Model
     public class Medicine : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -25,12 +26,20 @@ namespace Projekat_SIMS_IN_TIM3.Model
             }
         }
 
+        private int _id;
+        private string _name;
+        private List<MedicineIngredient> _ingredients;
+        private MedicineStatus _isVerified;
+        private string _reasonOfRejection;
+        private string _replacement;
+
         public Medicine()
         {
             // TODO: implement
         }
 
-        public Medicine(int id, string name, List<MedicineIngredient> ingredients, MedicineStatus isVerified, string replacement, string reasonOfRejection)
+        public Medicine(int id, string name, List<MedicineIngredient> ingredients, MedicineStatus isVerified,
+            string replacement, string reasonOfRejection)
         {
             Id = id;
             Name = name;
@@ -45,16 +54,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
             // TODO: implement
         }
 
-        private int _id;
-        private string _name;
-        private List<MedicineIngredient> _ingredients;
-        private MedicineStatus _isVerified;
-        private string _reasonOfRejection;
-        private string _replacement;
+
         public int Id
         {
-            get
-            { return _id; }
+            get { return _id; }
             set
             {
                 if (value != _id)
@@ -64,10 +67,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
+
         public String Name
         {
-            get
-            { return _name; }
+            get { return _name; }
             set
             {
                 if (value != _name)
@@ -77,10 +80,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
+
         public List<MedicineIngredient> Ingredients
         {
-            get
-            { return _ingredients; }
+            get { return _ingredients; }
             set
             {
                 if (value != _ingredients)
@@ -90,10 +93,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
+
         public MedicineStatus IsVerified
         {
-            get
-            { return _isVerified; }
+            get { return _isVerified; }
             set
             {
                 if (value != _isVerified)
@@ -103,10 +106,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
+
         public String ReasonOfRejection
         {
-            get
-            { return _reasonOfRejection; }
+            get { return _reasonOfRejection; }
             set
             {
                 if (value != _reasonOfRejection)
@@ -116,10 +119,10 @@ namespace Projekat_SIMS_IN_TIM3.Model
                 }
             }
         }
+
         public string Replacement
         {
-            get
-            { return _replacement; }
+            get { return _replacement; }
             set
             {
                 if (value != _replacement)
